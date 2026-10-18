@@ -208,14 +208,14 @@ register('cofferdam', (root) => {
     const bed = 330, yW = bed - (h + d) * pxm, yDes = bed - h * pxm, yC = bed - crest * pxm;
     const over = d > f;
     // szélességek (m)
-    let Bm, xg0 = 250;
+    let Bm, xg0 = T === 'fold' ? 110 : 250;
     if (T === 'fold') Bm = 3 + 2 * 2.5 * crest;
     else if (T === 'egy') Bm = 0.6;
     else if (T === 'ket') Bm = Math.max(3, 0.85 * crest);
     else Bm = Math.max(8, 0.9 * crest);
     const Bpx = Bm * pxm;
     let xg1 = xg0 + Bpx;
-    const clipW = 760 - 120;
+    const clipW = 700;
     const truncated = xg1 > clipW;
     if (truncated) xg1 = clipW;
     // ég, meder
@@ -248,9 +248,9 @@ register('cofferdam', (root) => {
       svg('path', { d: pathD([[cx - 10, yC], [cx + 10, yC], [cx + 22, bed], [cx - 22, bed]], true), class: 'f-soilB' }, gDyn);
       txt(gDyn, cx, yC - 6, 'agyagmag', 't-sm', { 'text-anchor': 'middle' });
       if (truncated) {
-        svg('rect', { x: clipW, y: 0, width: 760 - clipW, height: 380, class: 'f-sky' }, gDyn);
+        svg('rect', { x: clipW, y: 0, width: 760 - clipW, height: bed, class: 'f-sky' }, gDyn);
         svg('path', { d: `M ${clipW} ${bed - 60} l 8 10 l -8 10 l 8 10 l -8 10`, fill: 'none', class: 's-ink', 'stroke-width': 1.5 }, gDyn);
-        txt(gDyn, clipW + 12, bed - 100, 'a gát innen', 't-sm'); txt(gDyn, clipW + 12, bed - 86, 'még folytatódik…', 't-sm');
+        txt(gDyn, 756, bed - 100, 'a gát innen', 't-sm', { 'text-anchor': 'end' }); txt(gDyn, 756, bed - 86, 'folytatódik…', 't-sm', { 'text-anchor': 'end' });
       }
     } else if (T === 'egy') {
       sheetPile(gDyn, xg0 + 3, yC, bed + 46, 7);
@@ -293,8 +293,8 @@ register('cofferdam', (root) => {
       txt(gDyn, px0 + 22, pitBot - 4, 'szivattyú', 't-sm');
     }
     // méretek
-    const xd = 120;
-    dim(gDyn, xd, bed, xd, yDes, `h = ${fmt(h, 1)} m`, { dx: 34 });
+    const xd = xg0 - 70;
+    dim(gDyn, xd, bed, xd, yDes, `h = ${fmt(h, 1)} m`, { dx: 30 });
     svg('line', { x1: 0, y1: yDes, x2: xg0, y2: yDes, class: 's-water', 'stroke-width': 1, 'stroke-dasharray': '5 4' }, gDyn);
     txt(gDyn, 6, yDes - 4, 'mértékadó vízszint', 't-sm t-water');
     dim(gDyn, xg0 - 34, yDes, xg0 - 34, yC, `f = ${fmt(f, 1)} m`, { dx: -6, anchor: 'end' });
@@ -345,7 +345,7 @@ register('cofferdam', (root) => {
     const h = hw.v, f = fb.v, crest = h + f, pxm = 300 / 17, bed = 330;
     const T = typ.v;
     let Bm = T === 'fold' ? 3 + 5 * crest : T === 'egy' ? 0.6 : T === 'ket' ? Math.max(3, 0.85 * crest) : Math.max(8, 0.9 * crest);
-    const x1 = Math.min(250 + Bm * pxm, 640) + 6;
+    const x1 = Math.min((T === 'fold' ? 110 : 250) + Bm * pxm, 700) + 6;
     for (const d of drops) {
       d.p = (d.p + dt * 0.5) % 1;
       const y = bed - d.y * h * pxm;
@@ -469,7 +469,7 @@ register('uwphases', (root) => {
       }
       if (k >= 4 || k === 2) dim(S, xR + 26, botEx, xR + 26, slabT, k >= 4 ? '1–1,5 m' : '', { dx: 6, anchor: 'start' });
     }
-    text.innerHTML = `<b>${UW_STEPS[k][0]}</b>${UW_STEPS[k][1]}`;
+    text.innerHTML = `<b class="kd-sh">${UW_STEPS[k][0]}</b>${UW_STEPS[k][1]}`;
     [...dots.children].forEach((b, i) => b.classList.toggle('on', i === k));
     prev.disabled = false; next.disabled = false;
   }

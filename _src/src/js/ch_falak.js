@@ -217,12 +217,14 @@ register('berliniBuild', (root) => {
     let zl = late.v ? Math.min(z, 1.0) : Math.max(0, Math.floor((z - 0.5 * open) / 0.25) * 0.25);
     zl = Math.min(zl, z);
     const free = z - zl;
-    const bay = s * k, x0 = (640 - 3 * bay) / 2, xs = [0, 1, 2, 3].map((i) => x0 + i * bay), bw = 10;
+    const bay = s * k, xm0 = (640 - 3 * bay) / 2, xs = [0, 1, 2, 3].map((i) => xm0 + i * bay), bw = 10;
+    const nL = Math.ceil(xm0 / bay) + 1, all = [];
+    for (let i = -nL; i <= 3 + nL; i++) { const x = xm0 + i * bay; if (x > -bay && x < 640 + bay) all.push(x); }
     // háttér: a fal mögötti talaj, illetve a még ki nem emelt talaj
     R(fig, 0, 0, 640, y0, 'f-surface');
     R(fig, 0, y0, 640, 400 - y0, 'f-soilA'); R(fig, 0, y0, 640, 400 - y0, '', { fill: 'url(#pat-sand)' });
     // furatok a kiemelési szint alatt (röntgen)
-    for (const x of xs) {
+    for (const x of all) {
       const yz = Y(z);
       if (Y(HF) > yz) R(fig, x - 11, yz, 22, Y(HF) - yz, 'f-grout', { opacity: 0.75 });
       R(fig, x - 11, Math.max(yz, Y(HF)), 22, Y(HF + EMB) - Math.max(yz, Y(HF)), 'f-conc', { opacity: 0.9 });
@@ -233,35 +235,35 @@ register('berliniBuild', (root) => {
     T(fig, 8, Y(z) + 16, 'még ki nem emelt talaj (röntgen)', 't-sm halo');
     // pallók
     for (let d = 0; d < zl - 1e-6; d += 0.25) {
-      for (let i = 0; i < 3; i++) {
+      for (let i = 0; i < all.length - 1; i++) {
         const yy = Y(d) + 0.6, hh = 0.25 * k - 1.2;
-        R(fig, xs[i] + bw / 2 - 2, yy, bay - bw + 4, hh, 'f-timber', { style: 'stroke:var(--timber2);stroke-width:.8' });
-        R(fig, xs[i] + bw / 2 - 2, yy, bay - bw + 4, hh, '', { fill: 'url(#pat-timber)' });
+        R(fig, all[i] + bw / 2 - 2, yy, bay - bw + 4, hh, 'f-timber', { style: 'stroke:var(--timber2);stroke-width:.8' });
+        R(fig, all[i] + bw / 2 - 2, yy, bay - bw + 4, hh, '', { fill: 'url(#pat-timber)' });
       }
     }
     // szabad sáv
     if (free > 0.01) {
       const bad = free > open + 1e-6 && z > 1.25 - 1e-6;
-      for (let i = 0; i < 3; i++) R(fig, xs[i] + bw / 2, Y(zl), bay - bw, free * k, bad ? 'f-bad' : 'f-acc', { opacity: bad ? 0.35 : 0.22 });
-      L(fig, xs[0] - 30, Y(zl), xs[3] + 30, Y(zl), `stroke:var(${bad ? '--bad' : '--accent'});stroke-width:1.5;stroke-dasharray:4 3`);
+      for (let i = 0; i < all.length - 1; i++) R(fig, all[i] + bw / 2, Y(zl), bay - bw, free * k, bad ? 'f-bad' : 'f-acc', { opacity: bad ? 0.35 : 0.22 });
+      L(fig, 0, Y(zl), 640, Y(zl), `stroke:var(${bad ? '--bad' : '--accent'});stroke-width:1.5;stroke-dasharray:4 3`);
       if (bad) for (const c of crumbs) C(fig, c.x, Y(zl) + c.y, c.r, 'f-soilB');
     }
     // tartók (a kiemelés fölött teljes, alatta szaggatott)
-    for (const x of xs) {
+    for (const x of all) {
       R(fig, x - bw / 2, y0 - 10, bw, Y(z) - y0 + 10, 'f-steel', { style: 'stroke:var(--steelm2);stroke-width:1' });
       R(fig, x - 1.5, y0 - 10, 3, Y(z) - y0 + 10, 'f-steel2');
     }
     // támasz
     const supOn = sup.v !== 'k' && z >= A + 0.5;
     if (supOn) {
-      R(fig, xs[0] - 14, Y(A) - 6, xs[3] - xs[0] + 28, 12, 'f-steel2');
-      R(fig, xs[0] - 14, Y(A) - 1, xs[3] - xs[0] + 28, 2, 'f-steel');
-      if (sup.v === 'd') xs.forEach((x) => { C(fig, x, Y(A), 9, 'f-steelc', { style: 'stroke:var(--ink);stroke-width:1' }); C(fig, x, Y(A), 5, 'f-surface'); });
-      else for (let i = 0; i < 3; i++) { const x = (xs[i] + xs[i + 1]) / 2; R(fig, x - 9, Y(A) - 9, 18, 18, 'f-acc', { style: 'stroke:var(--ink);stroke-width:1' }); C(fig, x, Y(A), 4, 'f-ink'); }
-      T(fig, xs[3] + 20, Y(A) + 4, sup.v === 'd' ? 'heveder + dúc' : 'heveder + horgonyfej', 't-sm halo');
+      R(fig, 0, Y(A) - 6, 640, 12, 'f-steel2');
+      R(fig, 0, Y(A) - 1, 640, 2, 'f-steel');
+      if (sup.v === 'd') all.forEach((x) => { C(fig, x, Y(A), 9, 'f-steelc', { style: 'stroke:var(--ink);stroke-width:1' }); C(fig, x, Y(A), 5, 'f-surface'); });
+      else for (let i = 0; i < all.length - 1; i++) { const x = (all[i] + all[i + 1]) / 2; R(fig, x - 9, Y(A) - 9, 18, 18, 'f-acc', { style: 'stroke:var(--ink);stroke-width:1' }); C(fig, x, Y(A), 4, 'f-ink'); }
+      T(fig, 632, Y(A) - 12, sup.v === 'd' ? 'heveder + dúc' : 'heveder + horgonyfej', 't-sm halo', { 'text-anchor': 'end' });
     } else if (sup.v !== 'k') {
-      L(fig, xs[0] - 14, Y(A), xs[3] + 14, Y(A), 'stroke:var(--muted);stroke-width:1;stroke-dasharray:3 3');
-      T(fig, xs[3] + 20, Y(A) + 4, 'tervezett támaszszint', 't-sm halo');
+      L(fig, 0, Y(A), 640, Y(A), 'stroke:var(--muted);stroke-width:1;stroke-dasharray:3 3');
+      T(fig, 632, Y(A) - 6, 'tervezett támaszszint', 't-sm halo', { 'text-anchor': 'end' });
     }
     // terep, méretek
     L(fig, 0, y0, 640, y0, 'stroke:var(--ink);stroke-width:1.5');
@@ -300,10 +302,10 @@ register('berliniBuild', (root) => {
 
 /* ================================================================== 4. A hézagos falak családja */
 const FAM = {
-  berlin: { t: 'Berlini fal', el: 'acél I-tartók', fill: 'fa vagy vasbeton kitöltés (palló)' },
-  lutec: { t: 'Lutéciai fal', el: 'fúrt cölöpök', fill: 'helyszíni vasbeton kitöltés (íves mező)' },
-  paris: { t: 'Párizsi fal', el: 'előregyártott vb. gerendák', fill: 'helyszíni vasbeton kitöltés' },
-  moszk: { t: 'Moszkvai fal', el: 'barettek (rövid résfalelemek)', fill: 'helyszíni vasbeton kitöltés' },
+  berlin: { t: 'Berlini fal', el: 'acél I-tartók', fill: 'fa / vb. palló' },
+  lutec: { t: 'Lutéciai fal', el: 'fúrt cölöpök', fill: 'íves vb. mező' },
+  paris: { t: 'Párizsi fal', el: 'előregyártott vb.', fill: 'helyszíni vb.' },
+  moszk: { t: 'Moszkvai fal', el: 'barettek', fill: 'helyszíni vb.' },
 };
 register('hezagosFam', (root) => {
   const { ctrls, viz, out } = shell(root);
@@ -346,7 +348,7 @@ register('jetPlan', (root) => {
   const pre = seg(ctrls, { label: 'Talaj (előbeállítás)', options: [{ v: 'a', t: 'agyag' }, { v: 'h', t: 'homok' }, { v: 'k', t: 'kavics' }], value: 'h' });
   const dS = slider(ctrls, { label: 'Oszlopátmérő', sym: 'D', min: 60, max: 120, step: 5, value: 90, unit: 'cm', d: 0, hint: 'Talajkörnyezettől függően 60–120 cm.' });
   const sS = slider(ctrls, { label: 'Osztástávolság', sym: 's', min: 40, max: 135, step: 5, value: 75, unit: 'cm', d: 0, hint: 'Vízzáráshoz: s = D − (10–20 cm).' });
-  const stl = select(ctrls, { label: 'Acéltag', options: STEEL.map((x) => ({ v: x.v, t: x.t })), value: 'hea120' });
+  const stl = select(ctrls, { label: 'Acéltag', options: STEEL.map((x) => ({ v: x.v, t: x.t })), value: 'hea100' });
   const every = seg(ctrls, { label: 'Acél kiosztás', options: [{ v: 1, t: 'minden oszlopba' }, { v: 2, t: 'minden másodikba' }], value: 1 });
   const fig = figure(viz, 640, 270);
   const vd = verdict(viz);
