@@ -180,7 +180,7 @@ const OPTS = [
   } },
   { t: 'Talajhorgony', href: '#horgony', kind: 'tam', f: (p) => {
     const r = [];
-    if (!p.anch) return { x: 'A 15–20 m hosszú horgonyok a szomszéd telek alá nyúlnának – nincs hozzájárulás vagy hely.', r };
+    if (!p.anch) return { x: 'A horgonyok (sokszor 15–20 m-re) a szomszéd telek alá nyúlnának – nincs hozzájárulás vagy hely.', r };
     if (p.B <= 3) return { x: 'Keskeny árokhoz nem kell.', r };
     if (p.H <= 4) r.push([-10, 'Kis mélységnél még a konzolos fal is elég lehet.']);
     r.push([18, '„Tiszta”, dúcmentes munkatér.']);
@@ -313,7 +313,7 @@ const CASES = [
   { t: 'Közműárok forgalmas utcában', d: '2,5 m mély, 1,2 m széles csatornaárok, finom homok, talajvíz nincs. Mellette forgalmas út, a szakaszok gyorsan haladnak.',
     sk: { kind: 'arok', H: 2.5, gw: null, nb: 'ut' },
     o: ['Táblás dúcolat, ásással együtt süllyesztve', 'Állított pallózás: előbb teljes mélységig kiemelünk', 'Rézsűs kiemelés', 'Talajszegezés'], c: 0,
-    e: 'Homokban m₀ ≈ 0: a földfal megtámasztás nélkül egy pillanatig sem áll meg, ezért az állított pallózás kizárt. A táblás dúcolat gyorsan beemelhető, sokszor felhasználható, és süllyesztve a fal sosem áll szabadon. Rézsűhöz nincs hely, a szegezés pedig nem árokra való.' },
+    e: 'Finomhomokban a jegyzet szerint már 0,5 m felett kötelező dúcolni, és m₀ jóval kisebb a 2,5 m-es mélységnél – az állított pallózás (teljes mélységig kiemelés támasz nélkül) ezért kizárt. A táblás dúcolat gyorsan beemelhető, sokszor felhasználható, és süllyesztve a fal sosem áll szabadon. Rézsűhöz nincs hely, a szegezés pedig nem árokra való.' },
   { t: 'Egyszintes pince a belvárosban', d: '4 m mély munkagödör nagyon kemény agyagban, talajvíz mélyen. Szűk telek, a szomszéd ház 5 m-re áll.',
     sk: { kind: 'godor', H: 4, gw: null, nb: 'hz', soil: 'kemeny' },
     o: ['Hézagos cölöpfal (CFA)', 'Acél szádfal vibrálva', 'Fagyasztott fal', 'Rézsűs kiemelés'], c: 0,
@@ -337,7 +337,7 @@ const CASES = [
   { t: 'Metróállomás a belvárosban', d: '25 m mély, 20 m széles munkagödör, sűrű beépítés, a szomszédok alatt pincék és közművek – horgonyt nem lehet építeni.',
     sk: { kind: 'godor', H: 25, gw: 4, nb: 'hz', imp: 32 },
     o: ['Résfal + acél csőtámaszok (több szinten)', 'Berlini dúcolat + talajhorgonyok', 'Konzolos szádfal', 'Passzív hátrahorgonyzás'], c: 0,
-    e: 'A jegyzet szerint a csőtámasz akkor gazdaságos, ha horgonyozni nem lehet, a munkatér 15–20 m-nél mélyebb, és a szomszéd szerkezetek mozgása kritikus: metróállomások jellemző támaszrendszere. A résfal vízzáró és merev. A top-down is jó lehet – a lényeg a merev, horgony nélküli megtámasztás.' },
+    e: 'A jegyzet szerint a csőtámasz akkor gazdaságos, ha horgonyozni nem lehet (altalaj, szomszédos földalatti terek), vagy ha a munkatér 15–20 m-nél mélyebb, és a védendő szomszéd szerkezetek miatt horgonyokkal nem építhető elég merev fal: metróállomások jellemző támaszrendszere. A résfal vízzáró és merev. A top-down is jó lehet – a lényeg a merev, horgony nélküli megtámasztás.' },
   { t: 'Alagút-keresztjárat víztelített homokban', d: 'Két alagútcső közötti keresztjárat 18 m mélyen, víztelített homokban – a felszínről nem lehet falat építeni.',
     sk: { kind: 'akna', H: 18, gw: 2 },
     o: ['Talajfagyasztás (fagyasztott fal)', 'Acél szádfal', 'Berlini dúcolat', 'Talajszegezés'], c: 0,
