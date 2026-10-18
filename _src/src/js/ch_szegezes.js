@@ -11,6 +11,7 @@ function arr(parent, x1, y1, x2, y2, cls = 'mt-ar-ink', w = 2, hd = 8) {
   return g;
 }
 const txt = (p, x, y, t, cls = 't-lab', anchor = 'start', extra = {}) => svg('text', { x, y, class: cls, 'text-anchor': anchor, text: t, ...extra }, p);
+const scrollBox = (p) => { const d = h('div', { class: 'mt-scroll' }); p.append(d); return d; }; // mobilon vízszintesen görgethető ábra
 
 /* ================================================================ 1. Szegezett fal fogásról fogásra */
 register('szegfal', (root) => {
@@ -23,7 +24,7 @@ register('szegfal', (root) => {
   const sT = slider(ctrls, { label: 'Lőttbeton vastagsága', sym: 't', min: 8, max: 20, step: 1, value: 12, unit: 'cm' });
 
   const W = 760, HH = 440;
-  const fig = figure(viz, W, HH);
+  const fig = figure(scrollBox(viz), W, HH);
   const g = svg('g', {}, fig);
   const stepRow = h('div', { class: 'play-row' });
   const bPrev = h('button', { type: 'button', class: 'btn btn-line btn-sm' }, '◀ Vissza');
@@ -251,7 +252,7 @@ register('szegtipus', (root) => {
   const sHead = seg(ctrls, { label: 'Szegfej kialakítása', vert: true, options: [{ v: 'lapos', t: 'Laposacél + háló (hazai)' }, { v: 'lemez', t: 'Fejlemez + anya' }] });
   const info = h('div', { class: 'verdict' });
   const W = 760, HH = 300;
-  const fig = figure(viz, W, HH);
+  const fig = figure(scrollBox(viz), W, HH);
   viz.append(info);
   const g = svg('g', {}, fig);
   let tt = 0;
@@ -389,7 +390,7 @@ register('szeghorgony', (root) => {
   const box = h('div', { class: 'small' });
   ctrls.append(box);
   const W = 760, HH = 360;
-  const fig = figure(viz, W, HH);
+  const fig = figure(scrollBox(viz), W, HH);
   const g = svg('g', {}, fig);
   function draw() {
     clear(g);

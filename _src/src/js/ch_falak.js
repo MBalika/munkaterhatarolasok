@@ -743,7 +743,7 @@ register('szadStaged', (root) => {
     }
     L(fig, 0, yG + fin * k, 640, yG + fin * k, 'stroke:var(--muted);stroke-dasharray:4 4');
     T(fig, 632, yG + fin * k - 4, 'tervezett talpszint', 't-sm', { 'text-anchor': 'end' });
-    ar(fig, 520, 30, 600, 30, 'var(--grp)', 2, 8); T(fig, 512, 34, 'haladási irány', 't-sm', { 'text-anchor': 'end' });
+    ar(fig, 546, 44, 628, 44, 'var(--grp)', 2, 8); T(fig, 587, 34, 'haladási irány', 't-sm', { 'text-anchor': 'middle' });
     o1.set(d.filter((x) => x >= 1).length + ' / ' + N);
     o2.set(m === 'egy' ? (lean > 3 ? 'erős' : lean > 0 ? 'kezdődik' : '–') : 'nincs', m === 'egy' && lean > 3 ? 'bad' : m === 'egy' && lean > 0 ? 'warn' : 'ok');
   };
@@ -900,7 +900,7 @@ register('colopPlan', (root) => {
     }
     L(fig, x0 + s * k, yc + (D / 2) * k + 22, x0 + 2 * s * k, yc + (D / 2) * k + 22, 'stroke:var(--muted)');
     T(fig, x0 + 1.5 * s * k, yc + (D / 2) * k + 38, `s = ${s} cm`, 't-num', { 'text-anchor': 'middle' });
-    T(fig, 8, 16, 'FÖLDOLDAL', 't-sm'); T(fig, 8, 262, 'MUNKATÉR', 't-sm');
+    T(fig, 8, 16, 'FÖLDOLDAL', 't-sm halo'); T(fig, 8, 262, 'MUNKATÉR', 't-sm');
     // értékelés
     const nn = 100 / s;
     st.n.set(nn); st.v.set(typ === 'm' ? nn / 2 : nn);
@@ -932,27 +932,27 @@ register('colopVert', (root) => {
   const one = toggle(ctrls, { label: 'Csak az egyik cölöp ferde', value: false });
   const fig = figure(viz, 640, 330);
   const vd = verdict(viz);
-  const st = { z0: stat(out, { label: 'Itt fogy el az átfedés', unit: 'm', d: 1 }), aL: stat(out, { label: 'Átfedés a fal talpán', unit: 'cm', d: 1 }), t0: stat(out, { label: 'Torok a fejnél', unit: 'cm', d: 0 }) };
+  const st = { z0: stat(out, { label: 'Itt fogy el az átfedés', unit: 'm', d: 1 }), aL: stat(out, { label: 'Átfedés / rés a fal talpán', unit: 'cm', d: 1 }), t0: stat(out, { label: 'Torok a fejnél', unit: 'cm', d: 0 }) };
   const draw = () => {
     clear(fig);
     const i = 1 / +iS.v, a0 = aS.v, D = +DS.v, Lw = LS.v, f = one.v ? 1 : 2;
     const z0 = a0 / (100 * f * i);
     const aAt = (z) => a0 - f * i * z * 100;
-    const yT = 26, yB = 306, ky = (yB - yT) / Lw, xc = 230, kx = 7;
+    const yT = 26, yB = 306, ky = (yB - yT) / Lw, xc = 246, kx = 7, XL0 = 50, XR0 = 442;
     const Y = (z) => yT + z * ky;
-    R(fig, 20, yT, 420, yB - yT, 'f-soilB', { opacity: 0.5 }); R(fig, 20, yT, 420, yB - yT, '', { fill: 'url(#pat-clay)' });
+    R(fig, XL0, yT, XR0 - XL0, yB - yT, 'f-soilB', { opacity: 0.5 }); R(fig, XL0, yT, XR0 - XL0, yB - yT, '', { fill: 'url(#pat-clay)' });
     // bal (primer) és jobb (szekunder) cölöp széle
     const leftEdge = (z) => xc + (one.v ? (a0 / 2) * kx : (aAt(z) / 2) * kx);
     const rightEdge = (z) => xc - (one.v ? (aAt(z) - a0 / 2) * kx : (aAt(z) / 2) * kx);
-    svg('path', { d: pathD([[20, yT], [leftEdge(0), yT], [leftEdge(Lw), yB], [20, yB]], true), class: 'f-grout', style: 'stroke:var(--concrete2)' }, fig);
-    svg('path', { d: pathD([[440, yT], [rightEdge(0), yT], [rightEdge(Lw), yB], [440, yB]], true), class: 'f-conc', style: 'stroke:var(--concrete2)', opacity: 0.85 }, fig);
+    svg('path', { d: pathD([[XL0, yT], [leftEdge(0), yT], [leftEdge(Lw), yB], [XL0, yB]], true), class: 'f-grout', style: 'stroke:var(--concrete2)' }, fig);
+    svg('path', { d: pathD([[XR0, yT], [rightEdge(0), yT], [rightEdge(Lw), yB], [XR0, yB]], true), class: 'f-conc', style: 'stroke:var(--concrete2)', opacity: 0.85 }, fig);
     // átfedés / rés kiemelése
     const zz = Math.min(z0, Lw);
     svg('path', { d: pathD([[rightEdge(0), yT], [leftEdge(0), yT], [leftEdge(zz), Y(zz)], [rightEdge(zz), Y(zz)]], true), class: 'f-ok', opacity: 0.55 }, fig);
     if (z0 < Lw) svg('path', { d: pathD([[leftEdge(z0), Y(z0)], [rightEdge(z0), Y(z0)], [rightEdge(Lw), yB], [leftEdge(Lw), yB]], true), class: 'f-water', style: 'fill:var(--water)', opacity: 0.6 }, fig);
-    T(fig, 30, yT + 18, 'primer (vasalatlan)', 't-sm halo'); T(fig, 430, yT + 18, 'szekunder (vasalt)', 't-sm halo', { 'text-anchor': 'end' });
-    if (z0 < Lw) { L(fig, 20, Y(z0), 440, Y(z0), 'stroke:var(--bad);stroke-width:1.5;stroke-dasharray:6 4'); T(fig, 436, Y(z0) - 6, `z₀ = ${fmt(z0, 1)} m – itt nyílik a rés`, 't-lab t-bad halo', { 'text-anchor': 'end' }); }
-    for (let z = 0; z <= Lw + 0.01; z += Lw > 15 ? 5 : 2) T(fig, 16, Y(z) + 4, fmt(z, 0) + ' m', 't-sm', { 'text-anchor': 'end' });
+    T(fig, XL0 + 8, yT + 18, 'primer (vasalatlan)', 't-sm halo'); T(fig, XR0 - 8, yT + 18, 'szekunder (vasalt)', 't-sm halo', { 'text-anchor': 'end' });
+    if (z0 < Lw) { L(fig, XL0, Y(z0), XR0, Y(z0), 'stroke:var(--bad);stroke-width:1.5;stroke-dasharray:6 4'); T(fig, XR0 - 4, Y(z0) - 6, `z₀ = ${fmt(z0, 1)} m – itt nyílik a rés`, 't-lab t-bad halo', { 'text-anchor': 'end' }); }
+    for (let z = 0; z <= Lw + 0.01; z += Lw > 15 ? 5 : 2) T(fig, XL0 - 6, Y(z) + 4, fmt(z, 0) + ' m', 't-sm', { 'text-anchor': 'end' });
     // torok-diagram
     const R0 = D / 2, cx0 = 480, cw = 140;
     T(fig, cx0, 16, 'tömítő torok t (cm)', 't-sm');
@@ -964,7 +964,7 @@ register('colopVert', (root) => {
     svg('path', { d: pathD(pts), style: 'fill:none;stroke:var(--ok);stroke-width:2' }, fig);
     T(fig, cx0 + tAt(0) * kt + 4, yT + 12, fmt(tAt(0), 0), 't-num');
     const aL = aAt(Lw);
-    st.z0.set(z0, z0 < Lw ? 'bad' : 'ok'); st.aL.set(aL, aL > 4 ? 'ok' : aL > 0 ? 'warn' : 'bad'); st.t0.set(tAt(0));
+    st.z0.set(z0, z0 < Lw ? 'bad' : 'ok'); st.aL.set(aL, aL > 4 ? 'ok' : aL > 0 ? 'warn' : 'bad', aL >= 0 ? null : 'rés ' + fmt(-aL, 1)); st.t0.set(tAt(0));
     if (z0 < Lw) vd.set('bad', 'A fal alsó része már nem vízzáró', `1:${iS.v} ferdeségnél a ${a0} cm-es átfedés ${fmt(z0, 1)} m mélyen elfogy – alatta rés nyílik, a víz és a talaj bejut. Pontosabb (pl. béléscsöves) fúrás, nagyobb átfedés vagy vezetőfal + ferdeségmérés kell.`);
     else if (aL < 4) vd.set('warn', 'Szűkösen tart', `A talpon csak ${fmt(aL, 1)} cm átfedés marad.`);
     else vd.set('ok', 'Az átfedés a talpig megmarad', `A talpon még ${fmt(aL, 1)} cm átfedés van. „1 cm/m” ferdeség 10 m mélyen már 10 cm eltérés – ezért kritikus a vezetőfal és a pontos fúrás.`);

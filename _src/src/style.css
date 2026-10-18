@@ -554,3 +554,4 @@ figure.fig-ppt figcaption { font-size: 13px; color: var(--muted); margin-top: 6p
 @media (max-width: 420px) { .brand b { font-size: 16px; letter-spacing: 0.01em; } .brand svg { width: 30px; height: 30px; } .topbar-in { gap: 8px; } }
 .hero-viz svg text { paint-order: stroke; stroke: rgba(20, 22, 26, 0.85); stroke-width: 3px; stroke-linejoin: round; }
 .grid2 > .callout, .grid3 > .callout, .two-col > .callout { align-content: start; margin: 0; }
+.seg.vert button { white-space: normal; }

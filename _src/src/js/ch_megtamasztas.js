@@ -3,6 +3,7 @@ import { register, shell, slider, seg, toggle, stat, verdict, svg, figure, clear
 import { defineQuiz } from './ui.js';
 
 const txt = (p, x, y, t, cls = 't-lab', anchor = 'start', extra = {}) => svg('text', { x, y, class: cls, 'text-anchor': anchor, text: t, ...extra }, p);
+const scrollBox = (p) => { const d = h('div', { class: 'mt-scroll' }); p.append(d); return d; }; // mobilon vízszintesen görgethető ábra
 function arr(parent, x1, y1, x2, y2, cls = 'mt-ar-ink', w = 2, hd = 8) {
   const g = svg('g', { class: cls }, parent);
   const a = Math.atan2(y2 - y1, x2 - x1);
@@ -125,7 +126,12 @@ function wallCalc(o) {
   }
   res.Ltot = H + res.d;
   // nyomatéki ábra a számítási hosszon (a lezáró hibát a talpon helyettesítő erő veszi fel)
-  const I = integrate(res.Lcalc, res.p, res.forces);
+  let I = integrate(res.Lcalc, res.p, res.forces);
+  const nE = I.z.length - 1, V0 = I.V[nE], M0 = I.M[nE];
+  if (Math.abs(V0) > 1e-6 || Math.abs(M0) > 1e-6) {
+    const Rb = -M0 / Math.max(0.01, res.Lcalc - H), Ct = -V0 - Rb;
+    I = integrate(res.Lcalc, res.p, [...res.forces, { z: H, F: Rb, kind: 'R' }, { z: res.Lcalc, F: Ct, kind: 'R' }]);
+  }
   res.I = I;
   let Mmax = 0; I.M.forEach((m) => { if (Math.abs(m) > Math.abs(Mmax)) Mmax = m; });
   res.Mmax = Mmax;
@@ -146,7 +152,7 @@ register('fallabor', (root) => {
   const sN = slider(ctrls, { label: 'Támaszszintek száma', sym: 'n', min: 2, max: 4, step: 1, value: 3 });
   const sE = slider(ctrls, { label: 'Biztonság a passzív oldalon', sym: 'η', min: 1, max: 2, step: 0.1, value: 1.5, hint: 'K<sub>p,d</sub> = K<sub>p</sub> / η' });
   const W = 760, HH = 470;
-  const fig = figure(viz, W, HH);
+  const fig = figure(scrollBox(viz), W, HH);
   const g = svg('g', {}, fig);
   const leg = h('div', { class: 'legend', html: '<span><i style="background:var(--mt-act)"></i>aktív földnyomás</span><span><i style="background:var(--mt-pas)"></i>passzív földellenállás (K<sub>p</sub>/η)</span><span><i style="background:var(--accent)"></i>megtámasztás</span><span><i style="background:transparent;border:1.5px dashed var(--bad)"></i>alakváltozás (torzítva)</span><span><i style="background:var(--mt-momc)"></i>nyomatéki ábra M(z)</span>' });
   viz.append(leg);
@@ -200,7 +206,7 @@ register('fallabor', (root) => {
       const yy = Y(t.z);
       if (type === 'tobb') {
         svg('rect', { x: 60, y: yy - 4, width: xw - 65, height: 8, rx: 4, class: 'mt-strut' }, g);
-        txt(g, 70, yy - 8, `T${i + 1} = ${fmt(t.T, 0)} kN/m`, 't-num halo');
+        txt(g, xw - 14, yy - 9, `T${i + 1} = ${fmt(t.T, 0)} kN/m`, 't-num halo', 'end');
       } else {
         const L = 150, al = rad(20);
         svg('line', { x1: xw + 5, y1: yy, x2: xw + 5 + L * Math.cos(al), y2: yy + L * Math.sin(al), class: 'mt-tendon', 'stroke-width': 2.5 }, g);
@@ -268,7 +274,7 @@ register('horgonyreszek', (root) => {
   const sP = seg(ctrls, { label: 'Részek', vert: true, options: Object.entries(PARTS).map(([v, o]) => ({ v, t: o.t })), value: 'fej' });
   const info = h('div', { class: 'verdict' });
   const W = 760, HH = 330;
-  const fig = figure(viz, W, HH);
+  const fig = figure(scrollBox(viz), W, HH);
   viz.append(info);
   const g = svg('g', {}, fig);
   let tt = 0;
@@ -345,7 +351,7 @@ register('horgonytervezo', (root) => {
   const sP = slider(ctrls, { label: 'Telekhatár a faltól', min: 0, max: 20, step: 0.5, value: 4, unit: 'm' });
   const tB = toggle(ctrls, { label: 'Szomszéd épület pincével (−3,5 m)', value: true });
   const W = 760, HH = 420;
-  const fig = figure(viz, W, HH);
+  const fig = figure(scrollBox(viz), W, HH);
   const g = svg('g', {}, fig);
   const sLf = stat(out, { label: 'Szükséges szabad szakasz', unit: 'm', d: 1 });
   const sL = stat(out, { label: 'Teljes horgonyhossz', unit: 'm', d: 1 });
@@ -442,7 +448,7 @@ register('horgonyproba', (root) => {
   const bGo = h('button', { type: 'button', class: 'btn btn-line btn-sm' }, '▶ Próbaterhelés indítása');
   ctrls.append(bGo);
   const W = 760, HH = 380;
-  const fig = figure(viz, W, HH);
+  const fig = figure(scrollBox(viz), W, HH);
   const g = svg('g', {}, fig);
   const sPp = stat(out, { label: 'Próbaterhelés P<sub>p</sub>', unit: 'kN', d: 0 });
   const sU = stat(out, { label: 'Pászmák kihasználtsága P<sub>p</sub>/F<sub>pk</sub>', unit: '%', d: 0 });
@@ -493,6 +499,11 @@ register('horgonyproba', (root) => {
     for (let i = 0; i <= Math.floor(upto); i++) vis.push(D.pts[i]);
     if (upto < n) { const i = Math.floor(upto), f = upto - i; const a = D.pts[i], b = D.pts[i + 1]; vis.push([a[0] + (b[0] - a[0]) * f, a[1] + (b[1] - a[1]) * f]); }
     svg('path', { d: P(vis.map(([x, y]) => [X(x), Y(y)])), class: 'mt-curve', fill: 'none' }, g);
+    const nvis = vis.length;
+    [0.4, 0.55, 0.7, 0.85, 1.0].forEach((f, i) => {
+      const idx = 1 + i * 24 + 14 - 1 + (f === 1.0 ? 0 : 0);
+      if (idx < nvis) { const q = D.pts[idx]; svg('circle', { cx: X(q[0]), cy: Y(q[1]), r: 3.5, class: 'f-grp' }, g); txt(g, X(q[0]) - 6, Y(q[1]) - 7, fmt(f, 2).replace(/0$/, '') + '·P_p', 't-sm halo', 'end'); }
+    });
     const last = vis[vis.length - 1];
     svg('circle', { cx: X(last[0]), cy: Y(last[1]), r: 5, class: 'f-acc' }, g);
     if (prog >= 1) {
@@ -524,7 +535,7 @@ register('csotamasz', (root) => {
   const sB = slider(ctrls, { label: 'Gátoltság', sym: 'b', min: 0.3, max: 0.7, step: 0.05, value: 0.5, d: 2 });
   const tDay = toggle(ctrls, { label: 'Napi hőmérséklet-ciklus (animáció)', value: false });
   const W = 760, HH = 430;
-  const fig = figure(viz, W, HH);
+  const fig = figure(scrollBox(viz), W, HH);
   const g = svg('g', {}, fig);
   const oNcr = stat(out, { label: 'Euler-féle kritikus erő', unit: 'kN', d: 0 });
   const oNb = stat(out, { label: 'Kihajlási ellenállás N<sub>b,Rd</sub>', unit: 'kN', d: 0 });
@@ -626,7 +637,7 @@ register('topdown', (root) => {
   ctrls.append(bPlay);
   const info = h('div', { class: 'steptext' }); viz.prepend(info);
   const W = 760, HH = 440;
-  const fig = figure(viz, W, HH);
+  const fig = figure(scrollBox(viz), W, HH);
   const g = svg('g', {}, fig);
   let tt = 0, timer = 0;
   function draw() {
@@ -652,7 +663,7 @@ register('topdown', (root) => {
     if (ph >= 2) {
       svg('rect', { x: xc - 14, y: Y(11.6), width: 28, height: 90, class: 'f-conc2' }, g);
       svg('rect', { x: xc - 4, y: y0, width: 8, height: Y(11.6) - y0 + 22, class: 'f-steel2' }, g);
-      if (ph === 2) { svg('rect', { x: xc - 40, y: y0 - 18, width: 80, height: 12, class: 'f-acc' }, g); txt(g, xc, y0 - 24, 'vezetőkeret – az acéloszlop a friss betonba', 't-sm halo', 'middle'); }
+      if (ph === 2) { svg('rect', { x: xc - 40, y: y0 - 18, width: 80, height: 12, class: 'f-acc' }, g); txt(g, xc + 14, y0 + 40, 'vezetőkeret – az acéloszlopot a friss betonba engedik', 't-sm halo'); }
       if (ph >= 5) svg('rect', { x: xc - 9, y: y0 + 1 * sc, width: 18, height: Y(10.4) - y0 - sc, class: 'f-conc', opacity: 0.85 }, g);
     }
     // födémek
@@ -660,11 +671,11 @@ register('topdown', (root) => {
       svg('rect', { x: xl + 12, y: Y(z) - 8, width: xr - xl - 24, height: 12, class: 'f-conc' }, g);
       svg('rect', { x: xl + 12, y: Y(z) + 4, width: xr - xl - 24, height: 3, class: 'mt-lean' }, g);
       if (open) svg('rect', { x: xl + 60, y: Y(z) - 8, width: 70, height: 15, class: 'mt-cavity' }, g);
-      txt(g, xr - 20, Y(z) - 12, label, 't-sm halo', 'end');
+      txt(g, xl + 22, Y(z) + 20, label, 't-sm halo');
     };
     if (ph >= 3) slab(lv[0], 'felső támaszfödém (földzsalun)');
     if (ph >= 4) slab(lv[1], 'közbenső födém');
-    if (ph >= 5) { svg('rect', { x: xl + 12, y: Y(10.6), width: xr - xl - 24, height: 16, class: 'f-conc2' }, g); txt(g, xr - 20, Y(10.6) - 4, 'alaplemez', 't-sm halo', 'end'); }
+    if (ph >= 5) { svg('rect', { x: xl + 12, y: Y(10.6), width: xr - xl - 24, height: 16, class: 'f-conc2' }, g); txt(g, xl + 22, Y(10.6) + 30, 'alaplemez', 't-sm halo'); }
     // gépek és szállítás
     const mini = (x, z) => { const gg = svg('g', { transform: `translate(${x} ${Y(z)})` }, g); svg('rect', { x: -16, y: -10, width: 32, height: 7, rx: 2, class: 'f-acc' }, gg); svg('rect', { x: -4, y: -19, width: 14, height: 10, class: 'f-acc' }, gg); svg('path', { d: `M 6 -15 L 26 ${-26 + Math.sin(tt * 3) * 4} L 36 -6`, class: 'mt-boom', 'stroke-width': 3, fill: 'none' }, gg); svg('rect', { x: -18, y: -4, width: 36, height: 4, rx: 2, class: 'f-ink' }, gg); };
     if (ph === 3) mini(xl + 200, 0.75);
@@ -682,15 +693,16 @@ register('topdown', (root) => {
       if (ph >= 4) { svg('path', { d: `M ${xr - 40} ${Y(lv[0]) + 14} q 30 40 -60 70`, class: 'mt-duct', fill: 'none', 'stroke-width': 7 }, g); txt(g, xr - 30, Y(lv[0]) + 40, 'szellőzés', 't-sm halo', 'end'); for (let i = 0; i < 5; i++) svg('circle', { cx: xl + 60 + i * 80, cy: Y(lv[0]) + 14, r: 3, class: 'mt-lamp' }, g); }
     }
     // forgalom a felszínen
-    const traffic = ph === 0 || ph >= 3;
+    const traffic = (ph === 0 || ph >= 3) && !tUp.v;
     svg('rect', { x: 0, y: y0 - 6, width: W, height: 6, class: 'mt-road' }, g);
     if (traffic) for (let i = 0; i < 4; i++) { const x = ((tt * 60 + i * 210) % (W + 80)) - 40; const gg = svg('g', { transform: `translate(${x} ${y0 - 6})` }, g); svg('rect', { x: -18, y: -12, width: 36, height: 9, rx: 3, class: i % 2 ? 'f-steelc' : 'f-bad' }, gg); svg('rect', { x: -10, y: -18, width: 18, height: 7, rx: 2, class: i % 2 ? 'f-steelc' : 'f-bad' }, gg); svg('circle', { cx: -10, cy: -2, r: 3, class: 'f-ink' }, gg); svg('circle', { cx: 10, cy: -2, r: 3, class: 'f-ink' }, gg); }
-    else { for (let i = 0; i < 5; i++) svg('rect', { x: xl - 30 + i * 120, y: y0 - 26, width: 12, height: 20, class: 'mt-cone' }, g); txt(g, xc, y0 - 34, 'forgalomterelés – csak a falak építése idejére', 't-sm halo', 'middle'); }
+    else if (ph === 1 || ph === 2) { for (let i = 0; i < 5; i++) svg('rect', { x: xl - 30 + i * 120, y: y0 - 26, width: 12, height: 20, class: 'mt-cone' }, g); txt(g, xc, y0 - 40, 'forgalomterelés – csak a falak építése idejére', 't-sm halo', 'middle'); }
     // felépítmény
     if (tUp.v && ph >= 3) {
       const fl = ph === 3 ? 1 : ph === 4 ? 3 : 5;
-      for (let i = 0; i < fl; i++) { svg('rect', { x: xl + 20, y: y0 - 6 - (i + 1) * 20, width: xr - xl - 40, height: 18, class: 'f-bld' }, g); for (let j = 0; j < 9; j++) svg('rect', { x: xl + 34 + j * 46, y: y0 - 6 - (i + 1) * 20 + 5, width: 20, height: 8, class: 'f-bld2' }, g); }
-      txt(g, xl + 26, y0 - 6 - fl * 20 - 6, 'felépítmény – közben épül felfelé', 't-sm halo');
+      const bx0 = xl + 150, bw = xr - xl - 170;
+      for (let i = 0; i < fl; i++) { svg('rect', { x: bx0, y: y0 - 6 - (i + 1) * 20, width: bw, height: 18, class: 'f-bld' }, g); for (let j = 0; j < 6; j++) svg('rect', { x: bx0 + 14 + j * 48, y: y0 - 6 - (i + 1) * 20 + 5, width: 20, height: 8, class: 'f-bld2' }, g); }
+      txt(g, bx0 + 6, y0 - 6 - fl * 20 - 6, 'felépítmény – közben épül felfelé', 't-sm halo');
     }
     info.innerHTML = `<b class="mt-st">${TD[ph].t}</b>${TD[ph].d}`;
   }
@@ -716,7 +728,7 @@ register('passziv', (root) => {
   const bGo = h('button', { type: 'button', class: 'btn btn-line btn-sm' }, '▶ Kiemelés');
   ctrls.append(bGo);
   const W = 760, HH = 360;
-  const fig = figure(viz, W, HH);
+  const fig = figure(scrollBox(viz), W, HH);
   const g = svg('g', {}, fig);
   const oMin = stat(out, { label: 'Szükséges távolság L<sub>min</sub>', unit: 'm', d: 1 });
   const oRat = stat(out, { label: 'L / H', d: 2 });
