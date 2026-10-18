@@ -37,3 +37,10 @@
 @media (max-width: 880px) { .dc-next { grid-template-columns: minmax(0, 1fr); } }
 .w .steptext b { display: inline; font-family: inherit; font-size: inherit; font-weight: 700; }
 .w .steptext b.dc-sh { display: block; font-family: var(--f-display); font-size: 19px; font-weight: 700; }
+/* mobilon nagyobb ábrafeliratok a saját widgetekben */
+@media (max-width: 600px) {
+  [data-w^="duc-"] svg .t-sm { font-size: 14px; }
+  [data-w^="duc-"] svg .t-num { font-size: 15px; }
+  [data-w^="duc-"] svg .t-lab { font-size: 15px; }
+}
+.dc-modestat .stat-v { font-size: 16px; }

@@ -64,3 +64,4 @@ ol.kd-steps li::marker { color: var(--grp); font-weight: 800; font-family: var(-
 .kd-gi dd { margin: 3px 0 0; font-size: 14px; color: var(--ink2); line-height: 1.45; }
 .kd-gi dd a { font-weight: 600; white-space: nowrap; }
 .kd-back { margin-top: 26px; text-align: center; }
+#kulonleges .callout, #dontes .callout { align-content: start; }

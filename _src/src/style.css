@@ -381,7 +381,7 @@ input[type=range]::-moz-range-thumb { width: 15px; height: 15px; border-radius: 
 .stepbtns button.on { background: var(--grp); color: #fff; border-color: transparent; }
 .stepbtns button:disabled { opacity: 0.45; cursor: default; }
 .steptext { font-size: 15px; min-height: 3.2em; }
-.steptext b { font-family: var(--f-display); font-size: 19px; display: block; }
+.steptext > b:first-child { font-family: var(--f-display); font-size: 19px; display: block; }
 
 /* SVG anyagok (téma-tudatos) */
 .f-soilA { fill: var(--soilA); } .f-soilB { fill: var(--soilB); } .f-soilC { fill: var(--soilC); } .f-soilD { fill: var(--soilD); } .f-soilE { fill: var(--soilE); }

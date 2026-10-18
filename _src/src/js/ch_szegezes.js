@@ -59,6 +59,7 @@ register('szegfal', (root) => {
 
   function draw() {
     clear(g);
+    let blockLabel = null;
     const G = geo();
     step = clamp(step, 0, G.total);
     const sc = Math.min(30, (HH - 90) / (G.H + 1.6));
@@ -75,6 +76,7 @@ register('szegfal', (root) => {
     // talaj (megtartott oldal + a gödör alatti talaj)
     const zb = G.H + 1.6;
     const soil = `M ${X(0)} ${y0} L ${W} ${y0} L ${W} ${Y(zb)} L 0 ${Y(zb)} L 0 ${Y(e)} L ${X(e)} ${Y(e)} Z`;
+    if (e > 0) svg('path', { d: `M 0 ${y0} L ${X(0)} ${y0} L ${X(e)} ${Y(e)} L 0 ${Y(e)} Z`, class: 'mt-air' }, g);
     svg('path', { d: soil, class: 'f-soilA' }, g);
     svg('path', { d: soil, fill: 'url(#pat-sand)', opacity: 0.8 }, g);
     // rétegzés díszítés
@@ -94,8 +96,7 @@ register('szegfal', (root) => {
       if (ends.length) pts.push([ends[ends.length - 1][0], Y(G.H)]);
       pts.push([X(G.H), Y(G.H)]);
       svg('path', { d: 'M' + pts.map((p) => p[0].toFixed(1) + ' ' + p[1].toFixed(1)).join(' L ') + ' Z', class: 'mt-block' }, g);
-      txt(g, (X(0) + (ends[0]?.[0] || X(0))) / 2, Y(G.H * 0.62), 'együttdolgozó földtömeg', 't-big t-grp halo', 'middle');
-      txt(g, (X(0) + (ends[0]?.[0] || X(0))) / 2, Y(G.H * 0.62) + 18, '≈ súlytámfal', 't-lab halo', 'middle');
+      blockLabel = [(X(0) + (ends[ends.length - 1]?.[0] || X(0))) / 2 + 10, Y(G.H * 0.5)];
     }
     svg('line', { x1: xs0, y1: ys0, x2: xs1, y2: y0, class: 's-bad', 'stroke-width': 1.6, 'stroke-dasharray': '7 5' }, g);
     txt(g, xs1 + 6, y0 + 16, 'csúszólap (45° + φ/2)', 't-sm t-bad halo');
@@ -179,20 +180,26 @@ register('szegfal', (root) => {
     for (const yy of [y0, Y(G.H)]) svg('line', { x1: dx - 5, y1: yy, x2: dx + 5, y2: yy, class: 's-muted', 'stroke-width': 1 }, g);
     txt(g, dx + 6, (y0 + Y(G.H)) / 2, `H = ${fmt(G.H, 1)} m`, 't-num halo');
     if (e > 0 && step < G.total) txt(g, 40, Y(e) - 6, `kiemelés: −${fmt(e, 1)} m`, 't-sm halo');
+    if (blockLabel) {
+      const [lx, ly] = blockLabel;
+      svg('rect', { x: lx - 92, y: ly - 20, width: 184, height: 42, rx: 8, class: 'mt-labelbox' }, g);
+      txt(g, lx, ly - 1, 'együttdolgozó földtömeg', 't-big t-grp', 'middle');
+      txt(g, lx, ly + 16, '≈ súlytámfal', 't-lab', 'middle');
+    }
     // feliratok
     txt(g, X(0) + 10, y0 - 10, 'terep', 't-sm');
     txt(g, W - 10, y0 + 18, 'megtámasztott talaj', 't-sm halo', 'end');
     // szöveg
     const lift = kLift + 1;
-    if (step === 0) stepTxt.innerHTML = '<b>Kiinduló állapot</b>Az első fogás kiemelésével kezdünk: a talajnak rövid ideig magától meg kell állnia függőleges falban.';
-    else if (step >= G.total) stepTxt.innerHTML = `<b>Kész a szegezett fal – ${G.n} fogás</b>A szegek „összevarrják” a talajt: a megerősített tömb súlytámfalként dolgozik. A szegeknek túl kell nyúlniuk a csúszólapon (piros pontok).`;
+    if (step === 0) stepTxt.innerHTML = '<b class="mt-st">Kiinduló állapot</b>Az első fogás kiemelésével kezdünk: a talajnak rövid ideig magától meg kell állnia függőleges falban.';
+    else if (step >= G.total) stepTxt.innerHTML = `<b class="mt-st">Kész a szegezett fal – ${G.n} fogás</b>A szegek „összevarrják” a talajt: a megerősített tömb súlytámfalként dolgozik. A szegeknek túl kell nyúlniuk a csúszólapon (piros pontok).`;
     else {
       const T = [
-        `<b>${lift}. fogás – kiemelés</b>Egy ${fmt(G.hf, 1)} m-es függőleges szakaszt emelnek ki (90–180 cm a talaj kohéziójától függően). Ennyi ideig a földfalnak meg kell állnia.`,
-        `<b>${lift}. fogás – szegek</b>A raszterben (${fmt(G.s, 1)} × ${fmt(G.s, 1)} m) fúrják és injektálják – vagy verik, „puskával” lövik – a ${fmt(G.L, 1)} m-es szegeket, ${fmt(sD.v, 0)}°-kal lefelé.`,
-        `<b>${lift}. fogás – víztelenítés</b>Rétegvíz esetén a lőttbeton mögé felületszivárgó kerül, vagy 1–3 m-es raszterben dréncsövek vezetik át a vizet a falon – ne alakuljon ki víznyomás.`,
-        `<b>${lift}. fogás – háló</b>Ø6–8 mm-es, 150 × 150 mm-es betonacél hálót rögzítenek a szegekre (pl. laposacél darabbal hegesztik).`,
-        `<b>${lift}. fogás – lőttbeton</b>${fmt(sT.v, 0)} cm lőttbeton kerül a felületre (jegyzet: 8–15 (20) cm). Csak szilárdulás után (FHWA: ≥ 72 óra) jöhet a következő fogás.`,
+        `<b class="mt-st">${lift}. fogás – kiemelés</b>Egy ${fmt(G.hf, 1)} m-es függőleges szakaszt emelnek ki (90–180 cm a talaj kohéziójától függően). Ennyi ideig a földfalnak meg kell állnia.`,
+        `<b class="mt-st">${lift}. fogás – szegek</b>A raszterben (${fmt(G.s, 1)} × ${fmt(G.s, 1)} m) fúrják és injektálják – vagy verik, „puskával” lövik – a ${fmt(G.L, 1)} m-es szegeket, ${fmt(sD.v, 0)}°-kal lefelé.`,
+        `<b class="mt-st">${lift}. fogás – víztelenítés</b>Rétegvíz esetén a lőttbeton mögé felületszivárgó kerül, vagy 1–3 m-es raszterben dréncsövek vezetik át a vizet a falon – ne alakuljon ki víznyomás.`,
+        `<b class="mt-st">${lift}. fogás – háló</b>Ø6–8 mm-es, 150 × 150 mm-es betonacél hálót rögzítenek a szegekre (pl. laposacél darabbal hegesztik).`,
+        `<b class="mt-st">${lift}. fogás – lőttbeton</b>${fmt(sT.v, 0)} cm lőttbeton kerül a felületre (jegyzet: 8–15 (20) cm). Csak szilárdulás után (FHWA: ≥ 72 óra) jöhet a következő fogás.`,
       ];
       stepTxt.innerHTML = T[sub];
     }
@@ -243,16 +250,17 @@ register('szegtipus', (root) => {
   const sType = seg(ctrls, { label: 'Szegtípus', vert: true, options: Object.entries(NAILS).map(([v, o]) => ({ v, t: o.t })) });
   const sHead = seg(ctrls, { label: 'Szegfej kialakítása', vert: true, options: [{ v: 'lapos', t: 'Laposacél + háló (hazai)' }, { v: 'lemez', t: 'Fejlemez + anya' }] });
   const info = h('div', { class: 'verdict' });
-  ctrls.append(info);
   const W = 760, HH = 300;
   const fig = figure(viz, W, HH);
+  viz.append(info);
   const g = svg('g', {}, fig);
   let tt = 0;
   function draw() {
     clear(g);
     const k = sType.v;
     const fx = 130, y = 150, L = 520, xe = fx + L;
-    // talaj
+    // levegő + talaj
+    svg('rect', { x: 0, y: 20, width: fx, height: HH - 40, class: 'mt-air' }, g);
     svg('rect', { x: fx, y: 20, width: W - fx, height: HH - 40, class: 'f-soilB' }, g);
     svg('rect', { x: fx, y: 20, width: W - fx, height: HH - 40, fill: 'url(#pat-soil)' }, g);
     // lőttbeton és háló
@@ -285,8 +293,8 @@ register('szegtipus', (root) => {
       txt(g, fx + 200, y - 22, 'a talaj a rúd mentén tömörödik', 't-sm halo');
       // puska
       const px = 18 + Math.sin(tt * 6) * 2;
-      svg('rect', { x: px, y: y - 10, width: 70, height: 20, rx: 4, class: 'f-acc' }, g);
-      svg('text', { x: px + 35, y: y + 4, 'text-anchor': 'middle', class: 't-sm', text: '„puska”' }, g);
+      svg('rect', { x: px, y: y + 24, width: 70, height: 20, rx: 4, class: 'f-acc' }, g);
+      svg('text', { x: px + 35, y: y + 38, 'text-anchor': 'middle', class: 't-sm', text: '„puska”' }, g);
       for (let i = 0; i < 3; i++) svg('line', { x1: fx + 30 + i * 18, y1: y - 30, x2: fx + 50 + i * 18, y2: y - 30, class: 's-muted', 'stroke-width': 2 }, g);
     }
     // rúd
@@ -312,14 +320,14 @@ register('szegtipus', (root) => {
     if (sHead.v === 'lapos') {
       svg('rect', { x: fx - 30, y: y - 18, width: 7, height: 36, class: 'f-steel2' }, g);
       svg('line', { x1: fx - 30, y1: y - 18, x2: fx - 23, y2: y + 18, class: 's-acc', 'stroke-width': 2 }, g);
-      txt(g, fx - 36, y - 26, 'laposacél, hegesztve', 't-sm halo', 'end');
+      txt(g, 8, y - 30, 'laposacél, hegesztve', 't-sm halo');
     } else {
       svg('rect', { x: fx - 36, y: y - 30, width: 10, height: 60, class: 'f-steel2' }, g);
       svg('path', { d: `M ${fx - 36} ${y - 9} L ${fx - 52} ${y - 9} L ${fx - 56} ${y} L ${fx - 52} ${y + 9} L ${fx - 36} ${y + 9} Z`, class: 'f-ink' }, g);
-      txt(g, fx - 40, y - 38, 'fejlemez + anya', 't-sm halo', 'end');
+      txt(g, 8, y - 40, 'fejlemez + anya', 't-sm halo');
     }
     txt(g, xe, HH - 28, 'megtámasztott talaj →', 't-sm halo', 'end');
-    info.innerHTML = `<b>${NAILS[k].t}</b><span class="chip">${NAILS[k].tag}</span><p class="small mt0" style="margin:8px 0 0">${NAILS[k].d}</p>`;
+    info.innerHTML = `<b>${NAILS[k].t} <span class="chip" style="vertical-align:middle;margin-left:6px">${NAILS[k].tag}</span></b><p class="small" style="margin:6px 0 0">${NAILS[k].d}</p>`;
   }
   sType.on(draw); sHead.on(draw);
   draw();
@@ -353,7 +361,7 @@ register('szegtalaj', (root) => {
     clear(grid); ans = SOILS.map(() => null);
     SOILS.forEach((so, i) => {
       const res = h('div', { class: 'mt-card-res', hidden: true });
-      const bY = h('button', { type: 'button' }, '✓ Alkalmazható'), bN = h('button', { type: 'button' }, '✗ Nem');
+      const bY = h('button', { type: 'button', 'aria-label': so.n + ': alkalmazható' }, '✓ Igen'), bN = h('button', { type: 'button', 'aria-label': so.n + ': nem alkalmazható' }, '✗ Nem');
       const card = h('div', { class: 'mt-card' }, h('b', {}, so.n), so.s ? h('span', { class: 'small muted' }, so.s) : null, h('div', { class: 'mt-card-btns' }, bY, bN), res);
       const pick = (v) => {
         if (ans[i] !== null) return;

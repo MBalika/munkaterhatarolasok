@@ -66,7 +66,7 @@ register('freeze', (root) => {
   const sClose = stat(out, { label: 'Összefagyás (zárt fal)' });
   const sThick = stat(out, { label: 'Falvastagság a csövek között', unit: 'm', d: 2 });
   const sTemp = stat(out, { label: 'Hűtőközeg a csőben' });
-  const sStr = stat(out, { label: 'Fagyott talaj szilárdsága −12 °C-on' });
+  const sStr = stat(out, { label: 'Fagyott talaj szilárdsága −12 °C-on (fagyatlan: 0,2–2,5 MPa)' });
   const vd = verdict(viz);
 
   let closeDay = null;
@@ -147,10 +147,10 @@ register('freeze', (root) => {
 
   const update = () => {
     const S = freezeState(tm.v, med.v, soil.v, sp.v, fl.v);
-    sClose.set(null, closeDay === null ? 'bad' : S.closed ? 'ok' : null, closeDay === null ? 'nem zár' : `${fmt(closeDay, 0)}. nap körül`);
+    sClose.set(null, closeDay === null ? 'bad' : S.closed ? 'ok' : null, closeDay === null ? 'nem zár' : `~${fmt(closeDay, 0)}. nap`);
     sThick.set(S.thick, S.closed ? (S.thick >= 1 ? 'ok' : 'warn') : null);
-    sTemp.set(null, null, med.v === 'brine' ? '≈ −30 °C (zárt kör)' : '−196 °C (elpárolog)');
-    sStr.set(null, null, soil.v === 'sand' ? '4–8,5 MPa (fagyatlan: 0,2–2,5)' : '5–10,8 MPa – de kúszik');
+    sTemp.set(null, null, med.v === 'brine' ? '≈ −30 °C' : '−196 °C');
+    sStr.set(null, null, soil.v === 'sand' ? '4–8,5 MPa' : '5–10,8 MPa');
     if (closeDay === null) vd.set('bad', 'A fal nem zár össze', `Az áramló talajvíz elviszi a hideget: a csövek között „ablak” marad. ${med.v === 'brine' ? 'Megoldás: folyékony nitrogén, sűrűbb csőosztás, több csősor vagy előzetes injektálás az áramlás lassítására.' : 'Sűrűbb csőosztás, több csősor vagy előzetes injektálás kell.'}`);
     else if (!S.closed) vd.set('warn', 'Aktív fagyasztás – a hengerek még nem értek össze', `A jéghengerek ${fmt(closeDay, 0)} nap körül zárnak össze. Addig nem szabad ásni: a hőmérő-csövek és a belső víznyomás emelkedése jelzi a záródást.`);
     else vd.set(S.thick >= 1 ? 'ok' : 'warn', S.thick >= 1 ? 'Zárt, teherbíró fagyott fal' : 'Zárt, de még vékony fal', `A fagyott talaj egyszerre <b>vízzáró és teherbíró</b>. ${med.v === 'brine' ? 'Sólével a teljes fal jellemzően 4–8 hét alatt alakul ki.' : 'Nitrogénnel gyors (kb. 1–3 hét), de drága; gyakran sólével tartják fenn.'} A kiemelés alatt fenntartó fagyasztás kell (az indító energia kb. 30–50%-a).`);
@@ -237,7 +237,7 @@ register('cofferdam', (root) => {
     if (T !== 'fold') { svg('rect', { x: pitX, y: pitBot, width: 760 - pitX, height: 380 - pitBot, class: 'f-conc' }, gStat); svg('rect', { x: pitX, y: pitBot, width: 760 - pitX, height: 380 - pitBot, fill: 'url(#pat-conc)' }, gStat); txt(gStat, 760 - 8, 374, 'víz alatti betondugó', 't-sm', { 'text-anchor': 'end' }); }
     // pillér
     const pierX = Math.max(pitX + 40, 600);
-    if (pierX < 740) { svg('rect', { x: pierX, y: pitBot - 70, width: Math.min(90, 750 - pierX), height: 70, class: 'f-conc2' }, gStat); txt(gStat, pierX + 6, pitBot - 74, 'hídpillér épül szárazon', 't-sm'); }
+    if (pierX < 740) { svg('rect', { x: pierX, y: pitBot - 70, width: Math.min(90, 750 - pierX), height: 70, class: 'f-conc2' }, gStat); txt(gStat, pierX + 6, pitBot - 8, 'hídpillér', 't-sm', { style: 'fill:var(--surface);font-weight:700' }); }
     // gát
     if (T === 'fold') {
       const half = 2.5 * crest * pxm;
@@ -287,7 +287,9 @@ register('cofferdam', (root) => {
       // szivattyú
       const px0 = Math.min(720, pitX + 30);
       svg('rect', { x: px0, y: pitBot - 14, width: 18, height: 14, rx: 3, fill: 'var(--g4)' }, gDyn);
-      svg('path', { d: `M ${px0 + 9} ${pitBot - 14} C ${px0 + 9} ${yC - 30}, ${xg0 + 40} ${yC - 40}, ${xg0 - 20} ${Math.max(yW + 6, yC - 4)}`, fill: 'none', class: 's-ink', 'stroke-width': 3, opacity: 0.7 }, gDyn);
+      const hx = T === 'fold' ? Math.min(xg0 + 2.5 * (h + d) * pxm - 12, 600) : xg0 - 16;
+      svg('path', { d: `M ${px0 + 9} ${pitBot - 14} L ${px0 + 9} ${yC - 18} L ${hx} ${yC - 18} L ${hx} ${yW + 10}`, fill: 'none', class: 's-ink', 'stroke-width': 3, opacity: 0.55, 'stroke-linejoin': 'round' }, gDyn);
+      carrow(gDyn, hx, yW - 4, hx, yW + 12, 'var(--water)', 2);
       txt(gDyn, px0 + 22, pitBot - 4, 'szivattyú', 't-sm');
     }
     // méretek
@@ -295,7 +297,7 @@ register('cofferdam', (root) => {
     dim(gDyn, xd, bed, xd, yDes, `h = ${fmt(h, 1)} m`, { dx: 34 });
     svg('line', { x1: 0, y1: yDes, x2: xg0, y2: yDes, class: 's-water', 'stroke-width': 1, 'stroke-dasharray': '5 4' }, gDyn);
     txt(gDyn, 6, yDes - 4, 'mértékadó vízszint', 't-sm t-water');
-    dim(gDyn, xg0 - 18, yDes, xg0 - 18, yC, `f`, { dx: -8, anchor: 'end' });
+    dim(gDyn, xg0 - 34, yDes, xg0 - 34, yC, `f = ${fmt(f, 1)} m`, { dx: -6, anchor: 'end' });
     if (d > 0) txt(gDyn, 6, yW - 5, `árhullám +${fmt(d, 1)} m`, 't-sm t-bad');
     // állapot
     return { crest, Bm, over };
@@ -354,12 +356,12 @@ register('cofferdam', (root) => {
 
 /* ================================================================== VÍZ ALATTI LEMEZ – FÁZISOK */
 const UW_STEPS = [
-  ['Kiinduló helyzet', 'Magas talajvíz, jó vízvezető homok-kavics, a vízzáró réteg nagyon mélyen. A talajvizet <b>nem szabad lesüllyeszteni</b> (szomszéd épületek, fák, vízjogi előírás – pl. Berlinben).'],
+  ['Kiinduló helyzet', 'Magas talajvíz, jó vízvezető homok-kavics, a vízzáró réteg nagyon mélyen. A talajvizet <strong>nem szabad lesüllyeszteni</strong> (szomszéd épületek, fák, vízjogi előírás – pl. Berlinben).'],
   ['1. Körbezárás szádfallal', 'Vízzáró szádfal (vagy résfal) zárja körbe a munkagödröt – de a vízzáró rétegig nem ér le, így alulról a víz továbbra is bejönne.'],
   ['2. Nedves kiemelés', 'A vizet bent hagyják: a földet víz alól markolják ki a leendő lemez aljáig. A munkagödörből „mesterséges tó” lesz, a talajvízszint nem változik.'],
   ['3. Ideiglenes munkaszint + horgonyzás', 'A vízen úszó pontonról (vagy előre, szárazon a munkaszintről) sűrű, kb. 2,5–3,5 m-es rácsban húzott cölöpök készülnek: GEWI-rúd vagy mikrocölöp, habarccsal a mélyebb rétegekbe injektálva.'],
-  ['4. Víz alatti betonozás', 'Búvárok megtisztítják a horgonyfejeket, leszívják az iszapot. A lemezt <b>kontraktor eljárással</b> betonozzák: a cső vége végig a friss betonban marad. Jellemző vastagság 1–1,5 m.'],
-  ['5. Leszivattyúzás', 'Szilárdulás után a vizet fokozatosan kiszivattyúzzák. Alulról a teljes víznyomás nyomja a lemezt – lent a lemez <b>súlya + a horgonyok húzóereje</b> tartja.'],
+  ['4. Víz alatti betonozás', 'Búvárok megtisztítják a horgonyfejeket, leszívják az iszapot. A lemezt <strong>kontraktor eljárással</strong> betonozzák: a cső vége végig a friss betonban marad. Jellemző vastagság 1–1,5 m.'],
+  ['5. Leszivattyúzás', 'Szilárdulás után a vizet fokozatosan kiszivattyúzzák. Alulról a teljes víznyomás nyomja a lemezt – lent a lemez <strong>súlya + a horgonyok húzóereje</strong> tartja.'],
   ['6. Horgony rögzítése, alaplemez', 'Szárazon a horgonyvégeket rögzítik (lemez + anya), majd a víz alatti lemezre megépül a végleges alaplemez és a szerkezet.'],
 ];
 register('uwphases', (root) => {
@@ -400,6 +402,8 @@ register('uwphases', (root) => {
     for (let i = 0; i < 3; i++) svg('rect', { x: 38 + i * 33, y: 30, width: 20, height: 14, class: 'f-bg2' }, S);
     svg('rect', { x: 680, y: 40, width: 6, height: top - 40, class: 'f-timber2' }, S);
     svg('circle', { cx: 683, cy: 34, r: 18, fill: 'var(--ok)', opacity: 0.75 }, S);
+    txt(S, 380, 200, 'homok, kavics – jó vízvezető', 't-lab', { 'text-anchor': 'middle', style: 'fill:var(--ink2)' });
+    if (k === 0) { svg('rect', { x: xL, y: top, width: xR - xL, height: botEx - top, fill: 'none', class: 's-ink', 'stroke-width': 1.5, 'stroke-dasharray': '7 5' }, S); txt(S, (xL + xR) / 2, top + 22, 'tervezett munkagödör', 't-sm', { 'text-anchor': 'middle' }); }
     if (k >= 1) {
       // munkagödör
       const exDepth = k >= 2 ? botEx : top;
@@ -552,8 +556,9 @@ register('uplift', (root) => {
     txt(S, xR - 10, Math.min(332, slabTop + tpx + uLen + 4), `víznyomás ${fmt(u, 0)} kPa`, 't-num t-water halo', { 'text-anchor': 'end' });
     if (anc.v) txt(S, 380, 318, `horgonyok ${fmt(a.v, 1)} × ${fmt(a.v, 1)} m-es rácsban`, 't-sm halo', { 'text-anchor': 'middle' });
     dim(S, 60, gwY, 60, slabTop, `H = ${fmt(H.v, 1)} m`, { dx: 0, dy: -8 });
-    dim(S, xR + 30, slabTop, xR + 30, slabTop + tpx, `t = ${fmt(t.v, 1)} m`, { dx: 8, anchor: 'start' });
+    dim(S, xR + 40, slabTop, xR + 40, slabTop + tpx, `t = ${fmt(t.v, 1)} m`, { dx: 8, anchor: 'start' });
     if (mu > 1) txt(S, 380, slabTop - 14, 'FELÚSZIK', 't-big t-bad', { 'text-anchor': 'middle' });
+    else txt(S, 380, 110, 'száraz munkatér', 't-big', { 'text-anchor': 'middle', style: 'fill:var(--muted)' });
   }
   [H, t, gc, a, R].forEach((c) => c.on(upd));
   anc.on(upd);

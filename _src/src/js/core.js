@@ -274,15 +274,17 @@ export function soilSection(parent, o) {
   return g;
 }
 
-/** Nyíl SVG-ben: arrow(parent, x1,y1,x2,y2, {cls:'s-bad', w:2, head:7}) */
+/** Nyíl SVG-ben: arrow(parent, x1,y1,x2,y2, {cls:'s-bad', w:2, head:7, color:'var(--bad)'})
+ *  A szín a cls-ből (s-bad, s-ok, s-ink, s-water, s-acc, s-steel, s-grp, s-muted, s-warn) vagy a color-ból jön – a fej is. */
+const ARROWC = { 's-bad': 'var(--bad)', 's-ok': 'var(--ok)', 's-ink': 'var(--ink)', 's-water': 'var(--water)', 's-acc': 'var(--accent)', 's-steel': 'var(--steelm2)', 's-grp': 'var(--grp)', 's-muted': 'var(--muted)', 's-warn': 'var(--warn)', 's-line': 'var(--line2)' };
 export function arrow(parent, x1, y1, x2, y2, o = {}) {
-  const g = svg('g', { class: o.cls || 's-ink' }, parent);
+  const g = svg('g', {}, parent);
+  g.style.color = o.color || ARROWC[o.cls] || 'var(--ink)';
   const w = o.w ?? 2, hd = o.head ?? 7;
   const a = Math.atan2(y2 - y1, x2 - x1);
-  svg('line', { x1, y1, x2: x2 - Math.cos(a) * hd * 0.7, y2: y2 - Math.sin(a) * hd * 0.7, 'stroke-width': w, 'stroke-linecap': 'round', stroke: 'currentColor', style: 'stroke:inherit' }, g);
+  svg('line', { x1, y1, x2: x2 - Math.cos(a) * hd * 0.7, y2: y2 - Math.sin(a) * hd * 0.7, 'stroke-width': w, 'stroke-linecap': 'round', stroke: 'currentColor' }, g);
   const p = [[x2, y2], [x2 - Math.cos(a - 0.42) * hd, y2 - Math.sin(a - 0.42) * hd], [x2 - Math.cos(a + 0.42) * hd, y2 - Math.sin(a + 0.42) * hd]];
-  svg('path', { d: pathD(p, true), style: 'fill:inherit;stroke:none' }, g);
-  g.style.fill = 'currentColor';
+  svg('path', { d: pathD(p, true), fill: 'currentColor' }, g);
   return g;
 }
 

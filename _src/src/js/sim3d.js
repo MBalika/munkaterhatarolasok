@@ -178,7 +178,8 @@ function evaluate(S) {
 
   // --- szomszéd épület mozgása (szemléltető)
   const kStiff = { konzolos: 1.0, horgony: 0.4, cso: 0.3, topdown: 0.18, szeg: 0.6 }[sup];
-  const sb = stat === 'bad' ? 1.0 : stat === 'warn' ? 0.35 : 0;
+  const soilFail = (szeg && P.soft) || (S.wall === 'hezagos' && P.soft);
+  const sb = stat === 'bad' || soilFail ? 1.0 : stat === 'warn' ? 0.35 : 0;
   const prox = Math.exp(-dist / Math.max(4, H));
   let risk = (kStiff * H / 12 + sb) * prox + (dewOut ? 0.55 * Math.exp(-dist / (2 * H)) : 0) + (flood ? 0.35 * prox : 0) + (seep ? 0.25 * prox : 0);
   if (S.wall === 'szad') risk += 0.08 * Math.exp(-dist / 10);
@@ -186,7 +187,7 @@ function evaluate(S) {
   add(rs, 'Szomszéd épület mozgása', `${rs === 'ok' ? 'Várhatóan kicsi.' : rs === 'warn' ? 'Közepes – mozgásfigyelés (monitoring) javasolt.' : 'Nagy – süllyedés, dőlés, repedések várhatók!'} A merevebb megtámasztás (csőtámasz, födém, feszített horgony) és a nagyobb távolság csökkenti.${dewOut ? ' A talajvízszint-süllyesztés tovább növeli.' : ''}`, '#statika');
 
   const dmax = szeg ? (stat === 'ok' ? 0.12 : 0.45) : stat === 'bad' ? 1.25 : stat === 'warn' ? 0.42 : sup === 'topdown' ? 0.03 : 0.07;
-  return { S, P, W, H, B, gw, dist, sup, szeg, levels, anchors, theta, gwAbove, toe, reach, flood, seep, dewOut, stat, risk, rs, dmax, items, tw: W.tw };
+  return { S, P, W, H, B, gw, dist, sup, szeg, levels, anchors, theta, gwAbove, toe, reach, flood, seep, dewOut, stat: soilFail ? 'bad' : stat, risk, rs, dmax: soilFail ? 0.9 : dmax, items, tw: W.tw };
 }
 
 /* ------------------------------------------------------------------ textúrák, anyagok */
@@ -406,9 +407,10 @@ register('sim3d', (root) => {
     const base = new THREE.Color(LCOL[k]);
     SOILMAT[k] = { face: lam(0xffffff, { map: tex }), side: lam(base.clone().multiplyScalar(0.82)), floor: lam(0xffffff, { map: tex, color: 0xd9d4ca }) };
   }
-  const soilMats = () => Object.values(SOILMAT).flatMap((m) => [m.face, m.side, m.floor]).concat([MAT.top]);
   const setXray = (on) => {
-    for (const m of soilMats()) { m.transparent = on; m.opacity = on ? 0.22 : 1; m.depthWrite = !on; m.needsUpdate = true; }
+    const set = (m, op) => { m.transparent = on; m.opacity = on ? op : 1; m.depthWrite = !on; m.needsUpdate = true; };
+    for (const m of Object.values(SOILMAT)) { set(m.face, 0.55); set(m.side, 0.14); set(m.floor, 0.4); }
+    set(MAT.top, 0.3);
   };
 
   // csoportok
@@ -750,6 +752,7 @@ register('sim3d', (root) => {
     clipCap.constant = wf >= 1 ? 100 : -100;
     clipExc.constant = e + 0.02;
     buildUnder(e); buildFace(e);
+    if (viewSeg.v === 'godor') G.face.children.forEach((c) => { if (c.isSprite) c.visible = false; });
     // támaszok láthatósága
     for (const L of levelGroups) {
       if (L.cols) L.g.visible = wf >= 1;
@@ -818,6 +821,7 @@ register('sim3d', (root) => {
     setXray(S.xray);
     applyPhase(P);
     renderList();
+    setLabels(viewSeg.v);
     if (!camInit) { setView(viewSeg.v, true); camInit = true; }
     req();
   }
@@ -865,7 +869,7 @@ register('sim3d', (root) => {
     }
     if (v === 'madar') return { pos: [-hb - 26, 34, 30], tgt: [0, -5, -LP / 2] };
     if (v === 'godor') return { pos: [hb - 2.2, -M.H + 1.8, -0.6], tgt: [-hb, -M.H * 0.4, -LP + 3] };
-    const D = Math.max(54, ((hb + 24) / (t * aspect)) * 0.95);
+    const D = Math.max(54, ((hb + 24) / (t * aspect)) * (aspect < 1.3 ? 0.72 : 0.95));
     return { pos: [-D * 0.48, 15, D * 0.88], tgt: [0, -6, -5] };
   }
   function setView(v, instant = false) {
@@ -876,7 +880,8 @@ register('sim3d', (root) => {
     tween = { t0: performance.now(), from: { pos: camera.position.clone(), tgt: controls.target.clone() }, to };
     req();
   }
-  viewSeg.on((v) => setView(v));
+  const setLabels = (v) => { const on = v !== 'godor'; G.lab.visible = on; G.env.children.forEach((c) => { if (c.isSprite) c.visible = on; }); G.face.children.forEach((c) => { if (c.isSprite) c.visible = on; }); bPivot.children.forEach((c) => { if (c.isSprite) c.visible = on; }); };
+  viewSeg.on((v) => { setLabels(v); setView(v); });
 
   /* ---------------- render-ciklus (csak ha kell) */
   let visible = false, pending = false, playing = false, lastT = 0, needsAnim = false;
@@ -952,7 +957,7 @@ register('sim3d', (root) => {
     cProf.set(p.prof, false); cWall.set(p.wall, false); cSup.set(p.sup, false); cLev.set(p.lev, false); cH.set(p.H, false); cB.set(p.B, false);
     cGw.set(p.gw, false); cDew.set(p.dew, false); cDist.set(p.dist, false); cX.set(p.xray, false);
     rebuild();
-    viewSeg.set(p.view, false); setView(p.view);
+    viewSeg.set(p.view, false); setLabels(p.view); setView(p.view);
     P = 0; playing = true; waterLevel = null; lastT = 0; playBtn.textContent = '❚❚ Szünet'; req();
     root.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };

@@ -99,3 +99,7 @@ svg:has(.mt-sel) .mt-part:not(.mt-sel) { opacity: 0.45; }
 figure.mt-fig { margin: 16px 0; }
 figure.mt-fig img { border-radius: 12px; border: 1px solid var(--line); background: #fff; max-height: 420px; width: auto; max-width: 100%; margin: 0 auto; }
 figure.mt-fig figcaption { font-size: 13px; color: var(--muted); margin-top: 6px; text-align: center; }
+
+.mt-air { fill: color-mix(in srgb, var(--sky) 70%, var(--surface)); }
+.mt-labelbox { fill: var(--surface); stroke: var(--grp); stroke-width: 1.5; opacity: 0.93; }
+.w .steptext b.mt-st { display: block; font-family: var(--f-display); font-size: 19px; font-weight: 700; }

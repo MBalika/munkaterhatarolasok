@@ -137,7 +137,7 @@ register('duc-elemek', (root) => {
     const defs = svg('defs', {}, s);
     defs.innerHTML = '<filter id="dcGlow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="0" stdDeviation="2.2" flood-color="#f0a33a" flood-opacity=".95"/></filter>';
     const fa = mat.v === 'fa';
-    const L = 5, Hd = 3.0, dzW = 0.55 * e, dzK = 0.8 * e, dzS = 1.05 * e;
+    const L = 5, Hd = 3.0, dzW = 1.1 * e, dzK = 1.6 * e, dzS = 2.3 * e;
     // talaj: terep sáv + földfal
     const gs = svg('g', {}, s);
     poly(gs, [P(-0.2, 0, -1.2), P(L + 0.2, 0, -1.2), P(L + 0.2, 0, 0), P(-0.2, 0, 0)], ST(V('soilB'), V('soil-line'), 0.8));
@@ -146,7 +146,7 @@ register('duc-elemek', (root) => {
     poly(gs, wall, ST(V('soilB'), V('soil-line'), 0.8)); poly(gs, wall, ST('url(#pat-clay)', 'none'));
     // árokfenék
     poly(gs, [P(-0.2, -Hd - 0.25, 0), P(L + 0.2, -Hd - 0.25, 0), P(L + 0.2, -Hd - 0.25, 1.9), P(-0.2, -Hd - 0.25, 1.9)], ST(V('soilC'), V('soil-line'), 0.6, 'opacity:.75'));
-    txt(gs, P(L + 0.25, -0.9, 0)[0] + 6, P(L + 0.25, -0.9, 0)[1], 'földfal', 't-sm');
+    txt(gs, P(L + 0.25, -2.95, 0)[0] + 6, P(L + 0.25, -2.95, 0)[1], 'földfal', 't-sm');
     // pallók
     const gp = grp('pallo');
     if (fa) {
@@ -218,10 +218,10 @@ register('duc-elemek', (root) => {
         svg('line', { x1: a[0], y1: a[1], x2: b[0], y2: b[1], class: 'flow', style: `stroke:${V('accent')};stroke-width:3;stroke-linecap:round` }, gl);
         arr(gl, b[0] + 8, b[1] - 5, b[0] - 10, b[1] + 6, V('accent'), 2.5, 8);
       }
-      const t1 = P(L + 0.3, -1.4, -0.5);
-      txt(gl, t1[0] + 4, t1[1], 'földnyomás', 't-sm t-bad halo');
+      const t1 = P(0, -0.3, 0);
+      txt(gl, t1[0] - 8, t1[1] + 18, 'földnyomás →', 't-sm t-bad halo', { 'text-anchor': 'end' });
       const t2 = P(xs[0], levels[1], z1 + 0.5);
-      txt(gl, t2[0] - 40, t2[1] + 18, '→ a szemközti fal felé', 't-sm t-acc halo');
+      txt(gl, t2[0] + 30, t2[1] + 26, '↙ a szemközti fal felé', 't-sm t-acc halo');
     }
     // feliratok
     const gl2 = svg('g', {}, s);
@@ -231,7 +231,7 @@ register('duc-elemek', (root) => {
     lab('duc', xs[2], levels[1] - 0.15, z1 + 0.1, fa ? 'dúc' : 'csavaros acéldúc', 8, 22);
     if (fa) lab('ek', xs[2] + 0.15, levels[0] + 0.25, zw1 + dzK - dzW, 'ék', 4, 0);
     const pt = P(-0.2, 0, 0); txt(gl2, pt[0] - 6, pt[1] - 8, '±0,00 terep', 't-sm', { 'text-anchor': 'end' });
-    const pb = P(-0.2, -Hd, 0.6); txt(gl2, 12, pb[1] + 30, 'a szemközti oldal levágva', 't-sm');
+    txt(gl2, 596, 372, 'a szemközti oldal levágva', 't-sm', { 'text-anchor': 'end' });
   }
   const anim = (t) => {
     e += Math.sign(eT - e) * Math.min(Math.abs(eT - e), 0.045);
@@ -275,6 +275,7 @@ register('duc-m0', (root) => {
   const chart = figure(viz, 560, 150);
   const oM = stat(out, { label: 'm₀ – szabadon megálló mélység', unit: 'm', d: 2 });
   const oMode = stat(out, { label: 'Pallózási mód' });
+  oMode.el.classList.add('dc-modestat');
   const oDuc = stat(out, { label: 'Dúcolni kell?' });
   const oEk = stat(out, { label: 'Megcsúszó ék súlya', unit: 't/fm', d: 1 });
   const ver = verdict(viz);
@@ -542,7 +543,7 @@ register('duc-pallozas', (root) => {
 
 /* ================================================================ 4. Dúcnyomás és egyszerű statika */
 register('duc-nyomas', (root) => {
-  const { ctrls, viz, out } = shell(root, { foot: '<b>Szemléltető, egyszerűsített ellenőrzés:</b> egyenletes dúcnyomás, egyenlő tehermezők, kéttámaszú tartók; fa elemek: 48 mm-es palló, 16/16-os heveder, Ø12 gömbfa dúc (E ≈ 10 GPa). A szilárdsági határok tájékoztató jellegűek – a tényleges méretezés a vonatkozó szabványok szerint történik.' });
+  const { ctrls, viz, out } = shell(root, { foot: '<b>Szemléltető, egyszerűsített ellenőrzés:</b> egyenletes dúcnyomás, egyenlő tehermezők, kéttámaszú tartók; fa elemek: 48 mm-es palló, 16/16-os heveder, Ø12 gömbfa dúc (E ≈ 10 GPa). Színezés: σ ≤ 14 MPa zöld, ≤ 18 MPa sárga (C24-es fenyő hajlítószilárdságának tervezési értéke nagyságrendileg 15–17 MPa); dúcnál N ≤ 0,8·N<sub>Rd</sub> zöld. A határok tájékoztató jellegűek – a tényleges méretezés a vonatkozó szabványok szerint történik.' });
   const kind = seg(ctrls, { label: 'Talaj', options: [{ v: 'sz', t: 'Szemcsés / gyengén kötött' }, { v: 'k', t: 'Közepesen / erősen kötött' }], value: 'sz' });
   const sH = slider(ctrls, { label: 'Árokmélység', sym: 'H', min: 1, max: 6, step: 0.1, value: 3, unit: 'm' });
   const sg = slider(ctrls, { label: 'Nedves térfogatsúly', sym: 'γn', min: 16, max: 22, step: 0.1, value: 19, unit: 'kN/m³' });
@@ -550,7 +551,7 @@ register('duc-nyomas', (root) => {
   const sphi = slider(ctrls, { label: 'Belső súrlódási szög', sym: 'φ', min: 20, max: 40, step: 1, value: 30, unit: '°' });
   const sw = slider(ctrls, { label: 'Víztartalom', sym: 'w', min: 0, max: 30, step: 1, value: 12, unit: '%' });
   const sc = slider(ctrls, { label: 'Kohézió', sym: 'c', min: 0, max: 60, step: 1, value: 15, unit: 'kPa' });
-  const sa = slider(ctrls, { label: 'Dúcok vízszintes távolsága', sym: 'a', min: 1, max: 3, step: 0.1, value: 1.8, unit: 'm' });
+  const sa = slider(ctrls, { label: 'Dúcok vízszintes távolsága', sym: 'a', min: 1, max: 3, step: 0.1, value: 1.6, unit: 'm' });
   const nr = seg(ctrls, { label: 'Dúcsorok száma', options: [{ v: 2, t: '2' }, { v: 3, t: '3' }, { v: 4, t: '4' }], value: 2 });
   const sB = slider(ctrls, { label: 'Árokszélesség (dúchossz)', sym: 'B', min: 0.8, max: 3, step: 0.1, value: 1.2, unit: 'm' });
   const fig = figure(viz, 600, 330);
@@ -592,8 +593,8 @@ register('duc-nyomas', (root) => {
     const ut = (N / NRd) * 100;
     oP.set(p);
     oN.set(N);
-    oPal.set(sigP, sigP <= 10 ? 'ok' : sigP <= 14 ? 'warn' : 'bad');
-    oHev.set(sigH, sigH <= 10 ? 'ok' : sigH <= 14 ? 'warn' : 'bad');
+    oPal.set(sigP, sigP <= 14 ? 'ok' : sigP <= 18 ? 'warn' : 'bad');
+    oHev.set(sigH, sigH <= 14 ? 'ok' : sigH <= 18 ? 'warn' : 'bad');
     oDuc.set(ut, ut <= 80 ? 'ok' : ut <= 100 ? 'warn' : 'bad');
     info.innerHTML = `<div>${line}</div><div>Dúcerő: N = p · (H/n) · a = ${fmt(p, 1)} · ${fmt(hv, 2)} · ${fmt(a, 1)} = <b>${fmt(N, 0)} kN</b> &nbsp;·&nbsp; Palló: M = p·(H/n)²/8 = ${fmt(Mp, 2)} kNm/m &nbsp;·&nbsp; Heveder: M = p·(H/n)·a²/8 = ${fmt(Mh, 2)} kNm &nbsp;·&nbsp; Dúc: N<sub>Rd</sub> ≈ min(A·f<sub>c</sub>; N<sub>cr</sub>/3) = ${fmt(NRd, 0)} kN</div>`;
     drawFig(p, H, n, N);
@@ -881,7 +882,7 @@ register('duc-kihajlas', (root) => {
       for (let l = 2; l <= 20.01; l += 0.25) { const le = m ? l / 2 : l; pts.push([X(l), Y(Math.min((Math.PI ** 2 * P.E * P.I) / (le * le), P.Npl))]); }
       const on = kk === k;
       svg('path', { d: pathD(pts), style: `fill:none;stroke:${on ? V('grp') : V('line2')};stroke-width:${on ? 3 : 1.4}` }, ch);
-      if (!on) { const lp = pts[pts.length - 1]; txt(ch, lp[0] - 4, lp[1] - 4, SECT[kk].t.replace('Gömbfa dúc ', '').replace('Acélcső ', '').replace(' (gyenge tengely)', ''), 't-sm', { 'text-anchor': 'end' }); }
+      { const lp = pts[pts.length - 1]; txt(ch, lp[0] - 4, lp[1] - 4, SECT[kk].t.replace('Gömbfa dúc ', '').replace('Acélcső ', '').replace(' (gyenge tengely)', ''), on ? 't-sm t-grp halo' : 't-sm', { 'text-anchor': 'end' }); }
     }
     svg('line', { x1: x0, y1: Y(N), x2: x1, y2: Y(N), style: `stroke:${V('bad')};stroke-width:1.6;stroke-dasharray:6 4` }, ch);
     txt(ch, x0 + 6, Y(N) - 6, `N = ${fmt(N, 0)} kN`, 't-sm t-bad halo');
@@ -955,8 +956,8 @@ register('duc-ferde', (root) => {
         const sc2 = 70 / 600;
         arr(fig, hx + 14 + H * sc2, hy, hx + 16, hy, V('bad'), 2.4, 8);
         arr(fig, hx + 16, hy + Vv * sc2 + 2, hx + 16, hy + 4, V('warn'), 2.4, 8);
-        txt(fig, hx + 18 + H * sc2, hy - 6, `H = ${fmt(H, 0)} kN`, 't-num t-bad halo');
-        txt(fig, hx + 24, hy + Math.max(20, Vv * sc2), `V = ${fmt(Vv, 0)} kN ↑ (emeli a falat)`, 't-num halo', { style: `fill:${V('warn')}` });
+        txt(fig, hx + 18 + H * sc2, hy - 10, `H = ${fmt(H, 0)} kN`, 't-num t-bad halo');
+        txt(fig, hx + 26, hy + Math.max(26, Vv * sc2) + 14, `V = ${fmt(Vv, 0)} kN ↑ (emeli a falat)`, 't-num halo', { style: `fill:${V('warn')}` });
         txt(fig, (hx + fx) / 2 + 8, (hy + fy) / 2 - 8, `α = ${fmt(a, 0)}°  N = ${fmt(N, 0)} kN`, 't-num halo');
       }
     }

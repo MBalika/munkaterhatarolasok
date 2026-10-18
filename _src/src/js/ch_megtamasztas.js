@@ -693,7 +693,7 @@ register('topdown', (root) => {
       for (let i = 0; i < fl; i++) { svg('rect', { x: xl + 20, y: y0 - 6 - (i + 1) * 20, width: xr - xl - 40, height: 18, class: 'f-bld' }, g); for (let j = 0; j < 9; j++) svg('rect', { x: xl + 34 + j * 46, y: y0 - 6 - (i + 1) * 20 + 5, width: 20, height: 8, class: 'f-bld2' }, g); }
       txt(g, xl + 26, y0 - 6 - fl * 20 - 6, 'felépítmény – közben épül felfelé', 't-sm halo');
     }
-    info.innerHTML = `<b>${TD[ph].t}</b>${TD[ph].d}`;
+    info.innerHTML = `<b class="mt-st">${TD[ph].t}</b>${TD[ph].d}`;
   }
   sPh.on(draw); tUp.on(draw);
   bPlay.onclick = () => {

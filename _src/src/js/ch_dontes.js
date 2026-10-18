@@ -346,7 +346,7 @@ const CASES = [
 
 function sketch(s, sk) {
   const g = svg('g', {}, s);
-  const W = 360, Hh = 200, top = 60, pxm = Math.min(6, 120 / Math.max(6, sk.H + 4));
+  const W = 360, Hh = 200, top = 60, pxm = Math.min(22, 110 / (sk.H + 1), sk.imp ? 132 / (sk.imp + 1) : 99);
   svg('rect', { x: 0, y: 0, width: W, height: Hh, class: 'f-sky' }, g);
   if (sk.kind === 'folyo') {
     const bed = 150, wl = bed - sk.H * 12;

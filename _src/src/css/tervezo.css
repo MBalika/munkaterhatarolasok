@@ -43,3 +43,4 @@
 .sim-list li[data-s=bad] { background: var(--bad-soft); border-color: transparent; } .sim-list li[data-s=bad] i { background: var(--bad); }
 .sim-legend { padding: 0 16px 14px; }
 .sim-legend .legend i { border: 1px solid rgba(0,0,0,0.2); }
+@media (max-width: 560px) { .sim-badge { display: none; } .sim-step { font-size: 12.5px; } .sim-alert span { font-size: 11px; } }
