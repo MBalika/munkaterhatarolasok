@@ -31,3 +31,7 @@
 #falak .callout { align-content: start; }
 #falak [data-w=dsmSeq] svg.fig { max-width: 820px; margin-inline: auto; }
 #falak .steptext b { display: block; }
+@media (max-width: 600px) {
+  #falak .w-viz { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  #falak .w-viz > svg.fig { min-width: 540px; }
+}

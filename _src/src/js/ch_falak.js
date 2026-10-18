@@ -29,8 +29,8 @@ function planBg(p, W, yWall0, yWall1, H, soil = 'f-soilA', pat = 'pat-sand') {
   R(p, 0, 0, W, yWall1, soil);
   R(p, 0, 0, W, yWall1, '', { fill: `url(#${pat})`, opacity: 0.8 });
   R(p, 0, yWall1, W, H - yWall1, 'f-bg2');
-  T(p, 10, 18, 'FÖLDOLDAL', 't-sm');
-  T(p, 10, H - 10, 'MUNKATÉR (gödör)', 't-sm');
+  T(p, 10, 18, 'FÖLDOLDAL', 't-sm halo');
+  T(p, 10, H - 10, 'MUNKATÉR (gödör)', 't-sm halo');
 }
 const S = (p) => { const g = svg('g', {}, p); return g; };
 

@@ -555,3 +555,9 @@ figure.fig-ppt figcaption { font-size: 13px; color: var(--muted); margin-top: 6p
 .hero-viz svg text { paint-order: stroke; stroke: rgba(20, 22, 26, 0.85); stroke-width: 3px; stroke-linejoin: round; }
 .grid2 > .callout, .grid3 > .callout, .two-col > .callout { align-content: start; margin: 0; }
 .seg.vert button { white-space: normal; }
+.stat-v { white-space: normal; overflow-wrap: anywhere; text-overflow: clip; }
+@media (max-width: 600px) {
+  .tf-score { gap: 8px 12px; padding: 7px 12px; font-size: 13px; bottom: 8px; }
+  .tf-score button { padding: 4px 10px; font-size: 12.5px; }
+}
+@media (max-width: 420px) { .brand b { font-size: 14.5px; } .depthro { padding: 5px 7px; } .depthro b { font-size: 13.5px; min-width: 4.6ch; } }
