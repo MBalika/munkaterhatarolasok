@@ -28,8 +28,6 @@ export const VGROUPS = [
   { grp: 0, t: 'Összefoglalás', ids: ['19'] },
 ];
 
-// Valós felvételek: BME Építőipar YouTube-csatorna, „Befogott támszerkezetek” lejátszási lista
-export const YT_LIST = 'https://www.youtube.com/playlist?list=PLiAsGexXzYoLoUK4uIoeIHjowjrmQH1Tc';
 export const YT = {
   wRRuJb3yTLw: 'Befogott támszerkezetek – áttekintés',
   '6v1tscw5Y7M': 'Hézagos erősítésű munkatérhatároló falak',

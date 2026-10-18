@@ -46,7 +46,7 @@ function freezeState(t, m, so, s, v) {
 
 register('freeze', (root) => {
   const { ctrls, viz, out } = shell(root, {
-    foot: '<b>Szemléltető modell.</b> A jéghengerek sugara ~√t szerint nő; a sebességeket a szakirodalmi tartományokhoz (sólé 4–8 hét, LN₂ 1–3 hét, homokban gyorsabb, agyagban lassabb) igazítottuk. Tervezéshez hőtani számítás és helyszíni hőmérséklet-mérés kell.',
+    foot: '<b>Szemléltető modell.</b> A jéghengerek sugara ~√t szerint nő; a sebességeket a jellemző tartományokhoz (sólé 4–8 hét, LN₂ 1–3 hét, homokban gyorsabb, agyagban lassabb) igazítottuk. Tervezéshez hőtani számítás és helyszíni hőmérséklet-mérés kell.',
   });
   const med = seg(ctrls, { label: 'Hűtőközeg', options: [{ v: 'brine', t: 'Sólé ≈ −30 °C' }, { v: 'ln2', t: 'Folyékony N₂ −196 °C' }], value: 'brine' });
   const soil = seg(ctrls, { label: 'Talaj', options: [{ v: 'sand', t: 'Homok, kavics' }, { v: 'clay', t: 'Agyag, iszap' }], value: 'sand' });
@@ -183,7 +183,7 @@ register('freeze', (root) => {
 /* ================================================================== GÁT ÉLŐVÍZBEN */
 register('cofferdam', (root) => {
   const { ctrls, viz, out } = shell(root, {
-    foot: '<b>Szemléltető arányok.</b> Földgát 1:2,5 rézsűkkel és 3 m-es koronával; kétfalú gát szélessége ≈ 0,85 × magasság; cella átmérője ≥ 8 m. A szivárgás a NAVFAC-ökölszabály (0,1 gpm / fal-láb / 10 láb víznyomás) szerint, egy 30 × 12 m-es hídpillér-gát kerületére. Valós tervezésnél hidraulikai, állékonysági és talajtörési vizsgálat kell.',
+    foot: '<b>Szemléltető arányok.</b> Földgát 1:2,5 rézsűkkel és 3 m-es koronával; kétfalú gát szélessége ≈ 0,85 × magasság; cella átmérője ≥ 8 m. A szivárgás egy tapasztalati ökölszabály (0,1 gpm / fal-láb / 10 láb víznyomás) szerint, egy 30 × 12 m-es hídpillér-gát kerületére. Valós tervezésnél hidraulikai, állékonysági és talajtörési vizsgálat kell.',
   });
   const typ = seg(ctrls, { label: 'Gáttípus', vert: true, options: [
     { v: 'fold', t: 'Föld- / kőszórásos gát' }, { v: 'egy', t: 'Egyfalú, merevített szádfalgát' },

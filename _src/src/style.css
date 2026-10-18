@@ -273,8 +273,6 @@ h4.h4 { font-family: var(--f-display); font-size: 22px; font-weight: 700; margin
 .callout.figyelem { background: color-mix(in srgb, var(--warn) 8%, var(--surface)); }
 .callout.veszely::before { content: "!"; background: var(--bad); }
 .callout.veszely { background: color-mix(in srgb, var(--bad) 7%, var(--surface)); }
-.callout.jegyzet::before { content: "§"; background: var(--accent); color: #1a1408; }
-.callout.web::before { content: "↗"; background: var(--g2); }
 .chip { display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; border-radius: 999px; font-size: 13px; font-weight: 600; background: var(--surface3); color: var(--ink2); border: 1px solid var(--line); white-space: nowrap; }
 .chip.ok { background: var(--ok-soft); color: var(--ok); border-color: transparent; }
 .chip.warn { background: var(--warn-soft); color: var(--warn); border-color: transparent; }
@@ -443,7 +441,6 @@ svg .grid { stroke: var(--line); stroke-width: 1; fill: none; }
 .yt-frame .ytbtn::before { content: ""; border-left: 16px solid #fff; border-top: 10px solid transparent; border-bottom: 10px solid transparent; margin-left: 4px; }
 .yt-cap { padding: 10px 14px 12px; }
 .yt-cap b { display: block; font-family: var(--f-display); font-size: 19px; font-weight: 700; }
-.yt-cap span { font-size: 13px; color: var(--muted); }
 
 /* fotógaléria */
 .gal { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(220px, 280px); gap: 12px; overflow-x: auto; padding: 4px 2px 12px; scroll-snap-type: x mandatory; scrollbar-width: thin; }
@@ -531,15 +528,6 @@ svg .grid { stroke: var(--line); stroke-width: 1; fill: none; }
 .reveal { opacity: 0; transform: translateY(14px); transition: opacity 0.5s ease, transform 0.5s ease; }
 .reveal.in { opacity: 1; transform: none; }
 
-/* források */
-details.srcs { margin: 34px 0 6px; border: 1px solid var(--line); border-radius: var(--r); background: var(--surface); }
-details.srcs summary { cursor: pointer; padding: 12px 16px; font: 700 12.5px/1.2 var(--f-mono); letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); list-style: none; display: flex; align-items: center; gap: 10px; }
-details.srcs summary::-webkit-details-marker { display: none; }
-details.srcs summary::before { content: "+"; display: inline-grid; place-items: center; width: 20px; height: 20px; border-radius: 6px; background: var(--surface3); color: var(--ink); font-size: 14px; }
-details.srcs[open] summary::before { content: "–"; }
-details.srcs ol { margin: 0; padding: 0 18px 14px 40px; font-size: 13.5px; color: var(--ink2); }
-details.srcs li { margin: 5px 0; overflow-wrap: anywhere; }
-details.srcs li a { color: var(--steel-ink); }
 .note-src { font-size: 12.5px; color: var(--muted); font-family: var(--f-mono); }
 figure.fig-ppt { margin: 18px 0; }
 figure.fig-ppt img { border-radius: 12px; border: 1px solid var(--line); background: #fff; }

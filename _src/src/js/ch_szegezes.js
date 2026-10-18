@@ -17,7 +17,7 @@ const scrollBox = (p) => { const d = h('div', { class: 'mt-scroll' }); p.append(
 register('szegfal', (root) => {
   const { ctrls, viz, out } = shell(root, { foot: '<b>Szemléltető modell.</b> A csúszólap φ = 30°-os talajra, a faltőből 45° + φ/2 hajlással rajzolt Rankine-sík; a valódi méretezés (külső–belső állékonyság, szegkihúzódás, lőttbeton-áttörés) ennél összetettebb. A fal 1:10 hajlású.' });
   const sH = slider(ctrls, { label: 'Gödörmélység', sym: 'H', min: 3, max: 14, step: 0.5, value: 8, unit: 'm' });
-  const sL = slider(ctrls, { label: 'Szeghossz / mélység', sym: 'L/H', min: 0.6, max: 1.2, step: 0.05, value: 0.8, d: 2, hint: 'Jegyzet: L = 0,6–1,2 H, a talaj függvényében.' });
+  const sL = slider(ctrls, { label: 'Szeghossz / mélység', sym: 'L/H', min: 0.6, max: 1.2, step: 0.05, value: 0.8, d: 2, hint: 'L = 0,6–1,2 H, a talaj függvényében.' });
   const sS = slider(ctrls, { label: 'Szegraszter', sym: 's', min: 0.5, max: 1.5, step: 0.1, value: 1.0, unit: 'm', hint: 'Jellemzően 0,5–1,0 (1,5) m, négyzetes kiosztás.' });
   const sF = slider(ctrls, { label: 'Fogásmagasság', sym: 'h', min: 0.9, max: 1.8, step: 0.1, value: 1.5, unit: 'm', hint: 'A kohéziótól függően 90–180 cm.' });
   const sD = slider(ctrls, { label: 'Szegdőlés lefelé', sym: 'δ', min: 10, max: 20, step: 1, value: 15, unit: '°' });
@@ -200,7 +200,7 @@ register('szegfal', (root) => {
         `<b class="mt-st">${lift}. fogás – szegek</b>A raszterben (${fmt(G.s, 1)} × ${fmt(G.s, 1)} m) fúrják és injektálják – vagy verik, „puskával” lövik – a ${fmt(G.L, 1)} m-es szegeket, ${fmt(sD.v, 0)}°-kal lefelé.`,
         `<b class="mt-st">${lift}. fogás – víztelenítés</b>Rétegvíz esetén a lőttbeton mögé felületszivárgó kerül, vagy 1–3 m-es raszterben dréncsövek vezetik át a vizet a falon – ne alakuljon ki víznyomás.`,
         `<b class="mt-st">${lift}. fogás – háló</b>Ø6–8 mm-es, 150 × 150 mm-es betonacél hálót rögzítenek a szegekre (pl. laposacél darabbal hegesztik).`,
-        `<b class="mt-st">${lift}. fogás – lőttbeton</b>${fmt(sT.v, 0)} cm lőttbeton kerül a felületre (jegyzet: 8–15 (20) cm). Csak szilárdulás után (FHWA: ≥ 72 óra) jöhet a következő fogás.`,
+        `<b class="mt-st">${lift}. fogás – lőttbeton</b>${fmt(sT.v, 0)} cm lőttbeton kerül a felületre (jellemzően 8–15 (20) cm). Csak szilárdulás után (≥ 72 óra) jöhet a következő fogás.`,
       ];
       stepTxt.innerHTML = T[sub];
     }
@@ -215,10 +215,10 @@ register('szegfal', (root) => {
     stSc.set((G.H * Math.sqrt(1 + 0.01)) * G.t);
     stOv.set(topOver, topOver < 0 ? 'bad' : topOver < 1 ? 'warn' : 'ok', topOver < 0 ? 'nem éri el' : null);
     const warns = [];
-    if (G.s > 1.0) warns.push('1,0 m-nél ritkább raszter (a jegyzet zárójeles 1,5 m-e) csak kedvező talajban.');
+    if (G.s > 1.0) warns.push('1,0 m-nél ritkább (legfeljebb 1,5 m-es) raszter csak kedvező talajban.');
     if (topOver < 1) warns.push('A felső szegsor alig nyúlik túl a csúszólapon – hosszabb szeg kell (L/H ↑).');
     if (G.hf > 1.5) warns.push('Nagy fogásmagasság: csak jól álló, kötött talajban.');
-    vd.set(warns.length ? 'warn' : 'ok', warns.length ? 'Figyelem' : 'Rendben a jegyzet tartományain belül', warns.length ? '<ul class="mt-ul">' + warns.map((w) => `<li>${w}</li>`).join('') + '</ul>' : `${G.n} fogás, ${G.rows.length} szegsor, ${fmt(perM, 1)} szeg / folyóméter.`);
+    vd.set(warns.length ? 'warn' : 'ok', warns.length ? 'Figyelem' : 'Rendben, a jellemző tartományokon belül', warns.length ? '<ul class="mt-ul">' + warns.map((w) => `<li>${w}</li>`).join('') + '</ul>' : `${G.n} fogás, ${G.rows.length} szegsor, ${fmt(perM, 1)} szeg / folyóméter.`);
   }
   const go = (d) => { step += d; draw(); };
   bPrev.onclick = () => { stop(); go(-1); };
@@ -240,11 +240,11 @@ register('szegfal', (root) => {
 
 /* ================================================================ 2. Szegtípusok */
 const NAILS = {
-  vert: { t: 'Vert / lőtt szeg', d: 'Betonacélt, acélcsövet vagy acél szeget ütve, vibrálva – vagy sűrített levegős „puskával” – juttatnak a talajba: nincs fúrás, nincs kitermelt föld. A jegyzet szerint ha lehet, leggyakrabban így készül. A ballisztikus szegvető egy kb. 6 m-es, 38–40 mm-es rudat ~350–400 km/h-val lő a rézsűbe.', tag: 'gyors · fúrás nélkül' },
+  vert: { t: 'Vert / lőtt szeg', d: 'Betonacélt, acélcsövet vagy acél szeget ütve, vibrálva – vagy sűrített levegős „puskával” – juttatnak a talajba: nincs fúrás, nincs kitermelt föld. Ha lehet, leggyakrabban így készül. A ballisztikus szegvető egy kb. 6 m-es, 38–40 mm-es rudat ~350–400 km/h-val lő a rézsűbe.', tag: 'gyors · fúrás nélkül' },
   furt: { t: 'Fúrt-injektált szeg', d: 'Előre fúrt (jellemzően Ø100–150 mm-es) furatba központosítókkal (távtartókkal) helyezik a Ø20–28 mm-es betonacélt, majd alulról felfelé cementhabarccsal töltik ki. Kemény, köves agyagban, puhább kőzetben ez a megoldás.', tag: 'a „standard”' },
   ures: { t: 'Önfúró üreges rúd', d: 'A fúrt-injektált szeg változata: menetes, üreges acélrúd elvesző fúrókoronával. Fúrás közben a rúdon át öblítenek, a végén ugyanazon át injektálnak – egy menetben, béléscső nélkül, omlékony talajban is.', tag: 'fúr + injektál egyszerre' },
   jet: { t: 'Jetelt szeg', d: 'A szeget nagy nyomású habarcssugárral juttatják be: a sugár a talajt fellazítja, és körülötte kialakítja a habarcstestet.', tag: 'nagy nyomású sugár' },
-  csavart: { t: 'Csavart szeg', d: 'Csavarlemezes (helikális) vagy csavarmenetes acélszár, amelyet forgatva hajtanak be – injektálás nélkül. A jegyzet a szegtípusok között felsorolja; a gyakorlatban ritkább.', tag: 'forgatva behajtva' },
+  csavart: { t: 'Csavart szeg', d: 'Csavarlemezes (helikális) vagy csavarmenetes acélszár, amelyet forgatva hajtanak be – injektálás nélkül. A gyakorlatban ritkább.', tag: 'forgatva behajtva' },
 };
 register('szegtipus', (root) => {
   const { ctrls, viz } = shell(root, { out: false });
@@ -338,15 +338,15 @@ register('szegtipus', (root) => {
 /* ================================================================ 3. Hol alkalmazható? – kártyajáték */
 const SOILS = [
   { n: 'Kötött talaj', s: 'merev–kemény agyag, iszap', ok: true, e: 'Rövid ideig függőleges falban is megáll – ideális a szegezéshez.' },
-  { n: 'Szemcsés talaj', s: 'nedves homok, látszólagos kohézióval', ok: true, e: 'Alkalmazható, ha a fogás néhány napig megáll (az előadás szerint a talajnak 1–2,5 m-ig meg kell állnia).' },
-  { n: 'Mállott kőzet, lejtőtörmelék', s: '', ok: true, e: 'Alkalmazható (előadás, 44. dia).' },
+  { n: 'Szemcsés talaj', s: 'nedves homok, látszólagos kohézióval', ok: true, e: 'Alkalmazható, ha a fogás néhány napig megáll (a talajnak 1–2,5 m-ig meg kell állnia).' },
+  { n: 'Mállott kőzet, lejtőtörmelék', s: '', ok: true, e: 'Alkalmazható.' },
   { n: 'Heterogén, rétegzett talaj', s: '', ok: true, e: 'Alkalmazható – a szegezés jól igazítható a változó talajhoz.' },
-  { n: 'Kemény, köves agyag, puha kőzet', s: '', ok: true, e: 'Alkalmazható – de itt fúrt-injektált szegek kellenek (jegyzet).' },
+  { n: 'Kemény, köves agyag, puha kőzet', s: '', ok: true, e: 'Alkalmazható – de itt fúrt-injektált szegek kellenek.' },
   { n: 'Puha, plasztikus agyag', s: '', ok: false, e: 'Nem alkalmazható: nem áll meg a fogás, és a szegek mentén kúszik.' },
-  { n: 'Szerves talaj, tőzeg', s: '', ok: false, e: 'Nem alkalmazható (jegyzet, előadás).' },
+  { n: 'Szerves talaj, tőzeg', s: '', ok: false, e: 'Nem alkalmazható.' },
   { n: 'Laza és/vagy telített szemcsés talaj', s: '', ok: false, e: 'Nem alkalmazható: a kiemelt fogás azonnal leomlik, kifolyik.' },
   { n: 'Feltöltés', s: 'kőtörmelék, salak, pernye', ok: false, e: 'Nem alkalmazható: a törmelékes feltöltés nem áll meg, a fúrás is akadályozott.' },
-  { n: 'Görgeteges talaj', s: 'nagy kövek, görgetegek', ok: false, e: 'Nem alkalmazható (jegyzet): a fúrás, verés akadályba ütközik.' },
+  { n: 'Görgeteges talaj', s: 'nagy kövek, görgetegek', ok: false, e: 'Nem alkalmazható: a fúrás, verés akadályba ütközik.' },
   { n: 'Magas, áramló talajvíz', s: '', ok: false, e: 'Csak folyamatos víztelenítés mellett – a vízáramlás kimossa a falat.' },
 ];
 register('szegtalaj', (root) => {
@@ -384,7 +384,7 @@ register('szegtalaj', (root) => {
 
 /* ================================================================ 4. Szeg vagy horgony – erőeloszlás */
 register('szeghorgony', (root) => {
-  const { ctrls, viz } = shell(root, { out: false, foot: 'Szemléltető erőeloszlás (FHWA GEC 7 jellegábrája alapján, nem méretarányos): a szegben a húzóerő a csúszólap közelében a legnagyobb, a horgonyban a szabad szakaszon állandó.' });
+  const { ctrls, viz } = shell(root, { out: false, foot: 'Szemléltető erőeloszlás (jellegábra, nem méretarányos): a szegben a húzóerő a csúszólap közelében a legnagyobb, a horgonyban a szabad szakaszon állandó.' });
   const sT = seg(ctrls, { label: 'Elem', options: [{ v: 'szeg', t: 'Talajszeg' }, { v: 'horgony', t: 'Talajhorgony' }] });
   const sP = slider(ctrls, { label: 'Kiemelés / terhelés', min: 0, max: 100, step: 1, value: 70, unit: '%' });
   const box = h('div', { class: 'small' });
@@ -447,7 +447,7 @@ register('szeghorgony', (root) => {
 
 /* ================================================================ kvíz */
 defineQuiz('szegezes', 'Kvíz – talajszegezés', [
-  { q: 'Milyen magas függőleges szakaszokban (fogásokban) mélyítik a gödröt szegezésnél a jegyzet szerint?', a: ['90–180 cm-es szakaszokban', '3–5 m-es szakaszokban', '20–40 cm-es szakaszokban', 'egyben, a teljes mélységig'], c: 0, e: 'A talaj állékonyságától (kohéziójától) függően 90–180 cm-es függőleges szakaszokban.' },
+  { q: 'Milyen magas függőleges szakaszokban (fogásokban) mélyítik a gödröt szegezésnél?', a: ['90–180 cm-es szakaszokban', '3–5 m-es szakaszokban', '20–40 cm-es szakaszokban', 'egyben, a teljes mélységig'], c: 0, e: 'A talaj állékonyságától (kohéziójától) függően 90–180 cm-es függőleges szakaszokban.' },
   { q: 'Mekkora a szegek szükséges hossza egy H mélységű munkagödörnél?', a: ['0,6–1,2 H', '0,1–0,3 H', '2–3 H', 'mindig pontosan 6 m'], c: 0, e: 'A talaj függvényében 0,6–1,2 H.' },
   { q: 'Mi a lényegi különbség a talajszeg és a talajhorgony között?', a: ['A szeg nem feszített és teljes hosszán adja át az erőt; a horgony előfeszített, és csak a befogott szakaszán', 'A szeg mindig hosszabb, mint a horgony', 'A horgonyt nem injektálják', 'Nincs különbség, csak a név más'], c: 0, e: 'A horgony nem a teljes hosszán veszi fel az erőt, jóval nagyobb (átmérőjű és hosszú), és teherbírása legalább egy nagyságrenddel nagyobb.' },
   { q: 'Melyik talajban NEM alkalmazható a talajszegezés?', a: ['Puha, plasztikus agyagban', 'Kemény, kötött agyagban', 'Mállott kőzetben', 'Rétegzett, heterogén talajban'], c: 0, e: 'Puha, plasztikus agyagban, szerves talajban, törmelékes feltöltésben és görgeteges talajban nem alkalmazható.' },

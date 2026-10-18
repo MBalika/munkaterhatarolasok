@@ -247,7 +247,7 @@ register('fallabor', (root) => {
     sM.set(Math.abs(r.Mmax));
     let st = 'ok', title = '', msg = '';
     if (type === 'konzol') {
-      if (H > 6) { st = 'bad'; title = 'Túl mély a konzolos falhoz'; msg = 'A jegyzet szerint a befogott falak egyéb megtámasztás nélkül csak pár méteres (max. 4–6 m) kiemelésig állékonyak. Kell horgony, dúc vagy födém!'; }
+      if (H > 6) { st = 'bad'; title = 'Túl mély a konzolos falhoz'; msg = 'A befogott falak egyéb megtámasztás nélkül csak pár méteres (max. 4–6 m) kiemelésig állékonyak. Kell horgony, dúc vagy födém!'; }
       else if (H > 4) { st = 'warn'; title = 'A konzolos határ közelében'; msg = 'Konzolosan max. 4–6 m – és csak akkor, ha közvetlenül mellette nincs építmény. Nézd meg, mennyit csökken a befogás és a nyomaték egy horgonnyal!'; }
       else { title = 'Konzolos fal'; msg = `A fal a passzív földellenállás révén befogott; a talp körül fordul el (C pont). d = 1,2·d₀ = ${fmt(r.d, 1)} m.`; }
     } else if (type === 'egy-szabad') { title = 'Szabadon támaszkodó talp'; msg = 'Rövidebb fal, de nagyobb mezőnyomaték: a talp kissé elmozdulhat, a fal „két támaszú tartóként” dolgozik (horgony + passzív földellenállás).'; }
@@ -342,7 +342,7 @@ register('horgonyreszek', (root) => {
 
 /* ================================================================ 3. Horgonytervező */
 register('horgonytervezo', (root) => {
-  const { ctrls, viz, out } = shell(root, { foot: 'A csúszólapot a gödör aljától, 45° + φ/2 hajlással rajzoljuk (egyszerűsítés). A szabad szakasznak a csúszólapon túl még legalább max(1,5 m; H/5) távolságra kell nyúlnia (FHWA / Caltrans-gyakorlat), és a jegyzet szerint legalább 4 m-nek kell lennie. Szemléltető – a tényleges hosszat a kihúzódási teherbírás és a mély csúszólap (Kranz) vizsgálata adja.' });
+  const { ctrls, viz, out } = shell(root, { foot: 'A csúszólapot a gödör aljától, 45° + φ/2 hajlással rajzoljuk (egyszerűsítés). A szabad szakasznak a csúszólapon túl még legalább max(1,5 m; H/5) távolságra kell nyúlnia, és legalább 4 m-nek kell lennie. Szemléltető – a tényleges hosszat a kihúzódási teherbírás és a mély csúszólap (Kranz) vizsgálata adja.' });
   const sH = slider(ctrls, { label: 'Kiemelési mélység', sym: 'H', min: 4, max: 20, step: 0.5, value: 10, unit: 'm' });
   const sA = slider(ctrls, { label: 'Horgonysor mélysége', sym: 'a', min: 1, max: 8, step: 0.1, value: 2.5, unit: 'm' });
   const sAl = slider(ctrls, { label: 'Hajlásszög', sym: 'α', min: 10, max: 35, step: 1, value: 20, unit: '°', hint: 'Jellemzően 15–30° a vízszinteshez.' });
@@ -425,10 +425,10 @@ register('horgonytervezo', (root) => {
     sZ.set(zEnd);
     const msgs = [];
     let st = 'ok';
-    if (L > 30) { st = 'bad'; msgs.push('A horgony hosszabb 30 m-nél – a jegyzet szerint legfeljebb 25–30 m-es horgonyok készülnek. Több horgonysor vagy más megtámasztás kell.'); }
+    if (L > 30) { st = 'bad'; msgs.push('A horgony hosszabb 30 m-nél – legfeljebb 25–30 m-es horgonyok készülnek. Több horgonysor vagy más megtámasztás kell.'); }
     else if (L > 25) { st = 'warn'; msgs.push('25 m feletti horgonyhossz – a gyakorlati határ közelében.'); }
     if (Lb < 4 || Lb > 9) { st = st === 'bad' ? st : 'warn'; msgs.push('A befogott szakasz jellemzően 4–9 m; 9 m felett már alig nő a teherbírás.'); }
-    if (sAl.v < 15 || sAl.v > 30) { st = st === 'bad' ? st : 'warn'; msgs.push('A jegyzet szerint a horgonyok a vízszintessel jellemzően 15–30°-os szöget zárnak be.'); }
+    if (sAl.v < 15 || sAl.v > 30) { st = st === 'bad' ? st : 'warn'; msgs.push('A horgonyok a vízszintessel jellemzően 15–30°-os szöget zárnak be.'); }
     if (hit) { st = 'bad'; msgs.push('A horgony beleütközik a szomszéd pincéjébe! Meredekebb horgony, mélyebb horgonysor – vagy csőtámasz kell.'); }
     if (over > 0) msgs.push(`A horgony ${fmt(over, 1)} m-rel a szomszéd telek alá nyúlik – jogi kérdés (tulajdonosi hozzájárulás), és meglévő műtárgyakba ütközhet.`);
     vd.set(st, st === 'ok' ? (over > 0 ? 'Geometriailag rendben' : 'Rendben') : st === 'warn' ? 'Figyelem' : 'Így nem jó', msgs.length ? '<ul class="mt-ul">' + msgs.map((m) => `<li>${m}</li>`).join('') + '</ul>' : 'A befogott szakasz a csúszólapon túl kezdődik, és a horgony a saját telken marad.');
@@ -444,7 +444,7 @@ register('horgonyproba', (root) => {
   const sLf = slider(ctrls, { label: 'Szabad szakasz', sym: 'L<sub>f</sub>', min: 4, max: 20, step: 0.5, value: 9, unit: 'm' });
   const sLb = slider(ctrls, { label: 'Befogott szakasz', sym: 'L<sub>b</sub>', min: 4, max: 9, step: 0.5, value: 7, unit: 'm' });
   const sTd = slider(ctrls, { label: 'Tervezett horgonyerő', sym: 'T<sub>d</sub>', min: 200, max: 1200, step: 10, value: 600, unit: 'kN' });
-  const sLo = slider(ctrls, { label: 'Lekötés a tervezett erő', min: 80, max: 90, step: 1, value: 85, unit: '%-ára', hint: 'Jegyzet: 80–90%.' });
+  const sLo = slider(ctrls, { label: 'Lekötés a tervezett erő', min: 80, max: 90, step: 1, value: 85, unit: '%-ára', hint: 'Jellemzően 80–90%.' });
   const bGo = h('button', { type: 'button', class: 'btn btn-line btn-sm' }, '▶ Próbaterhelés indítása');
   ctrls.append(bGo);
   const W = 760, HH = 380;
@@ -489,7 +489,7 @@ register('horgonyproba', (root) => {
     txt(g, x0 - 50, y0 - hh - 12, 'P [kN]', 't-sm');
     // határvonalak
     const l80 = 0.8 * D.Fpk;
-    if (l80 < ymax) { svg('line', { x1: x0, y1: Y(l80), x2: x0 + w, y2: Y(l80), class: 's-bad', 'stroke-dasharray': '6 5', 'stroke-width': 1.2 }, g); txt(g, x0 + w - 4, Y(l80) - 5, '0,8·F_pk (FHWA vizsgálati határ)', 't-sm t-bad halo', 'end'); }
+    if (l80 < ymax) { svg('line', { x1: x0, y1: Y(l80), x2: x0 + w, y2: Y(l80), class: 's-bad', 'stroke-dasharray': '6 5', 'stroke-width': 1.2 }, g); txt(g, x0 + w - 4, Y(l80) - 5, '0,8·F_pk (vizsgálati határ)', 't-sm t-bad halo', 'end'); }
     svg('line', { x1: x0, y1: Y(sTd.v), x2: x0 + w, y2: Y(sTd.v), class: 's-muted', 'stroke-dasharray': '3 4' }, g);
     txt(g, x0 + 4, Y(sTd.v) - 5, 'T_d', 't-sm halo');
     // görbe a haladásig
@@ -525,7 +525,7 @@ register('horgonyproba', (root) => {
 
 /* ================================================================ 5. Acél csőtámasz: kihajlás + hőmérséklet */
 register('csotamasz', (root) => {
-  const { ctrls, viz, out } = shell(root, { foot: 'Szemléltető számítás (EN 1993-1-1 szerinti kihajlás, melegen hengerelt cső: „a” görbe, α = 0,21; γ<sub>M1</sub> = 1,0; csuklós végek, kihajlási hossz = L). A gátolt hőtágulásból: ΔN = α<sub>T</sub>·E·A·ΔT·b, α<sub>T</sub> = 1,2·10⁻⁵ 1/°C, b = gátoltság (CIRIA C580: merev fal + merev talaj ≈ 0,7, merev fal + gyenge talaj ≈ 0,5). Az önsúlyból adódó hajlítást itt nem vesszük figyelembe.' });
+  const { ctrls, viz, out } = shell(root, { foot: 'Szemléltető számítás (EN 1993-1-1 szerinti kihajlás, melegen hengerelt cső: „a” görbe, α = 0,21; γ<sub>M1</sub> = 1,0; csuklós végek, kihajlási hossz = L). A gátolt hőtágulásból: ΔN = α<sub>T</sub>·E·A·ΔT·b, α<sub>T</sub> = 1,2·10⁻⁵ 1/°C, b = gátoltság (merev fal + merev talaj ≈ 0,7, merev fal + gyenge talaj ≈ 0,5). Az önsúlyból adódó hajlítást itt nem vesszük figyelembe.' });
   const sL = slider(ctrls, { label: 'Dúchossz (gödörszélesség)', sym: 'L', min: 4, max: 40, step: 0.5, value: 18, unit: 'm' });
   const sD = slider(ctrls, { label: 'Csőátmérő', sym: 'D', min: 300, max: 1500, step: 10, value: 610, unit: 'mm' });
   const sTk = slider(ctrls, { label: 'Falvastagság', sym: 't', min: 8, max: 30, step: 0.5, value: 12.5, unit: 'mm' });
@@ -610,7 +610,7 @@ register('csotamasz', (root) => {
     oU.set(u * 100, u > 1 ? 'bad' : u > 0.85 ? 'warn' : 'ok');
     const m = [];
     if (u > 1) m.push('A dúc kihajlik! Nagyobb átmérő / falvastagság, jobb acél, rövidebb kihajlási hossz (közbenső alátámasztás) vagy sűrűbb dúckiosztás kell.');
-    if (sL.v > 26) m.push('25–28 m felett közbenső alátámasztás szükséges (előadás).');
+    if (sL.v > 26) m.push('25–28 m felett közbenső alátámasztás szükséges.');
     if (sL.v > 12) m.push(`${fmt(sL.v, 1)} m: a szállítható (jellemzően 12 m, különleges esetben 14–18 m-es) elemekből toldással állítják össze.`);
     if (c.dN > 0.15 * c.Nb && sL.v >= 10) m.push(`A hőmérsékleti többleterő a teherbírás ${fmt((c.dN / c.Nb) * 100, 0)}%-a – 10–15 m-nél hosszabb dúcnál erre méretezni kell.`);
     vd.set(u > 1 ? 'bad' : u > 0.85 ? 'warn' : 'ok', u > 1 ? 'Kihajlás!' : u > 0.85 ? 'Közel a határhoz' : 'Megfelel', m.length ? '<ul class="mt-ul">' + m.map((x) => `<li>${x}</li>`).join('') + '</ul>' : 'A dúc a földnyomásból és a felmelegedésből adódó erőt is biztonsággal viseli.');
@@ -718,13 +718,13 @@ register('topdown', (root) => {
 
 /* ================================================================ 7. Passzív hátrahorgonyzás – hol álljon a horgonyfal? */
 register('passziv', (root) => {
-  const { ctrls, viz, out } = shell(root, { foot: 'Elhelyezési szabály (pl. NAVFAC DM-7.2, Caltrans Trenching & Shoring Manual): a fő fal aktív éke és a horgonyfal passzív éke nem fedheti egymást. Itt a fő fal talppontjából 45° + φ/2, a horgonyfal alsó élétől 45° − φ/2 hajlású síkokat rajzolunk (biztonságos oldalon lévő egyszerűsítés). Az elmozdulás szemléltető, torzított.' });
+  const { ctrls, viz, out } = shell(root, { foot: 'Elhelyezési szabály: a fő fal aktív éke és a horgonyfal passzív éke nem fedheti egymást. Itt a fő fal talppontjából 45° + φ/2, a horgonyfal alsó élétől 45° − φ/2 hajlású síkokat rajzolunk (biztonságos oldalon lévő egyszerűsítés). Az elmozdulás szemléltető, torzított.' });
   const sH = slider(ctrls, { label: 'Kiemelési mélység', sym: 'H', min: 2, max: 8, step: 0.5, value: 5, unit: 'm' });
   const sDd = slider(ctrls, { label: 'A fő fal befogása', sym: 'd', min: 1, max: 6, step: 0.5, value: 3, unit: 'm' });
   const sPhi = slider(ctrls, { label: 'Belső súrlódási szög', sym: 'φ', min: 24, max: 40, step: 1, value: 30, unit: '°' });
   const sHa = slider(ctrls, { label: 'Horgonyfal magassága', sym: 'h<sub>a</sub>', min: 1.5, max: 4, step: 0.25, value: 2.5, unit: 'm' });
   const sL = slider(ctrls, { label: 'A horgonyfal távolsága', sym: 'L', min: 2, max: 20, step: 0.25, value: 7, unit: 'm' });
-  const sT = slider(ctrls, { label: 'A horgonyrúd mélysége', min: 0.8, max: 1.0, step: 0.05, value: 0.9, unit: 'm', d: 2, hint: 'Jegyzet: 0,8–1,0 m-re a felszín alatt, keskeny árokban.' });
+  const sT = slider(ctrls, { label: 'A horgonyrúd mélysége', min: 0.8, max: 1.0, step: 0.05, value: 0.9, unit: 'm', d: 2, hint: 'Jellemzően 0,8–1,0 m-re a felszín alatt, keskeny árokban.' });
   const bGo = h('button', { type: 'button', class: 'btn btn-line btn-sm' }, '▶ Kiemelés');
   ctrls.append(bGo);
   const W = 760, HH = 360;
@@ -796,7 +796,7 @@ register('passziv', (root) => {
 
 /* ================================================================ kvíz */
 defineQuiz('megtamasztas', 'Kvíz – megtámasztó szerkezetek', [
-  { q: 'Konzolosan (egyéb megtámasztás nélkül) kb. milyen kiemelési mélységig állékonyak a befogott munkatérhatároló falak a jegyzet szerint?', a: ['max. 4–6 m-ig', 'max. 1 m-ig', '15–20 m-ig', 'bármilyen mélységig, ha elég hosszú a fal'], c: 0, e: 'Csak pár méteres, max. 4–6 m-es kiemelésig – és csak ha közvetlenül mellettük nincs építmény.' },
+  { q: 'Konzolosan (egyéb megtámasztás nélkül) kb. milyen kiemelési mélységig állékonyak a befogott munkatérhatároló falak?', a: ['max. 4–6 m-ig', 'max. 1 m-ig', '15–20 m-ig', 'bármilyen mélységig, ha elég hosszú a fal'], c: 0, e: 'Csak pár méteres, max. 4–6 m-es kiemelésig – és csak ha közvetlenül mellettük nincs építmény.' },
   { q: 'Melyik NEM a munkatérhatároló falak négy statikai alaptípusa közül való?', a: ['Több szinten befogott, megtámasztás nélküli', 'Szabadon álló, befogott', 'Egy szinten megtámasztott, szabadon támaszkodó', 'Több szinten megtámasztott, szabadon támaszkodó'], c: 0, e: 'A négy típus: szabadon álló befogott; egy szinten megtámasztott szabadon támaszkodó; egy szinten megtámasztott befogott; több szinten megtámasztott szabadon támaszkodó.' },
   { q: 'Hol történik a talajhorgonyban az erőátadás a talajra?', a: ['A befogott (injektált) szakaszon, az aktív csúszólapon túl', 'A horgonyfejnél', 'A szabad szakasz teljes hosszán', 'Egyenletesen a horgony teljes hosszán'], c: 0, e: 'A szabad szakasz védőcsőben fut, nincs erőátadás; a befogott szakasz túlnyúlik az aktív csúszólapon.' },
   { q: 'Mekkora a talajhorgonyok jellemző hajlása és legnagyobb hossza?', a: ['15–30°, legfeljebb 25–30 m', '45–60°, legfeljebb 10 m', '0–5°, legfeljebb 50 m', '90°, a hossz nem korlátozott'], c: 0, e: 'A vízszintessel 15–30°-os hajlással, legfeljebb 25–30 m hosszal készülnek; a befogási szakasz 4–9 m.' },

@@ -154,7 +154,7 @@ function initYT() {
     const go = () => { frame.innerHTML = ''; frame.append(h('iframe', { src: `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0`, title, allow: 'autoplay; encrypted-media; picture-in-picture; fullscreen', allowfullscreen: true })); };
     frame.addEventListener('click', go);
     frame.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(); } });
-    el.append(frame, h('div', { class: 'yt-cap' }, h('b', {}, title), h('span', { html: `BME Építőipar · valós felvétel · <a href="https://www.youtube.com/watch?v=${id}" target="_blank" rel="noopener">megnyitás a YouTube-on ↗</a>` })));
+    el.append(frame, h('div', { class: 'yt-cap' }, h('b', {}, title)));
   });
 }
 

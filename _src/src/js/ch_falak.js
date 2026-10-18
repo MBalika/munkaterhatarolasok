@@ -44,7 +44,7 @@ const PLAN = {
   colH: { t: 'Hézagos cölöpfal', el: 'vb. cölöpök (CFA)', fill: 'boltozódó talaj', wat: ['bad', 'nem vízzáró'], cap: 'Cölöpök 20–60 cm-es (legfeljebb D) hézaggal; a talaj átboltozódik közöttük, a felületet kipergés ellen háló + lőttbeton védi. Hazánkban ez terjedt el leginkább.' },
   colE: { t: 'Érintkező cölöpfal', el: 'vb. cölöpök', fill: '– (tengelytáv = D)', wat: ['warn', 'nem vízzáró'], cap: 'Ha a talaj önmagában nem állékony (szemcsés talaj), de vízzárás nem kell, vagy statikailag sűrű kiosztás szükséges.' },
   colM: { t: 'Összemetsző cölöpfal', el: 'vasalt szekunder', fill: 'vasalatlan primer', wat: ['ok', 'vízzáró'], cap: 'Először a vasalatlan primer cölöpök, majd közéjük kb. 10–12 cm átfúrással a vasalt szekunder cölöpök. Csak minden második vasalt.' },
-  res: { t: 'Résfal', el: 'vb. panelek', fill: '– (folytonos fal)', wat: ['ok', 'vízzáró'], cap: 'Zagy alatt markolt, vasalt és betonozott panelek: merev, vízzáró fal, gyakran a végleges szerkezet része (lásd a mélyalapozásoknál).' },
+  res: { t: 'Résfal', el: 'vb. panelek', fill: '– (folytonos fal)', wat: ['ok', 'vízzáró'], cap: 'Zagy alatt markolt, vasalt és betonozott panelek: merev, vízzáró fal, gyakran a végleges szerkezet része.' },
 };
 register('falPlan', (root) => {
   const { ctrls, viz, out } = shell(root);
@@ -198,10 +198,10 @@ register('falMatrix', (root) => {
 
 /* ================================================================== 3. Berlini dúcolat építése */
 register('berliniBuild', (root) => {
-  const { ctrls, viz, out } = shell(root, { foot: 'Szabályok: a pallózás legkésőbb 1,25 m mélységben kezdődjön, utána a szabadon álló földfal magassága szemcsés talajban ≤ 0,5 m, merev kötött talajban ≤ 1,0 m (DIN 4124). A pallóvastagság tájékoztató (FHWA-táblázat szerint). A támasz akkor kerül be, amikor a kiemelés 0,5–0,8 m-rel a támaszszint alá ért.' });
+  const { ctrls, viz, out } = shell(root, { foot: 'Szabályok: a pallózás legkésőbb 1,25 m mélységben kezdődjön, utána a szabadon álló földfal magassága szemcsés talajban ≤ 0,5 m, merev kötött talajban ≤ 1,0 m (DIN 4124). A pallóvastagság tájékoztató. A támasz akkor kerül be, amikor a kiemelés 0,5–0,8 m-rel a támaszszint alá ért.' });
   const zS = slider(ctrls, { label: 'Kiemelési mélység', sym: 'z', min: 0, max: 7.5, step: 0.05, value: 2.6, unit: 'm', d: 2 });
   const play = h('button', { class: 'btn btn-line btn-sm', type: 'button' }, '▶ Kiemelés lejátszása'); ctrls.append(play);
-  const sS = slider(ctrls, { label: 'Tartótávolság', sym: 's', min: 1, max: 3, step: 0.25, value: 2, unit: 'm', d: 2, hint: 'Jegyzet: 1–3 m, általában 2 m.' });
+  const sS = slider(ctrls, { label: 'Tartótávolság', sym: 's', min: 1, max: 3, step: 0.25, value: 2, unit: 'm', d: 2, hint: '1–3 m, általában 2 m.' });
   const soil = seg(ctrls, { label: 'Talaj', options: [{ v: 's', t: 'szemcsés (≤ 0,5 m)' }, { v: 'k', t: 'kötött (≤ 1,0 m)' }], value: 's' });
   const sup = seg(ctrls, { label: 'Megtámasztás', options: [{ v: 'k', t: 'konzol' }, { v: 'd', t: 'dúc' }, { v: 'h', t: 'horgony' }], value: 'h' });
   const late = toggle(ctrls, { label: 'Hiba: a pallózás lemarad', value: false });
@@ -279,7 +279,7 @@ register('berliniBuild', (root) => {
     st.z.set(z); st.zl.set(zl); st.op.set(free, free > open + 1e-6 && z > 1.25 ? 'bad' : 'ok'); st.n.set(Math.round(10 / s) + 1);
     st.t.set(span <= 1.5 ? '≈ 5 cm' : span <= 2.4 ? '≈ 5–7,5 cm' : '≈ 7,5–10 cm');
     if (late.v && free > open + 1e-6 && z > 1.25) vd.set('bad', 'Omlásveszély!', `A pallózás ${fmt(free, 2)} m-rel lemaradt. Megengedett: ${soil.v === 's' ? '0,5' : '1,0'} m – a földfal kiomolhat, a munkást maga alá temetheti.`);
-    else if (sup.v === 'k' && z > 6) vd.set('bad', 'Konzolként túl mély', 'A befogott acéltartók konzolosan csak pár méteres, max. 4–6 m-es kiemelésig állékonyak (jegyzet 1.9). Itt dúc vagy horgony kell.');
+    else if (sup.v === 'k' && z > 6) vd.set('bad', 'Konzolként túl mély', 'A befogott acéltartók konzolosan csak pár méteres, max. 4–6 m-es kiemelésig állékonyak. Itt dúc vagy horgony kell.');
     else if (sup.v === 'k' && z > 4) vd.set('warn', 'A konzolos működés határán', 'Konzolosan kb. 4–6 m-ig. Mélyebb gödörnél a tartókat dúccal vagy horgonnyal kell gyámolítani.');
     else if (sup.v !== 'k' && z > A + 0.8 && !supOn) vd.set('warn', 'Ideje beépíteni a támaszt', '');
     else vd.set('ok', 'Rendben halad a munka', `A pallózás lépést tart a kiemeléssel (szabad sáv ≤ ${soil.v === 's' ? '0,5' : '1,0'} m). ${sup.v === 'h' ? 'A horgonyzás „tiszta”, dúcmentes munkateret ad.' : sup.v === 'd' ? 'A dúcok a gödörben akadályozzák a munkát, de nem nyúlnak a szomszéd telek alá.' : ''}`);
@@ -310,7 +310,7 @@ const FAM = {
 register('hezagosFam', (root) => {
   const { ctrls, viz, out } = shell(root);
   const s = seg(ctrls, { label: 'Változat', options: Object.entries(FAM).map(([v, o]) => ({ v, t: o.t })), value: 'berlin', vert: true });
-  ctrls.append(h('p', { class: 'ctl-hint', html: 'Közös elv: hézagosan álló függőleges teherhordó elemek, köztük kitöltés. A terhet a tartó / cölöp / barett viszi a támaszokra, a kitöltés csak a mezőt hidalja át. (Előadás, 32. dia)' }));
+  ctrls.append(h('p', { class: 'ctl-hint', html: 'Közös elv: hézagosan álló függőleges teherhordó elemek, köztük kitöltés. A terhet a tartó / cölöp / barett viszi a támaszokra, a kitöltés csak a mezőt hidalja át.' }));
   const fig = figure(viz, 640, 230);
   const s1 = stat(out, { label: 'Függőleges elem' }), s2 = stat(out, { label: 'Kitöltés' }), s3 = stat(out, { label: 'Elemtávolság' });
   const draw = () => {
@@ -344,7 +344,7 @@ const STEEL = [
   { v: 'c114', t: 'cső Ø114,3', d: 114.3 }, { v: 'c168', t: 'cső Ø168,3', d: 168.3 }, { v: 'c219', t: 'cső Ø219,1', d: 219.1 },
 ];
 register('jetPlan', (root) => {
-  const { ctrls, viz, out } = shell(root, { foot: 'A falvastagság a két oszlop metszésvonalán (a „torokban”) a legkisebb: t = 2·√(R² − (s/2)²). Az acéltag befoglaló körének átmérőjét vetjük össze a fúrás tengelyének 15–20 cm-es környezetével (jegyzet). Szemléltető ábra.' });
+  const { ctrls, viz, out } = shell(root, { foot: 'A falvastagság a két oszlop metszésvonalán (a „torokban”) a legkisebb: t = 2·√(R² − (s/2)²). Az acéltag befoglaló körének átmérőjét vetjük össze a fúrás tengelyének 15–20 cm-es környezetével. Szemléltető ábra.' });
   const pre = seg(ctrls, { label: 'Talaj (előbeállítás)', options: [{ v: 'a', t: 'agyag' }, { v: 'h', t: 'homok' }, { v: 'k', t: 'kavics' }], value: 'h' });
   const dS = slider(ctrls, { label: 'Oszlopátmérő', sym: 'D', min: 60, max: 120, step: 5, value: 90, unit: 'cm', d: 0, hint: 'Talajkörnyezettől függően 60–120 cm.' });
   const sS = slider(ctrls, { label: 'Osztástávolság', sym: 's', min: 40, max: 135, step: 5, value: 75, unit: 'cm', d: 0, hint: 'Vízzáráshoz: s = D − (10–20 cm).' });
@@ -398,7 +398,7 @@ register('jetPlan', (root) => {
     const fit = db <= 150 ? 'ok' : db <= 200 ? 'warn' : 'bad';
     st.s.set(fit === 'ok' ? 'igen' : fit === 'warn' ? 'határeset' : 'nem fér be', fit);
     if (a <= 0) vd.set('bad', 'Hézagos oszlopsor – nem vízzáró', 'Az oszlopok nem metszik egymást: a víz és a talaj a hézagokon át befolyik a gödörbe.');
-    else if (a < 10) vd.set('warn', 'Kevés az átfedés', 'Az átmérő talajfüggő és a fúrás sosem pontosan függőleges – ekkora átfedés mélyebben elfogyhat. A jegyzet szerint D − 10–20 cm osztás kell.');
+    else if (a < 10) vd.set('warn', 'Kevés az átfedés', 'Az átmérő talajfüggő és a fúrás sosem pontosan függőleges – ekkora átfedés mélyebben elfogyhat. Az osztás D − 10–20 cm legyen.');
     else if (a > 25) vd.set('warn', 'Vízzáró, de pazarló', 'A túl sűrű osztás sok oszlopot, sok iszapot és költséget jelent.');
     else vd.set(fit === 'bad' ? 'warn' : 'ok', fit === 'bad' ? 'Vízzáró fal – de az acéltag nem fér be' : 'Kvázi vízzáró fal', fit === 'bad' ? `A ${sd.t} befoglaló köre ${fmt(db / 10, 1)} cm: nagyobb a tengely 15–20 cm-es környezeténél. A még folyékony, sűrű jetelt talajba csak korlátos méretű acél süllyeszthető – kisebb szelvény vagy cső kell.` : `Átfedés ${a} cm. Az acéltagokat szilárd talajbeton veszi körül: nem kell utólagos furatkitöltés, összemetsző oszlopoknál pallózás sem.`);
   };
@@ -408,8 +408,8 @@ register('jetPlan', (root) => {
 /* ================================================================== 6. Zagyfal boltozódása */
 register('zagyArch', (root) => {
   const { ctrls, viz, out } = shell(root, { foot: '<b>Szemléltető modell:</b> parabolikus nyomott ív a két acélgerenda öve között, ívvastagság = falvastagság / 2, nyílmagasság = falvastagság / 2; σ = p·L² / (2·t²). Terhelés: nyugalmi földnyomás (K = 0,5) + víznyomás, talajvíz −2 m-en. Biztonsági tényező 1,5. Tervezésre nem alkalmas.' });
-  const LS = slider(ctrls, { label: 'Gerendatávolság', sym: 'L', min: 1, max: 3, step: 0.1, value: 1.6, unit: 'm', d: 1, hint: 'Jegyzet: jellemzően 1–2 m.' });
-  const tS = slider(ctrls, { label: 'Falvastagság', sym: 't', min: 0.4, max: 0.8, step: 0.05, value: 0.6, unit: 'm', d: 2, hint: 'Előadás: min. 40 cm; gyakori a 60 cm.' });
+  const LS = slider(ctrls, { label: 'Gerendatávolság', sym: 'L', min: 1, max: 3, step: 0.1, value: 1.6, unit: 'm', d: 1, hint: 'Jellemzően 1–2 m.' });
+  const tS = slider(ctrls, { label: 'Falvastagság', sym: 't', min: 0.4, max: 0.8, step: 0.05, value: 0.6, unit: 'm', d: 2, hint: 'Min. 40 cm; gyakori a 60 cm.' });
   const zS = slider(ctrls, { label: 'Vizsgált mélység', sym: 'z', min: 2, max: 10, step: 0.5, value: 6, unit: 'm', d: 1 });
   const fc = seg(ctrls, { label: '28 napos szilárdság', options: [{ v: 0.5, t: '0,5 MPa' }, { v: 1.0, t: '1,0 MPa' }, { v: 1.4, t: '1,4 MPa' }], value: 1.0 });
   const fig = figure(viz, 640, 290);
@@ -455,9 +455,9 @@ register('zagyCheck', (root) => {
   const { ctrls, viz } = shell(root, { out: false });
   const gaz = ['Magas talajvízzel érintett terület', 'Kb. 7–8 m mély, ideiglenes munkatér', 'A (kvázi) vízzáró réteg lényegesen mélyebben van, mint a fal statikailag szükséges talpa', 'A fal bontása (később) szükséges'];
   const fel = ['A megtámasztott oldalon nincs jelentős felszíni terhelés vagy süllyedésre érzékeny szerkezet', 'A talaj résállékonyság szempontjából kedvező'];
-  ctrls.append(h('span', { class: 'ctl-lab' }, 'Mikor gazdaságos? (előadás, 37. dia)'));
+  ctrls.append(h('span', { class: 'ctl-lab' }, 'Mikor gazdaságos?'));
   const g = gaz.map((t, i) => toggle(ctrls, { label: t, value: i < 2 }));
-  ctrls.append(h('span', { class: 'ctl-lab', style: { marginTop: '8px' } }, 'Feltételek (jegyzet 1.5)'));
+  ctrls.append(h('span', { class: 'ctl-lab', style: { marginTop: '8px' } }, 'Feltételek'));
   const f = fel.map((t) => toggle(ctrls, { label: t, value: true }));
   const vd = verdict(viz);
   const box = h('div', { class: 'zc-vis' }); viz.prepend(box);
@@ -616,7 +616,7 @@ register('dsmSeq', (root) => {
           T(fg, x + 18, yE0 + 40, st === 1 ? '↓ a vágókar lemerül' : '→ oldalirányú haladás', 't-lab halo');
         }
       }
-      T(fig, W - 8, yG + depth * kz - 4, m === 'csm' ? 'pl. 14,5 m mély panel ≈ 47 perc (Bauer-napló)' : 'mélység: gép- és talajfüggő', 't-sm halo', { 'text-anchor': 'end' });
+      T(fig, W - 8, yG + depth * kz - 4, m === 'csm' ? 'pl. 14,5 m mély panel ≈ 47 perc (gépnapló)' : 'mélység: gép- és talajfüggő', 't-sm halo', { 'text-anchor': 'end' });
     } else {
       // kész fal + kiemelés
       if (st === 6) {
@@ -650,7 +650,7 @@ const PROF = [
   { v: 'AS500', t: 'AS 500 (egyenes)', ty: 'S', b: 500, h: 0, tf: 12.0, m: null, W: null },
 ];
 register('szadProfile', (root) => {
-  const { ctrls, viz, out } = shell(root, { foot: 'Adatok: ArcelorMittal szádpalló-katalógus (EN 10248). A szelvény nevében lévő szám ≈ W / 100 (cm³/m). A méretezés itt csak rugalmas hajlítási ellenőrzés: W<sub>szüks</sub> = M / f<sub>y</sub> – a valóságban az EN 1993-5 szerinti (pl. U-pallóknál a zárbeli nyírás miatti csökkentő) tényezők, a horpadás és az alakváltozás is számít. Szemléltető.' });
+  const { ctrls, viz, out } = shell(root, { foot: 'A szelvény nevében lévő szám ≈ W / 100 (cm³/m). A méretezés itt csak rugalmas hajlítási ellenőrzés: W<sub>szüks</sub> = M / f<sub>y</sub> – a valóságban az EN 1993-5 szerinti (pl. U-pallóknál a zárbeli nyírás miatti csökkentő) tényezők, a horpadás és az alakváltozás is számít. Szemléltető.' });
   const s = seg(ctrls, { label: 'Szelvény', options: PROF.map((p) => ({ v: p.v, t: p.t })), value: 'AU14' });
   const M = slider(ctrls, { label: 'Hajlítónyomaték a falban', sym: 'M', min: 50, max: 1600, step: 10, value: 420, unit: 'kNm/m', d: 0 });
   const fy = seg(ctrls, { label: 'Acélminőség', options: [{ v: 240, t: 'S240GP' }, { v: 355, t: 'S355GP' }, { v: 430, t: 'S430GP' }], value: 355 });
@@ -760,7 +760,7 @@ register('szadStaged', (root) => {
 
 /* ================================================================== 10. Rezgés a lehajtáskor */
 register('szadVibe', (root) => {
-  const { ctrls, viz, out } = shell(root, { foot: 'Becslés: TRL 429 (Hiller & Crabb, 2000) tapasztalati képletei, a BS 5228-2 is ezeket használja. Vibrálás: v = k<sub>v</sub> / x<sup>1,3</sup> (k<sub>v</sub> = 60 / 126 / 266 – 50 / 33 / 5 % túllépési valószínűség). Verés: v = k<sub>p</sub>·√W / r<sup>1,3</sup> (W: ütésenkénti energia, J). Határértékek: DIN 4150-3, rövid idejű rezgés, alapozás, 10–50 Hz. Szemléltető – a valós helyzetet rezgésméréssel kell ellenőrizni.' });
+  const { ctrls, viz, out } = shell(root, { foot: 'Becslés: a BS 5228-2 tapasztalati képletei. Vibrálás: v = k<sub>v</sub> / x<sup>1,3</sup> (k<sub>v</sub> = 60 / 126 / 266 – 50 / 33 / 5 % túllépési valószínűség). Verés: v = k<sub>p</sub>·√W / r<sup>1,3</sup> (W: ütésenkénti energia, J). Határértékek: DIN 4150-3, rövid idejű rezgés, alapozás, 10–50 Hz. Szemléltető – a valós helyzetet rezgésméréssel kell ellenőrizni.' });
   const meth = seg(ctrls, { label: 'Lehajtás', options: [{ v: 'vib', t: 'vibrálás' }, { v: 'ver', t: 'verés' }, { v: 'saj', t: 'sajtolás' }], value: 'vib' });
   const xS = slider(ctrls, { label: 'Távolság a szomszéd épülettől', sym: 'x', min: 2, max: 60, step: 0.5, value: 12, unit: 'm', d: 1 });
   const WS = slider(ctrls, { label: 'Ütési energia (verés)', sym: 'W', min: 10, max: 120, step: 5, value: 40, unit: 'kJ', d: 0 });
@@ -781,9 +781,9 @@ register('szadVibe', (root) => {
     for (const v of [0.1, 1, 10, 100]) { L(fig, l, sy(v), r, sy(v), 'stroke:var(--line);stroke-width:1'); T(fig, l - 6, sy(v) + 4, String(v).replace('.', ','), 't-sm', { 'text-anchor': 'end' }); }
     for (const v of [2, 5, 10, 20, 50, 100]) { L(fig, sx(v), t, sx(v), b, 'stroke:var(--line);stroke-width:1'); T(fig, sx(v), b + 16, v + ' m', 't-sm', { 'text-anchor': 'middle' }); }
     T(fig, l, 12, 'rezgéssebesség v (mm/s)', 't-sm');
-    // jegyzet: 20–30 m
+    // 20–30 m
     R(fig, sx(20), t, sx(30) - sx(20), b - t, 'f-acc', { opacity: 0.12 });
-    T(fig, sx(25), t + 14, 'jegyzet: 20–30 m-re is elhat', 't-sm t-acc', { 'text-anchor': 'middle' });
+    T(fig, sx(25), t + 14, '20–30 m-re is elhat', 't-sm t-acc', { 'text-anchor': 'middle' });
     // határsáv
     R(fig, l, sy(lim[1]), r - l, sy(lim[0]) - sy(lim[1]), 'f-bad', { opacity: 0.13 });
     L(fig, l, sy(lim[0]), r, sy(lim[0]), 'stroke:var(--bad);stroke-width:1.5;stroke-dasharray:6 4');
@@ -830,7 +830,7 @@ const MAT = {
   acel: { t: 'Acél szádfal', kg: 187, col: 'f-steel', txt: ['A leggyakoribb, különösen ideiglenes munkagödör-határoláshoz.', 'Könnyen verhető, visszahúzható, vízzáró képessége a legjobb.', 'Egyenes, félhullám (U, Z) vagy teljes hullám szelvények; hazánkban Larssen és Hoesch.', 'Végleges alkalmazásnál külön korrózióvédelmi előírások.'] },
 };
 register('szadAnyag', (root) => {
-  const { ctrls, viz } = shell(root, { out: false, foot: 'Tömeg: egy 6 m hosszú, 30 cm széles palló, <b>szemléltető számítás</b> – PVC: 9 kg/m² (jegyzet); acél: AU 14, 104 kg/m²; fa: 10 cm vastag fenyő, ~600 kg/m³; vasbeton: 25 cm vastag, ~2500 kg/m³.' });
+  const { ctrls, viz } = shell(root, { out: false, foot: 'Tömeg: egy 6 m hosszú, 30 cm széles palló, <b>szemléltető számítás</b> – PVC: 9 kg/m²; acél: AU 14, 104 kg/m²; fa: 10 cm vastag fenyő, ~600 kg/m³; vasbeton: 25 cm vastag, ~2500 kg/m³.' });
   const s = seg(ctrls, { label: 'Anyag', options: Object.entries(MAT).map(([v, o]) => ({ v, t: o.t.replace(' szádfal', '') })), value: 'pvc', vert: true });
   const card = h('div', { class: 'card flat' }); ctrls.append(card);
   const fig = figure(viz, 640, 300);
@@ -916,7 +916,7 @@ register('colopPlan', (root) => {
     } else {
       const a = -g;
       st.ty.set('összemetsző'); st.g.set(a, a >= 8 && a <= 15 ? 'ok' : 'warn'); st.w.set('vízzáró', 'ok');
-      vd.set(a >= 8 && a <= 15 ? 'ok' : 'warn', 'Összemetsző cölöpfal', a < 8 ? `Csak ${a} cm átfedés – a fúrás ferdesége miatt mélyebben szétnyílhat. A jegyzet szerint kb. 10–12 cm átfúrás.` : a > 15 ? `${a} cm átfedés – vízzáró, de sok a „levágott” beton: gazdaságtalan.` : 'Először a vasalatlan primer (P) cölöpök, majd 10–12 cm átfúrással a vasalt szekunder (S) cölöpök. Csak minden második vasalt – a résfalhoz képest csak speciális esetben gazdaságos.');
+      vd.set(a >= 8 && a <= 15 ? 'ok' : 'warn', 'Összemetsző cölöpfal', a < 8 ? `Csak ${a} cm átfedés – a fúrás ferdesége miatt mélyebben szétnyílhat. Kb. 10–12 cm átfúrás szükséges.` : a > 15 ? `${a} cm átfedés – vízzáró, de sok a „levágott” beton: gazdaságtalan.` : 'Először a vasalatlan primer (P) cölöpök, majd 10–12 cm átfúrással a vasalt szekunder (S) cölöpök. Csak minden második vasalt – a résfalhoz képest csak speciális esetben gazdaságos.');
     }
   };
   [dS, sS, gw, jet, fv].forEach((c) => c.on(draw)); draw();
@@ -974,14 +974,14 @@ register('colopVert', (root) => {
 
 /* ================================================================== kvíz */
 defineQuiz('falak', 'Kvíz – munkatérhatároló falak', [
-  { q: 'Milyen távolságban helyezik el általában a berlini dúcolat acél I-tartóit?', a: ['0,5–1 m-enként', '1–3 m-enként, általában 2 m-re', '4–6 m-enként', 'mindig pontosan 3 m-re'], c: 1, e: 'A jegyzet szerint 1–3 m-re, általában 2 m-re; sűrűbb kiosztást nagyobb terhelés indokolhat.' },
+  { q: 'Milyen távolságban helyezik el általában a berlini dúcolat acél I-tartóit?', a: ['0,5–1 m-enként', '1–3 m-enként, általában 2 m-re', '4–6 m-enként', 'mindig pontosan 3 m-re'], c: 1, e: '1–3 m-re, általában 2 m-re; sűrűbb kiosztást nagyobb terhelés indokolhat.' },
   { q: 'Miért helyezik ma inkább furatba (mint verik) a berlini dúcolat tartóit?', a: ['Mert így vízzáró lesz a fal', 'Zajvédelmi okból – és így a veréssel nehezen átjárható rétegek sem okoznak gondot', 'Mert a furatban nem kell befogni', 'Mert így nem kell pallózni'], c: 1, e: 'Zajvédelem, és a nehezen átverhető rétegek elkerülése. A furatot – különösen a kiemelési szint alatt – megfelelően ki kell tölteni.' },
   { q: 'Mekkora osztástávolság biztosítja a jet-grouting fal vízzárását?', a: ['Az átmérőnél 10–20 cm-rel nagyobb', 'Az átmérővel azonos', 'Az átmérőnél 10–20 cm-rel kisebb', 'Az átmérő fele'], c: 2, e: 'Az átmérőnél 10–20 cm-rel kisebb osztás adja az átfedést – így kvázi vízzáró fal készíthető.' },
-  { q: 'Miért korlátos a jet-grouting falba helyezhető acéltag mérete?', a: ['Mert a jetelt talaj szilárdulásáig igen sűrű folyadék – csak a fúrás tengelyének kb. 15–20 cm-es környezete fogadja be', 'Mert a jet-oszlop átmérője legfeljebb 30 cm', 'Mert az acél korrodál a cementben', 'Mert a szabvány tiltja a nagy szelvényeket'], c: 0, e: 'A jegyzet szerint a fúrószárral átjárt függély és annak 15–20 cm-es környezete alkalmas az acéltag befogadására – függetlenül az oszlop méretétől.' },
+  { q: 'Miért korlátos a jet-grouting falba helyezhető acéltag mérete?', a: ['Mert a jetelt talaj szilárdulásáig igen sűrű folyadék – csak a fúrás tengelyének kb. 15–20 cm-es környezete fogadja be', 'Mert a jet-oszlop átmérője legfeljebb 30 cm', 'Mert az acél korrodál a cementben', 'Mert a szabvány tiltja a nagy szelvényeket'], c: 0, e: 'A fúrószárral átjárt függély és annak 15–20 cm-es környezete alkalmas az acéltag befogadására – függetlenül az oszlop méretétől.' },
   { q: 'Mi adja az erősített önszilárduló zagyfal vízzárását és mi a teherbírását?', a: ['Mindkettőt a beton', 'A vízzárást a megszilárdult zagy, a teherbírást az 1–2 m-enként elhelyezett acélszelvények', 'A vízzárást az acél, a teherbírást a zagy', 'A vízzárást fólia, a teherbírást horgonyok'], c: 1, e: 'A cementtartalmú zagy megszilárdulva vízzáró, de csak 0,5–1,4 MPa szilárdságú – boltozódva adja át a terhet az acélszelvényeknek.' },
   { q: 'Melyik állítás igaz az acél szádfalra?', a: ['Csak végleges szerkezetként használható', 'Hornyos kapcsolata miatt vízzáró lehet, ideiglenes falként visszahúzható és újra felhasználható', 'Csak sajtolással lehet lehajtani', 'Rezgése legfeljebb 2–3 m-re hat el'], c: 1, e: 'A zárak (hornyok) miatt vízzáró, ideiglenes és végleges is lehet; a lehajtás rezgései 20–30 m-re is elhathatnak.' },
   { q: 'Hol van a zár egy U (Larssen) szádpallóból készült falban?', a: ['A külső övlemezeken', 'A fal középsíkjában, a semleges tengelyen', 'A gerinc közepén, a fal felületén', 'Nincs zár, hegesztik'], c: 1, e: 'U-pallóknál a zár a semleges tengelyen van (ezért kell a dupla pallók sajtolása), Z-pallóknál a külső övlemezeken.' },
-  { q: 'Mekkora a hézagos cölöpfal cölöpközének jellemző mérete a jegyzet szerint?', a: ['5–10 cm', '20–60 cm, de legfeljebb a cölöpátmérő', '1–2 m', 'pontosan a cölöpátmérő kétszerese'], c: 1, e: 'A vállalható hézag a talaj állékonyságától, átboltozódási képességétől függ: jellemzően 20–60 cm, legfeljebb D.' },
+  { q: 'Mekkora a hézagos cölöpfal cölöpközének jellemző mérete?', a: ['5–10 cm', '20–60 cm, de legfeljebb a cölöpátmérő', '1–2 m', 'pontosan a cölöpátmérő kétszerese'], c: 1, e: 'A vállalható hézag a talaj állékonyságától, átboltozódási képességétől függ: jellemzően 20–60 cm, legfeljebb D.' },
   { q: 'Összemetsző cölöpfalnál melyik cölöpök készülnek először?', a: ['A vasalt cölöpök', 'A nem vasalt (primer) cölöpök, majd közéjük kb. 10–12 cm átfúrással a vasaltak', 'Mindegy, tetszőleges sorrendben', 'Először a fejgerenda'], c: 1, e: 'Először a vasalatlan cölöpök, majd közéjük – kb. 10–12 cm-t átfúrva – a vasalt, nyomaték felvételére is alkalmas cölöpök. Csak minden második vasalt.' },
   { q: 'Melyik fal NEM alkalmas talajvíz alatti munkagödör vízzáró határolására?', a: ['Összemetsző cölöpfal', 'Acél szádfal', 'Berlini dúcolat', 'Erősített mélykevert fal'], c: 2, e: 'A berlini dúcolat pallói között átszivárog a víz – csak talajvíz felett vagy víztelenítéssel használható.' },
 ]);

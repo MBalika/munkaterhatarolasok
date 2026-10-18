@@ -185,7 +185,7 @@ const TECH = [
   ['szad', 2, 'Acél szádfal', 'Zárakkal kapcsolt, vízzáró, visszahúzható', '#szadfal', '08'],
   ['szadanyag', 2, 'Fa, vb., műanyag szádfal', 'Végleges partfalak, kikötők', '#szadanyag', '09'],
   ['colop', 2, 'Cölöpfal', 'Hézagos, érintkező, összemetsző', '#colopfal', '10'],
-  ['resfal', 2, 'Réselt fal (résfal)', 'Lásd a mélyalapozásoknál', '#resfal', ''],
+  ['resfal', 2, 'Réselt fal (résfal)', 'Merev, vízzáró, gyakran végleges', '#resfal', ''],
   ['szeg', 3, 'Talajszegezés', 'Szegek + háló + lőttbeton, lépcsőnként', '#szegezes', '11'],
   ['horgony', 3, 'Talajhorgony', 'Feszített, injektált – tiszta munkatér', '#horgony', '12'],
   ['cso', 3, 'Acél csőtámasz', 'Szemközti falak összetámasztása', '#csotamasz', '13'],
@@ -308,10 +308,10 @@ register('rezsu', (root) => {
 
 defineQuiz('alapok', 'Kvíz – alapok', [
   { q: 'Mi a különbség az alapárok és a munkaárok között?', a: ['Az alapárok egy sávalap, a munkaárok egy egész létesítmény (pl. közmű) számára készül', 'A munkaárok mindig mélyebb 6 m-nél', 'Nincs különbség, a kettő szinonima', 'Az alapárok mindig rézsűs, a munkaárok mindig dúcolt'], c: 0, e: 'Alaptest helyén alapárok/alapgödör, egész építmény számára munkaárok/munkagödör. A munkaárok keskeny (jellemzően 1–3 m), vonalas létesítményekhez.' },
-  { q: 'Melyik NEM szerepel a jegyzetben a munkagödör nagyságát meghatározó tényezők között?', a: ['Az építmény méretei', 'A közlekedési, szállítási igények', 'A víztelenítési igények', 'A talaj belső súrlódási szöge'], c: 3, e: 'A gödör nagyságát az építmény méretei, a közlekedési-szállítási igények és a víztelenítési igények határozzák meg. A talaj tulajdonságai (pl. a súrlódási szög) a határolás <i>módját</i> befolyásolják.' },
+  { q: 'Melyik NEM tartozik a munkagödör nagyságát meghatározó tényezők közé?', a: ['Az építmény méretei', 'A közlekedési, szállítási igények', 'A víztelenítési igények', 'A talaj belső súrlódási szöge'], c: 3, e: 'A gödör nagyságát az építmény méretei, a közlekedési-szállítási igények és a víztelenítési igények határozzák meg. A talaj tulajdonságai (pl. a súrlódási szög) a határolás <i>módját</i> befolyásolják.' },
   { q: 'Melyik a négy egyensúlyi elv egyike?', a: ['Hátrahorgonyzás a megtámasztandó földtömeg mögé', 'A talaj felfagyasztása mindig', 'A talajvíz megemelése', 'A gödör lefedése fóliával'], c: 0, e: 'Belső megtámasztás, befogás, saját vagy bevont súly, hátrahorgonyzás – és ezek kombinációi.' },
   { q: 'Kohéziómentes szemcsés talajban mekkora lehet legfeljebb a rézsű hajlásszöge?', a: ['A belső súrlódási szög (β ≤ φ)', '45° + φ/2', 'Bármekkora, ha a rézsű rövid', '90°, ha nincs talajvíz'], c: 0, e: 'Kohéziómentes talajban a rézsűhajlás nem lehet nagyobb a belső súrlódási szögnél. A pontos értéket állékonysági vizsgálat adja.' },
-  { q: 'Milyen magasság felett célszerű a rézsűbe padkát építeni a jegyzet szerint?', a: ['3–5 m felett', '0,5 m felett', '20 m felett', 'Soha nem célszerű'], c: 0, e: 'Magasabb, 3–5 m-nél nagyobb rézsűnél padka beépítése célszerű.' },
+  { q: 'Milyen magasság felett célszerű a rézsűbe padkát építeni?', a: ['3–5 m felett', '0,5 m felett', '20 m felett', 'Soha nem célszerű'], c: 0, e: 'Magasabb, 3–5 m-nél nagyobb rézsűnél padka beépítése célszerű.' },
   { q: 'Mekkora felszíni terhelés vehető figyelembe a rézsű méretezésénél szabvány szerint (minimum)?', a: ['10 kPa', '1 kPa', '100 kPa', '0 kPa, mert tilos deponálni'], c: 0, e: 'Célszerű előírni, hogy a szakadólapon belül ne legyen deponálás, ugyanakkor a méretezésben min. 10 kPa felszíni teher figyelembe vehető.' },
   { q: 'Mi igaz a végleges munkatérhatárolásra?', a: ['Az építmény része lesz (pl. mélygarázs, aluljáró, alagút)', 'Mindig fából készül', 'Az építmény elkészülte után elbontják', 'Csak rézsűs lehet'], c: 0, e: 'Az ideiglenes határolás szerepe a felszín alatti építmény elkészülte után megszűnik; a végleges az építmény része lesz.' },
 ]);

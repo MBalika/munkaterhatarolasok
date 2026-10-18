@@ -1,5 +1,5 @@
 // 3D gödörtervező – városi telek kivágott talajtömbbel, választható fal + megtámasztás,
-// építési fázisokkal és a jegyzet szabályain alapuló ellenőrző listával. Szemléltető modell.
+// építési fázisokkal és szabályalapú ellenőrző listával. Szemléltető modell.
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { mergeGeometries } from 'three/examples/jsm/utils/BufferGeometryUtils.js';
@@ -112,7 +112,7 @@ function evaluate(S) {
 
   // --- fal és talaj
   if (szeg) {
-    if (P.soft) add('bad', 'Puha, plasztikus agyagban nem alkalmazható', 'A jegyzet szerint a talajszegezés puha, plasztikus agyagban, szerves talajban, törmelékes feltöltésben és görgetegben nem működik: a földfal a lépcsők között sem áll meg.', '#szegezes');
+    if (P.soft) add('bad', 'Puha, plasztikus agyagban nem alkalmazható', 'A talajszegezés puha, plasztikus agyagban, szerves talajban, törmelékes feltöltésben és görgetegben nem működik: a földfal a lépcsők között sem áll meg.', '#szegezes');
     else if (P.gran) add('warn', 'Szemcsés talaj, feltöltés felül', 'Homokos kavicsban csak akkor megy, ha a lépcső (0,9–1,8 m) rövid ideig megáll; a felső 2,5 m törmelékes feltöltésben a szegezés nem alkalmazható – ott más megoldás kell.', '#szegezes');
     else add('ok', 'Kemény agyagban jól működik', 'Kemény, köves agyagban fúrt-injektált szegeket alkalmaznak; a földfal a lépcsők között jól megáll.', '#szegezes');
     const Ln = (P.gran ? 1.0 : 0.8) * H, reachN = Ln * Math.cos(12 * D2R);

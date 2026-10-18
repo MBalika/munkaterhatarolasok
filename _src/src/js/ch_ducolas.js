@@ -267,10 +267,10 @@ register('duc-m0', (root) => {
   const sc = slider(ctrls, { label: 'Kohézió', sym: 'c', min: 0, max: 60, step: 1, value: 10, unit: 'kPa' });
   const sphi = slider(ctrls, { label: 'Belső súrlódási szög', sym: 'φ', min: 0, max: 40, step: 1, value: 20, unit: '°' });
   const sg = slider(ctrls, { label: 'Térfogatsúly', sym: 'γ', min: 16, max: 22, step: 0.5, value: 19, unit: 'kN/m³' });
-  const sn = slider(ctrls, { label: 'Biztonsági tényező', sym: 'n', min: 1.5, max: 3, step: 0.1, value: 2, hint: 'Jegyzet: általában 1,5–2; az előadás 2–3-at említ.' });
+  const sn = slider(ctrls, { label: 'Biztonsági tényező', sym: 'n', min: 1.5, max: 3, step: 0.1, value: 2, hint: 'Általában 1,5–2, esetenként 2–3.' });
   const sp = slider(ctrls, { label: 'Felszíni terhelés', sym: 'p', min: 0, max: 30, step: 1, value: 10, unit: 'kPa', hint: 'Pl. a peremen tárolt föld, forgalom; a méretezésben jellemzően min. 10 kPa.' });
   const sH = slider(ctrls, { label: 'Tervezett árokmélység', sym: 'H', min: 0.5, max: 6, step: 0.1, value: 2.5, unit: 'm' });
-  const lim = select(ctrls, { label: 'Talaj a dúcolási kötelezettséghez (jegyzet)', options: [{ v: '0.5', t: 'finomhomok – H > 0,5 m' }, { v: '1', t: 'átmeneti talaj – H > 1,0 m' }, { v: '2', t: 'kemény agyag – H > 2,0 m' }], value: '1' });
+  const lim = select(ctrls, { label: 'Talaj a dúcolási kötelezettséghez', options: [{ v: '0.5', t: 'finomhomok – H > 0,5 m' }, { v: '1', t: 'átmeneti talaj – H > 1,0 m' }, { v: '2', t: 'kemény agyag – H > 2,0 m' }], value: '1' });
   const fig = figure(viz, 560, 330);
   const chart = figure(viz, 560, 150);
   const oM = stat(out, { label: 'm₀ – szabadon megálló mélység', unit: 'm', d: 2 });
@@ -293,7 +293,7 @@ register('duc-m0', (root) => {
     oMode.set(0, md.k === 'a' ? 'ok' : md.k === 'd' ? 'bad' : 'warn', { a: 'a) állított', b: 'b) utánhajtott', c: 'c) vízszintes', d: 'd) előrevert' }[md.k]);
     oDuc.set(H > L ? 'igen' : 'nem kötelező', H > L ? 'warn' : 'ok', H > L ? 'igen' : 'nem kötelező');
     oEk.set(wedgeT);
-    ver.set(H > m ? (m <= 0 ? 'bad' : 'warn') : 'ok', md.t, `<span>${md.why}</span>` + (H > L ? ` <span>Munkavédelmi okból mindenképp dúcolni kell (H = ${fmt(H, 1)} m > ${fmt(L, 1)} m): a kiemelt földfal kiszárad, átázik, az állapota romlik.</span>` : ` <span>A jegyzet határa alatt vagyunk (${fmt(L, 1)} m) – de dinamikus hatás (forgalom, cölöpözés) vagy épület közelében ilyenkor is dúcolni kell.</span>`));
+    ver.set(H > m ? (m <= 0 ? 'bad' : 'warn') : 'ok', md.t, `<span>${md.why}</span>` + (H > L ? ` <span>Munkavédelmi okból mindenképp dúcolni kell (H = ${fmt(H, 1)} m > ${fmt(L, 1)} m): a kiemelt földfal kiszárad, átázik, az állapota romlik.</span>` : ` <span>A dúcolási határ alatt vagyunk (${fmt(L, 1)} m) – de dinamikus hatás (forgalom, cölöpözés) vagy épület közelében ilyenkor is dúcolni kell.</span>`));
     drawFig(m, H, th, p);
     drawChart(c, phi, g, n, p, H);
   }
@@ -988,7 +988,7 @@ defineQuiz('ducolas', 'Kvíz – munkaárok dúcolása', [
   { q: 'Mit jelent az m₀?', a: ['Azt a mélységet, ameddig a függőleges földfal megtámasztás nélkül ideiglenesen (talajvíz felett) állékony', 'A dúcok közötti legnagyobb megengedett függőleges távolságot', 'A pallók kötelező befogási hosszát a fenék alatt', 'A munkaárok legkisebb szélességét'], c: 0, e: 'm₀ = 4c/(nγ)·tg(45° + φ/2) − p/γ – kohézió nélkül (homokban) nulla vagy negatív.' },
   { q: 'Melyik pallózási módot választjuk, ha a gödör megtámasztás nélkül a teljes mélységig kiemelhető (m₀ > H)?', a: ['Állított pallózás', 'Utánhajtott pallózás', 'Vízszintes pallózás, lépcsős mélyítés', 'Előrevert pallózás'], c: 0, e: 'Előbb teljes mélységig kiemelnek, utána állítják be a pallókat, hevedereket és dúcokat.' },
   { q: 'Durvaszemcsés talajban, ahol látszólagos kohézió sincs (m₀ = 0), melyik módszer alkalmazható?', a: ['Előrevert pallózás – kizárólag acélpallókkal', 'Állított pallózás fapallókkal', 'Hézagos pallózás', 'Vízszintes pallózás, lépcsős mélyítés'], c: 0, e: 'A pallókat a kiemelés előtt leverik, levibrálják; a földfal egy pillanatig sem áll szabadon.' },
-  { q: 'A jegyzet szerint finomhomokban milyen mélység felett kell mindenképpen dúcolni?', a: ['H > 0,5 m', 'H > 1,0 m', 'H > 2,0 m', 'H > 1,25 m'], c: 0, e: 'Finomhomok 0,5 m, átmeneti talaj 1,0 m, kemény agyag 2,0 m – a kiszáradás, átázás miatt munkavédelmi okból.' },
+  { q: 'Finomhomokban milyen mélység felett kell mindenképpen dúcolni?', a: ['H > 0,5 m', 'H > 1,0 m', 'H > 2,0 m', 'H > 1,25 m'], c: 0, e: 'Finomhomok 0,5 m, átmeneti talaj 1,0 m, kemény agyag 2,0 m – a kiszáradás, átázás miatt munkavédelmi okból.' },
   { q: 'Mi a heveder szerepe a dúcolatban?', a: ['Összefogja a pallókat, és a rájuk jutó terhet a dúcoknak adja át', 'Nyomott elemként szembetámasztja a két földfalat', 'A pallók végét védi a hasadástól', 'A talajvizet vezeti el a pallók mögül'], c: 0, e: 'Palló → heveder → dúc → szemközti oldal: ez a szembetámasz teherútja.' },
   { q: 'Közepesen és erősen kötött talajnál mekkora dúcnyomással számolunk?', a: ['p₁ = (Hγn + q) − 4c és p₂ = 0,2·(Hγn + q) közül a nagyobbal', 'p = K·(Hγn + q)·tg²(45° − φ/2)-vel', 'Mindig 10 kPa-lal', 'A passzív földnyomással'], c: 0, e: 'A K·tg² képlet a szemcsés és gyengén kötött (Ip < 10%) talajokra vonatkozik.' },
   { q: 'Hogyan bontják el a dúcolatot?', a: ['Alulról felfelé, a rétegenkénti visszatöltéssel lépést tartva', 'Felülről lefelé, hogy a munkások kiférjenek', 'Egyszerre, daruval kiemelve', 'Előbb a pallókat húzzák ki, aztán a dúcokat'], c: 0, e: 'Egy dúc csak akkor jöhet ki, ha alatta már tömörített visszatöltés támaszt.' },
