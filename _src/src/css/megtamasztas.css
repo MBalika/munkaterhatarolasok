@@ -1,5 +1,5 @@
 /* 05 Talajszegezés + 06 Megtámasztó szerkezetek (fork C) – minden osztály mt- előtaggal */
-:root { --mt-act: rgba(194, 65, 47, 0.28); --mt-pas: rgba(60, 99, 131, 0.30); --mt-grout: #cfc9ba; --mt-sheath: #2b2b2b; --mt-strand: #b9c3cc; }
+:root { --mt-momc: color-mix(in srgb, var(--g3) 30%, transparent); --mt-act: rgba(194, 65, 47, 0.28); --mt-pas: rgba(60, 99, 131, 0.30); --mt-grout: #cfc9ba; --mt-sheath: #2b2b2b; --mt-strand: #b9c3cc; }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --mt-act: rgba(242, 112, 92, 0.30); --mt-pas: rgba(130, 172, 208, 0.30); --mt-grout: #a8a295; --mt-sheath: #0d0d0d; --mt-strand: #dfe6ec; } }
 :root[data-theme="dark"] { --mt-act: rgba(242, 112, 92, 0.30); --mt-pas: rgba(130, 172, 208, 0.30); --mt-grout: #a8a295; --mt-sheath: #0d0d0d; --mt-strand: #dfe6ec; }
 

@@ -541,12 +541,13 @@ register('dsmSeq', (root) => {
   };
   const draw = (time) => {
     clear(fig);
+    const bgG = svg('g', {}, fig), fg = svg('g', { transform: 'translate(46 0)' }, fig);
     const m = mode.v, st = step, ph = ((time - t0) / 1000) % 4 / 4;
     // felülnézet
-    T(fig, 8, 16, 'FELÜLNÉZET', 't-sm');
-    R(fig, 0, 24, W, 36, 'f-soilA'); R(fig, 0, 24, W, 36, '', { fill: 'url(#pat-sand)' });
-    R(fig, 0, 92, W, 40, 'f-bg2');
-    R(fig, 0, 60, W, 32, 'f-soilB', { opacity: st === 0 ? 0.5 : 0.3 });
+    T(fig, W - 8, 16, 'FELÜLNÉZET', 't-sm', { 'text-anchor': 'end' });
+    R(bgG, 0, 24, W, 36, 'f-soilA'); R(bgG, 0, 24, W, 36, '', { fill: 'url(#pat-sand)' });
+    R(bgG, 0, 92, W, 40, 'f-bg2');
+    R(bgG, 0, 60, W, 32, 'f-soilB', { opacity: st === 0 ? 0.5 : 0.3 });
     if (st === 0) T(fig, W / 2, 80, 'vezetőárok', 't-sm', { 'text-anchor': 'middle' });
     let cur = null; // aktuális elem x-e a metszethez
     if (m === 'csm') {
@@ -554,35 +555,35 @@ register('dsmSeq', (root) => {
       const prim = st >= 4 ? cxs : st >= 1 ? [cxs[0]] : [];
       const sec = st >= 5 ? sxs : [];
       const fresh = (i) => (st <= 3 && i === 0) || (st === 4 && i > 0);
-      prim.forEach((cx, i) => R(fig, cx * k - (Lp * k) / 2, yP - 13, Lp * k, 26, fresh(i) && st < 3 ? 'f-slurry' : 'f-grout', { style: 'stroke:var(--concrete2)' }));
-      sec.forEach((cx) => R(fig, cx * k - (Lp * k) / 2, yP - 13, Lp * k, 26, 'f-shot', { style: 'stroke:var(--concrete2)', opacity: 0.95 }));
+      prim.forEach((cx, i) => R(fg, cx * k - (Lp * k) / 2, yP - 13, Lp * k, 26, fresh(i) && st < 3 ? 'f-slurry' : 'f-grout', { style: 'stroke:var(--concrete2)' }));
+      sec.forEach((cx) => R(fg, cx * k - (Lp * k) / 2, yP - 13, Lp * k, 26, 'f-shot', { style: 'stroke:var(--concrete2)', opacity: 0.95 }));
       const beams = [];
       if (st >= 3) beams.push(cxs[0]); if (st >= 4) beams.push(cxs[1], cxs[2]); if (st >= 5) beams.push(...sxs);
-      beams.forEach((cx) => { hbeam(fig, (cx - 0.6) * k, yP, 12, 12); hbeam(fig, (cx + 0.6) * k, yP, 12, 12); });
-      prim.forEach((cx, i) => T(fig, cx * k, yP + 30, 'P' + (i + 1), 't-num', { 'text-anchor': 'middle' }));
-      sec.forEach((cx, i) => T(fig, cx * k, yP + 30, 'S' + (i + 1), 't-num t-grp', { 'text-anchor': 'middle' }));
+      beams.forEach((cx) => { hbeam(fg, (cx - 0.6) * k, yP, 12, 12); hbeam(fg, (cx + 0.6) * k, yP, 12, 12); });
+      prim.forEach((cx, i) => T(fg, cx * k, yP + 30, 'P' + (i + 1), 't-num', { 'text-anchor': 'middle' }));
+      sec.forEach((cx, i) => T(fg, cx * k, yP + 30, 'S' + (i + 1), 't-num t-grp', { 'text-anchor': 'middle' }));
       cur = st <= 3 ? cxs[0] : st === 4 ? cxs[2] : st === 5 ? sxs[1] : null;
     } else if (m === 'colmix') {
       const r = 0.45, sp = 0.75, grp = (gx) => [gx - sp, gx, gx + sp];
       const P = [1.4, 1.4 + 4.5, 1.4 + 9], Sx = [P[0] + 2.25, P[1] + 2.25];
       const prim = st >= 4 ? P : st >= 1 ? [P[0]] : [];
       const sec = st >= 5 ? Sx : [];
-      prim.forEach((gx) => grp(gx).forEach((x) => C(fig, x * k, yP, r * k, 'f-grout', { style: 'stroke:var(--concrete2)' })));
-      sec.forEach((gx) => grp(gx).forEach((x) => C(fig, x * k, yP, r * k, 'f-shot', { style: 'stroke:var(--concrete2)' })));
-      if (st >= 3) [...(st >= 4 ? P : [P[0]]), ...sec].forEach((gx) => hbeam(fig, gx * k, yP, 12, 12));
+      prim.forEach((gx) => grp(gx).forEach((x) => C(fg, x * k, yP, r * k, 'f-grout', { style: 'stroke:var(--concrete2)' })));
+      sec.forEach((gx) => grp(gx).forEach((x) => C(fg, x * k, yP, r * k, 'f-shot', { style: 'stroke:var(--concrete2)' })));
+      if (st >= 3) [...(st >= 4 ? P : [P[0]]), ...sec].forEach((gx) => hbeam(fg, gx * k, yP, 12, 12));
       cur = st <= 3 ? P[0] : st === 4 ? P[2] : st === 5 ? Sx[1] : null;
     } else {
       const xEnd = st === 0 ? 0 : st === 1 ? 0.6 : st === 2 ? 0.6 + ph * 12 : 13.6;
-      if (xEnd > 0) R(fig, 0.2 * k, yP - 12, (xEnd - 0.2) * k, 24, st >= 5 ? 'f-grout' : 'f-slurry', { style: 'stroke:var(--concrete2)' });
-      if (st >= 3) for (let x = 0.9; x < xEnd - 0.4; x += 1.2) hbeam(fig, x * k, yP, 12, 12);
+      if (xEnd > 0) R(fg, 0.2 * k, yP - 12, (xEnd - 0.2) * k, 24, st >= 5 ? 'f-grout' : 'f-slurry', { style: 'stroke:var(--concrete2)' });
+      if (st >= 3) for (let x = 0.9; x < xEnd - 0.4; x += 1.2) hbeam(fg, x * k, yP, 12, 12);
       cur = st >= 1 && st <= 3 ? xEnd : null;
-      if (st >= 1 && st <= 2) R(fig, (xEnd - 0.3) * k, yP - 18, 0.6 * k, 36, 'f-acc', { opacity: 0.9 });
+      if (st >= 1 && st <= 2) R(fg, (xEnd - 0.3) * k, yP - 18, 0.6 * k, 36, 'f-acc', { opacity: 0.9 });
     }
     // metszet
-    T(fig, 8, yE0 - 10, 'METSZET', 't-sm');
+    T(fig, W - 8, yE0 - 10, 'METSZET', 't-sm', { 'text-anchor': 'end' });
     const yG = yE0 + 6;
-    R(fig, 0, yG, W, depth * kz + 10, 'f-soilA'); R(fig, 0, yG, W, depth * kz + 10, '', { fill: 'url(#pat-sand)' });
-    L(fig, 0, yG, W, yG, 'stroke:var(--ink);stroke-width:1.2');
+    R(bgG, 0, yG, W, depth * kz + 10, 'f-soilA'); R(bgG, 0, yG, W, depth * kz + 10, '', { fill: 'url(#pat-sand)' });
+    L(bgG, 0, yG, W, yG, 'stroke:var(--ink);stroke-width:1.2');
     if (cur !== null && st >= 1 && st <= 5) {
       const w = (m === 'csm' ? 2.4 : m === 'colmix' ? 2.25 : 1.2) * k;
       const x = cur * k;
@@ -591,35 +592,35 @@ register('dsmSeq', (root) => {
       else if (st === 1) { dTool = depth * ph; mixed = 0; }
       else if (st === 2) { dTool = depth * (1 - ph); mixed = 1; }
       else { dTool = 0; mixed = 1; }
-      if (st === 1 && m !== 'trench') R(fig, x - w / 2, yG, w, dTool * kz, 'f-slurry', { opacity: 0.55 });
-      if (mixed) { R(fig, x - w / 2, yG, w, depth * kz, 'f-slurry', { opacity: 0.45 }); if (st === 2 && m !== 'trench') R(fig, x - w / 2, yG + dTool * kz, w, (depth - dTool) * kz, 'f-grout', { opacity: 0.95 }); }
-      if (st >= 3 && m !== 'trench') { R(fig, x - w / 2, yG, w, depth * kz, 'f-grout', { opacity: 0.95 }); [-0.6, 0.6].forEach((o) => R(fig, x + o * k - 3, yG - 6, 6, (depth - 3) * kz, 'f-steel2')); }
+      if (st === 1 && m !== 'trench') R(fg, x - w / 2, yG, w, dTool * kz, 'f-slurry', { opacity: 0.55 });
+      if (mixed) { R(fg, x - w / 2, yG, w, depth * kz, 'f-slurry', { opacity: 0.45 }); if (st === 2 && m !== 'trench') R(fg, x - w / 2, yG + dTool * kz, w, (depth - dTool) * kz, 'f-grout', { opacity: 0.95 }); }
+      if (st >= 3 && m !== 'trench') { R(fg, x - w / 2, yG, w, depth * kz, 'f-grout', { opacity: 0.95 }); [-0.6, 0.6].forEach((o) => R(fg, x + o * k - 3, yG - 6, 6, (depth - 3) * kz, 'f-steel2')); }
       // szerszám
       if (st <= 2 || (m === 'trench' && st <= 3)) {
         const ty = yG + dTool * kz;
         if (m === 'csm') {
-          R(fig, x - 6, yE0 - 16, 12, ty - yE0 + 4, 'f-steel2');
-          R(fig, x - 34, ty - 36, 68, 30, 'f-acc', { style: 'stroke:var(--ink)' });
+          R(fg, x - 6, yE0 - 16, 12, ty - yE0 + 4, 'f-steel2');
+          R(fg, x - 34, ty - 36, 68, 30, 'f-acc', { style: 'stroke:var(--ink)' });
           const rot = (time / 1000) * (st === 1 ? 6 : -6);
           for (const cx of [x - 18, x + 18]) {
-            C(fig, cx, ty - 4, 14, 'f-steel', { style: 'stroke:var(--ink)' });
-            for (let j = 0; j < 4; j++) { const a = rot + (j * Math.PI) / 2; L(fig, cx, ty - 4, cx + Math.cos(a) * 13, ty - 4 + Math.sin(a) * 13, 'stroke:var(--ink);stroke-width:1.5'); }
+            C(fg, cx, ty - 4, 14, 'f-steel', { style: 'stroke:var(--ink)' });
+            for (let j = 0; j < 4; j++) { const a = rot + (j * Math.PI) / 2; L(fg, cx, ty - 4, cx + Math.cos(a) * 13, ty - 4 + Math.sin(a) * 13, 'stroke:var(--ink);stroke-width:1.5'); }
           }
-          T(fig, x + 44, ty - 14, st === 1 ? '↓ marás + zagy' : '↑ keverés + cement', 't-lab halo');
+          T(fg, x + 44, ty - 14, st === 1 ? '↓ marás + zagy' : '↑ keverés + cement', 't-lab halo');
         } else if (m === 'colmix') {
-          for (const o of [-0.75, 0, 0.75]) { R(fig, x + o * k - 4, yE0 - 16, 8, ty - yE0 + 14, 'f-steel2'); for (let yy = yE0; yy < ty; yy += 10) L(fig, x + o * k - 9, yy + ((time / 60) % 10), x + o * k + 9, yy + 5 + ((time / 60) % 10), 'stroke:var(--steelm);stroke-width:2'); }
-          T(fig, x + 50, ty - 10, st === 1 ? '↓ fúrás + kötőanyag' : '↑ keverés', 't-lab halo');
+          for (const o of [-0.75, 0, 0.75]) { R(fg, x + o * k - 4, yE0 - 16, 8, ty - yE0 + 14, 'f-steel2'); for (let yy = yE0; yy < ty; yy += 10) L(fg, x + o * k - 9, yy + ((time / 60) % 10), x + o * k + 9, yy + 5 + ((time / 60) % 10), 'stroke:var(--steelm);stroke-width:2'); }
+          T(fg, x + 50, ty - 10, st === 1 ? '↓ fúrás + kötőanyag' : '↑ keverés', 't-lab halo');
         } else {
-          R(fig, x - 10, yE0 - 18, 20, ty - yE0 + 18, 'f-acc', { style: 'stroke:var(--ink)' });
-          for (let yy = yE0 - 14; yy < ty; yy += 12) R(fig, x - 13, yy + ((time / 40) % 12), 26, 3, 'f-ink');
-          T(fig, x + 18, yE0 + 40, st === 1 ? '↓ a vágókar lemerül' : '→ oldalirányú haladás', 't-lab halo');
+          R(fg, x - 10, yE0 - 18, 20, ty - yE0 + 18, 'f-acc', { style: 'stroke:var(--ink)' });
+          for (let yy = yE0 - 14; yy < ty; yy += 12) R(fg, x - 13, yy + ((time / 40) % 12), 26, 3, 'f-ink');
+          T(fg, x + 18, yE0 + 40, st === 1 ? '↓ a vágókar lemerül' : '→ oldalirányú haladás', 't-lab halo');
         }
       }
       T(fig, W - 8, yG + depth * kz - 4, m === 'csm' ? 'pl. 14,5 m mély panel ≈ 47 perc (Bauer-napló)' : 'mélység: gép- és talajfüggő', 't-sm halo', { 'text-anchor': 'end' });
     } else {
       // kész fal + kiemelés
       if (st === 6) {
-        R(fig, 0, yG, W, 7 * kz, 'f-bg2');
+        R(bgG, 0, yG, W, 7 * kz, 'f-bg2');
         R(fig, 300, yG, 30, depth * kz, 'f-grout', { style: 'stroke:var(--concrete2)' });
         R(fig, 312, yG - 6, 6, (depth - 3) * kz, 'f-steel2');
         R(fig, 330, yG, W - 330, 7 * kz, 'f-bg2');

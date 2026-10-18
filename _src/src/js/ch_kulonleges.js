@@ -208,7 +208,7 @@ register('cofferdam', (root) => {
     const bed = 330, yW = bed - (h + d) * pxm, yDes = bed - h * pxm, yC = bed - crest * pxm;
     const over = d > f;
     // szélességek (m)
-    let Bm, xg0 = T === 'fold' ? 110 : 250;
+    let Bm, xg0 = T === 'fold' ? 150 : 250;
     if (T === 'fold') Bm = 3 + 2 * 2.5 * crest;
     else if (T === 'egy') Bm = 0.6;
     else if (T === 'ket') Bm = Math.max(3, 0.85 * crest);
@@ -228,7 +228,6 @@ register('cofferdam', (root) => {
     svg('rect', { x: 0, y: yW, width: Math.max(0, Math.min(outerX, xg1)), height: bed - yW, fill: 'url(#pat-water)' }, gStat);
     svg('line', { x1: 0, y1: yW, x2: Math.min(outerX, xg1), y2: yW, class: 's-water', 'stroke-width': 2 }, gStat);
     // folyásirány
-    txt(gStat, 14, Math.min(bed - 10, yW + 18), 'FOLYÓ', 't-big t-water');
     // munkagödör (jobb oldal) – száraz
     const pitX = xg1 + (T === 'egy' ? 4 : 0);
     const pitBot = bed + 16;
@@ -236,7 +235,7 @@ register('cofferdam', (root) => {
     // betondugó
     if (T !== 'fold') { svg('rect', { x: pitX, y: pitBot, width: 760 - pitX, height: 380 - pitBot, class: 'f-conc' }, gStat); svg('rect', { x: pitX, y: pitBot, width: 760 - pitX, height: 380 - pitBot, fill: 'url(#pat-conc)' }, gStat); txt(gStat, 760 - 8, 374, 'víz alatti betondugó', 't-sm', { 'text-anchor': 'end' }); }
     // pillér
-    const pierX = Math.max(pitX + 40, 600);
+    const pierX = Math.max(pitX + 60, 610);
     if (pierX < 740) { svg('rect', { x: pierX, y: pitBot - 70, width: Math.min(90, 750 - pierX), height: 70, class: 'f-conc2' }, gStat); txt(gStat, pierX + 6, pitBot - 8, 'hídpillér', 't-sm', { style: 'fill:var(--surface);font-weight:700' }); }
     // gát
     if (T === 'fold') {
@@ -285,19 +284,18 @@ register('cofferdam', (root) => {
       txt(gDyn, Math.min(700, xg1 + 60), yC - 14, 'ÁTBUKÁS!', 't-big t-bad');
     } else {
       // szivattyú
-      const px0 = Math.min(720, pitX + 30);
+      const px0 = Math.min(720, pitX + 14);
       svg('rect', { x: px0, y: pitBot - 14, width: 18, height: 14, rx: 3, fill: 'var(--g4)' }, gDyn);
       const hx = T === 'fold' ? Math.min(xg0 + 2.5 * (h + d) * pxm - 12, 600) : xg0 - 16;
       svg('path', { d: `M ${px0 + 9} ${pitBot - 14} L ${px0 + 9} ${yC - 18} L ${hx} ${yC - 18} L ${hx} ${yW + 10}`, fill: 'none', class: 's-ink', 'stroke-width': 3, opacity: 0.55, 'stroke-linejoin': 'round' }, gDyn);
       carrow(gDyn, hx, yW - 4, hx, yW + 12, 'var(--water)', 2);
-      txt(gDyn, px0 + 22, pitBot - 4, 'szivattyú', 't-sm');
+      if (Math.max(pitX + 60, 610) - px0 > 95) txt(gDyn, px0 + 22, pitBot - 4, 'szivattyú', 't-sm');
     }
     // méretek
-    const xd = xg0 - 70;
-    dim(gDyn, xd, bed, xd, yDes, `h = ${fmt(h, 1)} m`, { dx: 30 });
+    const xd = 40;
+    dim(gDyn, xd, bed, xd, yDes, `h = ${fmt(h, 1)} m`, { dx: 8, anchor: 'start' });
     svg('line', { x1: 0, y1: yDes, x2: xg0, y2: yDes, class: 's-water', 'stroke-width': 1, 'stroke-dasharray': '5 4' }, gDyn);
-    txt(gDyn, 6, yDes - 4, 'mértékadó vízszint', 't-sm t-water');
-    dim(gDyn, xg0 - 34, yDes, xg0 - 34, yC, `f = ${fmt(f, 1)} m`, { dx: -6, anchor: 'end' });
+    dim(gDyn, xg0 - 24, yDes, xg0 - 24, yC, `f = ${fmt(f, 1)} m`, { dx: -6, anchor: 'end' });
     if (d > 0) txt(gDyn, 6, yW - 5, `árhullám +${fmt(d, 1)} m`, 't-sm t-bad');
     // állapot
     return { crest, Bm, over };
@@ -345,7 +343,7 @@ register('cofferdam', (root) => {
     const h = hw.v, f = fb.v, crest = h + f, pxm = 300 / 17, bed = 330;
     const T = typ.v;
     let Bm = T === 'fold' ? 3 + 5 * crest : T === 'egy' ? 0.6 : T === 'ket' ? Math.max(3, 0.85 * crest) : Math.max(8, 0.9 * crest);
-    const x1 = Math.min((T === 'fold' ? 110 : 250) + Bm * pxm, 700) + 6;
+    const x1 = Math.min((T === 'fold' ? 150 : 250) + Bm * pxm, 700) + 6;
     for (const d of drops) {
       d.p = (d.p + dt * 0.5) % 1;
       const y = bed - d.y * h * pxm;
