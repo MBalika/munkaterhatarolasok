@@ -1,0 +1,101 @@
+/* 05 Talajszegezés + 06 Megtámasztó szerkezetek (fork C) – minden osztály mt- előtaggal */
+:root { --mt-act: rgba(194, 65, 47, 0.28); --mt-pas: rgba(60, 99, 131, 0.30); --mt-grout: #cfc9ba; --mt-sheath: #2b2b2b; --mt-strand: #b9c3cc; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --mt-act: rgba(242, 112, 92, 0.30); --mt-pas: rgba(130, 172, 208, 0.30); --mt-grout: #a8a295; --mt-sheath: #0d0d0d; --mt-strand: #dfe6ec; } }
+:root[data-theme="dark"] { --mt-act: rgba(242, 112, 92, 0.30); --mt-pas: rgba(130, 172, 208, 0.30); --mt-grout: #a8a295; --mt-sheath: #0d0d0d; --mt-strand: #dfe6ec; }
+
+/* nyilak (a csoportelem színezi a vonalat és a hegyet) */
+.mt-ar-ink line { stroke: var(--ink); } .mt-ar-ink .mt-ah { fill: var(--ink); }
+.mt-ar-act line { stroke: var(--bad); } .mt-ar-act .mt-ah { fill: var(--bad); }
+.mt-ar-acc line { stroke: var(--accent); } .mt-ar-acc .mt-ah { fill: var(--accent); }
+.mt-ar-shear line { stroke: var(--steel); } .mt-ar-shear .mt-ah { fill: var(--steel); }
+
+/* anyagok, elemek */
+.mt-grout { stroke: var(--mt-grout); fill: none; }
+.mt-nail { stroke: var(--steelm2); }
+.mt-mesh { stroke: var(--steel); fill: none; }
+.mt-sheath { stroke: var(--mt-sheath); fill: none; opacity: 0.85; }
+.mt-strand { stroke: var(--mt-strand); fill: none; }
+.mt-tendon { stroke: var(--steelm2); }
+.mt-spacer { fill: none; stroke: var(--accent); stroke-width: 2; }
+.mt-tam { stroke: var(--water); fill: none; stroke-dasharray: 10 4; }
+.mt-drop { fill: var(--water); }
+.mt-boom { stroke: var(--accent-ink); }
+.mt-mast { stroke: var(--steelm2); stroke-linecap: round; }
+.mt-block { fill: color-mix(in srgb, var(--grp) 22%, transparent); stroke: var(--grp); stroke-width: 2; stroke-dasharray: 6 4; }
+.mt-curlift { fill: color-mix(in srgb, var(--accent) 12%, transparent); stroke: var(--accent); stroke-width: 1.2; stroke-dasharray: 4 4; }
+.mt-wall { fill: var(--steelm2); }
+.mt-wall-ext { fill: var(--steelm); opacity: 0.55; }
+.mt-act { fill: var(--mt-act); stroke: var(--bad); stroke-width: 1.2; }
+.mt-pas { fill: var(--mt-pas); stroke: var(--steel); stroke-width: 1.2; }
+.mt-defl { stroke: var(--bad); stroke-width: 2.4; stroke-dasharray: 5 4; }
+.mt-mom { fill: color-mix(in srgb, var(--grp) 25%, transparent); stroke: var(--grp); stroke-width: 1.6; }
+.mt-strut { fill: var(--accent); }
+.mt-slip { stroke: var(--bad); fill: none; }
+.mt-neigh { fill: color-mix(in srgb, var(--warn) 10%, transparent); }
+.mt-hitc { fill: none; stroke: var(--bad); stroke-width: 3; }
+.mt-curve { stroke: var(--grp); stroke-width: 2.6; stroke-linejoin: round; }
+.mt-force { fill: color-mix(in srgb, var(--grp) 28%, transparent); }
+.mt-force-l { stroke: var(--grp); }
+.mt-sun { fill: #f2c14e; }
+.mt-strut-l { stroke: #c0503a; }
+.mt-strut-bad { stroke: var(--bad); }
+.mt-strut-hl { stroke: rgba(255, 255, 255, 0.35); }
+.mt-band { fill: color-mix(in srgb, var(--warn) 12%, transparent); }
+.mt-band2 { fill: color-mix(in srgb, var(--bad) 8%, transparent); }
+.mt-cavity { fill: color-mix(in srgb, var(--ink) 78%, var(--bg)); }
+.mt-lean { fill: var(--muted); opacity: 0.6; }
+.mt-duct { stroke: #e9c33f; stroke-linecap: round; opacity: 0.9; }
+.mt-lamp { fill: #ffe9a8; }
+.mt-road { fill: var(--concrete2); }
+.mt-cone { fill: #e8792b; }
+.mt-wedge-a { fill: color-mix(in srgb, var(--bad) 16%, transparent); }
+.mt-wedge-p { fill: color-mix(in srgb, var(--steel) 22%, transparent); }
+.mt-rod { stroke: var(--steelm2); }
+.mt-trench { fill: color-mix(in srgb, var(--soilD) 70%, var(--surface)); opacity: 0.55; }
+
+/* kattintható részek */
+.mt-part { cursor: pointer; transition: opacity 0.2s; }
+svg:has(.mt-sel) .mt-part:not(.mt-sel) { opacity: 0.45; }
+.mt-part:hover { opacity: 1 !important; }
+.mt-part.mt-sel { filter: drop-shadow(0 0 6px color-mix(in srgb, var(--accent) 70%, transparent)); }
+.mt-part:focus { outline: none; }
+.mt-part:focus-visible { outline: 2px solid var(--accent); }
+
+/* folyamatjelző */
+.mt-prog { height: 6px; border-radius: 6px; background: var(--line); overflow: hidden; }
+.mt-prog i { display: block; height: 100%; width: 0; background: var(--grp); transition: width 0.3s; }
+.mt-ul { margin: 6px 0 0; padding-left: 1.1em; font-size: 14px; }
+.mt-ul li { margin: 3px 0; }
+
+/* kártyajáték */
+.mt-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 200px), 1fr)); gap: 10px; }
+.mt-card { border: 1.5px solid var(--line2); border-radius: 13px; padding: 12px; background: var(--surface); display: flex; flex-direction: column; gap: 6px; transition: border-color 0.2s, background 0.2s; min-width: 0; }
+.mt-card b { font-family: var(--f-display); font-size: 19px; line-height: 1.1; }
+.mt-card-btns { display: flex; gap: 6px; margin-top: auto; flex-wrap: wrap; }
+.mt-card-btns button { flex: 1; border: 1.5px solid var(--line2); background: var(--surface2); border-radius: 9px; padding: 6px 8px; font-weight: 700; font-size: 13px; cursor: pointer; white-space: nowrap; }
+.mt-card-btns button:hover:not(:disabled) { background: var(--surface3); }
+.mt-card-btns button:disabled { opacity: 0.45; cursor: default; }
+.mt-card-res { font-size: 13px; line-height: 1.4; color: var(--ink2); }
+.mt-card.is-ok { border-color: var(--ok); background: var(--ok-soft); }
+.mt-card.is-no { border-color: var(--bad); background: var(--bad-soft); }
+.mt-card.miss { box-shadow: inset 0 0 0 3px color-mix(in srgb, var(--warn) 60%, transparent); }
+.mt-card.miss .mt-card-res::before { content: "Tévedtél – "; font-weight: 700; color: var(--warn); }
+
+/* megtámasztási módok kártyái */
+.mt-sup { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr)); gap: 12px; margin: 18px 0; }
+.mt-sup a { display: flex; flex-direction: column; gap: 8px; padding: 14px; border-radius: 14px; border: 1px solid var(--line); background: var(--surface); text-decoration: none; color: var(--ink); box-shadow: var(--shadow); transition: transform 0.15s, box-shadow 0.15s; }
+.mt-sup a:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+.mt-sup svg { width: 100%; height: 86px; }
+.mt-sup b { font-family: var(--f-display); font-size: 21px; }
+.mt-sup span { font-size: 13.5px; color: var(--muted); line-height: 1.35; }
+
+/* felhasználási kártyák képpel */
+.mt-uses { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 170px), 1fr)); gap: 10px; margin: 14px 0; }
+.mt-use { border: 1px solid var(--line); border-radius: 12px; background: var(--surface); overflow: hidden; display: flex; flex-direction: column; }
+.mt-use img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; background: #d9d9d9; }
+.mt-use .ic { height: 100px; display: grid; place-items: center; background: var(--surface2); }
+.mt-use .ic svg { width: 70px; height: 70px; }
+.mt-use span { padding: 8px 10px 10px; font-size: 13.5px; font-weight: 600; line-height: 1.3; }
+figure.mt-fig { margin: 16px 0; }
+figure.mt-fig img { border-radius: 12px; border: 1px solid var(--line); background: #fff; max-height: 420px; width: auto; max-width: 100%; margin: 0 auto; }
+figure.mt-fig figcaption { font-size: 13px; color: var(--muted); margin-top: 6px; text-align: center; }

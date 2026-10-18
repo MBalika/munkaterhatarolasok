@@ -1,0 +1,29 @@
+/* 04 – Munkatérhatároló falak (fork B) */
+.fal-cap { font-size: 14.5px; color: var(--ink2); margin: 0; }
+.fal-cap b { font-family: var(--f-display); font-size: 18px; letter-spacing: 0.01em; }
+.fm-list { display: grid; gap: 6px; }
+.fm-row { display: grid; grid-template-columns: minmax(120px, 170px) minmax(80px, 1fr) minmax(0, 1.5fr) auto; gap: 4px 12px; align-items: center; padding: 8px 10px; border-radius: 10px; border: 1px solid var(--line); background: var(--surface); text-decoration: none; color: var(--ink); transition: opacity 0.2s, background 0.15s; }
+.fm-row:hover { background: var(--surface3); }
+.fm-row.off { opacity: 0.5; }
+.fm-name { font-family: var(--f-display); font-weight: 700; font-size: 17px; line-height: 1.1; }
+.fm-bar { height: 10px; border-radius: 6px; background: var(--surface3); overflow: hidden; }
+.fm-bar i { display: block; height: 100%; background: var(--grp); border-radius: 6px; transition: width 0.35s ease; }
+.fm-txt { font-size: 13.5px; color: var(--ink2); line-height: 1.35; }
+.fm-fit .chip { font-size: 12px; padding: 2px 8px; }
+.fm-why { grid-column: 1 / -1; font-size: 12.5px; color: var(--bad); }
+@media (max-width: 720px) {
+  .fm-row { grid-template-columns: minmax(0, 1fr) auto; }
+  .fm-bar { grid-column: 1 / -1; order: 3; }
+  .fm-txt { grid-column: 1 / -1; order: 4; }
+}
+.zc-vis { display: flex; flex-wrap: wrap; gap: 6px; }
+.dsm-top { overflow-x: auto; }
+.fal-tbl td:first-child { font-weight: 650; white-space: nowrap; }
+.fal-lead-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 150px), 1fr)); gap: 8px; margin: 12px 0 4px; }
+.fal-lead-grid a { display: flex; flex-direction: column; gap: 2px; padding: 10px 12px; border-radius: 12px; border: 1px solid var(--line); background: var(--surface); text-decoration: none; color: var(--ink); box-shadow: var(--shadow); }
+.fal-lead-grid a:hover { background: var(--surface3); }
+.fal-lead-grid a b { font-family: var(--f-display); font-size: 18px; font-weight: 750; line-height: 1.1; }
+.fal-lead-grid a span { font-size: 12px; color: var(--muted); font-family: var(--f-mono); }
+.fal-yt { max-width: 720px; margin: 18px 0; }
+.fal-2yt { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin: 18px 0; }
+@media (max-width: 760px) { .fal-2yt { grid-template-columns: minmax(0, 1fr); } }

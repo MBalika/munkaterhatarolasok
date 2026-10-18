@@ -1,0 +1,111 @@
+<a class="sr" href="#alapok">Ugrás a tartalomhoz</a>
+
+<!-- közös SVG-minták (sraffozások) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <pattern id="pat-soil" width="10" height="10" patternUnits="userSpaceOnUse"><circle cx="2" cy="2.5" r="0.9" style="fill:var(--ink)" opacity=".28"/><circle cx="7" cy="7" r="0.7" style="fill:var(--ink)" opacity=".22"/></pattern>
+    <pattern id="pat-sand" width="7" height="7" patternUnits="userSpaceOnUse"><circle cx="1.5" cy="1.5" r="0.7" style="fill:var(--ink)" opacity=".3"/><circle cx="5" cy="4.5" r="0.55" style="fill:var(--ink)" opacity=".25"/></pattern>
+    <pattern id="pat-clay" width="9" height="9" patternUnits="userSpaceOnUse" patternTransform="rotate(40)"><line x1="0" y1="0" x2="0" y2="9" style="stroke:var(--ink)" stroke-width="1" opacity=".2"/></pattern>
+    <pattern id="pat-gravel" width="14" height="12" patternUnits="userSpaceOnUse"><circle cx="4" cy="4" r="2.4" fill="none" style="stroke:var(--ink)" stroke-width=".8" opacity=".3"/><circle cx="11" cy="9" r="1.8" fill="none" style="stroke:var(--ink)" stroke-width=".8" opacity=".3"/></pattern>
+    <pattern id="pat-conc" width="10" height="10" patternUnits="userSpaceOnUse"><circle cx="2.5" cy="3" r="1" style="fill:var(--ink)" opacity=".22"/><path d="M6.5 7 l2 -1.5 l.6 2.2z" style="fill:var(--ink)" opacity=".2"/></pattern>
+    <pattern id="pat-water" width="16" height="8" patternUnits="userSpaceOnUse"><path d="M0 4 q4 -3 8 0 t8 0" fill="none" style="stroke:var(--water)" stroke-width="1" opacity=".55"/></pattern>
+    <pattern id="pat-timber" width="12" height="6" patternUnits="userSpaceOnUse"><path d="M0 3 q6 -2 12 0" fill="none" style="stroke:var(--timber2)" stroke-width=".8" opacity=".7"/></pattern>
+    <pattern id="pat-ice" width="12" height="12" patternUnits="userSpaceOnUse"><path d="M6 1v10M1 6h10M2.5 2.5l7 7M9.5 2.5l-7 7" style="stroke:#fff" stroke-width=".7" opacity=".55"/></pattern>
+    <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" style="fill:context-stroke"/></marker>
+  </defs>
+</svg>
+
+<header class="topbar">
+  <div class="topbar-in">
+    <a class="brand" href="#bevezeto" aria-label="Munkatérhatárolások – az oldal teteje">
+      <svg viewBox="0 0 34 34" aria-hidden="true"><rect width="34" height="34" rx="8" fill="#1d2024"/><path d="M5 11h7v17h10V11h7" fill="none" stroke="#f0a33a" stroke-width="2.6" stroke-linejoin="round"/><path d="M12 15h10M12 21h10" stroke="#cfc9bc" stroke-width="2.2"/><path d="M5 11V6M29 11V6" stroke="#8ea7bb" stroke-width="2"/></svg>
+      <span><b>Munkatérhatárolások</b><small>BME · Alapozás · 9. előadás</small></span>
+    </a>
+    <nav class="topnav" id="topnav" aria-label="Fejezetek"></nav>
+    <div class="depthro" title="Hol tartasz az oldalon – „kiemelési mélység”"><span>kiemelés</span><b id="depthVal">±0,0</b>m</div>
+    <button class="iconbtn" id="themeBtn" type="button" aria-label="Téma váltása"></button>
+    <button class="iconbtn menubtn" id="menuBtn" type="button" aria-label="Fejezetek"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+  </div>
+</header>
+
+<div class="navsheet" id="navsheet" hidden>
+  <div class="navsheet-in">
+    <h4>Fejezetek – szintenként lefelé</h4>
+    <nav id="navsheetList"></nav>
+  </div>
+</div>
+
+<aside class="rail" id="rail" aria-label="Szintléc – fejezetek mélység szerint">
+  <div class="rail-in">
+    <div class="rail-staff"></div>
+    <div class="rail-ticks" id="railTicks"></div>
+    <div class="rail-items" id="railItems"></div>
+    <div class="rail-marker" id="railMarker"></div>
+  </div>
+</aside>
+
+<section class="hero" id="bevezeto">
+  <div class="wrap hero-in">
+    <div>
+      <div class="hero-kicker">Interaktív tananyag · BME Alapozás</div>
+      <h1>Munkatér&shy;határolások <span>lefelé, biztonsággal</span></h1>
+      <p class="hero-lead">Minden pince, mélygarázs, aluljáró és közműárok úgy kezdődik, hogy a talajt ki kell emelni – és a kiemelt gödör falát meg kell tartani. Ez az oldal végigvezet a dúcolástól a szádfalon és a talajhorgonyon át a fagyasztott falig: animációs videókkal, kalkulátorokkal, 3D gödörtervezővel és kvízekkel.</p>
+      <div class="hero-stats">
+        <div><b>19</b><span>animációs videó</span></div>
+        <div><b>30+</b><span>interaktív elem</span></div>
+        <div><b>3D</b><span>gödörtervező</span></div>
+        <div><b>100+</b><span>kvízkérdés</span></div>
+      </div>
+      <div class="hero-cta">
+        <a class="btn btn-acc" href="#alapok">Kezdjük az alapoknál ↓</a>
+        <a class="btn btn-ghost" href="#tervezo">Ugrás a 3D tervezőhöz</a>
+        <a class="btn btn-ghost" href="#videotar">Videótár</a>
+      </div>
+    </div>
+    <div class="hero-viz" id="heroViz">
+      <div class="hero-ctl">
+        <label for="heroDepth">Kiemelési mélység</label>
+        <input id="heroDepth" type="range" min="0" max="19.5" step="0.1" value="0">
+        <output id="heroDepthVal">0,0 m</output>
+        <button class="btn btn-ghost btn-sm" id="heroPlay" type="button">▶ Ásás</button>
+      </div>
+      <div class="hero-verdict" id="heroVerdict"></div>
+    </div>
+  </div>
+</section>
+
+<main class="main">
+
+
+
+<!--CHAPTERS-->
+
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-grid">
+    <div>
+      <p><b>Munkatérhatárolások</b> – interaktív segédanyag a BME Építőmérnöki Kar Alapozás tárgyához (9. előadás). Alap: a „Munkatér határolások” jegyzet és előadásanyag (Dr. Móczár Balázs), kiegészítve szakirodalmi és webes forrásokkal – ezek a fejezetek végén, a <i>Források</i> alatt találhatók.</p>
+      <p>A kalkulátorok és a 3D tervező egyszerűsített, <b>szemléltető</b> modellek: tanulásra valók, tervezésre nem. A jegyzettől eltérő adatnál a jegyzet az irányadó.</p>
+      <p class="small">A fotók és ábrák egy része az előadásanyagból származik. Az animációs videók Claude-dal készültek (three.js); a valós felvételek a BME Építőipar YouTube-csatornáról töltődnek be.</p>
+    </div>
+    <div>
+      <h4 class="h4 mt0">Kapcsolódó oldalak</h4>
+      <div class="links">
+        <a href="https://vedekezesakarossullyedesekellen.vercel.app" target="_blank" rel="noopener">Védekezés a káros süllyedések ellen <small>↗</small></a>
+        <a href="https://kedvezotlen-altalaj.vercel.app" target="_blank" rel="noopener">Alapozás kedvezőtlen altalajon <small>↗</small></a>
+        <a href="https://talajfelderites.vercel.app" target="_blank" rel="noopener">Talajfelderítés <small>↗</small></a>
+        <a href="https://sikalapok-sullyedesszamitasa.vercel.app" target="_blank" rel="noopener">Síkalapok süllyedésszámítása <small>↗</small></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div class="modal" id="vmodal" hidden role="dialog" aria-modal="true" aria-labelledby="vmTitle">
+  <div class="modal-box">
+    <div class="modal-bar"><b id="vmTitle"></b><button class="x" id="vmClose" type="button" aria-label="Bezárás">×</button></div>
+    <iframe id="vmFrame" title="Animációs videó" allow="autoplay; fullscreen" allowfullscreen src="about:blank"></iframe>
+    <div class="modal-nav"><button id="vmPrev" type="button">← Előző</button><span id="vmInfo"></span><button id="vmNext" type="button">Következő →</button></div>
+  </div>
+</div>
+<div class="lightbox" id="lightbox" hidden><img alt=""><p></p></div>

@@ -1,0 +1,45 @@
+/* 3D gödörtervező (#tervezo) */
+.sim-tasks { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin: 6px 0 8px; }
+@media (max-width: 760px) { .sim-tasks { grid-template-columns: minmax(0, 1fr); } }
+.sim-task { display: grid; grid-template-columns: auto minmax(0, 1fr); grid-template-rows: auto auto; gap: 4px 12px; padding: 12px 14px; border-radius: 14px; border: 1px solid var(--line); background: var(--surface); box-shadow: var(--shadow); }
+.sim-task-n { grid-row: span 2; width: 30px; height: 30px; border-radius: 9px; display: grid; place-items: center; font: 800 18px/1 var(--f-display); background: var(--accent); color: #1a1408; }
+.sim-task b { font-family: var(--f-display); font-size: 19px; font-weight: 700; display: block; line-height: 1.1; }
+.sim-task p { margin: 4px 0 0; font-size: 14px; color: var(--ink2); line-height: 1.45; }
+.sim-task .btn { grid-column: 2; justify-self: start; margin-top: 6px; }
+
+.w.sim .w-viz { padding: 12px; gap: 10px; }
+.w.sim .w-ctrls { gap: 12px; }
+.sim-views { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; justify-content: space-between; }
+.sim-views .seg { flex: 1 1 auto; }
+.sim-stage { position: relative; border-radius: 12px; overflow: hidden; background: var(--sky); border: 1px solid var(--line); touch-action: none; }
+.sim-stage canvas { display: block; width: 100%; height: 100%; outline: none; }
+.sim-badge { position: absolute; left: 10px; top: 10px; z-index: 2; font: 700 10.5px/1 var(--f-mono); letter-spacing: 0.1em; text-transform: uppercase; padding: 5px 8px; border-radius: 6px; background: rgba(20, 22, 26, 0.72); color: #f0e9dc; pointer-events: none; }
+.sim-step { position: absolute; left: 10px; bottom: 10px; right: 10px; z-index: 2; font-size: 13.5px; line-height: 1.35; padding: 7px 10px; border-radius: 9px; background: rgba(20, 22, 26, 0.74); color: #f3eee4; pointer-events: none; width: fit-content; max-width: calc(100% - 20px); }
+.sim-step b { color: #f0a33a; font-family: var(--f-display); font-size: 16px; letter-spacing: 0.02em; margin-right: 6px; }
+.sim-alert { position: absolute; right: 10px; top: 10px; z-index: 2; display: flex; flex-direction: column; align-items: flex-end; gap: 6px; pointer-events: none; }
+.sim-alert span { font: 700 12px/1.2 var(--f-body); padding: 5px 9px; border-radius: 8px; color: #fff; box-shadow: 0 2px 8px rgba(0,0,0,0.25); }
+.sim-alert .a-bad { background: #c2412f; } .sim-alert .a-warn { background: #b7791f; } .sim-alert .a-ok { background: #2c8650; }
+.sim-msg { position: absolute; inset: 0; display: grid; place-items: center; padding: 20px; text-align: center; color: var(--ink2); font-size: 15px; }
+.sim-play { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.sim-play .ctl { flex: 1 1 200px; }
+.sim-play .btn { flex: none; min-width: 112px; justify-content: center; }
+.sim-ctl-h { font: 700 11px/1 var(--f-mono); letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin: 4px 0 -4px; }
+.sim-ctl-note { font-size: 12.5px; color: var(--muted); line-height: 1.35; margin-top: -6px; }
+.w.sim .seg button { padding: 6px 8px; font-size: 13px; }
+
+.sim-check { border-top: 1px solid var(--line); padding: 14px 16px 16px; }
+.sim-check-h { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; margin-bottom: 10px; }
+.sim-check-h b { font-family: var(--f-display); font-size: 21px; font-weight: 750; }
+.sim-check-h span { font: 600 12.5px var(--f-mono); color: var(--muted); }
+.sim-check-h .sim-sum { margin-left: auto; display: flex; gap: 6px; flex-wrap: wrap; }
+.sim-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; list-style: none; margin: 0; padding: 0; }
+@media (max-width: 860px) { .sim-list { grid-template-columns: minmax(0, 1fr); } }
+.sim-list li { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 2px 10px; padding: 9px 11px; border-radius: 11px; border: 1px solid var(--line); background: var(--surface2); font-size: 13.8px; line-height: 1.42; color: var(--ink2); }
+.sim-list li i { grid-row: span 2; width: 22px; height: 22px; border-radius: 50%; display: grid; place-items: center; font: 800 13px/1 var(--f-body); font-style: normal; color: #fff; background: var(--steel); margin-top: 1px; }
+.sim-list li b { color: var(--ink); font-weight: 650; }
+.sim-list li a { white-space: nowrap; font-weight: 600; }
+.sim-list li[data-s=ok] i { background: var(--ok); }
+.sim-list li[data-s=warn] { background: var(--warn-soft); border-color: transparent; } .sim-list li[data-s=warn] i { background: var(--warn); }
+.sim-list li[data-s=bad] { background: var(--bad-soft); border-color: transparent; } .sim-list li[data-s=bad] i { background: var(--bad); }
+.sim-legend { padding: 0 16px 14px; }
+.sim-legend .legend i { border: 1px solid rgba(0,0,0,0.2); }
