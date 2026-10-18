@@ -56,7 +56,7 @@ function initNav() {
   const ro = $('#depthVal');
   let cur = null;
   const upd = () => {
-    const y = scrollY + innerHeight * 0.32;
+    const y = scrollY + innerHeight * 0.32 * Math.min(1, scrollY / 300);
     let i = 0;
     for (let k = 0; k < chs.length; k++) if (chs[k].el.offsetTop <= y) i = k;
     const a = chs[i], b = chs[i + 1];
@@ -65,7 +65,7 @@ function initNav() {
     else d = Math.min(MAXDEPTH, a.d + clamp((y - a.el.offsetTop) / Math.max(1, a.el.offsetHeight), 0, 1) * (MAXDEPTH - a.d));
     if (marker) marker.style.top = pos(d) + '%';
     if (rail) rail.classList.toggle('show', scrollY > (document.getElementById('bevezeto')?.offsetHeight || 400) - 160);
-    if (ro) ro.textContent = d < 0.05 ? '±0,0' : '−' + fmt(d, 1);
+    if (ro) ro.textContent = d < 0.05 || scrollY < 20 ? '±0,0' : '−' + fmt(d, 1);
     if (cur !== a.id) {
       cur = a.id;
       $$('[data-ch]').forEach((el) => el.classList.toggle('on', el.dataset.ch === cur));
