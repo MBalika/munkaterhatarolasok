@@ -49,9 +49,9 @@
     <div>
       <div class="hero-kicker">Interaktív tananyag · BME Alapozás</div>
       <h1>Munkatér&shy;határolások <span>lefelé, biztonsággal</span></h1>
-      <p class="hero-lead">Minden pince, mélygarázs, aluljáró és közműárok úgy kezdődik, hogy a talajt ki kell emelni – és a kiemelt gödör falát meg kell tartani. Ez az oldal végigvezet a dúcolástól a szádfalon és a talajhorgonyon át a fagyasztott falig: animációs videókkal, kalkulátorokkal, 3D gödörtervezővel és kvízekkel.</p>
+      <p class="hero-lead">Minden pince, mélygarázs, aluljáró és közműárok úgy kezdődik, hogy a talajt ki kell emelni – és a kiemelt gödör falát meg kell tartani. Ez az oldal végigvezet a dúcolástól a szádfalon és a talajhorgonyon át a fagyasztott falig: animációs videókkal, a BME valós felvételeivel, kalkulátorokkal, 3D gödörtervezővel és kvízekkel.</p>
       <div class="hero-stats">
-        <div><b>19</b><span>animációs videó</span></div>
+        <div><b>13</b><span>animációs videó</span></div>
         <div><b>40+</b><span>interaktív elem</span></div>
         <div><b>3D</b><span>gödörtervező</span></div>
         <div><b>100+</b><span>kérdés és feladat</span></div>
@@ -92,6 +92,7 @@
     <div>
       <h4 class="h4 mt0">Kapcsolódó oldalak</h4>
       <div class="links">
+        <a href="https://melyalapozasok.vercel.app" target="_blank" rel="noopener">Mélyalapozások <small>↗</small></a>
         <a href="https://vedekezesakarossullyedesekellen.vercel.app" target="_blank" rel="noopener">Védekezés a káros süllyedések ellen <small>↗</small></a>
         <a href="https://kedvezotlen-altalaj.vercel.app" target="_blank" rel="noopener">Alapozás kedvezőtlen altalajon <small>↗</small></a>
         <a href="https://talajfelderites.vercel.app" target="_blank" rel="noopener">Talajfelderítés <small>↗</small></a>
@@ -104,8 +105,16 @@
 <div class="modal" id="vmodal" hidden role="dialog" aria-modal="true" aria-labelledby="vmTitle">
   <div class="modal-box">
     <div class="modal-bar"><b id="vmTitle"></b><button class="x" id="vmClose" type="button" aria-label="Bezárás">×</button></div>
-    <iframe id="vmFrame" title="Animációs videó" allow="autoplay; fullscreen" allowfullscreen src="about:blank"></iframe>
+    <iframe id="vmFrame" title="Animációs videó" allow="autoplay; fullscreen" src="about:blank"></iframe>
     <div class="modal-nav"><button id="vmPrev" type="button">← Előző</button><span id="vmInfo"></span><button id="vmNext" type="button">Következő →</button></div>
   </div>
 </div>
+<div class="modal" id="ytmodal" hidden role="dialog" aria-modal="true" aria-labelledby="ytTitle">
+  <div class="modal-box">
+    <div class="modal-bar"><b id="ytTitle"></b><button class="x" id="ytClose" type="button" aria-label="Bezárás">×</button></div>
+    <iframe id="ytFrame" title="YouTube-videó" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" src="about:blank"></iframe>
+    <div class="modal-nav"><span id="ytInfo"></span><a id="ytOpen" href="#" target="_blank" rel="noopener">Megnyitás a YouTube-on ↗</a></div>
+  </div>
+</div>
+<span class="hyphenate sr" aria-hidden="true">elválasztás</span>
 <div class="lightbox" id="lightbox" hidden><img alt=""><p></p></div>

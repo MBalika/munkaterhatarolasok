@@ -178,14 +178,14 @@ const TECH = [
   ['arok', 1, 'Munkaárok dúcolása', 'Palló, heveder, dúc – szembetámasz', '#pallozas', '01'],
   ['tabla', 1, 'Táblás dúcolat', 'Előregyártott dúcolótáblák', '#tablas', '02'],
   ['szeles', 1, 'Széles gödör dúcolása', 'Kihajlás, ferde dúcok', '#szeles', '03'],
-  ['berlini', 2, 'Berlini dúcolat', 'I-tartók + pallók, száraz gödörbe', '#berlini', '04'],
-  ['jet', 2, 'Jet-grouting fal', 'Acél jet-oszlopokban, kvázi vízzáró', '#jetfal', '05'],
-  ['zagy', 2, 'Erősített zagyfal', 'Önszilárduló zagy + acélgerendák', '#zagyfal', '06'],
-  ['dsm', 2, 'Mélykevert fal', 'Helyben kevert talajcement + acél', '#dsmfal', '07'],
-  ['szad', 2, 'Acél szádfal', 'Zárakkal kapcsolt, vízzáró, visszahúzható', '#szadfal', '08'],
+  ['berlini', 2, 'Berlini dúcolat', 'I-tartók + pallók, száraz gödörbe', '#berlini', 'BME'],
+  ['jet', 2, 'Jet-grouting fal', 'Acél jet-oszlopokban, kvázi vízzáró', '#jetfal', 'BME'],
+  ['zagy', 2, 'Erősített zagyfal', 'Önszilárduló zagy + acélgerendák', '#zagyfal', 'BME'],
+  ['dsm', 2, 'Mélykevert fal', 'Helyben kevert talajcement + acél', '#dsmfal', 'BME'],
+  ['szad', 2, 'Acél szádfal', 'Zárakkal kapcsolt, vízzáró, visszahúzható', '#szadfal', 'BME'],
   ['szadanyag', 2, 'Fa, vb., műanyag szádfal', 'Végleges partfalak, kikötők', '#szadanyag', '09'],
-  ['colop', 2, 'Cölöpfal', 'Hézagos, érintkező, összemetsző', '#colopfal', '10'],
-  ['resfal', 2, 'Réselt fal (résfal)', 'Merev, vízzáró, gyakran végleges', '#resfal', ''],
+  ['colop', 2, 'Cölöpfal', 'Hézagos, érintkező, összemetsző', '#colopfal', 'BME'],
+  ['resfal', 2, 'Réselt fal (résfal)', 'Merev, vízzáró, gyakran végleges', '#resfal', 'BME'],
   ['szeg', 3, 'Talajszegezés', 'Szegek + háló + lőttbeton, lépcsőnként', '#szegezes', '11'],
   ['horgony', 3, 'Talajhorgony', 'Feszített, injektált – tiszta munkatér', '#horgony', '12'],
   ['cso', 3, 'Acél csőtámasz', 'Szemközti falak összetámasztása', '#csotamasz', '13'],
@@ -227,7 +227,7 @@ function icon(k) {
 function initTechmap() {
   const box = $('#techmap'); if (!box) return;
   for (const [k, g, t, sub, href, v] of TECH) {
-    box.append(h('a', { class: `tech grp${g}`, href, 'data-g': g }, icon(k), v ? h('span', { class: 'tv' }, '▶ ' + v) : null, h('b', {}, t), h('span', {}, sub)));
+    box.append(h('a', { class: `tech grp${g}`, href, 'data-g': g }, icon(k), v ? h('span', { class: v === 'BME' ? 'tv yt' : 'tv' }, '▶ ' + v) : null, h('b', {}, t), h('span', {}, sub)));
   }
   const f = $('#techFilter');
   f?.addEventListener('click', (e) => {

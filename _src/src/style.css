@@ -123,6 +123,16 @@ strong { font-weight: 650; }
 :focus-visible { outline: 2.5px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
 .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
+/* ------------------------------------------------------------ formázás (sorkizárás, magyar elválasztás, nem törő egységek) */
+/* A lágy kötőjeleket és a nem törő szóközöket a core.js GUARD modulja teszi be (Hyphenopoly hu.wasm) – ezért hyphens: manual. */
+main p, main li, main dd, main figcaption, main .note, main .q-exp, main .verdict, main .callout p, main .w-foot, main .tf-item .s, main .tf-item .e, footer p, .hero-lead {
+  text-align: justify; text-justify: inter-word; hyphens: manual; -webkit-hyphens: manual; text-wrap: pretty;
+}
+main .center, main .q-res p, main .tf-score { text-align: center; }
+.nw, .formula .f { white-space: nowrap; }
+.nw, .formula .f, sub, sup, td, th, output, .ctl-val, .mono, .chip, .tag, button, .fact b { hyphens: none; -webkit-hyphens: none; }
+main h1, main h2, main h3, main h4, main h5, .w-title, .quiz-head b { text-align: left; hyphens: none; }
+
 /* ------------------------------------------------------------ felső sáv */
 .topbar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 60; height: var(--top-h); background: color-mix(in srgb, var(--surface) 88%, transparent); backdrop-filter: saturate(1.4) blur(10px); -webkit-backdrop-filter: saturate(1.4) blur(10px); border-bottom: 1px solid var(--line); }
 .topbar-in { height: 100%; display: flex; align-items: center; gap: 14px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
@@ -432,15 +442,72 @@ svg .grid { stroke: var(--line); stroke-width: 1; fill: none; }
 .modal-nav button:hover { background: rgba(255,255,255,0.14); }
 .modal-nav span { color: #9a958c; font-size: 13px; align-self: center; }
 
-/* YouTube (valós felvételek) */
-.yt { border: 1px solid var(--line); border-radius: var(--r); overflow: hidden; background: var(--surface); box-shadow: var(--shadow); }
-.yt-frame { position: relative; aspect-ratio: 16 / 9; background: #000; cursor: pointer; }
-.yt-frame img { width: 100%; height: 100%; object-fit: cover; opacity: 0.88; }
-.yt-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
-.yt-frame .ytbtn { position: absolute; left: 50%; top: 50%; width: 64px; height: 44px; margin: -22px 0 0 -32px; border-radius: 12px; background: #e62117; display: grid; place-items: center; }
-.yt-frame .ytbtn::before { content: ""; border-left: 16px solid #fff; border-top: 10px solid transparent; border-bottom: 10px solid transparent; margin-left: 4px; }
-.yt-cap { padding: 10px 14px 12px; }
-.yt-cap b { display: block; font-family: var(--f-display); font-size: 19px; font-weight: 700; }
+/* BME YouTube-kártyák („Nézd meg élőben is!” – nagy kártya, mini kártya, rács) */
+.ytc { --ytc-bg: #0e1114; position: relative; margin: 26px 0; border-radius: 18px; overflow: hidden; background: var(--ytc-bg); color: #f2f2ee; box-shadow: var(--shadow-lg); isolation: isolate; }
+.ytc::before { content: ""; position: absolute; inset: 0; z-index: -1; background:
+  linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px) 0 0 / 26px 26px,
+  linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px) 0 0 / 26px 26px,
+  radial-gradient(70% 60% at 50% 45%, rgba(255, 255, 255, 0.06), transparent 70%); }
+.ytc-head { text-align: center; padding: 20px 16px 4px; }
+.ytc-kick { font: 800 clamp(13px, 1.6vw, 17px)/1.1 var(--f-display); letter-spacing: 0.16em; text-transform: uppercase; color: #f0a33a; }
+.ytc-title { font: 900 clamp(30px, 4.6vw, 54px)/0.95 var(--f-display); letter-spacing: 0.01em; margin: 6px 0 0; color: #fff; text-transform: none; }
+.ytc-board { position: relative; margin: 10px auto 0; width: min(100%, 980px); aspect-ratio: 16 / 8.2; }
+.ytc-main { position: absolute; left: 50%; top: 50%; width: 49%; transform: translate(-50%, -50%) rotate(-0.6deg); z-index: 3; border: 0; padding: 7px; background: #fff; border-radius: 4px; cursor: pointer; box-shadow: 0 18px 40px rgba(0,0,0,0.55); transition: transform 0.18s; }
+.ytc-main:hover { transform: translate(-50%, -50%) rotate(0deg) scale(1.025); }
+.ytc-main img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
+.ytc-yt { position: absolute; left: 50%; top: 50%; width: 17%; aspect-ratio: 1.42; transform: translate(-50%, -50%); border-radius: 22% / 30%; background: #ff0000; box-shadow: 0 6px 18px rgba(0,0,0,0.45); display: grid; place-items: center; transition: transform 0.15s; }
+.ytc-yt::before { content: ""; border-left: clamp(12px, 2vw, 22px) solid #fff; border-top: clamp(8px, 1.3vw, 14px) solid transparent; border-bottom: clamp(8px, 1.3vw, 14px) solid transparent; margin-left: 8%; }
+.ytc-main:hover .ytc-yt { transform: translate(-50%, -50%) scale(1.1); }
+.ytc-pol { position: absolute; z-index: 2; width: 31%; margin: 0; padding: 6px 6px 0; background: #f4f1ea; border-radius: 3px; box-shadow: 0 12px 28px rgba(0,0,0,0.5); cursor: pointer; transition: transform 0.18s, z-index 0s; }
+.ytc-pol img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
+.ytc-pol figcaption { font: 800 clamp(11px, 1.45vw, 18px)/1 var(--f-display); letter-spacing: 0.06em; text-transform: uppercase; color: #1c1c1c; text-align: left; padding: 8px 10px 9px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.ytc-pol.p1 { left: 1%; top: 4%; transform: rotate(-6deg); }
+.ytc-pol.p2 figcaption, .ytc-pol.p4 figcaption { text-align: right; }
+.ytc-pol.p2 { right: 2%; top: 3%; transform: rotate(5deg); }
+.ytc-pol.p3 { left: 4%; bottom: 3%; transform: rotate(4deg); }
+.ytc-pol.p4 { right: 4%; bottom: 2%; transform: rotate(-4deg); }
+.ytc-pol:hover { z-index: 4; transform: rotate(0deg) scale(1.05); }
+.ytc-bar { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 6px 14px; align-items: center; margin: 14px 16px 16px; padding: 12px 16px; border-radius: 14px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12); }
+.ytc-logo { width: 46px; height: 32px; border-radius: 9px; background: #ff0000; display: grid; place-items: center; }
+.ytc-logo::before { content: ""; border-left: 13px solid #fff; border-top: 8px solid transparent; border-bottom: 8px solid transparent; margin-left: 3px; }
+.ytc-bar b { display: block; font-size: 17px; font-weight: 700; color: #fff; line-height: 1.25; text-align: left; }
+.ytc-bar small { display: block; font-size: 13px; color: #a5abb2; line-height: 1.35; margin-top: 2px; text-align: left; }
+.ytc-link { display: flex; flex-direction: column; align-items: flex-end; gap: 3px; text-decoration: none; }
+.ytc-link .u { font: 800 clamp(16px, 1.9vw, 24px)/1 var(--f-display); letter-spacing: 0.02em; color: #f0a33a; white-space: nowrap; }
+.ytc-link .h { font-size: 12px; color: #a5abb2; white-space: nowrap; }
+.ytc-link:hover .u { text-decoration: underline; text-underline-offset: 4px; }
+.ytc-qr { position: absolute; right: 14px; top: 14px; width: 74px; padding: 5px; background: #fff; border-radius: 6px; }
+.ytc-qr img { width: 100%; image-rendering: pixelated; }
+@media (max-width: 820px) { .ytc-qr { display: none; } }
+@media (max-width: 680px) {
+  .ytc-board { aspect-ratio: auto; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; padding: 4px 12px 0; }
+  .ytc-main { position: relative; left: auto; top: auto; transform: none; width: 100%; grid-column: 1 / -1; order: -1; }
+  .ytc-pol figcaption, .ytc-pol.p2 figcaption, .ytc-pol.p4 figcaption { text-align: center; }
+  .ytc-main:hover { transform: scale(1.01); }
+  .ytc-pol { position: relative; left: auto !important; right: auto !important; top: auto !important; bottom: auto !important; width: 100%; padding: 4px 4px 0; }
+  .ytc-pol.p1, .ytc-pol.p4 { transform: rotate(-2deg); } .ytc-pol.p2, .ytc-pol.p3 { transform: rotate(2deg); }
+  .ytc-pol figcaption { font-size: 13px; padding: 6px 2px 7px; }
+  .ytc-bar { grid-template-columns: auto minmax(0, 1fr); }
+  .ytc-link { grid-column: 1 / -1; align-items: flex-start; }
+}
+/* kis változat (listákhoz, videótárhoz) */
+.ytm { display: flex; flex-direction: column; gap: 0; border-radius: 14px; overflow: hidden; background: #0e1114; color: #f2f2ee; box-shadow: var(--shadow); cursor: pointer; border: 0; padding: 0; text-align: left; transition: transform 0.15s, box-shadow 0.15s; }
+.ytm:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+.ytm .th { position: relative; aspect-ratio: 16 / 9; }
+.ytm .th img { width: 100%; height: 100%; object-fit: cover; }
+.ytm .th .ytc-yt { width: 22%; }
+.ytm .th .d { position: absolute; right: 7px; bottom: 6px; font: 700 11.5px/1 var(--f-mono); color: #fff; background: rgba(0,0,0,0.7); padding: 3px 6px; border-radius: 5px; }
+.ytm .strip { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 3px; padding: 3px 3px 0; background: #0e1114; }
+.ytm .strip img { aspect-ratio: 16 / 9; object-fit: cover; width: 100%; }
+.ytm .m { padding: 9px 12px 12px; }
+.ytm .m small { display: block; font: 700 10.5px/1.2 var(--f-mono); letter-spacing: 0.1em; text-transform: uppercase; color: #f0a33a; }
+.ytm .m b { display: block; font: 800 20px/1.1 var(--f-display); letter-spacing: 0.02em; text-transform: uppercase; margin-top: 4px; color: #fff; }
+.ytgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr)); gap: 16px; }
+.ytm .m span { display: block; font-size: 12.5px; line-height: 1.35; color: #c2c7cc; margin-top: 4px; text-align: left; }
+.two-col .ytm { width: 100%; margin: 18px 0; }
+.modal-nav a { color: #f0a33a; font-weight: 600; font-size: 14px; text-decoration: none; align-self: center; }
+.modal-nav a:hover { text-decoration: underline; text-underline-offset: 3px; }
+.tech .tv.yt { color: var(--bad); background: var(--surface); padding: 2px 5px; border-radius: 5px; top: 8px; right: 7px; }
 
 /* fotógaléria */
 .gal { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(220px, 280px); gap: 12px; overflow-x: auto; padding: 4px 2px 12px; scroll-snap-type: x mandatory; scrollbar-width: thin; }

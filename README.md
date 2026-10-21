@@ -6,7 +6,9 @@ BME Építőmérnöki Kar, Alapozás, 9. előadás. Alap: a „Munkatér határo
 
 ## Felépítés
 - `index.html` – a kész, egyfájlos oldal (a buildből; CSS + JS beágyazva, three.js-szel együtt)
-- `video/NN.html` + `video/NN.mp3` – a 19 animációs videó (a hang külön fájlban), `video/grass.jpg` közös textúra
+- `video/NN.html` + `video/NN.mp3` – az animációs videók (a hang külön fájlban), `video/grass.jpg` közös textúra. Az oldalon 13 szerepel; a 04–08. és a 10. (falszerkezetek) helyén a BME Építőmérnöki Kar YouTube-videói vannak, a fájlok a mappában maradtak.
+- `img/yt/<id>/` – a BME YouTube-videók kártyáinak képei (`t.jpg` indexkép, `p1–p4.jpg` képkockák, `qr.png`); a metaadatok a `src/js/data.js` `YT` objektumában
+- `vendor/hyphenopoly/` – magyar elválasztás (Hyphenopoly 6, MIT); a sorkizárást és a nem törő egységeket a `core.js` `GUARD` modulja kezeli
 - `img/thumb/` – videó-bélyegképek, `img/ppt/` – képek az előadásanyagból
 - `fonts/` – saját tárhelyről kiszolgált betűk (Barlow Condensed, Inter, JetBrains Mono – @fontsource, OFL)
 - `_src/` – forrás (a Vercel nem teszi ki, lásd `.vercelignore`)

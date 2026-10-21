@@ -37,13 +37,16 @@ js = (R / outjs).read_text(encoding='utf-8').replace('</script', '<\\/script')
 
 TITLE = 'Munkatérhatárolások'
 DESC = ('Interaktív tananyag a munkatérhatárolásokról: dúcolás, berlini dúcolat, szádfal, cölöpfal, jet-grouting- és zagyfal, '
-        'talajszegezés, talajhorgony, csőtámasz, top-down, fagyasztott fal – 19 animációs videóval, kalkulátorokkal, 3D gödörtervezővel, kvízekkel.')
+        'talajszegezés, talajhorgony, csőtámasz, top-down, fagyasztott fal – animációs videókkal, a BME valós felvételeivel, kalkulátorokkal, 3D gödörtervezővel, kvízekkel.')
 # saját tárhelyről kiszolgált betűk (fonts/ – @fontsource csomagokból), nincs Google Fonts hívás
 fonts = ('<link rel="preload" href="fonts/barlow-condensed-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>'
          '<link rel="preload" href="fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>')
 icon = ("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 34 34'%3E%3Crect width='34' height='34' rx='8' fill='%231d2024'/%3E"
         "%3Cpath d='M5 11h7v17h10V11h7' fill='none' stroke='%23f0a33a' stroke-width='2.6' stroke-linejoin='round'/%3E"
         "%3Cpath d='M12 15h10M12 21h10' stroke='%23cfc9bc' stroke-width='2.2'/%3E%3C/svg%3E")
+# magyar elválasztás (Hyphenopoly 6, saját tárhelyről; a GUARD a hyphenators.hu függvényt használja)
+hyph = ('<script src="vendor/hyphenopoly/Hyphenopoly_Loader.js"></script>\n'
+        '<script>Hyphenopoly.config({ require: { "hu": "FORCEHYPHENOPOLY" }, setup: { hide: "none", selectors: { ".hyphenate": { minWordLength: 6, compound: "auto" } } } });</script>')
 theme_boot = ("<script>try{var t=localStorage.getItem('mt-theme');if(t==='dark'||t==='light')document.documentElement.dataset.theme=t}catch(e){}</script>")
 html = f'''<!doctype html>
 <html lang="hu">
@@ -59,6 +62,7 @@ html = f'''<!doctype html>
 <link rel="icon" href="{icon}">
 {theme_boot}
 {fonts}
+{hyph}
 <style>
 {css}
 </style>

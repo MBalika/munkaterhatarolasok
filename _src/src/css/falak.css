@@ -24,7 +24,7 @@
 .fal-lead-grid a:hover { background: var(--surface3); }
 .fal-lead-grid a b { font-family: var(--f-display); font-size: 18px; font-weight: 750; line-height: 1.1; }
 .fal-lead-grid a span { font-size: 12px; color: var(--muted); font-family: var(--f-mono); }
-.fal-yt { max-width: 720px; margin: 18px 0; }
+/* (a régi .fal-yt beágyazás helyett a BME-kártyák: .ytc / .ytm – style.css) */
 .fal-2yt { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin: 18px 0; }
 @media (max-width: 760px) { .fal-2yt { grid-template-columns: minmax(0, 1fr); } }
 

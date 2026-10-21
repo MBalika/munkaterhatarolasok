@@ -1,5 +1,5 @@
 // Belépési pont – a fejezetmodulok a betöltéskor regisztrálják a widgeteiket, kvízeiket.
-import { bootWidgets, bootAll } from './core.js';
+import { bootWidgets, bootAll, GUARD } from './core.js';
 import { initUI } from './ui.js';
 import { initHero } from './hero.js';
 import './ch_alapok.js';
@@ -16,5 +16,7 @@ function start() {
   initUI();
   initHero();
   if (/[?&]all\b/.test(location.search)) bootAll(); else bootWidgets();
+  // formázás: nem törő egységek + magyar elválasztás (a dinamikus tartalmat MutationObserver követi)
+  try { GUARD.start(); } catch (e) { console.error('Formázás-őr hiba', e); }
 }
 if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start); else start();

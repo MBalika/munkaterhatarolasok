@@ -1,6 +1,6 @@
 // Oldalkeret: téma, navigáció, szintléc, videók, galéria, YouTube, fülek, kvíz, igaz/hamis
 import { $, $$, h, fmt, clamp, fireTheme } from './core.js';
-import { VIDEOS, VGROUPS, YT, CHAPTERS, MAXDEPTH } from './data.js';
+import { VIDEOS, VGROUPS, YT, YT_GROUPS, CHAPTERS, MAXDEPTH } from './data.js';
 
 /* ---------------------------------------------------------------- téma */
 function initTheme() {
@@ -124,7 +124,7 @@ function initVideos() {
   $('#vmClose')?.addEventListener('click', closeVideo);
   $('#vmPrev')?.addEventListener('click', () => openVideo(order[(curIdx - 1 + order.length) % order.length]));
   $('#vmNext')?.addEventListener('click', () => openVideo(order[(curIdx + 1) % order.length]));
-  addEventListener('keydown', (e) => { if (e.key === 'Escape') { closeVideo(); closeLightbox(); } });
+  addEventListener('keydown', (e) => { if (e.key === 'Escape') { closeVideo(); closeYT(); closeLightbox(); } });
   addEventListener('message', (e) => { if (e.data && e.data.type === 'mt-video-close') closeVideo(); });
 }
 
@@ -144,18 +144,62 @@ function initGallery() {
   lb?.addEventListener('click', closeLightbox);
 }
 
-/* ---------------------------------------------------------------- YouTube (kattintásra töltődik) */
+/* ---------------------------------------------------------------- BME YouTube-kártyák („Nézd meg élőben is!”) */
+const ytImg = (id, f) => `img/yt/${id}/${f}`;
+const ytWatch = (id, t = 0) => `https://www.youtube.com/watch?v=${id}` + (YT[id]?.list ? `&list=${YT[id].list}` : '') + (t ? `&t=${t}s` : '');
+function openYT(id, t = 0) {
+  const y = YT[id]; if (!y) return;
+  const m = $('#ytmodal'); if (!m) { window.open(ytWatch(id, t), '_blank', 'noopener'); return; }
+  $('#ytTitle', m).textContent = y.title;
+  $('#ytFrame', m).src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0` + (t ? `&start=${t}` : '');
+  $('#ytOpen', m).href = ytWatch(id, t);
+  $('#ytInfo', m).textContent = `BME Építőmérnöki Kar · ${y.dur}` + (y.playlist ? ` · ${y.playlist} lejátszási lista` : '');
+  m.hidden = false; document.body.style.overflow = 'hidden';
+  setTimeout(() => $('#ytClose', m)?.focus(), 200);
+}
+function closeYT() { const m = $('#ytmodal'); if (!m || m.hidden) return; $('#ytFrame', m).src = 'about:blank'; m.hidden = true; document.body.style.overflow = ''; }
+/** Nagy kártya: <div data-ytc="ID"></div> (opcionális data-kick, data-caps="a|b|c|d") */
+export function ytCard(el, id) {
+  const y = YT[id]; if (!y) { console.warn('Nincs ilyen YouTube-videó:', id); return; }
+  const caps = el.dataset.caps ? el.dataset.caps.split('|') : y.caps;
+  el.classList.add('ytc'); el.innerHTML = '';
+  const go = () => openYT(id);
+  const board = h('div', { class: 'ytc-board' },
+    ...[1, 2, 3, 4].map((k) => h('figure', { class: 'ytc-pol p' + k, onclick: go }, h('img', { src: ytImg(id, `p${k}.jpg`), alt: caps[k - 1] || '', loading: 'lazy', decoding: 'async' }), h('figcaption', {}, caps[k - 1] || ''))),
+    h('button', { class: 'ytc-main', type: 'button', onclick: go, 'aria-label': 'Videó lejátszása: ' + y.title }, h('img', { src: ytImg(id, 't.jpg'), alt: '', loading: 'lazy', decoding: 'async' }), h('span', { class: 'ytc-yt' })));
+  const url = `https://youtu.be/${id}`;
+  el.append(
+    h('div', { class: 'ytc-head' }, h('div', { class: 'ytc-kick' }, el.dataset.kick || y.kick), h('div', { class: 'ytc-title' }, 'Nézd meg élőben is!')),
+    h('div', { class: 'ytc-qr' }, h('img', { src: ytImg(id, 'qr.png'), alt: 'QR-kód: ' + url, loading: 'lazy' })),
+    board,
+    h('div', { class: 'ytc-bar' }, h('span', { class: 'ytc-logo', 'aria-hidden': 'true' }),
+      h('div', {}, h('b', {}, y.title), h('small', {}, 'BME Építőmérnöki Kar · YouTube' + (y.playlist ? ` · ${y.playlist} lejátszási lista` : '') + ` · ${y.dur}`)),
+      h('a', { class: 'ytc-link', href: ytWatch(id), target: '_blank', rel: 'noopener' }, h('span', { class: 'u' }, `youtu.be/${id}`), h('span', { class: 'h' }, '▶ kattints a képre, vagy nyisd meg a YouTube-on ↗'))));
+}
+/** Kis kártya: <button data-ytm="ID"></button> (opcionális data-t: kezdés másodpercben, data-note: rövid megjegyzés) */
+export function ytMini(el, id) {
+  const y = YT[id]; if (!y) { console.warn('Nincs ilyen YouTube-videó:', id); return; }
+  el.classList.add('ytm'); el.innerHTML = ''; el.type = 'button';
+  el.append(h('div', { class: 'th' }, h('img', { src: ytImg(id, 't.jpg'), alt: '', loading: 'lazy' }), h('span', { class: 'ytc-yt' }), h('span', { class: 'd' }, y.dur)),
+    h('div', { class: 'strip' }, ...[1, 2, 3, 4].map((k) => h('img', { src: ytImg(id, `p${k}.jpg`), alt: '', loading: 'lazy' }))),
+    h('div', { class: 'm' }, h('small', {}, 'BME Építőmérnöki Kar · YouTube'), h('b', {}, y.tech), el.dataset.note ? h('span', {}, el.dataset.note) : null));
+  const t0 = +el.dataset.t || 0;
+  el.addEventListener('click', () => openYT(id, t0));
+  el.setAttribute('aria-label', 'YouTube-videó: ' + y.title);
+}
 function initYT() {
-  $$('[data-yt]').forEach((el) => {
-    const id = el.dataset.yt; const title = el.dataset.title || YT[id] || 'Videó';
-    el.classList.add('yt');
-    const frame = h('div', { class: 'yt-frame', role: 'button', tabindex: '0', 'aria-label': 'YouTube-videó lejátszása: ' + title },
-      h('img', { src: `https://i.ytimg.com/vi/${id}/hqdefault.jpg`, alt: '', loading: 'lazy' }), h('span', { class: 'ytbtn' }));
-    const go = () => { frame.innerHTML = ''; frame.append(h('iframe', { src: `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0`, title, allow: 'autoplay; encrypted-media; picture-in-picture; fullscreen', allowfullscreen: true })); };
-    frame.addEventListener('click', go);
-    frame.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(); } });
-    el.append(frame, h('div', { class: 'yt-cap' }, h('b', {}, title)));
-  });
+  $$('[data-ytc]').forEach((el) => ytCard(el, el.dataset.ytc));
+  $$('[data-ytm]').forEach((el) => ytMini(el, el.dataset.ytm));
+  const lib = $('#ytlib');
+  if (lib) for (const g of YT_GROUPS) {
+    lib.append(h('div', { class: 'vgroup grp' + g.grp }, g.t));
+    const grid = h('div', { class: 'ytgrid' });
+    for (const id of g.ids) { const b = h('button', {}); ytMini(b, id); grid.append(b); }
+    lib.append(grid);
+  }
+  const m = $('#ytmodal');
+  m?.addEventListener('click', (e) => { if (e.target === m) closeYT(); });
+  $('#ytClose')?.addEventListener('click', closeYT);
 }
 
 /* ---------------------------------------------------------------- fülek */
