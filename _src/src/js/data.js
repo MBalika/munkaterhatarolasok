@@ -6,7 +6,7 @@ export const VIDEOS = [
   { n: '03', t: 'Széles munkagödör dúcolása', d: '2:04', g: 'nu-disco', grp: 1, s: 'Kihajlás, több irányú merevítés, ferde dúcok az alaplemezhez, földpadka' },
   { n: '09', t: 'Fa, vasbeton és műanyag szádfal', d: '2:08', g: 'reggaeton', grp: 2, s: 'Vezércölöpök, vízöblítés, előfeszítés, PVC pallók (~9 kg/m²)' },
   { n: '11', t: 'Talajszegezés', d: '2:10', g: 'breakbeat', grp: 3, s: 'Lépcsős mélyítés, szegek, háló, lőttbeton, kihúzóvizsgálat' },
-  { n: '12', t: 'Talajhorgony', d: '2:19', g: 'dubstep', grp: 3, s: 'Horgonyfej, szabad és befogott szakasz, injektálás, feszítés 80–90%-ra' },
+  { n: '12', t: 'Talajhorgony', d: '2:19', g: 'deep house', grp: 3, s: 'Horgonyfej, szabad és befogott szakasz, injektálás, feszítés 80–90%-ra' },
   { n: '13', t: 'Acél csőtámaszok', d: '2:11', g: 'synthwave', grp: 3, s: 'Kihajlás, hőtágulás, mellgerenda, mély városi munkaterek' },
   { n: '14', t: 'Támaszfödém (top-down)', d: '2:14', g: 'trance', grp: 3, s: 'A milánói módszer öt fázisa, földkiemelés a födém alatt' },
   { n: '15', t: 'Passzív hátrahorgonyzás', d: '2:02', g: 'UK garage', grp: 3, s: 'Horgonyfal a szakadólapon kívül, feszítés nélkül – néhány cm mozgás' },
