@@ -634,3 +634,11 @@ main .rag, footer .rag, .hero-lead.rag { text-align: left !important; }
 .w-split .w-viz > svg.fig { grid-column: 1; }
 .w-split .w-viz > :not(.seg):not(svg.fig) { grid-column: 2; }
 @media (max-width: 880px) { .w-split .w-viz { grid-template-columns: minmax(0, 1fr); } .w-split .w-viz > * { grid-column: 1 !important; } }
+/* hős (2026-10-28): cím + bevezető | 3D metszet egy sorban, alattuk a gombok és a számok teljes szélességű sávban */
+.hero-in { grid-template-areas: "t v" "b b"; row-gap: 28px; }
+.hero-t { grid-area: t; } .hero-viz { grid-area: v; }
+.hero-bar { grid-area: b; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px 32px; padding-top: 22px; border-top: 1px solid #2c3036; }
+.hero-bar .hero-cta, .hero-bar .hero-stats { margin-top: 0; }
+.hero-bar .hero-stats { gap: 10px 34px; }
+@media (max-width: 1020px) { .hero-in { grid-template-areas: "t" "v" "b"; } }
+@media (min-width: 1021px) { .hero-bar { display: grid; grid-template-columns: auto minmax(0, 1fr); } .hero-bar .hero-stats { justify-content: flex-end; flex-wrap: nowrap; gap: 10px 30px; } }
