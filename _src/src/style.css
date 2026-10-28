@@ -209,7 +209,7 @@ main h1, main h2, main h3, main h4, main h5, .w-title, .quiz-head b { text-align
 .hero-kicker::before { content: ""; width: 26px; height: 10px; background: repeating-linear-gradient(-45deg, #f0a33a 0 5px, #15171a 5px 10px); border-radius: 2px; }
 .hero h1 { font-size: clamp(44px, 6.6vw, 86px); font-weight: 800; text-transform: uppercase; line-height: 0.9; margin: 14px 0 16px; letter-spacing: 0.005em; }
 .hero h1 span { display: block; color: #f0a33a; }
-.hero-lead { font-size: 18px; line-height: 1.55; color: #cfcac0; max-width: 34em; }
+.hero-lead { font-size: 18px; line-height: 1.55; color: #cfcac0; max-width: none; }
 .hero-stats { display: flex; flex-wrap: wrap; gap: 10px 22px; margin-top: 22px; }
 .hero-stats div { display: flex; flex-direction: column; }
 .hero-stats b { font-family: var(--f-display); font-size: 32px; font-weight: 800; color: #fff; line-height: 1; }
@@ -242,7 +242,7 @@ main h1, main h2, main h3, main h4, main h5, .w-title, .quiz-head b { text-align
 .ch-kicker .depth { color: var(--ink); font-weight: 700; }
 .ch-kicker .depth::before { content: "▼ "; color: var(--grp); }
 .ch h2 { font-size: clamp(36px, 5.2vw, 60px); font-weight: 800; text-transform: uppercase; }
-.ch-lead { font-size: 18.5px; line-height: 1.55; color: var(--ink2); max-width: 46em; margin: 4px 0 22px; }
+.ch-lead { font-size: 18.5px; line-height: 1.55; color: var(--ink2); max-width: none; margin: 4px 0 22px; }
 @media (max-width: 600px) { .ch { padding-block: 44px 18px; } .ch-head { grid-template-columns: minmax(0, 1fr); } .ch-num { grid-row: auto; font-size: 64px; } .ch-lead { font-size: 17px; } }
 .grp1 { --grp: var(--g1); } .grp2 { --grp: var(--g2); } .grp3 { --grp: var(--g3); } .grp4 { --grp: var(--g4); } .grp0 { --grp: var(--accent); }
 
@@ -251,7 +251,7 @@ main h1, main h2, main h3, main h4, main h5, .w-title, .quiz-head b { text-align
 .sub .tag { font-family: var(--f-mono); font-size: 12px; font-weight: 700; color: var(--surface); background: var(--grp); padding: 3px 8px; border-radius: 6px; letter-spacing: 0.04em; transform: translateY(-4px); }
 .sub .src { font-family: var(--f-mono); font-size: 11.5px; color: var(--muted); letter-spacing: 0.04em; }
 h4.h4 { font-family: var(--f-display); font-size: 22px; font-weight: 700; margin: 26px 0 10px; letter-spacing: 0.01em; }
-.prose { max-width: 48em; }
+.prose { max-width: none; }
 .prose ul, .prose ol, ul.list { margin: 0 0 1em; padding-left: 1.25em; }
 .prose li, ul.list li { margin: 0.25em 0; }
 .prose li::marker, ul.list li::marker { color: var(--grp); }
@@ -616,3 +616,21 @@ figure.fig-ppt figcaption { font-size: 13px; color: var(--muted); margin-top: 6p
   .tf-score button { padding: 4px 10px; font-size: 12.5px; }
 }
 @media (max-width: 420px) { .brand b { font-size: 14.5px; } .depthro { padding: 5px 7px; } .depthro b { font-size: 13.5px; min-width: 4.6ch; } }
+
+/* lyukas sorkizárás helyett balra zárás (keskeny doboz) – a layout.js állítja */
+main .rag, footer .rag, .hero-lead.rag { text-align: left !important; }
+
+/* úsztatott kiegyenlítés (layout.js): a szöveg körbefolyja az ábrát */
+.bal-float { display: block !important; }
+.bal-float::after { content: ""; display: table; clear: both; }
+.bal-fl-r { float: right; margin: 0 0 16px 28px; }
+.bal-fl-l { float: left; margin: 0 28px 16px 0; }
+/* hosszabb próza két hasábban, teljes szélességben (formázás skill 5. pont) */
+.prose.two { columns: 2; column-gap: 36px; }
+@media (max-width: 880px) { .prose.two { columns: 1; } }
+/* teljes szélességű widget belül kétoszlopos: ábra balra, magyarázat jobbra */
+.w-split .w-viz { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 12px 20px; align-items: center; }
+.w-split .w-viz > .seg { grid-column: 1 / -1; }
+.w-split .w-viz > svg.fig { grid-column: 1; }
+.w-split .w-viz > :not(.seg):not(svg.fig) { grid-column: 2; }
+@media (max-width: 880px) { .w-split .w-viz { grid-template-columns: minmax(0, 1fr); } .w-split .w-viz > * { grid-column: 1 !important; } }

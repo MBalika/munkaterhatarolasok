@@ -343,7 +343,23 @@ export const GUARD = (() => {
     s = s.replace(NUMW, '$1$2' + NB);
     // utótagos kötőjel (30°-nál, RFA-n, 1173-ban)
     s = s.replace(/([\d°′″%)\]\p{Lu}\u2080-\u2089])-(\p{Ll}{1,6})(?=$|[\s.,;:!?)”\u00A0\u2060])/gu, '$1' + NBH + '$2');
+    // mértékegység + toldalék (3 m-rel, 100 m-nél, 10 kPa-nál, 3,5 bar-nál)
+    s = s.replace(/(\d[\u00A0 ](?:mm|cm|dm|km|m|m²|m³|kPa|MPa|GPa|Pa|kN|MN|kNm|bar|kg|t|°C|mm\/s|m\/s))-(\p{Ll}{1,7})(?=$|[\s.,;:!?)”\u00A0\u2060])/gu, '$1' + NBH + '$2');
     return s;
+  }
+  // szövegcsomópont-határon átnyúló kötés: névelő/rövidítés/szám a csomópont végén, operátor a határon
+  const SHORTEND = new RegExp('(^|[\\s(\u00A0\u2060„])(a|az|A|Az|s|e|egy|Egy|és|És|pl\\.|kb\\.|ill\\.|ún\\.|max\\.|min\\.|\\d+(?:[,.]\\d+)?\\.?%?|' + NUMW.source.match(/\(\?:([^)]*)\)/)[1] + ') $');
+  function crossPass(nodes) {
+    for (let i = 0; i < nodes.length - 1; i++) {
+      const a = nodes[i], b = nodes[i + 1];
+      const av = a.nodeValue, bv = b.nodeValue;
+      if (!av || !bv) continue;
+      if (av.endsWith(' ') && /^\S/.test(bv) && SHORTEND.test(av)) a.nodeValue = av.slice(0, -1) + NB;
+      const ms = /^ ([=≤≥≈→←×±<>⇒+−/]) /.exec(b.nodeValue);
+      if (ms && /\S$/.test(a.nodeValue)) b.nodeValue = NB + ms[1] + NB + b.nodeValue.slice(3);
+      const me = / ([=≤≥≈→←×±<>⇒+−/]) $/.exec(a.nodeValue);
+      if (me && /^\S/.test(b.nodeValue)) a.nodeValue = a.nodeValue.slice(0, -3) + NB + me[1] + NB;
+    }
   }
   function bindPositions(full, cpl = 70) {
     const bind = new Set();
@@ -396,6 +412,9 @@ export const GUARD = (() => {
     if (done.get(el) === cur) return;
     const nodes = textNodes(el);
     for (const n of nodes) { const v = textPass(n.nodeValue); if (v !== n.nodeValue) n.nodeValue = v; }
+    // záró szóköz törlése: a text-wrap: pretty mellett (Chrome) a záró szóköz-csomópont miatt az utolsó sor is sorkizárt lenne
+    for (let i = nodes.length - 1; i >= 0; i--) { const v = nodes[i].nodeValue; if (/^[ \t\n\r]*$/.test(v)) { if (v) nodes[i].nodeValue = ''; continue; } if (/[ \t\n\r]$/.test(v)) nodes[i].nodeValue = v.replace(/[ \t\n\r]+$/, ''); break; }
+    crossPass(nodes);
     // blokk-szintű kötés
     const full = nodes.map(n => n.nodeValue).join('');
     // sorhossz karakterben: a doboz szélességéhez igazodó „rövid” határ
@@ -475,7 +494,7 @@ export const GUARD = (() => {
     // Hyphenopoly
     const H = window.Hyphenopoly;
     if (H && H.hyphenators && H.hyphenators.hu) {
-      H.hyphenators.hu.then(fn => { hyph = s => fn(s); const all = $$(HYPH); all.forEach(e => done.delete(e)); run(); }).catch(() => {});
+      H.hyphenators.hu.then(fn => { hyph = s => fn(s); const all = $$(HYPH); all.forEach(e => done.delete(e)); run(); window.__fmtHyphReady = true; }).catch(() => {});
     }
   }
   // vászonra szánt szöveg őrzése
