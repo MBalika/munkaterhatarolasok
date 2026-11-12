@@ -1,0 +1,137 @@
+65b81e7	<b>Drilling, pipes:</b> freeze pipes and temperature pipes in one or more rows, with the inclination of the bores surveyed.
+233eaf0	<b>Cooling:</b> with brine (refrigeration plant, closed loop, about −30 °C) or with liquid nitrogen (−196 °C, tanker, the gas evaporates).
+2a15e9b	<b>Active freezing:</b> ice cylinders grow around the pipes, then close into a continuous wall; this is shown by the temperature and by a rise of the internal water pressure.
+620b820	<b>Excavation</b> under the protection of the frozen wall, in short sections, with immediate temporary support by shotcrete (or segments).
+1afe909	<b>Maintenance freezing</b> until the permanent structure is complete – with about 30–50% of the start-up energy. A common combination: a fast start with nitrogen, maintenance with brine.
+395d71f	<b>Thawing:</b> after the cooling is switched off, watch for <b>thaw settlement</b> following the frost heave.
+cfca726	watertight and load-bearing at the same time
+e30e4be	in almost any saturated soil, also at great depth
+921b4e5	for irregular plans, can also be drilled from a tunnel
+93a3fbc	no chemicals in the ground, completely reversible
+cdfdfd4	expensive and energy-intensive, slow with brine
+82a1f1f	flowing groundwater can prevent closure
+dbb9f0e	frost heave, thaw settlement next door
+ff5d0f9	frozen (especially clayey) soil creeps; accurate drilling is needed
+0b70f08	with nitrogen, danger of suffocation in confined spaces
+5e7ee5f	A Hungarian example: M4 metro, Fővám tér
+b3649e8	The station box was built from the surface; the <b>platform tunnels reaching under the Danube bank</b> were built by a mining method (NATM), <b>under the protection of ground freezing</b>. The position of the freeze pipes was checked by 3D borehole surveying.
+68ce2c3	Artificial ground freezing was first used in 1862 in South Wales for shaft sinking. Friedrich Hermann Poetsch patented the method in 1883: a shaft sunk in running sand by freezing. Today it is also used for cross passages of tunnels, tunnels under rivers, TBM launch shafts and for sealing diaphragm wall joints afterwards.
+d280479	Cofferdams in open water
+7b7881b	cofferdam · Fangedamm
+2b003dd	If a dry working space is needed in a river or lake – for example for the foundation of a bridge pier –, the working area is enclosed and the water is pumped out of it. The word “cofferdam” comes from the Latin <i>cophinus</i>, meaning <b>basket</b>. The crest of the cofferdam has to be at least about 0,9 m (or more than the expected wave height) above the design water level – this is the <b>freeboard</b>.
+0a567e0	Earth or rockfill cofferdam
+1c456ce	In shallow, slow water; sealed with a clay core or a sheet pile wall. Cheap, but wide: it narrows the channel and erodes.
+2993183	Single-wall braced sheet pile cofferdam
+70aac75	A ring of sheet piles with internal bracing frames – typically at bridge piers, with an underwater concrete plug.
+0e309fe	Double-wall filled sheet pile cofferdam
+a37ddee	Two sheet pile walls with sand/gravel fill between them and tie rods: a gravity wall, no struts needed inside.
+d12c544	Cellular sheet pile cofferdam
+50b0715	Steel cells filled with sand (Ø 8–30 m): a self-supporting gravity wall in deep water, for long structures.
+29857dd	A cofferdam in the river
+bc16de5	Choose a type of cofferdam, set the water depth and the freeboard – then send an unexpected flood wave at it!
+6c635ff	Bridge pier in a sheet pile cofferdam – step by step
+5dde6c7	Barge, floating crane or temporary bridge; the bracing frame is placed on <b>guide piles</b> – it is also the <b>template</b> for driving the sheet piles.
+9abc399	Sheet pile driving starts from the middle of the upstream side, in two directions, in panels; the ring is not closed at a corner.
+455d6d2	<b>Underwater excavation</b> with a grab – the water stays inside, balancing the external pressure; foundation piles if needed.
+3e64152	<b>Underwater concrete plug</b> by the tremie method: the end of the pipe stays in the fresh concrete throughout, the concrete rises from below “like a cushion”.
+e1158a2	After hardening (a few days), <b>pumping out</b>; the water pressure squeezes the interlocks together, the seepage decreases. Further strut levels can be added meanwhile.
+dc688f2	The pier is built in the dry, finally backfilling, <b>flooding</b> (equalising the water pressure), removing the frames and extracting the piles.
+76b39d0	If the concrete plug is not heavy enough…
+8e0693b	When pumping out, the full water pressure acts on the bottom of the excavation from below. If the concrete plug (and its bond to the piles) is insufficient, the bottom can blow up in seconds and the water floods the working space. Without anchoring, the thickness of the concrete plug is roughly of the same order as the dewatered depth.
+02b8d3e	A Hungarian example: Megyeri Bridge
+9ed0f21	The river piers of the northern Danube bridge of the M0 were built by the <b>reinforced concrete shell element</b> method proven for river bridges: with a 5 m high steel <b>guard wall</b> bolted onto the shell elements, the working space could be kept dry up to the construction water level of 101,00 m above Baltic Sea level, and the shell elements were concreted in as formwork. The pile cap tying the piles together is 4,5 m high, including the underwater concrete.
+b5de154	Underwater base slab with anchorage
+b8744a1	underwater concrete slab · Unterwasserbetonsohle
+29998ae	If the groundwater is high, the impermeable layer very deep, and the water level <b>must not be lowered</b> (because of settlement of neighbouring buildings, drying out of trees or a water-rights ban), the excavation is dug under water. Its bottom is closed by an underwater concrete slab, held down against uplift by <b>tension piles</b> (anchors) installed on a dense grid.
+34e10ec	The construction sequence: <b>enclosure with sheet piles&nbsp;→<wbr> temporary working platform&nbsp;→<wbr> anchoring&nbsp;→<wbr> underwater concreting&nbsp;→<wbr> fixing the anchors</b>. In practice the excavation is dug under water in the meantime (an “artificial lake”), divers clean the anchor heads, and after concreting the water is pumped out gradually.
+88a5164	<b>1–1,5<small>m</small></b><span>typical thickness of the underwater slab</span>
+cf3dc2d	<b>2,5–3,5<small>m</small></b><span>grid spacing of the anchors (tension piles)</span>
+96c9c44	<b>6500<small>piles</small></b><span>GEWI piles in the excavations of Berlin’s Lehrter Bahnhof</span>
+999439f	<b>~9–11<small>m</small></b><span>of concrete would be needed without anchors for 12 m of dewatering (illustrative calculation)</span>
+9163cab	Construction stages
+f3f77ad	Step through the construction of the underwater base slab – or start the playback.
+5817481	Excavation enclosed by sheet piles and full of water, anchors drilled from the working platform
+d5546d5	Excavation enclosed by sheet piles and full of water: the anchors are drilled from the temporary working platform
+24d0cfe	Pumped-out excavation, with anchor bars protruding from the underwater concrete slab
+a5a908e	After pumping out: the anchor bars protrude from the underwater concrete slab and are fixed and tied into the base slab
+3cee015	Will the slab float up?
+338fdfc	From below the water pressure, downwards the weight of the slab and the tension of the anchors. Find how many anchors a thin slab needs – and how much concrete would be needed without anchors.
+faa7e49	simplified check against uplift for 1 m²: on the left the water pressure under the slab, on the right the (reduced) weight of the slab and the share of the anchor forces per m² · <i>H</i> dewatered depth, <i>t</i> slab thickness, <i>a</i> anchor grid, <i>R</i><sub>d</sub> design resistance of one anchor
+989fdd0	The excavations of Berlin’s Lehrter Bahnhof (today Berlin Hauptbahnhof) were closed by a 1,5 m thick underwater concrete slab, fixed by <b>6500 GEWI piles</b> on a 2,7 m grid (Ø 63,5 mm bars, 17,5–26,4 m long). At Potsdamer Platz in the ’90s, about 24 000 m² were excavated under water, 20 m deep – whole “artificial lakes” appeared in the middle of the city.
+a35684b	no groundwater lowering: the neighbours do not settle
+f53109b	a thin (1–1,5 m) slab instead of many metres
+df0ad11	little residual seepage
+2a22ffe	diving work, delicate underwater concreting
+368071a	many tension piles, slow work cycle
+a3b0222	the slab–anchor head connection is critical
+0d02ade	<span class="depth">−17,5 m</span><span>Interactive 3D model</span><span>Illustrative</span>
+cb25af3	3D excavation designer
+b1fe149	Put together your own excavation! Choose a soil profile, a retaining wall and a support, set the depth, the groundwater and the distance of the neighbouring building – then dig the excavation. The checklist shows at once what works, what is risky and what will not work.
+83cc964	Soldier pile wall in the Pest groundwater
+48957da	An 8 m deep excavation, groundwater at −5 m. What happens at the end of the excavation? Switch on the dewatering – and watch the neighbouring building. Then try it with sheet piles.
+9920587	How far can the cantilever wall go?
+93f7c84	Spaced pile wall in hard clay, 8 m deep, without anchors. Drag the depth up from 4 m: where does the list turn yellow, then red? Add a row of anchors!
+4ad6446	Where do the anchors reach?
+0a32124	Diaphragm wall with two rows of anchors, the neighbouring house 3 m away. Switch on the X-ray! Then change to tubular struts – and increase the width of the excavation above 30 m.
+b6c6c20	Nailing in soft soil?
+d618045	Soil nailing in soft, saturated clay, groundwater at 2 m. Why is almost everything red? Try the same in the hard clay of Buda.
+8871f0c	Build the excavation!
+fb63d14	Rotate: drag · zoom: wheel / pinch · the 3D model is illustrative, the wall movements and the tilt of the building are strongly exaggerated.
+6875e0d	<b class="t">What is the checklist based on?</b>
+6546faf	The rules of the list: a cantilever wall max. 4–6 m; the soldier pile wall, the spaced pile wall and soil nailing are not watertight, so they can only be used above the groundwater or with dewatering; the slurry wall is typically optimal for excavations at most 7–10 m deep; the vibration of sheet pile driving can reach as far as 20–30 m; anchors can reach 15–20 m under the neighbouring plots, the total length is at most 25–30 m; a tubular strut needs intermediate support above 25–28 m, and above 10–15 m thermal expansion governs. The number of support levels is estimated by a simple, <b>illustrative rule of thumb</b> – real design needs earth pressure and structural calculations (Underground structures course).
+909df06	<span class="depth">−19,5 m</span><span>decision support · case studies · final video</span>
+e72b089	There is no “best” excavation support – only the one that best fits the given site. The type of support depends on the available area, the soil, the groundwater conditions, how long the excavation stays open, how built-up the surroundings are, the size of the project and the available equipment – and often a combination of several solutions gives the answer.
+1ef0c52	<b>Area</b><span>is there room for a slope, anchors, a berm?</span>
+0c1afec	<b>Soil</b><span>cohesive, granular, soft, fill, rock</span>
+4214370	<b>Groundwater</b><span>above or below the excavation level?</span>
+c33fabd	<b>Duration</b><span>temporary or permanent?</span>
+77f8b2f	<b>Surroundings</b><span>neighbours, utilities, vibration</span>
+8ee7c11	<b>Dimensions</b><span>depth, width, plan</span>
+a5d1056	<b>Equipment</b><span>which machines and technologies are available?</span>
+21dbd3b	Excavation support selector
+75f3c7a	Enter the site data: the selector ranks the wall structures and the supports by their conditions of application – with reasons. Click on the names to jump to the chapter.
+06bc251	Think about them together
+0e51b97	The wall structure and the support are not independent: a flexible soldier pile wall beside a sensitive neighbour needs stiffer support, and a watertight wall is only worth something if it is keyed into the impermeable layer – or if the bottom of the excavation is sealed too. Dewatering always has to be designed together with the excavation support, and in some systems (e.g. the diaphragm wall) the support is also the foundation.
+6033e30	Eight real situations – each has one good solution. Choose, and read the explanation!
+5c89cca	8 situations · choose a support and see what the designer would say
+8df32da	Final video: excavation for an underground car park
+2e9c4fb	A two-level underground car park below the groundwater, right beside houses standing on the plot boundary – which solution would you choose? The video takes you through the decision, then sums up all the technologies of the series.
+1a8a5f2	<span class="depth">−21,5 m</span><span>13 animations · 7 real recordings</span>
+50a2a56	All 13 animated videos in one place – each 2–2,5 minutes long, each with different music. In the player, <span class="kbd">Space</span> = pause, <span class="kbd">F</span> = full screen, <span class="kbd">Esc</span> = close; at the bottom of the window you can page between the videos. Most of the wall structures are shown not by animations but by real BME footage – you will find these <a href="#valos">below</a>.
+387d032	This is what it looks like in reality – BME footage
+392ba9f	The wall structures – from the soldier pile wall through sheet pile and pile walls to the diaphragm wall – are shown in real site footage from the YouTube channel of the BME Faculty of Civil Engineering (in Hungarian). Click on a card: the video opens here, on the page, and you can continue on YouTube from there.
+3f8ebb6	<span class="depth">−23,5 m</span><span>40 true/false statements · glossary</span>
+3dfe032	You have reached the bottom of the excavation! Check how much has stuck: 40 statements from the material of the page – from the sloped excavation to the frozen wall. After each answer you get a short explanation.
+993d620	The most important terms in brief – from each, one click takes you to the right chapter.
+9e5128e	Foundation pit
+b86ebd2	A pit dug out for a <b>pad footing</b>. Typically max. 1–2 m deep; in cohesive soil it can be dug with vertical sides for a short time (until it is quickly concreted).
+837650a	about 1,5–3 m
+81b19ee	Foundation trench
+9aea6d8	A trench dug out for a <b>strip footing</b>. For shallow foundations, mostly only such shallow trenches and pits are made.
+d54b6e1	Excavation
+72f1adf	A pit dug out for <b>a whole structure</b> – e.g. basement, underground car park. Even for one basement level, at least a sloped excavation or a support structure is needed.
+7ab8184	the structure + working space
+38d23ed	Trench
+74c7f28	A narrow excavation, typically <b>1–3 m</b> wide, for <b>linear works</b> (utilities). Temporary: it is backfilled once the utility is complete.
+f424c4d	retaining wall
+d3ba642	utility
+44d7cb3	Available area
+1761c04	Is there room for a slope, stockpiling, anchors? On a tight urban plot only a vertical, supported wall is possible – and an anchor would often reach under the neighbouring plot.
+abe049d	In cohesive soil the face stands on its own for a short time (m₀), in granular soil it does not. In a hard, stony layer sheet piles cannot be driven, and in soft clay soil nailing cannot be used.
+924f7bf	An excavation reaching below the groundwater needs a watertight wall (sheet pile wall, diaphragm wall, secant pile wall, jet grout or slurry wall) keyed into the impermeable layer – or dewatering. The soldier pile wall and the spaced pile wall are not watertight.
+44a1efb	Duration of the excavation
+102031f	An excavation open for a short time needs a temporary, recoverable structure (sheet piles, trench boxes); for an excavation open for a long time or a permanent wall, corrosion and durability also matter.
+4b9a78f	How built-up the surroundings are
+00c8dfe	Beside a neighbouring building, the movement of the wall, the vibration of driving and vibrating (reaching as far as 20–30 m) and the noise are limiting: then bored, stiff walls and stiff support (tubular struts, slabs) win.
+17afc64	Size of the project
+6493389	The width of the excavation determines whether it can be strutted (buckling), the depth determines the wall structure and the number of support levels.
+59203e9	Available equipment
+fbe13de	Which machines, technologies and specialist contractors are available: for example, in Hungary CFA piling is widespread, plastic sheet piles are not.
+e561a57	Internal support
+d0d1e05	Shoring or supporting slabs in the working space: the pressures of the two opposite walls “cancel out”.
+af48614	#ducolas|shoring
+bb9fe0a	#csotamasz|steel tubular strut
+36c4829	#topdown|supporting slab (top-down)
+88b8f1d	Embedment
+8eca0e2	The wall reaches below the excavation level, where it is supported by the passive earth resistance. On its own (as a cantilever) only to a depth of about 4–6 m.
+83c7dc1	#szadfal|sheet pile wall

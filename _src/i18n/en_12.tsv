@@ -1,0 +1,130 @@
+1fc4422	mechanised
+7127b3c	large rig, slurry plant
+ebe0514	The groundwater is above the bottom of the excavation
+c2a038d	does not keep out the groundwater
+318ef96	Vibration-sensitive neighbouring building
+6afceb1	involves noise and vibration
+af0c8c1	Deep excavation (over 10 m)
+7d3b7a4	not typical for this depth
+56c9064	The wall is part of the permanent structure
+601b980	temporary solution
+40bef3c	Reuse of the material matters
+4eec312	the wall stays in the ground
+6e1527a	needs a large rig and a plant
+0953ee0	Sort by
+f3bf132	Your excavation:
+c45dd59	<b>Possible: ${okN.join(', ')}</b>The final decision comes from the soil, the depth, the support and the cost together – the table is only a first filter.
+94a8481	<b>No wall meets every condition</b>Then a combined solution is needed (e.g. a watertight wall + dewatering, or a diaphragm wall).
+7c80ef7	<b>Tick some conditions!</b>The bars rank by the chosen criterion (an indicative, illustrative assessment).
+aff4a10	Rules: lagging must start at a depth of 1,25 m at the latest, after which the height of the unsupported soil face is ≤ 0,5 m in granular soil and ≤ 1,0 m in stiff cohesive soil (DIN 4124). The plank thickness is indicative. The support is installed when the excavation has reached 0,5–0,8 m below the support level.
+be22a89	▶ Play the excavation
+88cd759	Soldier spacing
+0542bfd	1–3 m, usually 2 m.
+ab245c3	granular (≤ 0,5 m)
+7cc6454	cohesive (≤ 1,0 m)
+9e3059b	Mistake: the lagging falls behind
+ce40347	Excavation
+6bb6e3d	Lagged
+3223b16	Unsupported soil face
+8ab887e	Soldiers / 10 m of wall
+eb924b6	Plank thickness (indicative)
+d173943	soil not yet excavated (X-ray)
+85b0835	waling + strut
+0d286be	waling + anchor head
+d6758d2	planned support level
+52e909f	final excavation bottom
+46d29f7	embedment: lean concrete in the bore
+9ce79ac	Danger of collapse!
+04926cc	The lagging has fallen ${fmt(free, 2)} m behind. Allowed: ${soil.v === 's' ? '0,5' : '1,0'} m – the soil face can collapse and bury the worker.
+807ac1c	Too deep for a cantilever
+786cef5	As cantilevers, embedded steel soldiers are stable only for excavations of a few metres, max. 4–6 m. A strut or an anchor is needed here.
+7c9f984	At the limit of cantilever action
+638592d	As a cantilever to about 4–6 m. For a deeper excavation the soldiers have to be propped by struts or anchors.
+926b247	Time to install the support
+5401dbc	The work is going well
+252c6d3	The lagging keeps pace with the excavation (unsupported strip ≤ ${soil.v === 's' ? '0,5' : '1,0'} m). ${sup.v === 'h' ? 'A horgonyzás „tiszta”, dúcmentes munkateret ad.' : sup.v === 'd' ? 'A dúcok a gödörben akadályozzák a munkát, de nem nyúlnak a szomszéd telek alá.' : ''}
+c87fdaf	Anchoring gives a “clear”, strut-free working space.
+a6be505	The struts get in the way in the excavation, but they do not reach under the neighbouring plot.
+1f2e39f	Berlin wall
+ea01067	steel I-beams
+7cb7342	timber / RC plank
+72391e7	Lutetian wall
+795e58c	bored piles
+09612db	arched RC panel
+3776d5d	Paris wall
+6a0e0ff	precast RC
+bb45d5d	cast-in-place RC
+05d90df	Moscow wall
+f853d0a	A common principle: vertical load-bearing elements standing at intervals, with infill between them. The load is carried to the supports by the soldier / pile / barrette, the infill only bridges the panel.
+b0937cb	Vertical element
+3c4a3e7	Infill
+b8a3562	Element spacing
+a4ac6ef	L – element spacing
+32f18b2	1–3 m (usually 2 m)
+cf922a9	as designed
+eb40f6e	tube Ø114,3
+761ca85	tube Ø168,3
+e84dcee	tube Ø219,1
+ddd9821	The wall thickness is smallest along the line where two columns intersect (at the “throat”): t = 2·√(R² − (s/2)²). The diameter of the circle enclosing the steel member is compared with the 15–20 cm zone around the drilling axis. Illustrative drawing.
+3844d2a	Soil (preset)
+813bda9	Column diameter
+3297e8c	60–120 cm, depending on the soil.
+750cc1f	Spacing
+36e1efc	For watertightness: s = D − (10–20 cm).
+fd46d13	Steel member
+791e1e9	Steel layout
+a58b1d7	in every column
+f0a1b48	in every second one
+562debb	Overlap a = D − s
+ebedb15	Wall thickness at the throat
+ef53443	Columns / m
+e630118	Does the steel member fit?
+5761ecb	SOIL SIDE · groundwater
+5f3e974	WORKING SPACE
+f29cb01	green dashed: 15–20 cm zone near the axis
+6810f49	borderline
+3c5a3bf	does not fit
+31f67eb	Spaced row of columns – not watertight
+402f30a	The columns do not intersect: water and soil flow into the excavation through the gaps.
+de116f1	Too little overlap
+e438dcb	The diameter depends on the soil and drilling is never exactly vertical – an overlap this small can run out at depth. The spacing should be D − 10–20 cm.
+65fc427	Watertight, but wasteful
+cbde7aa	Too close a spacing means many columns, a lot of spoil and cost.
+faa9df4	A watertight wall – but the steel member does not fit
+132e164	Quasi-watertight wall
+adb215b	The enclosing circle of the ${sd.t} is ${fmt(db / 10, 1)} cm: larger than the 15–20 cm zone around the axis. Only steel of limited size can be sunk into the still fluid, dense jetted soil – a smaller section or a tube is needed.
+2ea0356	Overlap ${a} cm. The steel members are surrounded by solid soil-cement: no subsequent bore filling is needed, and with secant columns no lagging either.
+3ed181f	<b>Illustrative model:</b> a parabolic compression arch between the flanges of two steel beams, arch thickness = wall thickness / 2, rise = wall thickness / 2; σ = p·L² / (2·t²). Load: earth pressure at rest (K = 0,5) + water pressure, groundwater at −2 m. Safety factor 1,5. Not suitable for design.
+3309bc0	Beam spacing
+a2f6214	Typically 1–2 m.
+c76be0b	Depth examined
+461dd3e	28-day strength
+fb07c35	Earth + water pressure p
+0b7353e	Arch thrust N
+45d7e37	Stress σ
+4f24ef2	SOIL SIDE – p = ${fmt(p, 0)} kPa at a depth of ${fmt(z, 1)} m
+90aedb0	The arch cannot take it
+9ce09da	σ = ${fmt(sig, 2)} MPa > f/1,5 = ${fmt(f / 1.5, 2)} MPa. The stress grows with the <i>square</i> of the beam spacing: closer beams or a thicker wall are needed – that is why 1–2 m is typical.
+97cad37	The earth and water pressure grow with depth – that is why it is typically economical for excavations at most 7–10 m deep.
+431b97d	The arch transfers the load
+e370f84	The weak (0,5–1,4 MPa) but watertight slurry transfers the earth and water pressure to the beams by arching; the beams carry the load to the supports.
+e46c379	Area affected by high groundwater
+1082501	A temporary excavation about 7–8 m deep
+f6a35b8	The (quasi-)impermeable layer is much deeper than the toe the wall needs structurally
+f1b65b5	The wall will (later) have to be removed
+7f8a8d5	There is no significant surface load or settlement-sensitive structure on the retained side
+637607b	The soil is favourable for trench stability
+ec2c884	When is it economical?
+515c344	Conditions
+76c2f53	high GW
+355e01b	7–8 m, temporary
+92d365b	deep impermeable layer
+e722e11	must be removed
+4e8ddbb	no large surface load
+affc687	trench-stable soil
+4cceee0	Not recommended
+b71fb8b	Because of the wall movements, beside a significant surface load or a settlement-sensitive neighbour, or in soil unfavourable for trench stability, another solution is needed (e.g. a diaphragm wall or a secant pile wall).
+e330785	The reinforced slurry wall can be a good choice
+d53f2d4	Quasi-watertight, fast (no concreting needed), little steel – and easy to remove later.
+24334e0	Worth considering
+5cd3e0f	The economic conditions are only partly met – it is worth comparing alternatives too (sheet piles, deep mixed wall, jet grout wall).

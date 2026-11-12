@@ -1,0 +1,132 @@
+410a5f8	<b>Condition: H ≫ m₀</b>, and m₀ is only of the order of decimetres (e.g. 0,6 m).
+2789e7a	They dig down to m₀, place horizontal planks against the face, hold them with a vertical waling (1st generation) and strut it.
+b6a1d18	Another m₀ of deepening, more horizontal planks below. Next to the old ones, longer new walings (2nd) spanning the whole depth so far are placed; they are strutted, then the old ones are removed.
+4b03800	The same in the 3rd step: a new generation of walings, the old one comes out.
+38460fc	The 4th step – the length of the planks is not limited, and they are not damaged, since they are not driven.
+307b315	With the 5th step we reach the final depth.
+9c2664a	The shoring is complete. The method is slow and needs a lot of manual work – in return it is safe even with an m₀ of a few decimetres.
+e8cf1d6	<b>Condition: m₀ = 0</b> – coarse-grained soil, not even apparent cohesion: the face does not stand for a moment.
+d9aa3bb	The vertical sheets – steel only – are driven or vibrated in <b>before</b> excavation.
+b182f22	Excavation of the first step under the protection of the sheets.
+b9d756a	First row of walings and struts.
+9c10b0c	Excavation of the next step, another waling and strut.
+c811e92	Excavation to the final depth, third row of struts.
+088983c	Complete: the ends of the sheets always remain at least 30 cm in the soil – so the soil cannot flow in below them.
+14e40dc	driving down
+bbdc26f	temporary support
+f7b5745	waling generations:
+e717004	vibrator
+6e05ce8	≥ 30 cm in the soil
+b672dd9	Start the playback, or step through the process.
+5075888	<b>An illustrative, simplified check:</b> uniform strut pressure, equal tributary areas, simply supported beams; timber members: 48 mm plank, 16/16 waling, Ø12 round timber strut (E ≈ 10 GPa). Colours: σ ≤ 14 MPa green, ≤ 18 MPa yellow (the design bending strength of C24 pine is of the order of 15–17 MPa); for the strut, N ≤ 0,8·N<sub>Rd</sub> green. The limits are indicative – actual design follows the relevant standards.
+5bdd5b9	Granular / low plasticity
+6c148c3	Medium / high plasticity
+706ca80	Trench depth
+a382b27	Bulk unit weight
+db53a2e	Surface surcharge
+42e3ad6	Horizontal spacing of struts
+689a7a4	Number of strut rows
+f9a6f59	Trench width (strut length)
+c90d96c	Strut pressure p
+e63f416	Strut force (maximum)
+d3bb215	Plank σ (48 mm)
+b8acb4b	Waling σ (16/16)
+12bc2e4	Strut utilisation
+0d05529	p₁ = (H·γ<sub>n</sub> + q) − 4c = ${fmt(s0, 1)} − ${fmt(4 * sc.v, 0)} = ${fmt(p1, 1)} kPa &nbsp;·&nbsp; p₂ = 0,2·(H·γ<sub>n</sub> + q) = ${fmt(p2, 1)} kPa → <b>p = ${fmt(p, 1)} kPa</b> (${p1 >= p2 ? 'p₁' : 'p₂'} governs)
+79a8498	<div>${line}</div><div>Strut force: N = p · (H/n) · a = ${fmt(p, 1)} · ${fmt(hv, 2)} · ${fmt(a, 1)} = <b>${fmt(N, 0)} kN</b> &nbsp;·&nbsp; Plank: M = p·(H/n)²/8 = ${fmt(Mp, 2)} kNm/m &nbsp;·&nbsp; Waling: M = p·(H/n)·a²/8 = ${fmt(Mh, 2)} kNm &nbsp;·&nbsp; Strut: N<sub>Rd</sub> ≈ min(A·f<sub>c</sub>; N<sub>cr</sub>/3) = ${fmt(NRd, 0)} kN</div>
+c0656f0	uniform equivalent load
+d24f11e	cross-section – the strut rows with equal tributary areas
+51c05a4	plan view – between the struts the waling acts as a simply supported beam
+7b894e7	Pre-excavation to about 1,0–1,25 m, over at most one box length. Meanwhile the box is assembled on the bank: two panels with adjustable struts between them.
+9cdf423	The box is lowered into the pre-excavation with a four-leg chain.
+49b3fcf	Digging inside the box – at most <b>0,5 m</b> below the edge of the panel.
+d0a938c	The excavator pushes the box down <b>corner by corner</b> with the back of its bucket; the tilt of the struts may be at most <b>1:20</b>.
+076dc09	Repeat. When the top of the basic box is about 20 cm above ground level, the <b>extension</b> is added.
+f4cae8a	At the final depth the edge of the box stands at least 10 cm above ground level. The gap between the box and the soil face is filled at once; ladder, edge protection.
+ce7f516	Work in the box: the pipe is placed in the free space below the struts.
+d5bd5e5	Moving on: the workers climb out, the box is lifted out and moved on – nobody may be inside while it is being moved. The finished section is backfilled in layers.
+678a935	The trench is dug to full depth – this is only allowed in <b>temporarily stable</b> soil and over a short length.
+7939f01	The finished box is lowered into the trench.
+3eecb38	The box is a <b>passive shield</b>: the soil moves until it rests on the panel – so the gap has to be filled at once. In loose soil and beside traffic this method is not allowed.
+f41de7e	Pre-excavation to at most 1,25 m; the first panel and the rail frame are placed (two vertical steel rails with the roller carriage and its struts between them).
+d63b29d	About 0,5 m of digging, then pushing down the <b>rails</b>.
+0550fcd	Then pushing down the <b>panels</b> – alternately: no element may be more than 0,5 m ahead of the others.
+d004551	Repeat to the final depth; the extension panel goes into the second guide groove of the rail.
+48d0432	The roller carriage can be set at any height: even a large-diameter pipe fits below it. With single / double / triple rails, to a depth of about 3,7 / 7,4 / 8,5 m (manufacturer’s data).
+eb36610	Installation method
+8ebacdd	Sinking while digging
+c7e5eeb	Placing into a dug trench
+bfcab6c	Slide rail system
+7315706	Longitudinal section along the axis of the trench: the dark part is the dug trench, in front of it the panel forming the box.
+482f06b	Digging below the edge of the panel
+34266c8	backfilled
+c4c874e	extension
+6b716ed	edge +${fmt(-top * 100, 0)} cm
+6110180	level
+1992644	fill the gap – the box is only a shield!
+485a007	roller carriage + strut
+f0860d4	rail–panel: ${fmt(diff, 2)} m
+5b17c1c	rail–panel ${fmt(diff, 2)} m
+9314328	Choose an installation method and step through it.
+1c984ed	Round timber strut Ø12 cm
+d2756cd	Round timber strut Ø16 cm
+497b44e	HEB 200 (weak axis)
+130362b	steel
+b0733a8	Steel tube Ø323,9×8
+e7fb49d	Steel tube Ø610×12,5
+d47feac	Steel tube Ø914×16
+6df5dd6	Euler’s elastic critical force, strut pinned at both ends: N<sub>cr</sub> = π²EI/L². Without safety factor, initial curvature and self-weight – <b>illustrative</b>. For timber the compressive strength (~20 MPa), for steel the yield strength (S355) gives the upper limit.
+5ec2c3a	Excavation width = strut length
+e58032a	Strut cross-section
+c79787a	Strut pressure
+dd53b94	Vertical tributary height
+511b2ec	Intermediate support (column) at mid-length of the strut
+fa35212	Strut force N = p·a·h
+3c2ac5b	Critical force N<sub>cr</sub>
+38bc972	N / N<sub>limit</sub>
+914370c	At twice the length
+45b9f34	It buckles! A shorter strut, a larger cross-section or intermediate support is needed.
+c17fb08	By Euler it still stands, but there is not enough reserve (about a threefold safety would be needed).
+7502336	Ample reserve.
+e513075	 (with an intermediate column: L<sub>e</sub> =
+2164010	In an excavation wider than about 3 m a timber strut is already awkward – that is why bracing in several directions, raking struts or large-diameter steel tubes are needed.
+1635372	intermediate column
+20cc222	L = ${fmt(L, 1)} m (deformation strongly exaggerated)
+721ce56	strut length L (m)
+a9df8ba	Round timber strut
+e2fb89b	Steel tube
+a5f46d0	 (weak axis)
+111eb5e	Critical force – log scale (the horizontal part is the strength limit)
+eefaefb	Resolution of forces: N = H / cos α, V = H · tan α (own calculation, illustrative). The vertical component of the raking strut lifts the wall and pushes the foot of the strut downwards.
+fc13907	Angle of the raking strut
+6836c76	Horizontal support force per strut
+c6df72c	Strut force N
+42e3ecd	Vertical component V
+d76400d	Horizontal reach
+0d21bc7	The retaining wall stands, with the capping beam / waling on it. The <b>middle</b> of the excavation is dug out, but an <b>earth berm</b> is left beside the wall: its passive resistance holds the toe of the wall.
+c10027e	The <b>inner part of the base slab</b> is built, with steel brackets at its edge (or separate thrust blocks).
+612e5f5	<b>Raking struts</b> are placed from the waling to the edge of the base slab; they are preloaded with a jack, then fixed with wedges.
+81daa58	The earth berm is removed in <b>short, 5–7 m sections, alternately</b> – never along the whole length at once.
+583838b	In each excavated section the <b>edge strip</b> of the slab is concreted at once: from then on the slab supports the toe of the wall directly.
+30c96da	The strutting is only removed once the <b>basement walls and slabs</b> are complete and can take the earth pressure as diaphragms.
+d87aa18	Step through the construction sequence – you can also set the angle along the way.
+f4926f3	earth berm
+c9cd665	V = ${fmt(Vv, 0)} kN ↑ (lifts the wall)
+277ab23	basement wall + slab (diaphragm)
+b971b21	illustrative section: 6 m deep excavation, strut head 1,5 m deep
+8dfc058	plan along the wall – the order of removing the berm (5–7 m sections)
+717f04b	edge strip
+a955a7b	Quiz – trench shoring
+9de33a1	What does m₀ mean?
+7aa0d80	The depth to which a vertical soil face is temporarily stable without support (above the groundwater)
+7eb6e21	The maximum allowed vertical distance between struts
+4d00e9f	The compulsory embedment length of the planks below the bottom
+0301522	The minimum width of a trench
+06e0f56	m₀ = 4c/(nγ)·tan(45° + φ/2) − p/γ – without cohesion (in sand) it is zero or negative.
+12470a2	Which planking method do we choose if the excavation can be dug to full depth without support (m₀ > H)?
+dcd5aad	Horizontal planking, excavation in steps
+d8269b5	First they dig to full depth, then the planks, walings and struts are set.
+74a9ca5	In coarse-grained soil, where there is not even apparent cohesion (m₀ = 0), which method can be used?
+754e478	Pre-driven planking – with steel sheets only
+0e1d65d	Vertical planking with timber planks
+6caf3a9	Open planking

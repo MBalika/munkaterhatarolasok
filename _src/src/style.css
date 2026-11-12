@@ -642,3 +642,11 @@ main .rag, footer .rag, .hero-lead.rag { text-align: left !important; }
 .hero-bar .hero-stats { gap: 10px 34px; }
 @media (max-width: 1020px) { .hero-in { grid-template-areas: "t" "v" "b"; } }
 @media (min-width: 1021px) { .hero-bar { display: grid; grid-template-columns: auto minmax(0, 1fr); } .hero-bar .hero-stats { justify-content: flex-end; flex-wrap: nowrap; gap: 10px 30px; } }
+
+/* nyelvváltó (HU | EN): a kitöltött az aktuális nyelv; mobilon csak a másik nyelv kódja */
+.langbtn { flex: none; display: inline-flex; align-items: center; gap: 2px; padding: 3px; border: 1px solid var(--line2, var(--line)); background: var(--surface); border-radius: 999px; text-decoration: none; font-family: var(--f-mono); font-size: 12.5px; font-weight: 500; letter-spacing: .04em; }
+.langbtn b, .langbtn span { display: inline-grid; place-items: center; min-width: 30px; padding: 4px 8px; border-radius: 999px; }
+.langbtn b { background: var(--ink); color: var(--surface); font-weight: 500; }
+.langbtn span { color: var(--muted); }
+.langbtn:hover span { background: var(--surface2, var(--surface)); color: var(--ink); }
+@media (max-width: 560px) { .langbtn b { display: none; } .langbtn span { min-width: 0; padding: 5px 9px; color: var(--ink); } }

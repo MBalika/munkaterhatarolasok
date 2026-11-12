@@ -35,3 +35,7 @@ Ez kiírja a hangot külön mp3-ba, elrejti az export gombot, és beállítja az
 ## Videók zenéje
 
 A videók zenéje (2026-11) valódi hangszerek felvett mintáiból készült – zongora, vonósok, akusztikus és elektromos gitár, basszusgitár, fúvósok, akusztikus dob –, ütemre igazítva a képhez; a gép- és effekthangok a korábbi hangkönyvtárból vannak. Hangminták: Salamander Grand Piano (Alexander Holm, CC BY 3.0); tonejs-instruments (nbrosowsky; VSCO2, Karoryfer, Iowa, Freesound – CC BY 3.0); Tone.js dobminták.
+
+## Angol változat (/en)
+
+Élő: https://munkaterhatarolasok.vercel.app/en („Excavation support”). Ugyanabból a magyar forrásból épül: a `python3 build.py` az `index.html` mellett az `en.html`-t is elkészíti (előtte egyszer: `cd i18n && npm install`). A fordítás: `_src/i18n/en_*.tsv` (magyar szöveg azonosítója ⇥ angol; az `en_00.tsv` a korábbi tananyagok azonos szövegeiből), a BME-videók adatai a `data.js`-ből ugyanígy. Ha a magyar szöveg változik, az angol build leáll, a hiányzók: `_src/i18n/missing.tsv`; munkalap: `python3 build.py catalog`. A 13 látható animációs videó angolul: `video/en/NN.html` (a hang és a fű-textúra a `video/` mappából), indexképeik: `img/thumb/en/`. A magyar forrás angolhoz szükséges kapcsait (EN jelző, nyelvváltó, angol tördelési szabályok, többes szám) a `_src/i18n/prep_hu.py` teszi bele (idempotens).

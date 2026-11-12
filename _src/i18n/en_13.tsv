@@ -1,0 +1,128 @@
+beb7b34	There is probably a better solution
+e5a3a1b	Without groundwater, for example, a soldier pile wall or a spaced pile wall can be cheaper.
+7d0f9c1	CSM (cutter soil mixing)
+31617ae	Guide trench
+17fc26a	A trench about 0,5 m deep along the wall line – the surplus slurry collects here.
+4781dcb	P1 – down: cutting + slurry
+3bddc4a	The two pairs of counter-rotating cutter wheels break up the soil on the way down, while slurry is added.
+80918a6	P1 – up: mixing + cement
+ccd3483	At the bottom the wheels reverse; on the way up they mix the soil into a homogeneous mass with cement grout.
+c553de7	Steel into the fresh panel
+5188d79	Steel I/H beams are set into the still fresh soil-cement (with a vibrator if needed).
+2dd848b	P2, P3 primary panels
+4583bb0	The primary panels are made with a gap of one panel between them.
+a783c96	S1, S2 secondary panels
+fa0b0ce	The secondary panels cut into the neighbouring primaries (“fresh into fresh”) – so the wall is continuous.
+ef7565a	Excavation after hardening; the beams are supported along a waling by struts or anchors; the face is trimmed and protected with shotcrete if needed.
+a34aa90	Colmix (multi-auger, column-type)
+bec9823	Setting out the wall line, a guide trench for the displaced mix.
+0678993	Group 1 – down
+1cc17ac	Several (e.g. three) adjacent augers drill down, binder is added through the hollow stem.
+5406b8b	Group 1 – up
+5661ac6	The soil is mixed on the way up: intersecting columns are formed.
+59baa84	Steel into the fresh columns
+b1d43e6	Steel I/H sections into the fresh mix (at the designed spacing).
+f80c114	Further primary groups
+fdd169b	The primary groups follow each other with gaps.
+59508de	Secondary groups
+48ff33a	The secondary groups close the gaps with an overlap (“pilgrim step”).
+4b7e1e6	A seepage cut-off wall with a wavy face; the beams carry the load.
+86f90cf	Trenchmix (chain cutter, wall-type)
+76fd7b4	Setting out, guide trench.
+72bf484	The cutting arm plunges
+540a966	The chain cutting arm (a “giant chainsaw”) plunges to the full depth of the wall.
+ca2a1ce	Moving sideways
+fb8abea	The machine moves along the wall line, the chain mixes the soil vertically with the binder – a continuous trench.
+2c540f3	Steel continuously
+3f675c9	Behind the machine, the steel sections go into the fresh mix.
+aef3d31	The wall is complete
+0fca3db	A soil-cement wall of uniform thickness, without gaps or panel joints.
+ca9c02b	Hardening
+26f5b34	The mix hardens (strength depending on the soil and the cement content).
+c9bf117	Support by waling + strut/anchor.
+16b69b4	guide trench
+ba365bf	↓ cutting + slurry
+da29906	↑ mixing + cement
+9cd2a1d	↓ drilling + binder
+03f2587	↑ mixing
+16d2c5d	↓ the cutting arm plunges
+b274d7d	→ moving sideways
+0fcab5e	e.g. 14,5 m deep panel ≈ 47 minutes (rig log)
+9afb2e9	depth: depends on the rig and the soil
+07fc4e3	excavation bottom
+e8f9660	soil-cement + steel
+3228458	preparation: setting out, guide trench, mixing plant
+5909cd8	AS 500 (straight web)
+cdafc8a	The number in the section name ≈ W / 100 (cm³/m). The design here is only an elastic bending check: W<sub>req</sub> = M / f<sub>y</sub> – in reality the factors of EN 1993-5 (e.g. the reduction for interlock shear in U piles), local buckling and deformation also count. Illustrative.
+0a0a4d8	Section
+cb529a9	Bending moment in the wall
+d2acb75	Steel grade
+1665bb1	Width b
+ca9e843	Height h
+971c904	Mass
+0ab8bb6	Section modulus W
+ddf929e	Required W
+7ba0860	neutral axis
+e726e2a	U pile (Larssen interlock): the interlocks lie in the centre plane of the wall, on the neutral axis
+9924d9f	Z pile (Hoesch type): the interlocks lie on the outer flanges
+40a4f85	Straight-web pile: works in tension (cellular cofferdams), not in bending
+30ce1f6	● factory-crimped interlock (double pile) · ○ interlock threaded on site
+6cca126	Section modulus W (cm³/m) – and the mass of the wall (kg/m²)
+72c2297	  ★ lightest adequate
+96673a1	W req = ${fmt(Wreq, 0)}
+6cebc70	If the piles are driven one by one, straight to the final depth, the row “leans forward” in the direction of progress (the lean is exaggerated here). In panel driving, the piles standing in the guide frame are driven only a few metres at a time, in turn; in staggered driving, first the odd, then the even elements go down. Factory-crimped pairs (double piles) are driven.
+fd0dbe2	Driving method
+962241b	one by one, to full depth
+75b2bd2	staggered (1-3-5…, 2-4-6…)
+e476cf9	panel driving (a few m at a time)
+88092db	Elements driven
+add3401	Lean in the direction of progress
+5a5b123	guide frame
+78bc211	planned toe level
+ddbedbe	direction of progress
+63af541	starting
+5b3a2ca	Estimate: the empirical formulas of BS 5228-2. Vibrating: v = k<sub>v</sub> / x<sup>1,3</sup> (k<sub>v</sub> = 60 / 126 / 266 – probability of exceedance 50 / 33 / 5 %). Driving: v = k<sub>p</sub>·√W / r<sup>1,3</sup> (W: energy per blow, J). Limits: DIN 4150-3, short-term vibration, foundation, 10–50 Hz. Illustrative – the real situation has to be checked by vibration measurement.
+42a7951	Installation
+298d993	vibrating
+55c3ef3	driving
+fac878c	pressing
+0f1d9cd	Distance from the neighbouring building
+3cee1cc	Blow energy (driving)
+debd889	Soil (driving)
+192d041	soft, loose
+c0c30f8	hard, dense
+845e398	to refusal
+20eead6	dwelling
+40e909f	listed building
+432020a	Estimated vibration (average)
+b9d2d5e	Cautious estimate
+5548480	Limit (DIN 4150-3)
+6c9eae1	vibration velocity v (mm/s)
+9a78aeb	reaches as far as 20–30 m
+ea00f68	limit band: ${lim[2]} (${lim[0]}–${lim[1]} mm/s)
+7eb7314	driven to refusal (k = 5)
+ed3adc1	Static pressing-in: practically vibration-free and quiet
+c477cd1	(Giken-type machine: about 69 dB(A) at 7 m; most efficient in soft soil)
+6072667	Vibration-free installation
+756ff00	Where noise and vibration are not acceptable (in towns, beside a sensitive neighbour), pressing-in – or a bored wall – is the solution. In hard soil it needs pre-drilling or water jetting.
+34abc20	Risk of damage!
+fe6ee89	Measure and monitor
+c460a2f	Expected to be below the limit
+7ffbab3	At ${fmt(x, 1)} m the estimated vibration is ${fmt(v50, 1)} mm/s – above the limit for a ${lim[2]}. Solution: pressing-in, pre-drilling, a high-frequency, resonance-free vibrator – or another type of wall.
+712251d	The scatter of the estimate is large: the unfavourable case falls within the limit band. In built-up areas a preliminary survey and vibration measurement are needed.
+5d27ea2	According to the estimate the vibration is small – but because of the densification of loose sand, the utilities and the old buildings, it is worth measuring.
+67bdd63	Timber sheet piles
+c6032c0	No longer used today – down to 2–6 m, only as a permanent structure.
+540f8e0	Extraction is awkward, the timber gets damaged.
+3377a3f	First guide piles were driven, and the tongue-and-groove planks were driven between them.
+e171063	Durable only if permanently under water – it rots in the zone of fluctuating water level.
+bcad2ff	Reinforced concrete sheet piles
+a2b5cbf	For permanent sheeting: harbours, open water, bank protection.
+261bb49	Its drawback is the great weight – it also has to be designed for transport (4–8 m).
+8205a52	Prestressing reduces the weight.
+c068e57	Driving is difficult: it is assisted by water jetting; the joints are grouted afterwards.
+25f6fbd	Plastic (PVC) sheet piles
+490c9ab	Not yet widespread in Hungary – permanent bank walls, harbours, canal banks.
+91d4971	30 cm wide “pressed” corrugated sheet (e.g. Geoflex), only about 9 kg/m².
+5fb10e3	Installation by vibrating and water jetting; in very soft soil pushed in with an excavator.
+d86af3e	Interlock: an inner and an outer section; capping with a plastic, steel or timber element.

@@ -1,0 +1,96 @@
+2f531d3	fixed (grouted) length
+d4a2f69	Tmax near the slip surface
+b82f27e	force transfer only along the fixed length
+24fc5a1	<b>Soil nail:</b> passive – not prestressed; the force develops with small ground movements and is transferred by friction <b>along its whole length</b>. Dense grid (0,5–1,5 m), shorter (0,6–1,2 H), lower resistance.
+cd1ce06	<b>Ground anchor:</b> prestressed (to 80–90% of the design force); no force transfer along the free length, only along the fixed length <b>beyond the slip surface</b>. Sparser, longer (≤ 25–30 m), resistance at least an order of magnitude greater.
+5d67a5f	Quiz – soil nailing
+872d17b	In nailing, in how high vertical sections (lifts) is the excavation deepened?
+359ea8b	in sections of 90–180 cm
+df61911	in sections of 3–5 m
+cce52dd	in sections of 20–40 cm
+546668b	in one go, to full depth
+7b0ab24	In vertical sections of 90–180 cm, depending on the stability (cohesion) of the soil.
+59fae07	What is the required length of the nails for an excavation of depth H?
+49e623d	always exactly 6 m
+c0699ba	0,6–1,2 H, depending on the soil.
+7ea75a0	What is the essential difference between a soil nail and a ground anchor?
+ad2b943	The nail is not prestressed and transfers the force along its whole length; the anchor is prestressed and transfers it only along its fixed length
+8f936e5	The nail is always longer than the anchor
+dffeee6	The anchor is not grouted
+6201cd2	There is no difference, only the name
+a0f68b6	The anchor does not take the force along its whole length, it is much larger (in diameter and length), and its resistance is at least an order of magnitude greater.
+af1652c	In which soil can soil nailing NOT be used?
+9d0afe3	In soft, plastic clay
+233c489	In hard, cohesive clay
+08e2c2d	In weathered rock
+6c0587d	In layered, heterogeneous soil
+6497f3f	It cannot be used in soft, plastic clay, organic soil, rubble fill or bouldery soil.
+12865e3	What shotcrete thickness is typical on a nailed wall?
+0e77e08	8–15 (20) cm
+d2f4de3	1–2 cm
+4ce0af8	The face is covered with 8–15 (20) cm of shotcrete, with a mesh of Ø6–8 mm bars at 150 × 150 mm.
+81e1b06	What is one of the main drawbacks of soil nailing in an urban environment?
+1c5b510	The densely spaced nails can run into neighbouring utilities
+074bad1	Large, heavy machines are needed
+bfb619b	It only works below the groundwater
+ed68ce7	It cannot support an excavation deeper than 3 m
+bc5607f	Its drawbacks are that it cannot be used with high, flowing groundwater, and in towns the nail field (often reaching under public land) can run into utilities.
+954fc2f	No such widget:
+a4c4e08	Widget error:
+f50a0a9	soldier pile wall
+7f025a5	trench boxes
+d0c4397	reinforced slurry wall
+7596161	self-hardening slurry wall
+d818300	reinforced self-hardening slurry wall
+2dd57e2	deep mixed wall
+fd4bfdd	wall made by deep mixing
+47a2836	steel sheet pile wall
+f04da53	reinforced concrete sheet pile wall
+db501f2	plastic sheet pile wall
+e455aff	spaced pile wall
+03b4fb4	contiguous pile wall
+cb1366b	secant pile wall
+e6c60ca	diaphragm wall
+665ee75	embedded retaining structure
+a7db3ca	embedment depth
+f9081b5	earth pressure at rest
+6c95b03	steel tubular strut
+bc9d594	passive tieback
+fd0208b	frozen wall
+fca097b	underwater base slab
+bcce2b5	surface load
+8dc06ac	below the groundwater
+8631118	pre-driven planking
+c5f6285	horizontal planking
+b909e89	vertical planking
+8a5c961	stepwise driven planking
+0c6cd26	slide rail system
+21dc1f5	Milan method
+19324a4	brine cooling
+d648845	liquid nitrogen
+ce67afb	cement grout jet
+3b3eb49	m₀, vertical · stepwise driven · horizontal · pre-driven planking, strut pressure
+60b8bc8	Prefabricated shoring panels, sinking while digging, slide rail system
+242b857	Buckling, bracing in several directions, raking struts to the base slab, earth berm
+f1d6294	Guide piles, water jetting, prestressing, PVC sheets (~9 kg/m²)
+84aa9dd	Excavation in lifts, nails, mesh, shotcrete, pull-out test
+e5372e3	Anchor head, free and fixed length, grouting, stressing to 80–90%
+ebe2bd9	Buckling, thermal expansion, waling, deep urban excavations
+5ca72c5	The five stages of the Milan method, excavation under the slab
+6b79688	Anchor wall outside the failure plane, no prestress – a few cm of movement
+85964f1	Brine or liquid nitrogen, freeze pipes, cylinders freezing together
+3e49816	Earth, sheet pile and cellular cofferdams, working space in the river
+14a0a8b	Sheet pile enclosure, anchors, underwater concreting, against uplift
+616bf34	Finale: excavation for an underground car park
+287d9d3	Quiz: which solution would you choose? Decision criteria, revision
+2c34210	Shoring
+f8c61e5	Nailing and propping
+230b9bb	Summary
+4faeb13	Building a pile wall
+19d2795	Diaphragm wall grab
+bab91f3	Capping beam, shotcrete
+f2d7e71	Excavation support walls with intermittent reinforcement
+7075e5c	Excavation with an intermittent wall
+e1c8a18	Steel member into the jet column
+181b505	Self-hardening slurry wall
+d91adab	Deep mixing rods

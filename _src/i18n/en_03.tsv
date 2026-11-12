@@ -1,0 +1,138 @@
+08d9769	Jet grout wall after exposure: the steel members along the axes of the columns
+75cc252	Excavation with a jet grout wall and base slab reinforcement
+c83d597	Urban excavation with a jet grout wall, the base slab reinforcement being placed
+8169535	Narrow shaft supported by jet grouting
+c8d8e21	A narrow shaft where there is no room for any other wall
+2146015	Reinforced self-hardening slurry wall
+963ffb8	The reinforced self-hardening slurry wall (reinforced cement-bentonite wall) combines the <b>structural features of the soldier pile wall</b> with the <b>watertightness of the diaphragm wall</b>. The wall panels are excavated with the same <b>grab technology under slurry support</b> as a diaphragm wall. But once the required depth is reached and the steel reinforcement is placed, <b>no concrete replaces the slurry</b>: the slurry, which hardens thanks to its cement content, gives the wall its texture and watertightness (“single-phase” method).
+deb6b28	The resistance is provided by the designed steel sections, typically placed at a spacing of <b>1–2 m</b>. The slurry – with a minimum compressive strength at 28 days of typically <b>0,5–1,4 MPa</b>, depending on the mix – transfers the earth and water pressure to the reinforcing members by <b>arching</b>.
+876e717	It is the optimal technology for temporary, quasi-watertight excavation support, typically at most <b>7–10 m</b> deep – if there is no significant surface load or settlement-sensitive structure on the retained side, and the soil is favourable for trench stability. If needed, the reinforcing members can be supported by passive or lightly prestressed anchors, or by steel struts placed along a waling beam. The wall is at least 40 cm thick.
+7b388b6	<b>1–2<small>m</small></b><span>spacing of the steel sections</span>
+c789870	<b>0,5–1,4<small>MPa</small></b><span>28-day compressive strength – about 30 times weaker than concrete</span>
+e2a85b3	<b>≈ 10⁻⁹<small>m/s</small></b><span>permeability – like a clay layer</span>
+30d5e34	<b>7–10<small>m</small></b><span>typical maximum depth</span>
+963e2f4	Starts at the self-hardening slurry wall section (≈ 4:22).
+d4d931e	Arching between the beams
+820c192	Why do the beams have to be close together? See how much the earth and water pressure loads the “arch” of slurry.
+02fdbfc	Is a slurry wall worth building?
+0df3180	Economic conditions and limits of application on a checklist.
+fe8b251	Checklist
+ab5b464	The fluid that becomes a wall
+0510bf8	A typical mix per cubic metre is, for example, 920 l of water, 40 kg of bentonite and 200 kg of cement (often slow-setting blast-furnace slag cement). Excavation can start about 2–4 weeks after the wall is complete; the exposed face has to be protected against frost and drying (e.g. with sheeting). Compared with a sheet pile wall, even half as much steel may be enough.
+b9833ed	Figures, photos
+c502a0e	Slurry wall excavation, placing the steel sections, strutting
+984994b	Excavation under slurry, placing the steel sections, then strutted excavation – the slurry arches in the panels
+bfee46b	Stages of diaphragm wall construction: guide wall, excavation under slurry
+e62c46f	The stages of the grab technology under slurry (diaphragm wall) – for the slurry wall the concreting is omitted
+419fdae	Excavation beside a slurry wall, with anchor drilling rigs
+987e5c0	Excavation along the wall, with anchor drilling
+95b281d	Reinforced deep mixed wall
+6ebf2b1	A solution used more and more often on the international market as an embedded retaining wall. The soil is mixed with binder <b>in place, by a wet deep mixing method</b> – by wall-type (<b>trenchmix</b>, or cutter-wheel <b>CSM</b>) or column-type (<b>colmix</b>, multi-auger) mixing –, then <b>steel I/H sections are inserted into the fresh mix</b>. As a temporary structure it is built as an excavation support and seepage cut-off wall.
+50b3e7a	The two pairs of counter-rotating cutter wheels of the CSM head break up the soil on the way down (while slurry is added), turn back at the bottom, and on the way up mix it into a homogeneous mass with cement grout. First the primary panels are made, then the secondary panels cutting into them.
+05ef0e0	<b>2,4–2,8<small>m</small></b><span>length of a CSM panel; thickness 0,55–1,2 m</span>
+7ff2299	<b>5–15<small>MPa</small></b><span>strength of the soil-cement as a retaining wall (soil-dependent)</span>
+b2107fc	<b>47<small>min</small></b><span>to make a 14,5 m deep panel (real rig log)</span>
+fccc60a	<b>≈ 10⁻⁸<small>m/s</small></b><span>permeability</span>
+6a18118	Starts at the deep mixed wall section (≈ 4:42).
+61485c6	Panel by panel
+f0af5e7	Step through the construction of the CSM, colmix and trenchmix walls.
+a7a1b95	“The soil itself is the aggregate”
+0788701	Deep mixing produces hardly any spoil – a particularly great advantage in contaminated ground. It is vibration-free, quiet and fast, and the rigs continuously log the depth, the volume of slurry and the inclination. Bauer developed the CSM method in 2004 from the diaphragm wall cutter. Its drawbacks are that it depends on the soil and that it needs a large rig and a mixing plant.
+290e49e	Deep mixing tool on site
+b29772d	Inserting a steel beam into the fresh mix with an excavator
+44ff119	Setting a steel beam into the fresh soil-cement
+de6c601	Mixing auger with soil-cement mix
+ce696be	Mixing auger – the soil is mixed with the binder in place
+ded6256	Top of a finished wall with protruding steel beams
+75e3271	The top of the finished wall: the steel beams stick out
+7dcb3c7	Deep mixed wall with a waling and inclined anchors
+9641093	After excavation: waling and inclined anchors
+832541e	Deep mixed wall with a waling and struts
+2fb160f	Wall supported by a waling and struts
+4e389eb	Sheet pile walls – steel sheet piles
+6f92581	A sheet pile wall is a continuous wall of mostly steel elements, driven, vibrated or pressed into the ground and connected to each other through <b>interlocks (clutches)</b>. Thanks to the interlocks, a <b>watertight</b> connection can be formed. It can be temporary (then it is extracted and reused) or permanent.
+9fbe054	Steel sheet piles are the most common, especially for temporary excavation support: the piles are easy to drive and extract, and their watertightness is the best. They can be flat, half-wave (<b>U</b>- and <b>Z</b>-shaped) or full-wave; in Hungary mainly <b>Larssen</b> and <b>Hoesch</b> type piles are used. In flood defence <b>CS type</b> sheets are also used – they are a transition between trench sheets and sheet piles.
+91c689f	<b>Installation:</b> diesel or hydraulic hammer, or – mainly in granular soil – a vibrator. The sheets are driven in steps one by one, or more efficiently 2–4 elements held together; most often factory-paired. In soft soil pressing is also possible.
+3ee70c7	<b>Vibration:</b> in built-up areas it has to be checked whether the driving vibrations could damage the surrounding structures – they can reach as far as <b>20–30 m</b>.
+1cf9307	<b>Obstructions:</b> rubble fill, hard (stony) clay, thin rock bands – in such cases <b>pre-drilling</b> is often used.
+b274ba6	For <b>permanent</b> use there are separate corrosion protection requirements.
+b9903c0	<b>1902</b><span>Bremen: the first Larssen sheet pile wall – it still stands</span>
+cd5b476	<b>20–30<small>m</small></b><span>the vibration of driving can reach this far</span>
+71710c9	<b>≈ 5°</b><span>rotation possible in one interlock – a flexible alignment</span>
+4c2e122	<b>0,6<small>mm</small></b><span>corrosion loss of thickness in soil over 50 years (EN 1993-5)</span>
+1b43219	Section browser
+9c5fb41	Where is the interlock? How much does a square metre of wall weigh? Which section can take the moment?
+23777de	Examples of use
+c7cec9a	excavation support walls in contact with open water
+28a0bb6	temporary excavation support walls for utility works
+6c9ef42	walls needed to widen existing roads and remove their embankment slopes
+fb8b95f	where space is tight and construction has to be very fast
+11ed599	where noise and vibration are acceptable
+2cff656	Three installation methods
+9ce8aec	<b>Vibrating:</b> the vertical vibration of counter-rotating eccentric masses “fluidises” the granular soil along the pile. <b>Driving</b> (diesel or hydraulic hammer): in cohesive, hard soil and for the last metres. <b>Pressing in:</b> the machine grips the piles already installed, which provide the reaction – vibration-free and quiet.
+a3d0e40	Panel driving
+102354a	Why are the piles not driven to full depth one by one?
+4f7dc07	Play
+32569ea	Estimate how much vibration reaches the neighbouring building during vibrating, driving and pressing.
+c462ce9	Photos and figures
+100e52e	Larssen U and Hoesch Z profiles with interlocks
+1c9d0e1	U profile (Larssen) and Z profile (Hoesch) – the shape of the interlocks
+4277637	Sheet pile section types
+0bb7854	Section types: combined wall, built-up section, AZ and PU piles
+016e0ac	Excavation supported by a sheet pile wall
+0755e10	Vibrator on a sheet pile
+886e80a	Vibrator on the head of the pile
+75f5f0e	Sheet pile wall beside a utility trench
+915ba0a	Sheet pile wall beside a road and a building
+8e679e0	Strutted sheet pile excavation
+4be830c	Sheet pile excavation supported by a waling and struts
+2d1b326	Sheet pile enclosure in a river, plan view
+75def9a	In open water: working space enclosed by sheet piles
+1a205e1	Z sheet piles close up
+0a48850	Sheet piles and interlocks close up
+8784385	Sheet pile wall on a waterfront
+4a9e422	Supporting an excavation and a bank with Larssen piles
+679c068	Rusty sheet piles
+8ecbe79	Removing a temporary wall – the piles can be reused
+f2e5361	Crane-suspended vibrator
+b0ac65a	Crane-suspended vibrator during driving
+e17460b	Leader-guided sheet pile rigs with vibrators
+599cfc9	Leader-guided rigs with vibrators
+d171968	Sheet pile driving with a hydraulic hammer on the coast
+5f35fe9	Driving with a hydraulic hammer on the coast
+3a054b4	Vibrator gripping several piles at once
+2d90e2f	Driving several elements at the same time
+956a982	Timber, reinforced concrete and plastic sheet piles
+c166be7	<b>Timber:</b> no longer used today. It was used down to 2–6 m, only as a permanent structure, because extraction is awkward and the timber gets damaged. First <b>guide piles</b> were driven, and the tongue-and-groove planks were driven between them.
+60ff8a1	<b>Reinforced concrete:</b> for permanent sheeting, mainly for harbours, in open water and for bank protection. Its drawback is the great weight – it also has to be designed for transport (elements 4–8 m long); prestressing reduces the weight. Driving is difficult and is assisted by <b>water jetting</b>.
+53dc913	<b>Plastic:</b> not yet widespread in Hungary. It is used for permanent bank walls, harbours and canal banks (e.g. the Geoflex system): 30 cm wide “pressed” corrugated sheets are driven with vibrating and water-jetting equipment, or in very soft soil pushed in with an excavator. The sheets are connected by an interlock made of an inner and an outer section. Its advantage is the low weight (about <b>9 kg/m²</b>) – no heavy machines are needed.
+e2130ae	Precast reinforced concrete sheet piles
+75b8295	Four materials – the same pile
+0d72ba5	What can timber, reinforced concrete, plastic and steel do – and how much does a 6 m pile weigh?
+367f483	A 2000-year-old technique
+5b30ea7	The Romans already used timber sheet piling, and until the 19th century it was made only of timber. The steel sheet pile wall appeared in 1902 in Bremen (Tryggve Larssen). In the splash zone of seawater, a steel wall can lose about 3,75 mm of thickness in 50 years – plastic does not corrode, but its resistance is much lower.
+c83c28b	Pile walls
+1cd4a20	Pile walls are wall structures made of <b>spaced</b> or closed (<b>contiguous</b> or <b>secant</b>) cast-in-place reinforced concrete piles, typically made by replacement drilling technology – less often of driven/vibrated precast concrete or steel piles. In Hungary they are popular mainly as temporary or permanent, non-watertight excavation support walls for excavations above the groundwater level, possibly affected only by seasonal perched water; on the Hungarian market the <b>CFA</b> technology, which gives continuous support to the bore, is most often the optimal one.
+cebcf79	<b>Contiguous:</b> if the soil is not stable on its own (granular soil), but no watertightness is needed, and a close spacing is needed structurally.
+87f5f7d	<b>Secant:</b> a watertight wall can be made with it, but compared with a diaphragm wall it is economical only in special cases. Only every second pile is reinforced: first the unreinforced piles are made, then between them, cutting about <b>10–12 cm</b> into them, the reinforced piles that can also take moment. A variant: the gaps between the reinforced piles are “filled” by <b>jet columns</b> – so a working space that is not watertight but can be dewatered is formed, with less technological effort.
+6c9bcb2	<b>Spaced:</b> in Hungarian conditions mainly this one has spread – in very hard soils (clays), soft rocks, for supporting tight urban excavations that do not reach the groundwater. Because of the favourable strength of the soil, fewer piles are enough. The acceptable size of the gap depends on the stability of the soil and its ability to arch: typically <b>20–60 cm</b>, at most the pile diameter.
+0697989	Especially for permanent walls, the drainage of perched water appearing from time to time between the piles has to be provided: mechanically fixed steel mesh, geotextile or surface drain, and drainage pipes designed with suitable protection between the piles. The pile wall can be a cantilever, or supported by steel tubular struts, ground anchors or structural props – these connect to the reinforced concrete <b>capping beam</b> tying the piles together at the top and, deeper down, to <b>walings</b> fixed to the sides of the piles.
+a63fd31	<b>20–60<small>cm</small></b><span>gap between piles in a spaced wall, at most D</span>
+c1c0d83	<b>10–12<small>cm</small></b><span>cut-in for a secant wall</span>
+50dacab	<b>1–3<small>days</small></b><span>later the secondary piles follow between the primaries</span>
+b298433	<b>1 cm/m</b><span>1:100 inclination – 10 cm deviation already at 10 m depth</span>
+6cd32b8	Pile wall in plan
+eaff331	Diameter and spacing: will the wall be spaced, contiguous or secant? Switch on the perched water too.
+f548fed	How far does the overlap last?
+dbcc755	A pile is never perfectly vertical. Where do two secant piles separate?
+8806b4b	Deliberately weak concrete
+28cdd08	In a secant wall, the concrete of the primary piles is often deliberately weaker or slow-setting (as little as 1–3 MPa, or 10–20 MPa) – so that the neighbouring secondary pile can cut into it. The secondary pile is always full-strength reinforced concrete.
+c9ef18d	Hungarian examples
+3507d16	The excavation of Paks II is supported by an anchored secant pile wall of 88 cm piles. A Budapest example: the excavation of the “Kertész25” apartment building in Kertész utca, District VII, was supported by a spaced wall of CFA piles.
+7b5cdd2	Pile wall types: spaced, contiguous, secant, reinforced secant
+fa8df4f	Spaced pile wall after excavation
+dec1dcf	Spaced pile wall after excavation – the soil arches between the piles
+5911bc1	Permanent pile wall of a road cutting
+167dfbb	Permanent pile wall of a road cutting
+3b11a39	Urban excavation in an aerial photo
+b1b38d6	Urban ground engineering site (aerial photo)

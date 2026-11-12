@@ -1,0 +1,154 @@
+1419a6f	The sheets are driven or vibrated in before excavation; the soil face is never left unsupported, not even for a moment.
+0b04205	In fine sand, above what depth must it always be shored?
+1a8ece2	Fine sand 0,5 m, intermediate soil 1,0 m, hard clay 2,0 m – for occupational safety, because of drying and soaking.
+416e2d4	What is the role of the waling in the shoring?
+84cf7b0	It holds the planks together and passes their load to the struts
+e880be9	As a compression member it braces the two soil faces against each other
+2a96924	It protects the ends of the planks from splitting
+b498ee5	It drains the groundwater from behind the planks
+af79056	Plank → waling → strut → opposite side: this is the load path of cross-bracing.
+f820a8a	What strut pressure do we use for medium- and high-plasticity soil?
+5b43b0b	The greater of p₁ = (Hγn + q) − 4c and p₂ = 0,2·(Hγn + q)
+9e096bd	p = K·(Hγn + q)·tan²(45° − φ/2)
+b8dcf7e	Always 10 kPa
+e55a7f4	The passive earth pressure
+e820aa3	The K·tan² formula applies to granular and low-plasticity (Ip < 10%) soils.
+b4b431e	How is shoring removed?
+d621f71	From the bottom up, keeping pace with backfilling in layers
+a0eb806	From the top down, so that the workers can get out
+fdd35ed	All at once, lifted out by crane
+d51b9a2	First the planks are pulled out, then the struts
+918dd15	A strut may only come out once compacted backfill already supports the face below it.
+946194e	When sinking trench boxes while digging, how far below the edge of the panel may they dig at most?
+77aa859	0,5 m
+0e4c6f8	1,25 m
+afc0cb4	2,0 m
+e6262d0	Any distance, if the soil is cohesive
+9479504	Then the excavator pushes the box down corner by corner with the back of its bucket (the tilt of the struts at most 1:20).
+417d192	Quiz – wide excavation
+8d167a3	Why is it difficult to brace an excavation wider than about 3 m with horizontal struts?
+0b6fc31	The long, slender strut buckles
+19db928	Because the earth pressure grows in proportion to the width
+f76edde	Because the waling breaks
+3cf2d50	Because the excavator does not fit
+a8cfaf2	The critical force decreases with the square of the strut length (N_cr ∝ 1/L²).
+93e27e1	If the length of the strut doubles, the critical (Euler) force…
+2f6c90e	drops to a quarter
+cd76c32	halves
+8e5675a	doubles
+3bd3c13	N_cr = π²EI/L² – that is why intermediate bracing or a larger cross-section is needed.
+0a6d9f7	What has to be checked separately for raking struts?
+01d21c0	The vertical equilibrium: the strut can rotate out, so it has to be flat enough
+12b8ee5	Only the tensile strength of the strut
+a426b6b	The thermal expansion of the strut
+90132c5	Nothing, a raking strut is always stable
+48be8cc	The vertical component of the force in the raking strut lifts the wall and pushes the foot down.
+97fb34d	When can the shoring of a wide excavation be removed?
+0e270c2	When the basement walls and slabs are complete and take the earth pressure as diaphragms
+6c35e62	Right after the base slab is concreted
+361be5c	When the excavation is finished
+c0434cc	When the groundwater level recovers
+4f3ab7d	Until then the temporary support carries the earth pressure.
+12ec170	In a passive tieback, what is the wall tied to?
+85fd2d1	To I or U sections driven outside the failure plane, with steel bars running 0,8–1,0 m below the surface
+f475a8a	To a thrust block built on the bottom of the excavation
+58a09b2	To the opposite wall, with a tubular strut
+6b0551a	With grouted, prestressed ground anchors
+72d3204	The tie rods run in a narrow trench; this needs room beside the excavation.
+02322be	SOIL SIDE
+d0d1a2d	WORKING SPACE (excavation)
+6a1af0c	steel I/H soldiers
+2924ea4	timber planks (RC planks)
+d3d751b	not watertight
+8d75661	Steel I-beams every 1–3 m (usually 2 m); between them, keeping pace with the excavation, horizontal planks wedged against the flanges. Load path: plank → soldier → support or embedment.
+9d81f0c	steel member (I/H, tube)
+4858549	secant jet columns
+d146cbd	quasi-watertight
+67dc639	Intersecting jet columns (Ø 60–120 cm, spacing: D − 10–20 cm); a steel member fits only within 15–20 cm of the drilling axis. No lagging and no subsequent bore filling is needed.
+8da6702	steel I/H beams
+4dbc7c9	hardened slurry
+77fdcfb	A trench excavated by grab under slurry, like a diaphragm wall; instead of concrete, the cement-bearing slurry itself hardens. By arching, the slurry transfers the earth and water pressure to the beams.
+f9c2248	Reinforced deep mixed wall
+f0d6c09	steel I/H sections
+3215dcc	soil-cement panels
+75a9f2c	seepage cut-off
+c60e9c3	Soil-cement mixed in place by wet deep mixing (e.g. CSM: panels 2,4–2,8 m × 0,55–1,2 m); steel I/H sections are set into the fresh mix.
+d4f62f2	steel sheet piles
+2c98179	– (continuous wall)
+470f70a	watertight (slight seepage at the interlocks)
+c5995ee	A continuous wall of U (Larssen) or Z (Hoesch) steel piles threaded together by interlocks. As a temporary wall it can be fully extracted and reused.
+d52e58f	RC piles (CFA)
+5b3b1db	arching soil
+d39e1e4	Piles with gaps of 20–60 cm (at most D); the soil arches between them, and the face is protected from running by mesh + shotcrete. This is the most widespread in Hungary.
+7cd5de9	RC piles
+c35f392	– (centre spacing = D)
+4a5d05d	If the soil is not stable on its own (granular soil) but no watertightness is needed, or a close spacing is needed structurally.
+aa3ada6	reinforced secondary
+9af3915	unreinforced primary
+24032a4	watertight
+dadf701	First the unreinforced primary piles, then between them, cutting about 10–12 cm into them, the reinforced secondary piles. Only every second one is reinforced.
+e00ca1d	RC panels
+4877c43	Panels excavated by grab under slurry, reinforced and concreted: a stiff, watertight wall, often part of the permanent structure.
+b1b65fe	Type of wall
+1e1df6e	Reinforced self-hardening
+990597c	Reinforced
+de82605	Groundwater behind the wall
+ec561e7	Plan view of a wall section about 8 m long. At the top the retained soil, at the bottom the excavation.
+96e4fb7	Load-bearing element
+53002e8	Panel / infill
+ee06d9e	Watertightness
+85d7300	no waling: plank + wedge
+c92b573	Ø 60–120 cm
+4c871fb	arching between the beams
+9f78da0	interlocks (●: factory-crimped, ○: threaded on site)
+5c3798c	light: primary (unreinforced) · dark, with red cage: secondary (reinforced)
+1afbca2	gap 20–60 cm (≤ D) · shotcrete between the piles
+2e2b29b	centre spacing = D
+4c8a7e1	panel joint (stop-end tube / waterstop)
+171ea4c	✓ the groundwater can be kept out
+71cbe35	✗ water seeps through – only above the groundwater / with dewatering
+2087452	Freedom from noise and vibration
+4c8c0d8	Achievable depth
+3a4e30e	Reuse
+5353187	Permanent structure
+6545590	Mechanisation (little manual labour)
+128e628	Tight space, small rig
+32b98dd	quiet when set in bores, noisy when driven
+713508f	typically 12–15 m, more with rows of anchors
+d22ae9f	the soldiers can be pulled out and reused
+579c5c0	labour-intensive (lagging by hand)
+eb222bf	drilling rig / vibrator + small excavator
+55c0879	vibration-free
+2ba0459	rig-dependent, about 15–30 m
+9db7db0	stays in the ground
+c9874e5	typically temporary, rarely permanent
+6ce001b	mechanised, but a lot of spoil is produced
+3976382	small rig, even beside a building
+6cb0d0e	quasi-watertight (k ≈ 10⁻⁹ m/s)
+5e5d02c	typically at most 7–10 m
+09da88f	mechanised grab excavation
+0cd9930	needs a mixing plant and a working strip
+7bc311d	seepage cut-off (k ≈ 10⁻⁸ m/s)
+379ef98	vibration-free, quiet
+362c6c3	CSM: usually < 20 m, even over 50 m
+e93b4ff	typically temporary
+6a01012	fully mechanised, digital logging
+730fcdb	large rig + mixing plant
+3ccfc22	watertight (even better with sealing)
+7362076	driving, vibrating: noise, vibration (up to 20–30 m); pressing-in is quiet
+06fbaf6	pile length about 6–30 m
+888dc99	fully extractable
+fcc9d74	temporary and permanent (with corrosion protection)
+649b30f	fast, mechanised
+d5421a4	even in tight spaces, fast
+a26bd5e	bored: almost vibration-free
+18504bd	with anchors and struts up to about 20 m
+0c07953	temporary or permanent
+2feadd9	mechanised, face protection needed
+57da29d	drilling rig
+dcde511	can be watertight – if the overlap is maintained
+3d083cd	up to about 25 m (verticality is the limit)
+7f0b458	mechanised, accurate drilling needed
+3ac0898	several tens of metres
+1da7c79	no – a permanent structure
+a0a80d4	often the wall of the building

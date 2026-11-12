@@ -1,0 +1,27 @@
+# ékezet nélküli (a munkalapon nem látszó) magyar feliratok, kontextus szerint
+b8f0b8a!	Situation ${i + 1} / ${CASES.length}
+58386d3!	Min. 40 cm; 60 cm is common.
+1812fdc!	${n} / ${GLOSS.length} terms
+d1591f7	clay
+413c75e	sand
+1832c1d	gravel
+b622612@js/ch_falak.js:206	cantilever
+bdd007c@js/ch_falak.js:206	anchor
+48c02b6	industrial
+4cef9a2	none
+7f54348	suitable
+8553dc6	no
+5b084d0	secondary
+4dbbe35	primary
+2dd5252	OK
+7814838	ground level
+a0a785f	nails
+37beb51	small
+dfe0c76	large
+4435398	yes
+0352a8a@js/ch_falak.js:210	pcs
+0352a8a@js/ch_falak.js:355	pcs
+0352a8a@js/sim3d.js:339	×
+c2640f7	days
+d979f73	basement
+39d4c67	ground freezing · AGF · Bodenvereisung

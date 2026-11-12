@@ -1,0 +1,138 @@
+dc87d7f	Strut pressure and design
+b26e459	Shoring is designed with simplified methods: an exact calculation would be very complicated, because the earth pressure that develops depends strongly on the installation (the degree of loosening or of preloading) – it lies somewhere between the active and the passive state. On the planks we therefore assume a <b>uniformly acting equivalent horizontal load</b>, which is really the reaction of the preloaded struts: this is the <b>strut pressure</b>.
+0440aa3	Granular and low-plasticity (I<sub>p</sub> &lt; 10%) soil:
+c080ba6	K = 0,8 if γ<sub>d</sub> ≤ 16,5 kN/m³; K = 0,6 if γ<sub>d</sub> ≥ 18,5 kN/m³ (linear in between) · γ<sub>d</sub> = γ<sub>n</sub>/(1+w) · q ≈ 10 kPa
+f042464	Medium- and high-plasticity soil – the greater of the two:
+f6a43be	Design uses simple structural models – usually beams on two or three supports: the <b>planks and walings are checked for bending</b>, the <b>struts for compression (with buckling)</b>.
+e45aeff	Strut pressure calculator and a simple check
+1b8be7b	From the strut pressure given by the formulas above: strut force, plank and waling moments, strut utilisation – for timber shoring.
+0406fbe	Trench boxes
+ef525ea	Over the last two decades, <b>prefabricated trench boxes</b> that can be reused many times, lifted in quickly and used in any ground conditions have come to the fore. They are typically made in one piece from stiffened steel plates; in many cases only the “lining of the soil face” is in one panel, with hidden walings, or separate stiffening walings are used and braced against each other with screw struts.
+9d0423e	The box (two panels with adjustable struts between them) is lifted in and pushed down by the excavator – the worker does not have to step into an unprotected trench. There are two ways to install it: <b>placing</b> it into a trench already dug (only in temporarily stable soil), or <b>sinking it while digging</b> (in loose soil and beside traffic this is compulsory).
+469e36c	Can be installed by machine from the surface
+af641be	Fast, can be reused many times
+d6c0471	A rigid shield protects the pipe layers
+7597643	Can be used in any soil
+c3ae5c9	Box: to a depth of about 4–6 m
+f997fb7	The struts get in the way of lifting in long pipes
+56efa11	A crossing utility can block it
+9e77dd8	Heavy (1–3 t per box), a suitable excavator is needed
+155bbed	Trench boxes and the slide rail system
+a104030	Follow the sinking of the box step by step – the 0,5 m digging rule and the 1:20 tilt limit can be checked on the display.
+c5b0ae1	A shield, not shoring
+b49e066	Strictly speaking, a trench box is a <b>passive shield</b>: it does not prevent the soil from moving, it only protects against it – the soil moves until it rests on the panel. That is why the gap between the box and the soil face has to be filled at once. A basic box 4,5 m long with 100 mm panels weighs nearly 3 tonnes – yet an excavator pushes it down with the back of its bucket, corner by corner.
+ba3bc9e	Photos – trench boxes
+54a911a	Prefabricated trench box with blue steel panels and tubular struts
+8e80fcd	Prefabricated trench box: two stiffened steel panels with adjustable struts between them
+a96b120	Trench box in an urban utility trench
+6739182	Trench box in an urban utility trench
+1092cfe	Shoring panels between the soil faces, with the struts between them
+92d15b4	The shoring panels press against the soil faces – with the adjustable struts between them
+9ab2c0e	Large-panel shoring during pipe laying
+9a542ec	Large-panel shoring during pipe laying: the pipe is placed below the struts
+c0047fd	<span class="depth">−5,5 m</span><span>Video: 03</span>
+66eecb7	Shoring a wide excavation
+709ebed	The wider the excavation, the longer the strut – and the more easily it <b>buckles</b>. For excavations <b>wider than about 3 m</b>, much more “robust” bracing is needed: struts braced in several directions, raking struts bearing on the bottom of the excavation, tieback anchorage or large-diameter steel tubular struts.
+fd090a3	The enemy of the long strut: buckling
+845f0fa	A slender member in compression can deflect sideways before its resistance is exhausted – this is <b>buckling</b>. The elastic critical force decreases with the <b>square</b> of the strut length: in an excavation twice as wide, the strut carries only a quarter as much.
+d55a8df	If we want to use traditional struts, they have to be <b>braced in several directions</b> – this makes work in the excavation much more difficult, since the bracing blocks the middle of the excavation.
+ccd8c15	cr
+707db2a	<i>E</i> modulus of elasticity · <i>I</i> second moment of area · <i>L</i> buckling length (for a strut pinned at both ends, the length of the strut). With L → 2L, N<sub>cr</sub> → N<sub>cr</sub>/4.
+ddbbdc0	Buckling lab: how wide an excavation can the strut take?
+e33b3fb	Increase the width of the excavation, change the cross-section, or put a column in the middle – and watch the critical force collapse.
+e7937e7	Practical rules of thumb
+132850a	In a wide excavation the horizontal struts have to be supported by a column about <b>every 6 m</b> against buckling. According to the German DIN 4124, the bracing of the strut rows has to take at least <b>1/100</b> of the sum of the strut forces – that is why diagonal and corner bracing is placed between the struts.
+8adec84	Timber creaks before it breaks
+f586a52	One of the old carpenters’ arguments for pine struts: an overloaded spruce strut creaks loudly before it breaks – it gives a warning. In standard timber shoring to DIN, the maximum buckling length of round struts is only about 2 m.
+7a10a75	Raking struts to the bottom of the excavation
+10717ee	The soil faces do not necessarily have to be braced against each other: the wall can also be supported by <b>raking struts</b> bearing on the bottom of the excavation. But the force of a raking strut also has a <b>vertical component</b> – the strut can rotate out, so its vertical equilibrium also has to be checked, and the strut has to be <b>flat enough</b>.
+799667d	The <b>base slab</b> of the structure to be built can also be used to advantage for support – but then the base slab has to be built in stages: first its inner part is built while an even larger <b>soil support (earth berm)</b> is left sloping at the edge, and the raking struts bear against it – before the full excavation.
+b4cafa2	The construction of the foundation and of the basement walls and their waterproofing is always a problem, because the strutting system can only be removed once the basement structures (walls and slabs) are complete and can take the earth pressure acting as a <b>diaphragm</b>.
+64acee2	What has to be checked?
+90b2839	The buckling of the raking strut and the connection of the strut head; the <b>uplift</b> of the wall (or of the soldiers) from the vertical force; sliding of the foot of the strut and of its thrust block; the stability of the earth berm – and with high groundwater, the <b>uplift</b> of the young base slab too.
+adf90d4	The middle of the excavation stays free
+20ee898	Can be cheaper than horizontal steel struts
+0bd09b0	Does not reach under the neighbouring plot
+86eb5d6	The berm and the struts take up the edge strip
+c872646	Slab built in stages, construction joints
+017bc72	Rather for moderate depths (one strut row)
+47bbebb	Raking struts: construction sequence and forces
+238f55b	Step through the construction and set the angle of the strut: the steeper it is, the greater the vertical force lifting the wall.
+3b00465	If there is room – or if the excavation is very wide
+b350a7e	Passive tieback
+0a272df	If there is room beside the excavation, the retaining wall can be tied back with reinforcing bars or tie rods to I or U sections driven outside the failure plane – these run <b>0,8–1,0 m</b> below the surface in a narrow trench.
+a26fc7b	On to Chapter 6 →
+1cf1e8b	Steel tubular struts
+f63bee2	In wider excavations, <b>larger-diameter steel tubular struts</b> are most often used as struts today – so in most cases no intermediate bracing is needed.
+8961ffd	Ground anchors
+74436c2	A “clear” excavation can be achieved with tieback anchors: the support goes behind the excavation, the working space stays completely free – in return, the anchors may reach under the neighbouring plot.
+183d89c	Retaining walls for excavations
+4f0e991	If the excavation is deeper and wider than can comfortably be braced with struts – or a street or neighbouring building stands right beside it –, the soil face is held by a wall structure installed in the ground <em>before</em> the excavation. These walls reach below the bottom of the excavation, are embedded there, and, keeping pace with the excavation, are supported as needed by struts, anchors or slabs.
+1524647	<a href="#berlini"><span>4.1</span><b>Soldier pile wall</b></a>⏎    <a href="#jetfal"><span>4.2</span><b>Jet grout wall</b></a>⏎    <a href="#zagyfal"><span>4.3</span><b>Reinforced slurry wall</b></a>⏎    <a href="#dsmfal"><span>4.4</span><b>Deep mixed wall</b></a>⏎    <a href="#szadfal"><span>4.5</span><b>Steel sheet pile wall</b></a>⏎    <a href="#szadanyag"><span>4.6</span><b>Timber, concrete, plastic sheet piles</b></a>⏎    <a href="#colopfal"><span>4.7</span><b>Pile walls</b></a>⏎    <a href="#resfal"><span>4.8</span><b>Diaphragm wall</b></a>
+00884b3	The walls fall into two large families. In one, <b>vertical steel beams standing at intervals</b> carry the load, and the panel between them is bridged by some kind of infill: these are the soldier pile wall, the jet grout wall, the reinforced self-hardening slurry wall and the reinforced deep mixed wall. In the other, the <b>whole structure of the wall</b> carries the load: sheet pile wall, pile wall, diaphragm wall (in a spaced pile wall the soil arches between the piles).
+20b55c4	Which one we choose is decided by the same criteria as for any excavation support: the available area, the soil, the <b>groundwater</b>, how long the excavation stays open, how built-up the surroundings are (noise, vibration, movements), the size of the project and the available equipment.
+a429ae5	Four walls – one principle
+6c81162	The soldier pile wall, the jet grout wall, the reinforced slurry wall and the reinforced deep mixed wall work in the same way structurally: <b>steel I/H beams</b> carry the load to the supports and into the embedment. The only difference is the infill of the panels – timber lagging, jet columns, hardened slurry or soil-cement mixed in place. The infill decides whether the wall is <b>watertight</b>.
+312bb46	Plan view: nine walls at a glance
+cf9b393	Choose a type of wall – and switch on the groundwater: where does it seep through?
+bd3309c	Wall selector
+cfa8e31	Rank the walls by one criterion, and tick what your excavation is like. (An indicative, illustrative assessment.)
+1261c1a	Siemens (soldier pile) shoring
+56895c2	One of the <b>most economical temporary</b> vertical supports for the sides of dry, not too deep trenches and excavations without groundwater. It is used where the excavation is already too deep and too wide for cross-strutting – <b>deeper than 6 m and wider than 3–4 m</b> –, but not yet so deep that a stiff, watertight wall is needed.
+7823355	<b>Steel soldiers.</b> Rolled steel “I” (H) sections are placed <b>1–3 m</b> apart, usually <b>2 m</b> – depending on the soil, by driving, or set in a bore filled with lean concrete. A closer spacing can be justified by a higher load.
+5d8f49f	<b>Bore and embedment.</b> For noise reasons the soldiers are now more often set in bores – so layers that are hard to drive through are not a problem either. The bore can be unsupported or fluid-supported; after the soldier is placed, the <b>bore must always be filled</b>, especially below excavation level, because that is where the embedment works.
+78fdc5c	<b>Lagging keeping pace with the excavation.</b> Horizontal planks are slid between the larger soldier sections and wedged against the flanges; less often the planks are vertical. A waling is not always needed: thicker planks (beams) are wedged directly against the flanges.
+da50e5b	<b>Structural behaviour.</b> The soldiers work as vertical cantilevers, or as continuous beams propped by struts or ground anchors.
+4605324	<b>1–3<small>m</small></b><span>soldier spacing, usually 2 m</span>
+8bd7368	<b>1,25<small>m</small></b><span>lagging must start at this depth at the latest (DIN 4124)</span>
+9ac1e1d	<b>0,5 / 1,0<small>m</small></b><span>at most this much soil face may stand without lagging in granular / stiff cohesive soil</span>
+ded44f9	<b>4–6<small>m</small></b><span>stable up to this as a cantilever, without support</span>
+3c2d812	Build the soldier pile wall!
+ea8774c	Deepen the excavation and watch the lagging follow the excavation. What happens if it falls behind?
+3d44a7e	can be reused many times – the soldiers can be pulled out
+561f529	gives a “clear” working space
+e04db77	easily adapts to the shape of the excavation and to utility crossings
+1a2ce83	set in bores, it is quiet and low-vibration
+f254bdd	Disadvantages
+4fd7cf4	not watertight – only above the groundwater or with dewatering
+ed2cb25	labour-intensive, so it is increasingly giving way to fully mechanised walls
+18d3b7d	flexible wall: settlement can occur behind it – beside a sensitive neighbour only with conditions
+8a3f631	timber lagging left in the ground rots
+0c520e1	Where does the name come from?
+9fa1b75	The “Berliner Verbau” got its name from the construction of the Berlin underground and spread in the early 20th century: driven I-beams with timber planks wedged between them. The Berlin underground and elevated railway was built from 1896 by Siemens &amp; Halske (it opened in 1902) – the Hungarian name “Siemens shoring” probably refers to this. Timber lagging left in the ground rots, and the soil behind the wall can settle even 20–25 years later.
+6186a91	In 2004 a soldier pile wall collapsed during backfilling, causing a fatal accident: the planks lost contact with the soil, the gravel ran out, and the hangers of the planks were missing. The planks may only be removed from the bottom up, keeping pace with the backfilling.
+5f19d4d	The family of walls with gaps
+f8c1c82	The same principle, four versions – Berlin, Lutetian, Paris and Moscow walls.
+3b1bd10	Drawing of a soldier pile wall with horizontal and vertical lagging
+5e8ea43	Soldier pile wall with horizontal and with vertical lagging (drawing)
+90245fa	Soldier pile wall being built during excavation
+2d6dea4	Wall under construction: soldiers every 2 m, the lagging follows the excavation
+59b13c6	Drilling and driving rig with a telescopic mast
+2ab906c	Drilling and driving rig for placing the soldiers
+eb09c57	Timber lagging close up with a waling
+28b90e6	Timber lagging close up, with a waling and an anchor head
+b797323	Large excavation supported by a soldier pile wall, with struts
+5dc92dd	Large excavation supported by a soldier pile wall, braced with struts
+3a683d8	Plan of the Berlin, Lutetian, Paris and Moscow walls
+c8edf6a	Walls with gaps working on the same principle: Berlin, Lutetian, Paris, Moscow
+5d7f6af	The soldier pile wall and walls with gaps in reality
+28e51e1	Jet grout wall
+d6ab0b3	A structure that <b>works in the same way</b> as the soldier pile wall, in which the steel members are placed <b>in columns treated with jet grout</b>. In Hungary it is typically made with single or double (cement grout, or cement grout + air) jet technology, with small I/H or tube section reinforcement, in spaced, tangent or secant form, often combined with reinforced concrete piles.
+98e6f78	Jet columns are made <b>60–120 cm</b> in diameter – depending on the soil (smaller in clay, larger in gravel).
+c617cc3	Because the jetted soil is a very dense fluid until it sets, the size of the steel member that can be inserted is <b>limited</b> – whatever the size of the column: only the vertical line passed through by the drill rod and its immediate <b>15–20 cm</b> surroundings will accept it.
+4d1d2fa	A spacing <b>10–20 cm smaller than the diameter</b> ensures watertightness: the wall can also be made <b>quasi-watertight</b> – a great advantage over the soldier pile wall.
+9fb19a8	The steel members are surrounded by solid “soil-cement”: no subsequent filling of the bore is needed, and with secant columns <b>no lagging</b> either.
+a418a16	Without steel reinforcement it is also built as a gravity wall – this is not counted among embedded retaining walls.
+12ae665	<b>60–120<small>cm</small></b><span>column diameter, depending on the soil</span>
+d7d7dda	<b>D − 10–20<small>cm</small></b><span>spacing for watertightness</span>
+a24789e	<b>≈ 400<small>bar</small></b><span>pressure of the cement grout jet at the nozzle</span>
+b3ab12b	<b>2–5×</b><span>the spoil reaching the surface can be this many times the treated volume</span>
+1c2e093	Jet column wall in plan
+83ad876	Set the diameter and the spacing: when does the wall close, and does the steel member fit?
+480e27e	400 bar and 200 m/s
+c4eef23	The cement grout jet leaving the nozzle can reach 200 m/s – a pressure of 400 bar roughly corresponds to the water pressure of the ocean at a depth of 4 km. So a bore of about 10 cm becomes a soil-cement column nearly 1 m in diameter. The method was born in Japan in the 1960s–70s.
+2ac785f	What to watch out for?
+a9b1bcf	The diameter and strength depend on the soil, so they have to be verified with <b>trial columns</b>. If the path of the returning spoil is blocked, the excess pressure can lift the ground and the neighbouring building. Where is it used? For excavations above, or slightly below, the groundwater, where a pile or diaphragm wall does not fit: 1–2-level underground car parks, later extensions.
+05181a7	Excavation between buildings supported by jet columns
+9399932	Excavation between buildings supported by a jet column wall – the columns are clearly visible
+12d68d3	Exposed jet grout wall with steel members

@@ -1,0 +1,130 @@
+ca50344	Sheet piling
+94f8d9f	Vibrator on the pile
+d6fa574	Lifting in a pile
+7d476e3	Driving with an excavator
+9488b59	Reinforced concrete sheet piles
+ef1a572	Excavation with a pile wall
+eb9209f	Pile drilling
+24d7739	Cased drilling head
+a13cd64	Diaphragm walling
+ffe0df9	Diaphragm wall site
+06375f5	Embedded retaining structures playlist
+d3c4729	Ground improvement playlist
+c1e1e82	Wide excavation
+acec6ec	Retaining walls
+f93e34a	Without support – for a short time
+e89a0db	In cohesive soil above the groundwater, a vertical soil face temporarily stands down to a depth of <i>m₀</i>. For occupational safety, however, it has to be shored even at small depths.
+7f87713	E.g. a soldier pile wall or a spaced pile wall: embedded below excavation level, held by the passive earth resistance. As a cantilever only to about 4–6 m.
+47be181	Wall anchored at one level
+e335fc3	The top of the wall is held back by a ground anchor – the fixed length works beyond the active slip surface.
+45b64bc	Watertight wall down to the impermeable layer
+06a27d1	We have reached below the groundwater: a sheet pile, diaphragm, jet grout or slurry wall is needed, keyed into the impermeable clay – otherwise the excavation fills with water.
+8855e7f	Wall anchored at several levels
+431cf1b	Two rows of anchors. The anchors, 15–25 m long, reach under the neighbouring plot – a legal issue, and they can run into utilities or basements.
+e82886d	Tubular struts or supporting slabs
+340a204	If anchoring is not possible, or the movement of the neighbouring building is critical: the stiff support of steel tubular struts or top-down supporting slabs.
+b061cf3	Section of an excavation with support changing with depth
+c116422	NEIGHBOUR’S BASEMENT
+71ed558	STREET · UTILITIES
+fe37836	groundwater −6 m
+085f33e	embedment
+99b6635	watertight wall
+154b8f4	anchor under the neighbouring plot!
+391dbb7	A · Hard clay of Buda
+ae9f9bf	hard clay (Kiscell clay)
+ce9515d	B · Sandy gravel of Pest + groundwater
+9a05be2	C · Soft, saturated soil
+e1ad766	soft clay, silt
+21ecbef	Anchor
+3d234ef	Tubular strut
+bfa1e67	Without support an embedded wall is stable only for excavations of about <b>4–6 m</b> – and only if there is no structure right beside it.${near ? ' Itt a szomszéd épület közel van.' : ''}${stat !== 'ok' ? ' Adj hozzá horgony- vagy dúcsort!' : ''}
+7d4612f	 Here the neighbouring building is close.
+0f3ae2b	 Add a row of anchors or struts!
+ec27db9	strut row (tubular strut)
+73f938c	Illustrative rule of thumb: the top 5 m or so of the wall stands as a cantilever, and each further support level allows about 5 m more.
+0d1d852	For H = ${fmt(H, 1)} m, support levels needed: at least <b>${need}</b> – the wall is overloaded.
+13f1b8f	It is at the limit – one more level would be safer.
+7784b7d	The number of support levels seems sufficient.
+f854839	Fewer levels fit
+aa89e00	At a depth of ${fmt(H, 1)} m, ${nSel} levels do not fit sensibly (min. ~1,2 m vertical spacing) – the calculation uses ${n}.
+f76e3b3	Supporting slabs (levels: ${levels.length})
+871049c	The slabs support the wall as diaphragms with great stiffness; they are cast on the ground, without falsework.
+35a7a88	Nailed wall – a soil mass acting like a gravity wall
+3e732c1	The nails “stitch together” the soil mass: nail length ≈ 0,6–1,2·H (here ~${fmt((P.gran ? 1.0 : 0.8) * H, 1)} m), grid 0,5–1,5 m, lifts every 0,9–1,8 m, wall batter max. 1:8–1:10.${H > 14 ? ' Ekkora mélységnél a deformációk már jelentősek lehetnek.' : ''}
+c844724	 At this depth the deformations can already be significant.
+6d006e7	Dry excavation
+a7fbbd1	The groundwater (−${fmt(gw, 1)} m) is below the excavation level, no watertightness is needed.
+a8ecf84	Non-watertight wall + dewatering
+f3147d3	The ${W.t.toLowerCase()} is not watertight: it can only be used with groundwater lowering. The drawdown also lowers the surrounding groundwater level – the neighbouring building may settle.
+69394d9	Water in the excavation!
+f7afa80	The ${W.t.toLowerCase()} is not watertight, and the groundwater (−${fmt(gw, 1)} m) is above the excavation level: the excavation fills with water. Choose a watertight wall (sheet piles, diaphragm wall, secant pile wall, jet grout wall) or dewatering.
+a462fe7	Watertight wall keyed into the impermeable layer
+0c23ebb	The toe of the wall (−${fmt(toe, 1)} m) reaches below the impermeable layer (−${fmt(P.imper, 1)} m): only the enclosed water has to be pumped out.${S.wall === 'jet' || S.wall === 'zagy' ? ' (A jet- és a zagyfal „kvázi vízzáró”.)' : ''}
+eedfdda	 (The jet grout and slurry walls are “quasi-watertight”.)
+35c2b25	The wall does not reach the impermeable layer
+bb232a2	The impermeable layer is at −${fmt(P.imper, 1)} m, and the ${W.t.toLowerCase()} is here at most about ${W.max} m long: water flows in from below (risk of hydraulic heave). Solution: a deeper wall (diaphragm wall), dewatering or underwater concreting.
+acd77d3	Dewatering switched on
+1a4405f	The groundwater is now below the excavation level – pumping is unnecessary.
+1c45296	Cannot be used in soft, plastic clay
+5c334d9	Soil nailing does not work in soft, plastic clay, organic soil, rubble fill or boulders: the soil face does not stand even between the lifts.
+378b6b6	Granular soil, fill at the top
+ba435f4	In sandy gravel it only works if the lift (0,9–1,8 m) stands for a short time; in the top 2,5 m of rubble fill, nailing cannot be used – another solution is needed there.
+b8280fa	Works well in hard clay
+fd78021	In hard, stony clay drilled and grouted nails are used; the soil face stands well between the lifts.
+d95a2e9	The nails reach under the neighbouring plot
+540f0d2	Nails ${fmt(Ln, 1)} m long, the neighbouring building is ${fmt(dist, 1)} m away – a permit is needed, and they can run into the basement or utilities.
+05d8908	On the street side: utilities
+596cf83	In urban areas the densely spaced nails can run into the utilities under public land.
+628c761	Spaced pile wall in soft soil
+344f702	Soft soil does not arch between the piles, it flows out – a closed (contiguous, secant) wall is needed.
+ec9b6f5	Spaced pile wall in granular soil
+c6f4c35	In granular soil the soil runs out between the piles: a contiguous pile wall or face protection (steel mesh + shotcrete) is needed.
+ed36e32	Spaced pile wall in hard clay
+f36f4d8	In very hard clay the soil arches across the 20–60 cm gaps between the piles – this is the most widespread in Hungary.
+c011eea	Soldier pile wall in soft soil
+187a3de	In soft soil the face does not stand until the lagging is installed, and the soil can flow out from behind the planks.
+ba2a693	One of the most economical temporary supports for dry, not too deep excavations; for noise reasons the soldiers are now more often set in bores.
+d413780	Sheet piles in hard clay
+ecf97a3	In hard, stony clay the piles are hard to drive – pre-drilling is needed.
+5ffcc3f	The vibration of driving and vibrating can reach as far as 20–30 m – it has to be checked for the building ${fmt(dist, 1)} m away (quieter: pressing-in).
+907c364	Slurry wall depth
+e96851a	The reinforced self-hardening slurry wall is typically optimal for temporary excavations at most 7–10 m deep.${dist < H ? ' Süllyedésre érzékeny szerkezet közelében kerülendő.' : ''}
+d7eadfe	 To be avoided near settlement-sensitive structures.
+02aced9	The slurry wall needs soil with favourable trench stability – in soft soil the trench can collapse.
+1a99edd	Typically for 1–2-level underground car parks and later extensions; the column diameter depends on the soil (60–120 cm).${H > 10 ? ' Ekkora mélységhez inkább résfal.' : ''}
+e83e4be	 For this depth a diaphragm wall is better.
+98d6dbd	A watertight, stiff wall to great depth (even over 40 m); it can also be the permanent basement wall.
+b2c8660	Watertight, but only every second pile is reinforced; compared with a diaphragm wall, economical only in special cases.
+c856312	Wall too long
+6c6a8de	The required wall length of ${fmt(toe, 1)} m exceeds the usual limit of the technology (~${W.max} m).
+5e65919	Anchor length: max. ${fmt(longest, 1)} m
+be299aa	Free length beyond the active slip surface (min. 4 m) + fixed length (4–9 m, here 6 m), at an inclination of 15–30°; anchors are at most 25–30 m long. After hardening (8–12 days) they are stressed to 80–90% of the design force.
+af4b93a	The anchor runs into the neighbour’s basement!
+c53eae9	The top anchor row passes at the depth of the neighbouring building’s basement – a different inclination, a deeper level or a tubular strut is needed.
+808f8ee	Anchor under the neighbouring plot
+796becc	The anchors (often 15–20 m long) reach under the neighbouring property: a legal issue (consent), and they can run into existing structures.
+d128020	Under the street: utilities
+49bb36b	On the other side the anchors reach under public land – utilities have to be coordinated.
+19603b1	Fixity in soft soil
+9c024fb	The fixed length falls in soft clay: low shaft friction, uncertain resistance – it has to be taken deeper.
+d228a2f	Tubular strut span: ${fmt(B, 0)} m
+855522c	Typically elements of 4–25 m; ${s === 'ok' ? 'ez a fesztáv közbenső alátámasztás nélkül is áthidalható.' : '25–28 m felett közbenső alátámasztás (pl. előre elkészített cölöpre) kell.'}${B > 12 ? ' 10–15 m felett a hőtágulásból eredő tengelyerő is meghatározó.' : ''}
+e85aebe	this span can be bridged without intermediate support.
+c05e368	above 25–28 m intermediate support (e.g. on a pile made in advance) is needed.
+d4a08e7	 Above 10–15 m the axial force from thermal expansion also governs.
+54b63ec	Cramped working space
+54f4cf7	The struts hinder excavation and the construction of the internal structure – in return they do not reach under the neighbouring plot, and they give a stiff wall with small movements.
+add7ab3	Top-down with a soldier pile wall?
+4576185	The Milan method needs a retaining structure of a permanent nature that can carry the slabs (diaphragm wall, pile wall).
+3d994bf	An unusual combination
+9adf726	For the top-down method a diaphragm wall or a pile wall is typically built – a ${WALLS[S.wall].t.toLowerCase()} is rarely used.
+10b2b9b	Roof slab, cramped working space
+b1e7fbd	The surface can be handed back quickly; the excavation proceeds under the slab, through the muck-out opening, in a confined space – ventilation and lighting are needed.
+dab76ec	Movement of the neighbouring building
+bf147ec	${rs === 'ok' ? 'Várhatóan kicsi.' : rs === 'warn' ? 'Közepes – mozgásfigyelés (monitoring) javasolt.' : 'Nagy – süllyedés, dőlés, repedések várhatók!'} Stiffer support (tubular struts, slabs, prestressed anchors) and a greater distance reduce it.${dewOut ? ' A talajvízszint-süllyesztés tovább növeli.' : ''}
+379c5b0	Expected to be small.
+c1641ec	Moderate – movement monitoring is recommended.
+39e0b5d	Large – settlement, tilting and cracking are expected!
+35edea8	 Groundwater lowering increases it further.
+b78a378	Oblique
+d79079e	Bird’s-eye

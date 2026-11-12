@@ -1,0 +1,135 @@
+fd4ff19	#colopfal|pile wall
+e02dcc0	#berlini|soldier pile wall
+5954640	Own or mobilised weight
+7692f8a	The structure is held by its own weight, or by the weight of the soil mass it mobilises from its surroundings – these are retaining walls. A nailed soil block also works “like a gravity wall”.
+89a1e3c	#szegezes|soil nailing
+7332a2c	#jetfal|jet grout block without steel
+10d45a7	Tieback
+1023e59	The wall grips behind the retained soil mass with a tension member: a ground anchor or a passive anchor. A “clear” working space, but it may reach under the neighbouring plot.
+e145653	#passziv|passive tieback
+b8d8a8d	Cantilever
+8724761	Strutted
+4d4349a	excavation
+2729f3d	passive resistance
+5c3d29e	strut / tubular strut → opposite wall
+38007ee	fixed length
+90a496d	weight (G)
+5fa3c8c	No equilibrium
+28fb019	Nothing resists the earth pressure – the wall overturns, the excavation collapses.
+7b66f88	Cantilever, embedded wall
+3e23a4a	Only the passive resistance holds it: to a small depth (about 4–6 m) and if there is no structure right beside it.
+291e4e2	Combined solution
+9832587	Acting together: ${names.join(' + ')}. In many cases the combination is the solution.
+f83139f	Sloped excavation
+fdfa0a9	The simplest, but needs a lot of space
+0debf45	Plank, waling, strut – bracing one side against the other
+7f44e83	Prefabricated shoring panels
+a06bb01	Shoring a wide excavation
+e6ff01a	Buckling, raking struts
+1cca150	Soldier pile wall
+db48376	I-beams + planks, for a dry excavation
+31afcee	Steel in jet columns, quasi-watertight
+bee6a3d	Reinforced slurry wall
+f6f0972	Self-hardening slurry + steel beams
+247dae4	Deep mixed wall
+a766b9b	Soil-cement mixed in place + steel
+e866ae1	Steel sheet pile wall
+e05b4ff	Interlocked, watertight, extractable
+e2dcf8e	Timber, RC, plastic sheet piles
+a186fa6	Permanent bank walls, harbours
+1cfbb9b	Spaced, contiguous, secant
+1e6c3a7	Stiff, watertight, often permanent
+deaf1f6	Nails + mesh + shotcrete, step by step
+f7a2b0a	Prestressed, grouted – clear working space
+43e6d29	Bracing opposite walls against each other
+effb0d3	Supporting slab (top-down)
+7b4ff14	Milan method: from the top down
+b8e661b	Anchor wall outside the failure plane
+9956669	A temporary ice wall in the ground
+20d60e4	Cofferdam in open water
+5915f66	Working space in the river bed
+d8b4fe2	Underwater base slab
+a949764	Anchoring against uplift
+43d6835	An <b>illustrative</b> geometric comparison: in reality the allowable inclination of the slope is given by a stability analysis (in granular soil, in theory β ≤ φ). The berm is taken as 1,5 m wide above 4 m, and the unloaded strip as ~1 m.
+1acdb82	Granular (c = 0)
+96fa0e8	Slope inclination
+fd64e30	Inclination 1 : n, where n = 1/tan β
+a35fe71	Distance of the neighbouring building
+6617a01	from the edge of the excavation bottom (the position of the vertical wall)
+bb63cc4	Horizontal extent of the slope
+14da3b3	Extra excavation per side
+86a0e1e	m³/m
+92ea70f	Inclination
+9eddccb	wall position
+6c3c565	neighbouring building
+f580e93	It does not fit – a supported wall is needed
+fcd9e8a	The slope (and the unloaded strip) would reach ${fmt(a + strip - d, 1)} m under the neighbouring building. A vertical, supported wall is needed here.
+91189c8	Too steep
+2232f41	In cohesionless soil the slope cannot be steeper than the angle of internal friction: β = ${beta}° > φ = ${phi}°.
+d89f8c6	Only for a short time, with checks
+5ecddaa	In cohesive soil a steeper slope can stand for a short time, but drying, soaking and perched water weaken it – a stability analysis is needed.
+ed05b22	It fits
+8f91b24	The slope takes up a strip ${fmt(a, 1)} m wide on each side${padka ? ', 1,5 m-es padkával' : ''}. Remember: the excavated soil has to be stockpiled outside the failure plane, then compacted back in layers.
+1e16244	, with a 1,5 m berm
+2396659	Quiz – basics
+45e913f	What is the difference between a foundation trench and a trench?
+3c56083	A foundation trench is made for a strip footing, a trench for a whole project (e.g. a utility)
+6d1eb2e	A trench is always deeper than 6 m
+aa2792f	There is no difference, the two are synonyms
+4d1355d	A foundation trench is always sloped, a trench is always shored
+8e80046	For a foundation: a foundation trench/pit; for a whole structure: a trench/excavation. A trench is narrow (typically 1–3 m), for linear works.
+fb13f7c	Which of these does NOT determine the size of an excavation?
+86591fd	The dimensions of the structure
+3f0496e	The traffic and transport needs
+834b006	The dewatering needs
+4e2cf49	The angle of internal friction of the soil
+18b20a4	The size of the excavation is determined by the dimensions of the structure, the traffic and transport needs and the dewatering needs. The soil properties (e.g. the friction angle) affect the <i>type</i> of support.
+b9d270c	Which is one of the four principles of equilibrium?
+80265ca	Tying back behind the soil mass to be retained
+9193dea	Always freezing the soil
+961c2c5	Raising the groundwater
+1827b35	Covering the excavation with sheeting
+10b77d5	Internal support, embedment, own or mobilised weight, tieback – and combinations of these.
+46c153a	In cohesionless granular soil, what is the maximum slope angle?
+e94b77f	The angle of internal friction (β ≤ φ)
+c4728c3	Any, if the slope is short
+04bb04a	90°, if there is no groundwater
+336a78b	In cohesionless soil the slope inclination cannot be greater than the angle of internal friction. The exact value is given by a stability analysis.
+fb904cf	Above what height should a berm be built into the slope?
+c77ecb2	above 3–5 m
+032581b	above 0,5 m
+bdbe02f	above 20 m
+a9073d6	It is never advisable
+15bf3b7	For a higher slope, above 3–5 m, it is advisable to build a berm.
+1fb3950	What surface surcharge can be taken into account (as a minimum) in the design of the slope according to the standard?
+7d1b836	0 kPa, because stockpiling is forbidden
+f1417d9	It is advisable to specify that nothing is stockpiled within the failure plane, but in design a surface surcharge of at least 10 kPa can be taken into account.
+2084738	What is true of permanent excavation support?
+5adf4d9	It becomes part of the structure (e.g. underground car park, subway, tunnel)
+a1168cc	It is always made of timber
+5b78033	It is removed once the structure is complete
+afbc5f2	It can only be sloped
+459fb9a	The role of temporary support ends once the underground structure is complete; permanent support becomes part of the structure.
+7470df8	No room for a slope: about ${fmt(need, 0)} m would be needed to the neighbour.
+5cf6902	The simplest – no ground engineering technology needed if there is room.
+76510f6	A large volume of soil to move, stockpile and backfill in layers.
+9d7c76c	Groundwater: dewatering is needed, and a rise of the water level can cause slope movement.
+42ad581	In soft soil a very flat slope is needed.
+712027f	Above 3–5 m a berm is advisable.
+b220436	Disproportionately large earthwork for a narrow trench.
+6e7970b	Trench shoring (planks, walings, struts)
+0a00d1b	Only for narrow (typically 1–3 m) trenches: in a wider excavation the struts buckle.
+fa5d9a4	The classical solution for a narrow utility trench: bracing one side against the other.
+1758cf9	A trench deeper than 6 m needs stepped shoring.
+9065ff2	The planking is not watertight – dewatering is needed.
+c74caad	In coarse-grained soil m₀ = 0: only pre-driven (steel) planking is possible.
+464bf6d	A temporary solution – backfilled once the pipeline is complete.
+2a4e4dd	Trench boxes (shoring frame)
+34f0e21	Prefabricated panels are economical only up to trench width (about 4 m).
+5ecd9a6	About 6 m (box), with a slide rail system to a depth of about 8,5 m.
+52550aa	Reusable many times, quick to lift in – in any soil, the soil face is never left unsupported.
+d13023a	Not watertight: dewatering is needed.
+79daaa8	Temporary only.
+74b39d7	Soldier pile (Siemens) wall
+f34ae35	Not watertight: water seeps through between the planks – only above the groundwater (or with groundwater lowering).
+65f395b	One of the most economical temporary supports for dry, not too deep excavations.

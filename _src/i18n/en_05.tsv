@@ -1,0 +1,140 @@
+9c4f9be	Anchoring a tunnel lining
+a3f2247	Making a tunnel lining act together with the surrounding rock mass
+0f1247e	Taking inclined tension forces at bridge abutments (suspension and cable-stayed bridges)
+988faf4	Anchoring a structure against uplift
+e9b3c20	Anchoring structures that tend to float up
+f5ae7dc	Fixing the foundations of structures with a high centre of gravity (tower, wind turbine, chimney)
+28c1d53	Stabilisation against forces caused by water flow
+9585ba5	Stabilisation against the forces caused by water flow
+9b68b95	Stabilising a slope surface (e.g. rock slopes in cuttings)
+f368023	Tying back a quay wall
+992916a	Tying back quay walls
+eaddd77	Strengthening existing structures (old bank, retaining and castle walls)
+fc44764	The parts of an anchor
+e2bd002	Grouted ground anchor – click on the parts!
+0ca4503	Anchor head, free length, fixed length, strands, sleeve pipe
+0db5885	<b>15–30°</b><span>inclination to the horizontal</span>
+79bd362	<b>≤ 25–30<small>m</small></b><span>total anchor length</span>
+b0a9087	<b>4–9<small>m</small></b><span>fixed (grouted) length</span>
+6a271bf	<b>≥ 8<small>m</small></b><span>shortest anchor: 4 m free + 4 m grouted</span>
+5ce782a	<b>3–7</b><span>strands, depending on the force to be taken</span>
+3433cb3	<b>8–12<small>days</small></b><span>hardening before stressing</span>
+674f691	<b>80–90<small>%</small></b><span>prestress relative to the design load</span>
+9ae641c	<b>≤ 2<small>years</small></b><span>in Hungary anchors are typically temporary</span>
+ee94eff	How is it made?
+db131e4	<strong>Excavation below the anchor row</strong> – about 0,5 m below the planned anchor level; a waling or waling beam if needed.
+707e2b6	<strong>Drilling</strong> at an inclination of 15–30°, supported by casing or drilling fluid.
+af93e28	<strong>Installing the tendon:</strong> 3–7 strands (or a Dywidag bar) with spacers; in a sheath along the free length, with the sleeved grout pipe beside them.
+f9adae7	<strong>Primary grouting</strong> from the bottom up, while the casing is withdrawn.
+31b82d9	<strong>Post-grouting</strong> at high pressure through the sleeve pipe – the grout body cracks and widens.
+5f59308	<strong>Hardening</strong> for 8–12 days.
+6c6c3fe	<strong>Stressing and test loading</strong> with a hollow stressing jack, in stages – a test load record is made for every anchor.
+979136e	<strong>Lock-off</strong> at 80–90% of the design load: wedges grip the strands in the anchor head. The next excavation level can follow.
+0b6410f	Criterion of classification
+99ad6b6	Types
+9613cea	<b>Design life</b>
+2a3447f	temporary (T ≤ 2 years, e.g. shoring) · permanent, like the structure (e.g. bridge abutment) – corrosion!
+8fa8c8c	<b>Type of fixity</b>
+3967bb7	with a grouted length (shaft friction) · with a mechanical device (“umbrella”) · with an expanded body
+01a1d17	<b>Surface anchors</b>
+4f7e790	fixed to an anchor pile (passive)
+3653866	<b>Load-bearing element</b>
+cea325a	steel prestressing strand (general, for large forces) · steel bar (threaded, for smaller forces) · glass- or carbon-fibre bar (FRP, against corrosion)
+341f74f	<b>Manufacture</b>
+cb8109e	factory-made · assembled on site (temporary only!)
+e8cf458	Temporary or permanent?
+1d7ed43	In Hungary drilled, grouted ground anchors are almost always made for a temporary function, for a design life of at most 2 years. Permanent anchors differ mainly in the stricter corrosion protection (sheath and grout along the whole length) and in the need for monitoring and re-stressing – for quay walls, mountain rock slopes and bridge abutments.
+0e0adab	Design the anchor!
+2a8184f	The fixed length has to be beyond the active slip surface – so the anchor length grows quickly with the depth of the excavation. Watch the plot boundary and the neighbour’s basement!
+ee6117b	Anchor designer
+81f0b82	Depth, anchor level, inclination, soil → required free length, total length, extension under the neighbouring plot
+3ca3a04	Test loading and lock-off
+62a942b	A test load record is made for every single anchor: the stressing jack loads the anchor in stages and cycles, and the movement of the head is measured. The elastic extension also shows whether the free length is really extending freely. At the end the anchor is locked off at 80–90% of the design load.
+58cfcf5	Anchor test loading
+76905b2	Start the load cycles – the diagram shows the movement of the head
+d2c5c66	The grouted ground anchor was born in 1958 in a gravelly excavation in Munich: Karlheinz Bauer simply grouted the anchor rods, which could not be fixed reliably, into the gravel. Prestressed <i>rock</i> anchors had already been used in 1934 at a dam in Algeria. A single Ø15,7 mm strand has a breaking force of about 279 kN – nearly 28 tonnes.
+1271434	Parts of a grouted ground anchor
+59a23e2	The parts of a ground anchor: anchor head, free length, fixed (grouted) length – the force is transferred beyond the slip surface.
+03bc335	Head of a bar anchor
+b411d20	Head of a bar anchor: bearing plate and self-locking anchor nut on the threaded bar.
+0246cf7	Assembling a strand anchor
+6b369d7	Strand anchor assembled on site: strands with spacers, in a sheath along the free length.
+3b2ef3c	Anchor drilling rig in the excavation
+2bbd79c	Crawler anchor drilling rig beside the wall of the excavation.
+1912871	Anchor drilling
+5a9d770	Anchor drilling with casing – the casing sections on the bottom of the excavation.
+81ee924	Building an anchored wall
+1876754	Installing rows of anchors on the wall of an urban excavation.
+e7aa29e	To brace wall sections near the almost right-angled corners of wider excavations, or opposite wall sections not too far from each other, <strong>steel tubular struts</strong> are used most often. In Hungarian conditions they are usually economical:
+c2688ab	if ground anchors cannot be installed because of unsuitable ground conditions or existing underground spaces next door;
+ac216cb	if the planned excavation is deeper than 15–20 m and, because neighbouring structures have to be protected from significant ground movements, a sufficiently stiff wall with small deformations cannot be built with anchors.
+a94a315	So they are popular mainly in tight excavations – road and pedestrian underpasses, small hydraulic structures – or in very deep urban excavations, e.g. metro stations (this is how all the M4 metro stations were built – at some stations the slabs also took part in the support, see the top-down method below). They hinder work inside the excavation, but because of their low labour demand, their reusability and the growing impossibility of anchoring, they are expected to come to the fore in Hungary.
+48769a7	The tubular struts are usually connected to <strong>capping beams or walings</strong> running at the top of the walls or at intermediate levels, so one strut supports several wall elements (diaphragm wall panels, piles, sheet piles). They are connected to the wall by drilled and bonded fixings attached to the end plate of the strut, or to an end plate cast into the wall in advance.
+d5b61ec	<b>30–150<small>cm</small></b><span>diameter (typically 0,3–0,8 m)</span>
+e139765	<b>S235–S355</b><span>structural steel of circular cross-section</span>
+4095246	<b>12<small>m</small></b><span>transportable length (in special cases 14–18 m)</span>
+74e4d4c	<b>30–40<small>m</small></b><span>with splicing, possibly with intermediate support</span>
+7da52f1	<b>&gt; 10–15<small>m</small></b><span>above this the force from thermal expansion governs</span>
+0d977bb	<b>25–28<small>m</small></b><span>above this, intermediate support</span>
+6eee9f8	Sunshine is a load too
+ac526db	At the Crossrail Paddington station in London the strut forces fluctuated daily: they were smallest around 8 in the morning and largest around 7 in the evening. The additional force from temperature can be as much as 50% of the design load of the strut. In one London excavation (Merchant Square), struts with a span of 49 m, a diameter of 1,22 m and a capacity of 500 t were used.
+069b2b3	Tubular strut: buckling and thermal expansion
+709d6e2	Size the strut – and see what a sunny afternoon does to it
+94bff0f	Excavation with tubular struts and corner braces
+879e474	Large excavation: in the corners, raking tubular struts (corner braces) tie the walls together.
+d5f17a9	Tubular struts on a waling
+4022f9d	Tubular struts bearing on a steel waling, the excavation still close to the strut level.
+96b1df4	Raking tubular struts and an excavator
+da3bfd5	An excavator working between tubular struts – the struts are an obstacle in the excavation.
+7d5cbef	Tubular struts in a diaphragm wall excavation
+4bf5a5c	Tubular struts connected to a reinforced concrete capping beam in a deep excavation supported by walls.
+4bb3793	Multi-level tubular struts in an urban infill plot
+e0c3b67	Multi-level tubular strutting in a tight inner-city infill plot, between the neighbours’ party walls.
+6832ea9	Excavation braced with tubular struts and intermediate columns
+803c1e0	Dense tubular strutting with intermediate columns in an urban excavation.
+1245474	Large excavation supported by tubular struts
+e8da1f5	A large excavation braced with tubular struts in several directions.
+7fe8827	Supporting slab – the Milan (“top-down”) method
+24a27de	First the retaining walls (diaphragm wall, pile wall) are built. If there are intermediate supports or columns, their foundations (piles) are made from the top and the columns are placed. Then the top slab is cast on the ground as formwork; acting as a <strong>diaphragm</strong>, it supports the retaining walls. The further levels are built by mining methods – through a muck-out opening left in the slabs, a transport tunnel built further away, or a “pocket” built beside the structure.
+668ac1e	The five stages of the Milan method
+eaae091	Step through the stages – or switch on the superstructure, which is built upwards at the same time
+7e86ca5	Technical difficulties
+6400a61	The supports of the slab (columns) have to be made in advance, <strong>out of sight</strong> – the accuracy is an order of magnitude lower than in conventional construction.
+90f1467	The soil has to be excavated under the supporting slab, <strong>in a confined space</strong>.
+cfe23ec	<strong>Ventilation and lighting</strong> of the enclosed working space have to be provided.
+61eb453	The slabs have to be connected <strong>afterwards</strong> to the columns made in advance; the walls of the substructure are built afterwards, hidden by the slabs – monolithic connections are hard to form.
+3d08563	Why is it worth it?
+c018c3b	construction time is shortened: for a building, the superstructure and the substructure can be built in parallel
+fadf5e9	disturbance of the surroundings largely ends, the surface can be reinstated quickly
+04813b9	the slabs can be cast on the ground, without falsework
+3d96654	the slab supports give great stiffness – small wall movement
+dd1c2ca	In Budapest too
+b7ebe0c	Two stations of the M4 metro – <b>Bikás park</b> (Tétényi út) and <b>Újbuda-központ</b> (Bocskai út) – were built by the top-down “Milan” method: here the walls were also supported by the slabs. The method needs a surface closure of only about 6–8 months per station. It got its name from the construction of the Milan M1 metro (1957–1964), where diaphragm walls were first used on a large scale for an underground railway.
+67b9867	Construction stages of the Milan method
+a4b910f	Construction stages of the Milan method – click to enlarge
+94fa178	The essence of the passive anchor is that the wall is supported by an element able to take tension, connected to a structure – e.g. another wall or a row of piles – located <strong>far enough</strong> behind the soil mass it retains.
+60267d5	If there is room beside the excavation, the wall can be tied back with reinforcing bars or tie rods – placed 0,8–1,0 m below the surface in a narrow trench – to I or U sections, or possibly piles, driven outside the failure plane. For larger excavations (larger forces), the anchorage is to a pile wall or diaphragm wall, and a reinforced concrete beam is used for the connection.
+be3c0e0	The difference from prestressed anchors: without prestress, the expected movements of the wall are larger, typically <strong>a few centimetres</strong>. As permanent structures they can be made of reinforced concrete or corrosion-protected high-strength steel bars. They are particularly common for supporting quay walls and the deeper sections of open road underpasses; in towns they are rarer because of the lack of space.
+54d178a	Sketch of a passive tieback
+868a42a	Tying back a retaining wall to a driven I-section with a tie rod
+45ef79a	Where should the anchor wall stand?
+92c88ba	The active wedge of the main wall and the passive wedge of the anchor wall must not overlap – move the anchor wall and start the excavation
+e99d22b	Taking up the slack, not prestressing
+09e4669	The tie rods are not prestressed: the turnbuckle only takes up the slack (by hand, or for large rods with a jack at about 30–60 kN), then the rods are backfilled with compacted sand. The rod only takes force when the wall moves a few centimetres during excavation and the passive earth resistance develops in front of the anchor wall. In the port of Dublin, for example, tie rods up to 29 m long, M140, hold the quay wall.
+f861f74	<span class="depth">−15 m</span><span>freezing · cofferdams in open water · underwater slab</span>
+b821699	Special solutions
+2cfb024	What can we do if the groundwater cannot be kept out by any wall, if the working space is in the middle of a river, or if lowering the water level is forbidden? Then the special solutions come in: we freeze the soil, build a cofferdam in the river, or concrete the bottom of the excavation under water – and anchor it down.
+b005042	Frozen wall
+39d4c67	talajfagyasztás · ground freezing · Bodenvereisung
+2353031	The essence of ground freezing is that we freeze the pore water of the soil: the ice glues the grains together, and the soil itself becomes the excavation support wall – <b>watertight and load-bearing at the same time</b>. It works in any saturated soil (sand, silt, mixed fill), also with an irregular plan and at great depth, no chemicals get into the ground, and the wall is completely reversible: once the cooling is switched off, it thaws.
+f76c88d	Outside the line of the excavation, usually 2–3 m away, freeze pipes are drilled in one or more rows, typically <b>about 1 m apart</b> (0,9–1,5 m). Drilling accuracy is a key issue: if two pipes drift apart at depth, a gap may remain in the wall. Inside the outer pipe, closed at the bottom, there is an open down-pipe – the coolant flows down in the inner pipe and up in the annulus. Temperature pipes between the freeze pipes check whether the wall has closed.
+b1611a9	<b>−196<small>°C</small></b><span>liquid nitrogen – open system, it evaporates</span>
+cb2bd4b	<b>−25…−40<small>°C</small></b><span>calcium chloride brine – circulates in a closed loop</span>
+b878a0d	<b>4–8<small>weeks</small></b><span>for the wall to form with brine (with nitrogen about 1–3 weeks)</span>
+b42191e	<b>4–8,5<small>MPa</small></b><span>compressive strength of frozen sand at −12 °C (unfrozen: 0,2–2,5)</span>
+1bafa4e	<b>~1<small>m</small></b><span>typical spacing of the freeze pipes</span>
+3d5b47e	<b>+9<small>%</small></b><span>volume increase of water on freezing → frost heave</span>
+1e14aed	Will the wall freeze together?
+461cbd8	Plan view of a ring of freeze pipes around a shaft. Start the freezing and watch when the ice cylinders meet – then add groundwater flow!
+b135c40	The work sequence
+0a041dd	<b>Design:</b> soil profile, water content, salt content – and the most critical: the <b>flow velocity of the groundwater</b>.

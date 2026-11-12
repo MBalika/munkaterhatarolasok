@@ -1,0 +1,141 @@
+17a2e4d	Too deep for a cantilever wall
+07ef29e	Without other support, embedded walls are stable only for excavations of a few metres (max. 4–6 m). An anchor, a strut or a slab is needed!
+604253a	Close to the cantilever limit
+98ed533	As a cantilever, max. 4–6 m – and only if there is no structure right beside it. See how much one anchor reduces the embedment and the moment!
+2d299ba	Cantilever wall
+04ceabb	The wall is fixed by the passive earth resistance; it rotates about a point near the toe (point C). d = 1,2·d₀ = ${fmt(r.d, 1)} m.
+f2406ad	Free-earth toe
+114a40e	A shorter wall, but a larger span moment: the toe can move slightly, the wall works “as a beam on two supports” (anchor + passive earth resistance).
+b2415a6	Fixed-earth toe
+b8e1822	A longer wall, but a smaller span moment: the fixity of the toe creates a negative moment. The point of zero moment is about ${fmt(r.x, 2)} m below the bottom of the excavation.
+8534153	Statically indeterminate continuous beam
+d2b8775	A deep excavation has to be supported at several levels: the support forces here come from Peck’s apparent earth pressure, by tributary area – the real distribution also depends on the construction stages.
+6baa1fd	Anchor head
+f99f5d7	The force is transferred from the wall to the anchor through the anchor head. A bearing plate placed on the wall sets the direction of the anchor; the strands are gripped by conical wedges in the wedge plate.
+ae90e08	Wall and waling
+0966757	One anchor supports several wall elements (piles, sheet piles, diaphragm wall panels) along the load-spreading waling.
+c471e5e	Free length (tendon)
+b28a10e	Allows movement, no force is transferred to the soil: it carries the force between the head and the fixed length. A high-strength Dywidag bar or, most often, steel strands in a sheath; the bore is filled with cement grout. At least 4 m.
+3b9c8d1	Active slip surface
+f804d4d	The possible slip surface of the retained soil mass. The fixed length has to start beyond it – otherwise the anchor would move together with the moving soil mass.
+b1a08c6	Fixed (grouted) length
+128a1b9	This is where the force is transferred: the grout body transfers the force to the soil by shaft shear. Typically 4–9 m long, extending beyond the active slip surface.
+c90e53a	Strands, spacers
+f4b7a3a	Typically 3–7 strands (depending on the force to be taken). A single Ø15,7 mm strand has a breaking force of about 279 kN (≈ 28 t) – five of them can already carry more than 100 t. Along the fixed length, spacers keep them apart.
+12d283f	Sleeved grout pipe
+cb54851	A valved (sleeved) pipe running beside the strands: the high-pressure (post-)grouting is done through it, cracking and widening the primary grout body.
+6dbd527	Parts
+0a25f15	active slip surface
+5e5dfc8	fixed length 4–9 m
+4ef293b	free length ≥ 4 m
+43455ca	earth pressure → wall → anchor
+b5358ad	The slip surface is drawn from the bottom of the excavation at an inclination of 45° + φ/2 (a simplification). The free length has to extend beyond the slip surface by at least max(1,5 m; H/5), and be at least 4 m. Illustrative – the actual length comes from the pull-out resistance and the deep slip surface (Kranz) check.
+0881bd7	Depth of the anchor row
+9dc559f	Inclination
+88df71e	Typically 15–30° to the horizontal.
+162bb31	Fixed length
+5b3e603	Typically 4–9 m.
+a675cca	Plot boundary from the wall
+7ce1e49	Neighbouring building with a basement (−3,5 m)
+b4cb40e	Required free length
+f881b05	Total anchor length
+02e0ee9	Depth of the anchor end
+9740fa2	plot boundary
+63d526a	neighbouring plot →
+a808e3b	slip surface (${fmt(45 + phi / 2, 0)}°)
+6269b46	does not extend over
+1d9aed9	The anchor is longer than 30 m – anchors are made at most 25–30 m long. Several rows of anchors or another support are needed.
+317cd92	Anchor length over 25 m – close to the practical limit.
+7156412	The fixed length is typically 4–9 m; above 9 m the resistance hardly increases.
+bd9e248	Anchors are typically inclined at 15–30° to the horizontal.
+7f4f5f9	The anchor runs into the neighbour’s basement! A steeper anchor, a deeper anchor row – or a tubular strut is needed.
+d0094cb	The anchor reaches ${fmt(over, 1)} m under the neighbouring plot – a legal issue (owner’s consent), and it can run into existing structures.
+3b409a6	Geometrically OK
+5d7c41a	OK
+bf34c7c	Warning
+1ba151d	This will not work
+68ee561	The fixed length starts beyond the slip surface, and the anchor stays on your own plot.
+1682271	Illustrative diagram: the elastic extension Δ = P·L<sub>app</sub>/(E·A), where L<sub>app</sub> ≈ L<sub>f</sub> + L<sub>b</sub>/2, E = 195 GPa, A = n·150 mm² (Ø15,7 mm strand, f<sub>pk</sub> = 1860 MPa → 279 kN/strand). The load steps are similar to the cyclic test of EN ISO 22477-5; the proof load here is 1,25·T<sub>d</sub> (national rules vary between 1,1 and 1,5). The permanent displacement and the creep are estimated values.
+453d1e2	Number of strands
+41cc371	Free length
+b1823a2	Design anchor force
+6cfecc2	Lock-off load
+9fa5ccf	% of design
+a122875	Typically 80–90%.
+5850adc	▶ Start the test loading
+4602ff0	Proof load P<sub>p</sub>
+43edea6	Strand utilisation P<sub>p</sub>/F<sub>pk</sub>
+efb7ee4	Elastic extension at P<sub>p</sub>
+3fb4feb	Lock-off force
+1e96aef	head displacement [mm]
+9942e28	0,8·F_pk (test limit)
+15780ee	lock-off: ${fmt(lo[1], 0)} kN
+74faee0	hold – creep measurement
+cf3075d	Illustrative calculation (buckling to EN 1993-1-1, hot-rolled tube: curve “a”, α = 0,21; γ<sub>M1</sub> = 1,0; pinned ends, buckling length = L). From restrained thermal expansion: ΔN = α<sub>T</sub>·E·A·ΔT·b, α<sub>T</sub> = 1,2·10⁻⁵ 1/°C, b = degree of restraint (stiff wall + stiff soil ≈ 0,7, stiff wall + weak soil ≈ 0,5). Bending from self-weight is not considered here.
+6dbfa60	Strut length (excavation width)
+d71655c	Tube diameter
+e982197	Strut force from earth pressure
+35c8048	Warming
+804f12e	Restraint
+e0101b6	Daily temperature cycle (animation)
+559713f	Euler critical force
+1b2719e	Buckling resistance N<sub>b,Rd</sub>
+ac114a4	Additional force from temperature
+271de51	intermediate support (on a pile)
+b5727df	${nSeg} × ${sL.v / nSeg <= 12 ? '≤12' : fmt(sL.v / nSeg, 1)} m tube sections, with flanged splices
+65f8641	strut length L [m]
+ff75ecb	above 10–15 m: thermal expansion governs
+7f5e451	The strut buckles! A larger diameter / wall thickness, better steel, a shorter buckling length (intermediate support) or closer strut spacing is needed.
+653e7c6	Above 25–28 m intermediate support is needed.
+ac3a189	${fmt(sL.v, 1)} m: assembled by splicing transportable elements (typically 12 m, in special cases 14–18 m).
+ce36736	The additional force from temperature is ${fmt((c.dN / c.Nb) * 100, 0)}% of the resistance – a strut longer than 10–15 m has to be designed for it.
+e3dd35a	Close to the limit
+1ada0f3	The strut safely carries the force from earth pressure and from warming as well.
+cbfcac3	A city-centre street: a multi-level structure will be built below the surface (underground car park, metro station, underpass).
+727a755	1. Building the retaining walls
+74c490a	First the retaining structures are built – diaphragm wall or pile wall – from the surface. Traffic only has to be diverted for this time.
+dad2a2d	2. Intermediate foundations and columns
+28413a1	If there are intermediate supports, their foundations (bored piles, barrettes) are made from the top, and the columns are placed: the steel column is lowered into the fresh concrete. In Hungary a temporary steel column is typically made beside the permanent columns.
+9d051e0	3. Top supporting slab
+e2500e5	After about 1–2 m of excavation, the top slab is cast on ground formwork (lean concrete + membrane) – without falsework. As a diaphragm it supports the walls; a muck-out opening is left in it, and the surface can be reinstated.
+2f9ef59	4. Excavation and intermediate slab
+32c1a94	The further levels are excavated under the slab by mining methods, with small machines; the soil leaves through the opening, a transport tunnel or a “pocket”. The intermediate slab is also cast on the ground.
+dd25677	5. Excavation and base slab
+fe05558	After the full excavation and the slabs are complete, the base slab is made; the columns are encased in concrete. No temporary struts or anchors were needed.
+faea7bc	Construction stage
+a2a1bff	Superstructure in parallel (for a building)
+a8e1d2c	guide frame – the steel column is lowered into the fresh concrete
+7da0ebe	top supporting slab (on ground formwork)
+c7887cc	intermediate slab
+af77968	muck-out
+ce7e357	ventilation
+d0b28de	traffic diversion – only while the walls are built
+966ac77	superstructure – built upwards meanwhile
+08eba7c	Placement rule: the active wedge of the main wall and the passive wedge of the anchor wall must not overlap. Here we draw planes at 45° + φ/2 from the toe of the main wall and at 45° − φ/2 from the bottom edge of the anchor wall (a simplification on the safe side). The movement is illustrative, exaggerated.
+a453162	Embedment of the main wall
+36e4c2d	Height of the anchor wall
+fc89649	Distance of the anchor wall
+854fec6	Depth of the tie rod
+f7c2d02	Typically 0,8–1,0 m below the surface, in a narrow trench.
+48e0b75	▶ Excavate
+6c9c983	Required distance L<sub>min</sub>
+88e8b69	← passive wedge
+e030625	turnbuckle
+b9f7efa	← a few cm
+f2b8296	inside the wedge
+cdd7ca3	The anchor wall is in the right place
+93d9090	The wedges overlap – reduced resistance
+9908e78	The anchor wall is inside the active wedge – no resistance
+1fe3c0f	The two slip surfaces meet at ground level at most: the full passive wedge can develop in front of the anchor wall. Without prestress the wall moves a few cm before the rod becomes taut.
+b51766f	The passive wedge reaches into the moving soil wedge of the main wall. Move the anchor wall back to at least ${fmt(Lmin, 1)} m – or a deeper, shorter anchor wall is needed.
+419da31	The anchor wall moves together with the soil: the rod gets no resistance. In the wrong place an anchor wall is worth nothing!
+72269d2	Quiz – support structures
+6e1d562	As a cantilever (without other support), to about what excavation depth are embedded excavation support walls stable?
+483ad0d	to max. 4–6 m
+aba9983	to max. 1 m
+a636faf	to 15–20 m
+475886d	to any depth, if the wall is long enough
+593cd05	Only for excavations of a few metres, max. 4–6 m – and only if there is no structure right beside them.
+aa7209e	Which is NOT one of the four basic structural types of excavation support walls?
+355cdc6	Fixed at several levels, without support
+254eea7	Free-standing, fixed-earth

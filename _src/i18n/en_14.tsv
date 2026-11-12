@@ -1,0 +1,148 @@
+f88233b	The most common, especially for temporary excavation support.
+5b8dce6	Easy to drive and extract, the best watertightness.
+a957bff	Flat, half-wave (U, Z) or full-wave sections; in Hungary Larssen and Hoesch.
+41f1ede	For permanent use, separate corrosion protection requirements.
+a32345b	Mass: a pile 6 m long and 30 cm wide, <b>illustrative calculation</b> – PVC: 9 kg/m²; steel: AU 14, 104 kg/m²; timber: 10 cm thick pine, ~600 kg/m³; reinforced concrete: 25 cm thick, ~2500 kg/m³.
+801a34a	 sheet piles
+b1bba4f	Section (plan, sketch)
+3e8e319	guide pile
+796cb4f	Mass of a 6 m × 30 cm pile
+fcd0c52	 – one person can carry it
+089641e	 – a crane is needed
+10e9a16	Centre spacing
+6d281ba	spaced
+3f1b2af	contiguous
+5e52265	secant
+4c2e5da	Groundwater / perched water behind the wall
+807a820	Gaps filled with jet columns
+4279f0c	Face protection: mesh + shotcrete + drain
+6178b83	Type of wall
+044d5ad	Gap / overlap
+ec4d582	Piles / m
+02a2211	Reinforced piles / m
+50b1c46	can be dewatered
+66402d4	The gap between piles is too large
+b7b52cd	The acceptable gap is typically 20–60 cm, but at most the pile diameter (here ${Math.min(60, D)} cm). With a larger gap the soil does not arch safely.
+a1e07a7	Very small gap
+0c42744	This is almost a contiguous wall – many piles, little benefit. The size of the gap is set by the stability of the soil and its ability to arch.
+09cc34b	With perched water, drainage pipes and a surface drain are needed between the piles – not suitable below a permanent groundwater table.
+f6ef7f3	In hard clay and soft rock, above the groundwater, on a tight urban plot – this has spread in Hungary. Because of the favourable strength of the soil, fewer piles are enough.
+14313e1	If the soil is not stable on its own (granular soil) but no watertightness is needed, or a close spacing is needed structurally.
+85201ed	Only ${a} cm of overlap – because of the inclination of drilling it can open up at depth. About 10–12 cm of cut-in is needed.
+e40f093	${a} cm of overlap – watertight, but a lot of concrete is “cut away”: uneconomical.
+9c65963	First the unreinforced primary (P) piles, then, cutting 10–12 cm into them, the reinforced secondary (S) piles. Only every second one is reinforced – compared with a diaphragm wall, economical only in special cases.
+c0f089b	Worst case: the two neighbouring piles lean away from each other, so their axes separate by 2·i·z with depth; the overlap runs out at a depth of z₀ = a / (2i). The width of the sealing “throat” is t = 2·√(R² − (s/2)²). Our own illustrative derivation (the horizontal scale is strongly exaggerated).
+77a24b8	Verticality tolerance
+561ff91	Overlap at the head
+2810589	Wall depth
+7fdfb4d	Only one pile inclined
+ec037d2	The overlap runs out here
+6588c2c	Overlap / gap at the toe of the wall
+d25a4fc	Throat at the head
+5935eda	primary (unreinforced)
+a8a5d7b	secondary (reinforced)
+67217d3	z₀ = ${fmt(z0, 1)} m – the gap opens here
+00a09e1	sealing throat t (cm)
+0c63568	gap
+720e2cf	The lower part of the wall is no longer watertight
+d8765b5	With an inclination of 1:${iS.v}, the ${a0} cm overlap runs out at a depth of ${fmt(z0, 1)} m – below it a gap opens, water and soil get in. More accurate (e.g. cased) drilling, a larger overlap or a guide wall + inclination measurement is needed.
+f0642eb	It just holds
+36f3cc7	Only ${fmt(aL, 1)} cm of overlap remains at the toe.
+64ca9b8	The overlap holds down to the toe
+4350b9d	There is still ${fmt(aL, 1)} cm of overlap at the toe. An inclination of “1 cm/m” already means a deviation of 10 cm at 10 m depth – that is why the guide wall and accurate drilling are critical.
+abe7b6d	Quiz – excavation support walls
+5f79da3	At what spacing are the steel I-beams of a soldier pile wall usually placed?
+05b259e	every 0,5–1 m
+d509cf4	every 1–3 m, usually 2 m
+8b6e40e	every 4–6 m
+27c8978	always exactly 3 m apart
+528ae15	1–3 m apart, usually 2 m; a closer spacing can be justified by a higher load.
+844d1ac	Why are the soldiers of a soldier pile wall now usually set in bores (rather than driven)?
+37dedeb	Because this makes the wall watertight
+097e15e	For noise reasons – and so layers that are hard to drive through are not a problem either
+9e2b88e	Because no embedment is needed in a bore
+3a727e2	Because then no lagging is needed
+68c6812	Noise control, and avoiding layers that are hard to drive through. The bore has to be properly filled – especially below excavation level.
+5c6f49b	What spacing ensures the watertightness of a jet grout wall?
+80dbcf4	10–20 cm larger than the diameter
+7a1bc5a	Equal to the diameter
+e4cb9c3	10–20 cm smaller than the diameter
+b39fba6	Half the diameter
+b9904df	A spacing 10–20 cm smaller than the diameter gives the overlap – so a quasi-watertight wall can be made.
+8409f33	Why is the size of the steel member that can be placed in a jet grout wall limited?
+5dd7a35	Because the jetted soil is a very dense fluid until it sets – only the zone of about 15–20 cm around the drilling axis will accept it
+06ca475	Because the diameter of a jet column is at most 30 cm
+303124b	Because steel corrodes in cement
+f8a89d0	Because the standard forbids large sections
+360bb7b	The vertical line passed through by the drill rod and its 15–20 cm surroundings can accept the steel member – whatever the size of the column.
+14fade9	What gives the reinforced self-hardening slurry wall its watertightness, and what its resistance?
+d73282d	The concrete gives both
+e42e723	The watertightness comes from the hardened slurry, the resistance from the steel sections placed every 1–2 m
+ea660ed	The watertightness comes from the steel, the resistance from the slurry
+c5b6191	The watertightness comes from a membrane, the resistance from anchors
+f6f1d11	The cement-bearing slurry becomes watertight when it hardens, but its strength is only 0,5–1,4 MPa – by arching it transfers the load to the steel sections.
+daaeeae	Which statement is true of the steel sheet pile wall?
+4d0748e	It can only be used as a permanent structure
+a87ee21	Thanks to its interlocks it can be watertight, and as a temporary wall it can be extracted and reused
+f161cb9	It can only be installed by pressing
+bbf5221	Its vibration reaches at most 2–3 m
+05ef573	Thanks to the interlocks it is watertight and can be temporary or permanent; the vibration of driving can reach as far as 20–30 m.
+adc98c6	Where is the interlock in a wall made of U (Larssen) sheet piles?
+25c928d	On the outer flanges
+42912c8	In the centre plane of the wall, on the neutral axis
+68bdc16	In the middle of the web, on the face of the wall
+b435b02	There is no interlock, they are welded
+6c508e6	In U piles the interlock is on the neutral axis (that is why double piles are crimped), in Z piles on the outer flanges.
+e965842	What is the typical size of the gap between piles in a spaced pile wall?
+95e368b	5–10 cm
+286e767	20–60 cm, but at most the pile diameter
+86ec354	exactly twice the pile diameter
+ec63053	The acceptable gap depends on the stability of the soil and its ability to arch: typically 20–60 cm, at most D.
+a3ed564	In a secant pile wall, which piles are made first?
+440be51	The reinforced piles
+d5054e7	The unreinforced (primary) piles, then the reinforced ones between them, cutting about 10–12 cm into them
+1eb0566	It does not matter, in any order
+3ee18a7	The capping beam first
+0683c21	First the unreinforced piles, then between them – cutting about 10–12 cm into them – the reinforced piles that can also take moment. Only every second one is reinforced.
+091ce11	Which wall is NOT suitable as a watertight support for an excavation below the groundwater?
+e4af0a5	Water seeps through between the planks of a soldier pile wall – it can only be used above the groundwater or with dewatering.
+ed82346	<b>Illustrative model.</b> The radius of the ice cylinders grows roughly as √t; the rates are matched to the typical ranges (brine 4–8 weeks, LN₂ 1–3 weeks, faster in sand, slower in clay). Design needs a thermal calculation and on-site temperature measurement.
+b39dc4e	Coolant
+5602056	Brine ≈ −30 °C
+895a6bb	Liquid N₂ −196 °C
+b5ead51	Clay, silt
+8f85b42	Pipe spacing
+146e693	Typically about 1 m (0,9–1,5 m)
+9141b82	Groundwater flow
+97aef95	m/day
+0ae9d14	Flowing water brings heat – with brine the wall does not close above about 1–2 m/day
+0b1c6cf	▶ Start freezing
+6e3ceac	A ring of freeze pipes in plan, with the ice cylinders growing
+b1f5022	frozen soil
+b9cefee	freeze pipe
+4ef7a19	excavation (shaft Ø 6 m)
+a111c41	open gap (“window”)
+a2fca00	Closure (closed wall)
+1b65017	Wall thickness between the pipes
+1df8bd6	Coolant in the pipe
+b501b5b	Strength of frozen soil at −12 °C (unfrozen: 0,2–2,5 MPa)
+f626545	closed, watertight ring – excavation can start
+1624838	position of the excavation
+493bea0	the ring is still open
+f8a3f1b	t = ${tm.v} d
+1fa0218	groundwater → ${fmt(fl.v, 1)} m/day
+8b7224c	does not close
+8f3fbd6	~day ${fmt(closeDay, 0)}
+e78e661	The wall does not close
+bc0c863	The flowing groundwater carries the cold away: a “window” remains between the pipes. ${med.v === 'brine' ? 'Megoldás: folyékony nitrogén, sűrűbb csőosztás, több csősor vagy előzetes injektálás az áramlás lassítására.' : 'Sűrűbb csőosztás, több csősor vagy előzetes injektálás kell.'}
+dd48205	Solution: liquid nitrogen, closer pipe spacing, more rows of pipes, or grouting beforehand to slow the flow.
+f6069a9	Closer pipe spacing, more rows of pipes or grouting beforehand is needed.
+6c21e9b	Active freezing – the cylinders have not met yet
+1512d04	The ice cylinders close around day ${fmt(closeDay, 0)}. No digging before that: the temperature pipes and the rise of the internal water pressure signal the closure.
+0cdf7a3	A closed, load-bearing frozen wall
+c06f9cf	Closed, but still a thin wall
+49d4c48	Frozen soil is <b>watertight and load-bearing</b> at the same time. ${med.v === 'brine' ? 'Sólével a teljes fal jellemzően 4–8 hét alatt alakul ki.' : 'Nitrogénnel gyors (kb. 1–3 hét), de drága; gyakran sólével tartják fenn.'} During excavation, maintenance freezing is needed (about 30–50% of the start-up energy).
+e2941ee	With brine the full wall typically forms in 4–8 weeks.
+2ace95b	Fast with nitrogen (about 1–3 weeks), but expensive; it is often maintained with brine.
+ef23002	<b>Illustrative proportions.</b> Earth cofferdam with 1:2,5 slopes and a 3 m crest; width of a double-wall cofferdam ≈ 0,85 × height; cell diameter ≥ 8 m. Seepage by an empirical rule of thumb (0,1 gpm / foot of wall / 10 feet of head), for the perimeter of a 30 × 12 m bridge pier cofferdam. Real design needs hydraulic, stability and base failure checks.
+0de349a	Type of cofferdam

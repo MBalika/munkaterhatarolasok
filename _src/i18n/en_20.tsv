@@ -1,0 +1,191 @@
+9c16c71	In the excavation
+6f9773e	Illustrative · movements exaggerated
+7d4858b	Excavation width
+ee09987	Structure
+8f4d705	Retaining wall
+759b911	Extras
+0f0fe61	Dewatering (pumping)
+dbdaa0c	X-ray – transparent soil
+0b4851c	Toe level of the wall
+44c075d	Support levels
+908994e	Anchor / strut
+e1c082b	Water in the excavation
+421a120	Neighbour movement
+68f6e7a	Steel (sheet pile, soldier)
+0769ea8	Jet / soil-cement
+16d9133	Slurry
+6b2e4c6	Lagging
+dbfab38	Fixed length of the anchor
+df3d322	The 3D view needs WebGL, which this browser (or device) does not support right now.<br>The checklist and the controls still work.
+7a88c1c	3D excavation model
+188a71c	NEIGHBOURING BUILDING
+9d57eab	 · watertight
+c57233c	<b>1.</b> The retaining wall is built (${M.W.t.toLowerCase()}, toe level −${fmt(M.toe, 1)} m)
+5563451	<b>2.</b> Roof slab at ground level – the surface can be handed back, work goes on below it
+8246efe	 · anchor row ${done} stressed
+0c6c38c	 · strut row ${done} installed
+9fea1f3	 · intermediate slab ${done - 1}
+7a58ed6	 · nailing, mesh, shotcrete lift by lift
+3fb442b	<b>Excavation</b> −${fmt(e, 1)} m${extra}
+52422c5	<b>Complete</b> H = ${fmt(M.H, 1)} m · ${M.flood ? 'a gödör elárasztva!' : M.rs === 'bad' ? 'a szomszéd épület veszélyben!' : M.stat === 'bad' ? 'a fal túlterhelt!' : 'jöhet az alaplemez'}
+3acd127	the excavation is flooded!
+aa70339	the neighbouring building is at risk!
+01bf626	the wall is overloaded!
+92e5c0a	the base slab can follow
+3f86f34	nailing
+cb7bfa6	errors: ${cnt('bad')}
+e009d22	warnings: ${cnt('warn')}
+af2659e	OK: ${cnt('ok')}
+1b66cb8	 <a href="${it.l}">Details →</a>
+b699385	no wall
+91c1dc3	${fmt(M.B, 0)}<small>m span</small>
+fc1e8f6	${fmt((M.P.gran ? 1 : 0.8) * M.H, 1)}<small>m nails</small>
+6cdc3b4	seeps in from below
+0d0ea60	drawn down
+65e0bd5	dry (closed)
+95db437	Works – with warnings
+1741d0e	All OK
+e2965ab	In nailing, the nails themselves are the support.
+4700d87	The slabs follow each other about every 3,5 m.
+0713c4e	Only the embedment holds it – no anchor, no strut.
+4569710	A trench is a narrow excavation whose width is typically at most 1–3 m, made mostly for linear works (e.g. utilities).
+20dd0ef	Temporary: it is backfilled once the utility is complete.
+7a1a9f5	In coarse-grained, cohesionless soil a vertical soil face temporarily stands without support down to 1–2 m.
+b287b54	In coarse-grained soil (without apparent cohesion) m₀ = 0 – so pre-driven (steel) planking is needed there.
+6809f71	In cohesionless granular soil the slope angle cannot be greater than the angle of internal friction of the soil.
+75c4e01	For a higher slope (above 3–5 m) it is also advisable to build a berm.
+ae414bf	Above the slope, within the failure plane, we can safely stockpile the excavated soil, since a surface load of 10 kPa is assumed in design anyway.
+c74ec69	It is advisable to specify that nothing is stockpiled within the failure plane; the minimum 10 kPa load only covers the usual variable load.
+7f078e0	Shoring means “bracing one side against the other”: the pressure of the two opposite soil faces is taken by struts in compression.
+7d09fec	So as the excavation gets wider, the buckling length of the struts – and the danger of buckling – grows.
+f7e2254	In traditional timber shoring the struts were typically round timbers 30–40 cm in diameter.
+9613103	The struts were round timbers 12–16 cm in diameter, the planks were 2 inches (48 mm) thick, and the walings were beams of 12–24 cm side length.
+59300e3	In hard clay, for occupational safety, shoring is needed from a depth of 0,5 m.
+c49bc3f	Shoring is needed for H > 0,5 m in fine sand, H > 1,0 m in intermediate soil and H > 2,0 m in hard clay.
+bebd9b6	If m₀ > H, vertical planking can be used: the excavation is dug to full depth, then the faces are lined and strutted.
+5c09f3b	If H > m₀: stepwise driven planking; if H ≫ m₀: horizontal planking with excavation in steps; if m₀ = 0: pre-driven planking.
+ce65b3b	In pre-driven planking timber planks can also be used, since they are driven before excavation.
+69ac062	Pre-driven planking is made of steel only – the sheets are driven or vibrated in, and only then is the soil dug out.
+eea514a	The advantage of horizontal planking is that the length of the planks is not limited, and they are not damaged during installation, since they do not have to be driven.
+64684b0	It is used when H ≫ m₀, and m₀ is only of the order of decimetres.
+a580abe	In medium- and high-plasticity soil the strut pressure is the smaller of p₁ = (H·γn + q) − 4c and p₂ = 0,2·(H·γn + q).
+a00da6b	The greater of the two has to be taken into account.
+2b9eab8	In an excavation wider than about 3 m, buckling of the struts already has to be considered.
+d9d652f	Then bracing in several directions, raking struts or large-diameter steel tubular struts are needed.
+c271984	In a wide excavation the raking struts can also bear on the inner part of the base slab built in advance.
+9f0abc2	At the edge a sloping soil support (earth berm) is then left, which is later removed in sections.
+7e4aeea	The soldier pile wall is watertight, so it is an economical solution even with high groundwater.
+68b25bb	A solution for dry excavations without groundwater: water seeps through between the planks.
+b33a9f1	The steel soldiers of a soldier pile wall are typically placed 4–6 m apart.
+3ef1e97	Every 1–3 m, usually 2 m apart; a closer spacing can be justified by higher loads.
+1c4e547	In a jet grout wall the size of the steel member can be increased at will, in proportion to the diameter of the jet column.
+4db1db6	The fresh jetted soil is a dense fluid: only the vertical line passed through by the drill rod and its 15–20 cm surroundings will accept the steel member.
+b21bc4a	If the spacing of the jet columns is 10–20 cm smaller than their diameter, the wall can be quasi-watertight.
+dc4db9e	This is its great advantage over the traditional soldier pile wall.
+719c163	In the reinforced self-hardening slurry wall, after grab excavation and placing the steel beams, concrete replaces the slurry.
+f46e7c0	No concrete replaces the slurry: the cement-bearing slurry itself hardens and gives the wall its watertightness.
+6d6a635	The 28-day compressive strength of self-hardening slurry is typically 0,5–1,4 MPa.
+728860a	The load is carried by steel sections placed every 1–2 m; by arching, the slurry transfers the earth and water pressure to them.
+dfbd478	Thanks to the interlocks of steel sheet piles a watertight wall can be made, and for a temporary wall the piles can be extracted.
+b5a191f	A sheet pile wall can be temporary or permanent; for permanent use there are separate corrosion protection requirements.
+7be2648	The vibrations from driving sheet piles reach only 2–3 m, so they need not be considered in built-up areas.
+e2a38fb	The vibrations can reach as far as 20–30 m – it has to be checked whether they could damage the surrounding buildings.
+fb5bb32	Reinforced concrete sheet piles are used mainly for temporary excavations, because they are easy to extract.
+3c28fb8	They are used for permanent sheeting, mainly in harbours, open water and bank protection. They are heavy, and hard to drive too (water jetting helps).
+bf7d45e	In Hungary the plastic sheet pile wall is the most widespread type of sheet pile wall.
+d4a1902	It is not yet widespread in Hungary; steel sheet piles (Larssen and Hoesch types) are used most often.
+5dd8ee5	In a secant pile wall every pile is reinforced, and the reinforced piles are made first.
+1834c96	Only every second pile is reinforced. First the unreinforced (primary) piles are made, then the reinforced ones between them, cutting about 10–12 cm into them.
+863400d	In a spaced pile wall the gap between piles is typically 20–60 cm, but at most equal to the pile diameter.
+0912554	The acceptable gap depends on the stability of the soil and its ability to arch.
+7639f93	In Hungary pile walls are popular mainly as non-watertight excavation support walls above the groundwater level.
+929a4c1	They are most often made with CFA technology; in Hungary mainly the spaced form has spread.
+d1c4c86	In soil nailing the excavation is deepened in vertical sections of 90–180 cm, depending on the stability of the soil.
+12a24ee	In each lift: nails, steel mesh, shotcrete – then excavation of the next section.
+5ad751a	The required length of soil nails is typically 0,1–0,3 times the excavation depth.
+9e5ed1f	For an excavation of depth H, the nail length is 0,6–1,2·H depending on the soil; the grid is typically 0,5–1,0 (1,5) m.
+1bded8b	Soil nailing can also be used well in soft, plastic clay and organic soil.
+fa88320	It cannot be used in soft, plastic clay, organic soil, rubble fill or bouldery soil.
+0fa9761	Cantilever excavation supports (without other support) are typically stable only to an excavation depth of about 4–6 m.
+b16cecf	And only if there is no structure right beside them. For a deeper excavation they have to be supported at one or more levels.
+33759eb	Like a soil nail, a ground anchor transfers the force to the soil along its whole length.
+42c1061	The anchor transfers force only along its fixed (grouted) length; the free length only carries it between the head and the fixed length.
+7bd2bec	The fixed length of a ground anchor has to extend beyond the active slip surface.
+c2aae21	Otherwise the anchor would move together with the sliding soil mass.
+e26aed2	In Hungary drilled, grouted ground anchors are almost always temporary, with a design life of at most 2 years.
+bf498af	Permanent anchors can also be made, with stricter corrosion protection and the possibility of re-stressing.
+6f8bb57	After hardening, anchors are prestressed to 120–130% of the design load.
+b98d972	After hardening (8–12 days) they are prestressed to 80–90% of the design load, and a test load record is made for every anchor.
+e911561	The shortest ground anchor is about 8 m long, because both the free and the fixed length are at least 4 m.
+ad2609d	Typical inclination 15–30°, length at most 25–30 m, fixed length 4–9 m, 3–7 strands.
+87d5d9b	For steel tubular struts longer than 10–15 m, the axial compressive forces from thermal expansion already govern.
+a258946	The strut has to be designed for them too; the tubes are typically made of S235–S355 steel, 30–150 cm in diameter.
+be7fa39	In the top-down (Milan) method the slabs can be cast on the ground, without falsework.
+8744cda	Further advantages are the great stiffness of the slab supports and the shorter construction time.
+eeb74ed	In top-down construction the excavation takes place above the completed supporting slab, in the open air.
+e8a4740	The excavation proceeds under the supporting slab, in a confined space – ventilation and lighting have to be provided.
+ca08b54	In a passive tieback, because there is no prestress, the movements of the wall are larger, typically a few centimetres.
+e1ef941	The wall is tied to a structure (a wall or a row of piles) located far enough behind the retained soil mass.
+3864443	A frozen wall forms faster with liquid nitrogen than with brine cooling.
+aab3e66	With nitrogen (−196 °C) about 1–3 weeks, with brine (about −30 °C) about 4–8 weeks – but nitrogen is expensive, so the wall is often maintained with brine.
+92dbb69	The (vertical or horizontal) element lining the soil face – formerly 48 mm timber, today mostly steel trench sheets.
+5ec7bd3	The beam (timber or steel I/U section) holding the planks together, at right angles to them; the struts bear on it.
+f86137a	A compression member bracing the opposite soil faces against each other (round timber, I-beam, tube, steel screw strut).
+c23fdd1	m₀ (unsupported depth)
+f5e8247	The depth to which a vertical soil face above the groundwater temporarily stands without support: m₀ = 4c/(nγ)·tan(45°+φ/2) − p/γ.
+2652e7d	trench sheet (Patria, Union)
+f71a67c	Thin-walled profiled steel sheet for lining trenches – its joints are not watertight.
+612bdcf	vertical / stepwise driven / horizontal / pre-driven planking
+4b76ef3	The four planking methods, by the relationship between m₀ and H.
+b4f3db0	strut pressure
+8a353f2	The equivalent horizontal load acting on the shoring, assumed uniform (the reaction of the preloaded struts).
+ebe2215	A reusable shoring frame of prefabricated, stiffened steel panels and adjustable struts.
+f994b17	raking strut
+c551167	In a wide excavation, an inclined member supporting the wall on the bottom of the excavation or on the base slab; its vertical equilibrium also has to be checked.
+1bf6b20	A soil support left beside the wall, which holds the wall by its passive resistance until the raking struts are installed.
+aeae722	soldier pile (Siemens) wall
+9cd9a99	Steel I-beams installed in the ground at intervals, with lagging placed between them keeping pace with the excavation.
+c07b9f7	A soil column mixed in place by a high-pressure cement grout jet (60–120 cm); the element of a jet grout wall.
+44a2a6d	self-hardening slurry
+5921900	A bentonite-cement slurry that supports the trench, then hardens itself (0,5–1,4 MPa).
+94c2b05	Deep mixing methods: cutter-wheel panels, chain mixer (continuous trench), or intersecting columns.
+8dfe565	sheet pile
+3f1885a	An element driven, vibrated or pressed into the ground, connected to the next by interlocks (mainly steel: Larssen, Hoesch).
+eb855ff	interlock
+816f5de	The connection between sheet piles; it makes the wall continuous and watertight.
+c6d47dc	spaced / contiguous / secant pile wall
+37639f5	Pile wall layouts: with gaps, with touching piles, or with piles drilled into each other (the last one watertight).
+a993d82	primary / secondary pile
+a0c7fd3	In a secant wall, first the unreinforced (primary) piles are made, then the reinforced (secondary) piles between them, cutting into them.
+8c6f55b	A reinforced concrete beam tying together the tops of the piles (wall elements) – the supports can also connect to it.
+550f110	At a deeper level, a load-spreading beam fixed to the side of the wall, to which anchors or tubular struts connect.
+fd2cb66	A reinforcing bar, typically 20–28 mm, driven or drilled and grouted into the soil face; it works along its whole length.
+8a5dd97	shotcrete
+2b7d95d	Concrete sprayed onto the face (8–15 (20) cm in nailing, with steel mesh).
+dfae65e	The structure transferring the anchor force to the wall: bearing plate, locking element (wedge, nut).
+15298fa	The part of the anchor between the head and the fixed length – it slides in a sheath and transfers no force to the soil.
+cc6ca1d	The grouted body of the anchor (typically 4–9 m), which transfers the force to the soil beyond the active slip surface.
+658982b	strand
+f867864	High-strength steel strand; typically 3–7 in one anchor.
+1c4fd2f	prestressing
+815bf9e	Tensioning the anchor after hardening to 80–90% of the design load, then locking it at the head.
+175666d	active slip surface (failure plane)
+8cdc35e	The boundary of the soil wedge behind the wall that tends to slide; the fixed lengths of the anchors and the stockpiles should be outside it.
+a6533bb	A large-diameter (30–150 cm) steel tube bracing opposite walls against each other – it also has to be designed for thermal expansion.
+c8884f0	top-down (Milan) method
+3b6f472	First the retaining walls and the top slab are built, and the excavation proceeds downwards under the slabs.
+be5057f	passive anchor
+13a4e95	An untensioned tie to a wall or row of piles set further back, outside the failure plane.
+466010b	An outer pipe closed at the bottom with a down-pipe inside; the coolant (brine or liquid nitrogen) circulates in it.
+b7ea5e1	brine
+dc23316	A calcium chloride solution, cooled by a refrigeration plant to about −25…−40 °C and circulated in a closed loop in the freeze pipes.
+78594e4	cellular cofferdam
+9d2394f	Steel cells of straight-web sheet piles filled with sand – a self-supporting gravity structure in open water.
+3ba7da0	tremie method
+3e2733e	Underwater concreting through a pipe in such a way that the end of the pipe stays in the fresh concrete throughout.
+0821c9a	The upward lifting effect of water pressure on the bottom of the excavation; it is resisted by weight and/or tension piles (anchors).
+6af730c	Search the terms… (e.g. anchor, plank, slurry)
+2c0cef6	Walls
+38cb47f	${v.d} · music: ${v.g}
+8d9dc14	Animated video · ${v.n}
+f256822	Flawless! You can go on to the next level.

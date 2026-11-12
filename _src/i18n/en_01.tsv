@@ -1,0 +1,122 @@
+790a294	Excavation support – top of the page
+781635b	<b>Excavation support</b><small>BME · Foundation Engineering · Lecture 9</small>
+9fefbcc	Where you are on the page – “excavation depth”
+0ff37af	<span>depth</span><b id="depthVal">±0,0</b>m
+6170d34	Chapters – level by level downwards
+5b93cce	Depth gauge – chapters by depth
+d980be3	Excavation support <span>going down, safely</span>
+9a9129d	Every basement, underground car park, subway and utility trench starts with digging out the soil – and the side of the excavation then has to be held up. This page takes you from trench shoring through sheet pile walls and ground anchors to frozen walls: with animated videos, real BME footage, calculators, a 3D excavation designer and quizzes.
+368e5a2	Excavation depth
+4eee07f	▶ Dig
+4db2246	<a class="btn btn-acc" href="#alapok">Let’s start with the basics ↓</a>⏎        <a class="btn btn-ghost" href="#tervezo">Go to the 3D designer</a>⏎        <a class="btn btn-ghost" href="#videotar">Video library</a>
+66502dc	<b>13</b><span>animated videos</span>
+cbd8aeb	<b>40+</b><span>interactive elements</span>
+83f5d93	<b>3D</b><span>excavation designer</span>
+c063aa9	<b>100+</b><span>questions and tasks</span>
+b23b53f	<b>Excavation support</b> – an interactive learning aid for the Foundation Engineering course at the BME Faculty of Civil Engineering.
+f1cbbb8	The calculators and the 3D designer are simplified, <b>illustrative</b> models: they are for learning, not for design.
+fda2736	The animated videos were made with Claude (three.js).
+741f406	<a href="https://melyalapozasok.vercel.app" target="_blank" rel="noopener">Deep foundations <small>↗</small></a>⏎        <a href="https://vedekezesakarossullyedesekellen.vercel.app" target="_blank" rel="noopener">Protection against harmful settlement <small>↗</small></a>⏎        <a href="https://kedvezotlen-altalaj.vercel.app" target="_blank" rel="noopener">Foundations on unfavourable ground <small>↗</small></a>⏎        <a href="https://talajfelderites.vercel.app" target="_blank" rel="noopener">Ground investigation <small>↗</small></a>⏎        <a href="https://sikalapok-sullyedesszamitasa.vercel.app" target="_blank" rel="noopener">Settlement of shallow foundations <small>↗</small></a>
+b6cf4ae	Every foundation goes below ground level. As long as only a foundation trench of a metre or two is needed, the soil – except coarse-grained, cohesionless soils – will stand for a short time even in a vertical face. From one basement level downwards, however, the side of the excavation has to be either replaced by a slope or supported by some structure – and if the excavation reaches below the groundwater, the water has to be kept out as well.
+a4ab6a2	Pit, trench, working space
+6751e26	If we dig out the soil for <b>a single foundation</b>, we speak of a <b>foundation pit</b> (pad footing) or a <b>foundation trench</b> (strip footing). If it is for <b>a whole structure</b>, we speak of an <b>excavation</b> (construction pit) and a <b>trench</b>. A trench is really a narrow excavation: typically at most <b>1–3 m</b> wide, made for linear works – for example for laying utilities – and backfilled at the end of the work.
+bc5ca70	The deeper the excavation, the more likely it is that <b>groundwater</b> appears. If the bottom of the excavation goes below the construction groundwater level, <b>dewatering</b> has to be provided too. That is why the excavation support and the dewatering have to be designed <b>in parallel with the foundation</b> – in some systems (for example the diaphragm wall) the excavation support is itself the foundation.
+3eb1de7	Which excavation is which?
+49fbe51	Choose a type: its section and its features appear.
+94797dd	The size of the excavation is determined by
+f97ac6f	the <b>dimensions of the structure</b> (+ working space beside the walls and the waterproofing),
+bd8a0b2	the <b>traffic and transport needs</b> (ramp, crane, excavator),
+89a3c9e	the <b>dewatering needs</b> (location of drains, sump, wells).
+5dd3daf	The type of support depends on
+5328f85	Tap a criterion!
+d25fc94	What holds up the wall?
+0ae0129	The support can be <b>temporary</b> – its role ends once the underground structure is complete – or <b>permanent</b>, when it becomes part of the structure (underground car park, subway, tunnel). Equilibrium can be provided in four ways, and often a <b>combination</b> of them is the solution, for example an embedded, anchored wall.
+833f0fe	The four principles of equilibrium
+f9ff1c4	Switch the principles on – the arrows show how the forces act on the wall. Several can be combined.
+a5e2095	The possible structures – a technology map
+2ef2fe0	The support can be formed by sloping, by shoring, by wall structures and by special solutions. Each tile takes you to its own chapter; the badge at the top right: <b>▶ number</b> – animated video, <b>▶ BME</b> – real footage on the BME YouTube channel.
+289dbe4	Shoring
+80b32d4	Wall structures
+1972314	Nailing, propping
+e26c177	Special
+802128e	Already known from deep foundations
+35265f6	The <b>diaphragm wall</b> and the <b>large box</b> (box foundation) are also excavation supports – we discussed them under deep foundations. A diaphragm wall often supports the excavation, keeps out the water and carries the permanent loads all at once.
+14a2b78	Sloped excavation
+0c613a2	The <b>simplest</b> solution – it needs no serious ground engineering technology –, but <b>not necessarily the cheapest</b>. It is only possible where there is no structure right beside the excavation and there is enough room. It takes up a lot of space, a large volume of soil has to be moved and <b>stockpiled</b> (which also needs room), then, once the structure is complete, <b>replaced and compacted in layers</b>. Some soils (e.g. highly plastic clays) are not suitable for backfilling after excavation, or only with stabilisation; wetting and drying of the stockpiled soil can also be a problem.
+8276ab7	The steepest inclination of the slope has to be determined by a <b>stability analysis</b>; in cohesionless granular soil the slope angle <b>cannot be greater than the angle of internal friction</b> (β ≤ φ).
+47c3270	A slope higher than <b>3–5 m</b> should have a <b>berm</b>.
+dde2f22	An <b>inward-dipping clay layer</b> is dangerous (especially with perched water), and an unexpected rise of the groundwater can also cause slope movement.
+8f992ff	Nearby <b>sheet pile or pile driving</b> and the dynamic effect of traffic reduce stability.
+46a161a	<b>Draining rainwater</b> away is very important, both in the excavation and at the surface.
+04dfc0d	Above the slope, <b>do not stockpile within the failure plane</b>; in design, according to the standard, a surface surcharge of <b>at least 10 kPa</b> can be taken into account.
+faedcd9	Principle sketch of a sloped trench: β ≤ φ, berm, the stockpiled soil outside the failure plane
+1f4d18c	Principle sketch of a sloped trench. Click to enlarge.
+306ebea	Slope or retaining wall? – space calculator
+9c8b86c	How much space and earthwork does a slope need compared with a vertical, supported wall? Set the depth, the inclination and the distance of the neighbouring building.
+067e448	A large sloped excavation from above
+91a153e	A large sloped excavation – the slope takes up a wide strip around the excavation.
+95dc54d	A sloped excavation close up
+6becc02	A sloped excavation: a free strip remains between the stockpiled soil and the crest of the slope.
+6cbbc43	The volume of soil in a sloped excavation grows with the <b>square</b> of the depth: for a 6 m deep excavation with a 1:1 slope, 18 m³ of extra soil per metre run on each side has to be dug out, stockpiled, then compacted back – at 12 m it is already 72 m³. On an urban plot a supported wall is therefore almost always built.
+7663f1a	<span class="depth">−3,5 m</span><span>Videos: 01, 02</span>
+7ecc5ca	Trench shoring
+bdf99e3	Shoring means <b>“bracing one side against the other”</b>: the pressure of the two soil faces bounding the excavation or trench is taken by compression members, <b>struts</b> – so the earth pressures of the two sides push against each other. Since the buckling length of a strut grows with the width of the excavation, the method is used mainly in <b>narrow, 1–3 m wide</b> utility trenches.
+e305fc7	<b>1–3<small>m</small></b><span>typical width of a trench (linear works, utilities)</span>
+d45d27d	<b>48<small>mm</small></b><span>thickness of a traditional 2-inch pine plank</span>
+58bbf5e	<b>0,5 · 1 · 2<small>m</small></b><span>shoring is compulsory above this: fine sand · intermediate soil · hard clay</span>
+22403d8	<b>~1,8<small>t</small></b><span>the mass of one cubic metre of moist soil – the load of a small car</span>
+afe47a9	The elements of the shoring
+6c8b7bc	Traditional shoring is built on site from three elements: the soil face is lined with <b>planks</b>, these are held together by <b>walings</b>, and the walings are braced against each other by <b>struts</b>.
+5675018	In the past all three elements were made of timber: 2-inch (48 mm) planks, timber walings of 12–24 cm side length and round timber struts of 12–16 cm diameter. Today <b>steel</b> is typically used: to line the soil face, <b>Patria</b> and <b>Union</b> trench sheets, or possibly CS corrugated sheets; for walings, hot-rolled I and U sections; for struts, I-beams, tubes or – most often – adjustable-length <b>steel screw struts</b>.
+cab510c	The way the shoring is built depends on the kind of soil, whether it has cohesion, and to what depth it can be dug at all without support, for a short time.
+81afa1f	A trench sheet is not a sheet pile wall
+1a40f2b	Patria and Union trench sheets are thin-walled (3–6 mm) profiled sheets with an effective width of 25–30 cm. Their joint is <b>not watertight</b>, so they are only for shoring, not for keeping out water – unlike the interlocked, watertight steel sheet pile wall (see <a href="#szadfal">Chapter 4</a>).
+e2cc510	The shoring – a 3D model you can take apart
+927de40	Switch between traditional timber and today’s steel shoring, take the layers apart, and look at the load path: soil → plank → waling → strut → opposite face.
+7ee6103	Vertical steel trench sheets with blue steel walings
+2bf4c6f	Vertical steel trench sheets with horizontal steel walings
+bf93f66	Timber shoring in a utility trench with planks, walings and struts
+6ec84af	Traditional timber shoring in a utility trench: planks, walings, struts
+ad9b2f4	Shored utility trench with pipes laid below the struts
+8640790	Shored utility trench – the pipes are placed in the free space below the rows of struts
+28a0374	How deep will a vertical soil face stand?
+879d1c3	Above the groundwater, in cohesive soil, a vertical soil face is temporarily stable without support down to a certain depth <b>m₀</b>. This depends on the cohesion, the angle of internal friction, the unit weight and the surcharge acting at the edge:
+e4b203c	tan
+63d0a49	<i>c</i> cohesion · <i>φ</i> angle of internal friction · <i>γ</i> unit weight · <i>n</i> factor of safety (usually 1,5–2) · <i>p</i> surface surcharge
+5b54e2e	m₀ calculator and planking decision
+4e00797	Set the soil and the planned depth: the calculator shows m₀, the sliding wedge, and which planking method is needed.
+efa1850	It would stand in theory – but in practice it still has to be shored
+c636e8f	In theory the trench could be dug down to m₀ without support. But the exposed soil face is exposed to the weather (drying – shrinkage, soaking), its condition can deteriorate, so for occupational safety it has to be shored in any case:
+7e7fcfb	<b>H &gt; 0,5 m</b><span>in fine sand</span>
+b929e5f	<b>H &gt; 1,0 m</b><span>in intermediate soil</span>
+9dfe0f5	<b>H &gt; 2,0 m</b><span>in hard clay</span>
+88ea59e	Shoring is always needed if the trench can be subject to dynamic effects (traffic, piling) and beside buildings – and the safety of the shoring has to be checked by calculation.
+f07633d	A shallow trench is not safe either
+9ca736c	In the United States, <b>about 80% of fatal trench collapses</b> happened in trenches shallower than 3 m (10 feet). One cubic metre of soil weighs 1,5–2 tonnes: from behind a 3 m high vertical face, a wedge of roughly 4 tonnes per metre run can slide down.
+ea5dc2b	It happens here too
+f8db50c	In January 2025 in Tarcal, the side of an excavation about 4–5 m deep with almost vertical sides, dug for a sewer repair, collapsed onto a worker, who lost his life. The side of the excavation was probably not adequately secured; the investigation looked into breaches of the occupational safety rules.
+16a30d6	Utility operators’ practice
+28c2077	In Hungarian utility practice, for example: for an excavation deeper than 5 m – or if a static or dynamic load acts beside the edge – the safety of the shoring has to be verified by calculation; a 0,5 m strip has to be left free at the edge of the trench; a ladder is needed in the trench; crossing over the struts or using them as a work platform or for storing materials is forbidden; voids behind the shoring have to be filled.
+785a27b	Four planking methods
+a19eb98	Depending on the “relationship” between <b>m₀</b> and the planned depth (<b>H</b>), the planks, walings and struts can – and must – be placed in different ways:
+46eab63	Vertical planking
+89cfbde	Dig to full depth, then vertical planks, horizontal walings on them, struts – in at least two rows.
+fca897c	Stepwise driven planking
+d2007b3	Downwards in steps of depth m₀, driving the planks further at each step; the walings are temporarily supported.
+fae4320	H ≫ m₀ (dm)
+344a343	Horizontal planking
+7b0daf5	Excavation in steps with horizontal planks; the vertical walings are replaced by longer ones at each step.
+f153dbd	Pre-driven planking
+cdf4fc2	Coarse-grained soil: the steel sheets are driven or vibrated in before excavation, then the soil is dug out in steps.
+0ff9dee	Planking methods step by step
+9a8150f	Choose a method and play – or step through – the construction sequence. The section is illustrative (H = 3 m).
+13a1cac	Vertical planks, horizontal walings – drawing
+2beec88	a) Vertical planking: vertical planks, horizontal walings
+7fe5999	Stages of stepwise driven planking – drawing
+9d3590b	b) Stepwise driven planking: steps of depth m₀, planks driven further
+ca450bb	Horizontal planking and excavation in steps, stages A–D – drawing
+2d6c350	c) Horizontal planking and excavation in steps, stages A–D
+5c0bbfb	Open and stepped shoring
+e3eadce	In more stable, cohesive soil <b>open planking</b> is allowed: about every second plank can be omitted (the spacing is at most 0,5·m₀). Excavations <b>deeper than 6 m</b> are divided into sections: this gives <b>stepped shoring</b>, where the upper part is about 2×20 cm wider than the lower one.
+9a632f1	Removal is a critical stage too
+c581bf4	Shoring is always removed <b>from the bottom up</b>, keeping pace with the backfill compacted in layers (15–20 cm): a strut may only come out once soil already supports the face below it. The ends of pre-driven sheets always remain at least 30 cm in the soil.

@@ -3,6 +3,7 @@
 //   import { register, slider, seg, stat, svg, h, fmt, onTheme } from './core.js';
 //   register('m0calc', (root) => { ... });   // a <div class="w" data-w="m0calc"> elemre fut, lustán (görgetéskor)
 
+export const EN = (document.documentElement.lang || '').toLowerCase().startsWith('en');   // angol oldal (en.html)
 export const $ = (s, r = document) => r.querySelector(s);
 export const $$ = (s, r = document) => [...r.querySelectorAll(s)];
 export const clamp = (x, a, b) => Math.max(a, Math.min(b, x));
@@ -14,6 +15,7 @@ export const deg = (r) => (r * 180) / Math.PI;
 /** Magyar számformátum: fmt(1.234, 2) → "1,23" */
 export function fmt(x, d = 1) {
   if (x === null || x === undefined || !isFinite(x)) return '–';
+  if (EN) return Number(x).toLocaleString('en-GB', { minimumFractionDigits: d, maximumFractionDigits: d }).replace(/,/g, ' ');   // angolul: tizedespont, ezres tagolás keskeny szóközzel
   return Number(x).toLocaleString('hu-HU', { minimumFractionDigits: d, maximumFractionDigits: d }).replace(/ /g, ' ');
 }
 
@@ -307,10 +309,10 @@ export const GUARD = (() => {
   const BLOCK = 'main p, main li, main dd, main dt, main figcaption, main .note, main h2, main h3, main h4, main h5, main td, main th, main .q-t, main .q-exp, main .q-opts span, main .tf-item .s, main .tf-item .e, main .callout > b, main .verdict, main .w-sub, main .w-foot, main .ctl-hint, main .vmeta span, main .vtile > span, main .fact span, main .tech > span, main .lead, main .ch-lead, main .formula .fl, footer p, footer li, .hero-lead, .ytc-bar small, .ytm .m span';
   const HYPH = 'main p, main li, main dd, main figcaption, main .note, main .q-exp, main .tf-item .s, main .tf-item .e, main .verdict, main .w-foot, main .lead, main .ch-lead, footer p, .hero-lead';
   const NOHY = 'sub, sup, code, button, label, output, td, th, .nw, .formula, h1, h2, h3, h4, h5, .stat, .chips, .chip, .seg, .mono, .tag, .ctl-val, .fact b, .kbd';
-  const TERMS = ['berlini dúcolat', 'táblás dúcolat', 'jet-grouting fal', 'erősített zagyfal', 'önszilárduló zagyfal', 'erősített önszilárduló zagyfal', 'mélykevert fal', 'mélykeveréssel előállított fal', 'acél szádfal', 'vasbeton szádfal', 'műanyag szádfal', 'hézagos cölöpfal', 'érintkező cölöpfal', 'összemetsző cölöpfal', 'réselt fal', 'befogott támszerkezet', 'befogott szakasz', 'szabad szakasz', 'befogási mélység', 'passzív földellenállás', 'aktív földnyomás', 'nyugalmi földnyomás', 'kvázi vízzáró', 'acél csőtámasz', 'passzív hátrahorgonyzás', 'fagyasztott fal', 'víz alatti betonozás', 'víz alatti alaplemez', 'hidraulikus talajtörés', 'belső súrlódási szög', 'drénezetlen nyírószilárdság', 'felszíni teher', 'szomszéd épület', 'talajvíz alatt', 'talajvíz felett', 'előrevert pallózás', 'vízszintes pallózás', 'állított pallózás', 'utánhajtott pallózás', 'csúszósínes rendszer', 'milánói módszer', 'sólé hűtés', 'folyékony nitrogén', 'bentonitos zagy', 'cementzagy-sugár'];
+  const TERMS = EN ? ['soldier pile wall', 'trench sheeting', 'trench box', 'trench shoring', 'jet grout wall', 'slurry wall', 'self-hardening slurry wall', 'reinforced slurry wall', 'deep mixed wall', 'sheet pile wall', 'steel sheet piles', 'contiguous pile wall', 'secant pile wall', 'diaphragm wall', 'embedded retaining wall', 'embedment depth', 'passive earth pressure', 'active earth pressure', 'earth pressure at rest', 'ground anchor', 'soil nailing', 'soil nail', 'steel strut', 'raking strut', 'top-down construction', 'frozen wall', 'ground freezing', 'liquid nitrogen', 'hydraulic heave', 'angle of shearing resistance', 'undrained shear strength', 'neighbouring building', 'below the groundwater', 'above the groundwater', 'bentonite slurry', 'tremie concrete', 'according to'] : ['berlini dúcolat', 'táblás dúcolat', 'jet-grouting fal', 'erősített zagyfal', 'önszilárduló zagyfal', 'erősített önszilárduló zagyfal', 'mélykevert fal', 'mélykeveréssel előállított fal', 'acél szádfal', 'vasbeton szádfal', 'műanyag szádfal', 'hézagos cölöpfal', 'érintkező cölöpfal', 'összemetsző cölöpfal', 'réselt fal', 'befogott támszerkezet', 'befogott szakasz', 'szabad szakasz', 'befogási mélység', 'passzív földellenállás', 'aktív földnyomás', 'nyugalmi földnyomás', 'kvázi vízzáró', 'acél csőtámasz', 'passzív hátrahorgonyzás', 'fagyasztott fal', 'víz alatti betonozás', 'víz alatti alaplemez', 'hidraulikus talajtörés', 'belső súrlódási szög', 'drénezetlen nyírószilárdság', 'felszíni teher', 'szomszéd épület', 'talajvíz alatt', 'talajvíz felett', 'előrevert pallózás', 'vízszintes pallózás', 'állított pallózás', 'utánhajtott pallózás', 'csúszósínes rendszer', 'milánói módszer', 'sólé hűtés', 'folyékony nitrogén', 'bentonitos zagy', 'cementzagy-sugár'];
   const termRx = new RegExp('(' + TERMS.sort((a, b) => b.length - a.length).map(t => t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&').replace(/ /g, '[ \\u00A0]')).join('|') + ')', 'giu');
   const MULT_SYM = /^(tg|ctg|sin|cos|tan|exp|ln|log)\b/;
-  const NUMW = /(^|[\s(\u00A0\u2060„])((?:[Kk]ét|[Hh]árom|[Nn]égy|[Öö]t|[Hh]at|[Hh]ét|[Nn]yolc|[Kk]ilenc|[Tt]íz|[Hh]úsz|[Ss]záz|[Ee]zer|[Ee]lső|[Mm]ásodik|[Hh]armadik|[Nn]egyedik|[Öö]tödik|[Hh]atodik|[Hh]etedik|[Nn]yolcadik|[Kk]ilencedik|[Tt]izedik|[Mm]indkét|[Mm]indhárom|[Nn]éhány|[Ee]gyik|[Kk]ettő|[Hh]armincnyolc|[Nn]egyven|[Hh]etven))(?=\s\S)\s/g;
+  const NUMW = EN ? /(^|[\s(\u00A0\u2060“])((?:[Tt]wo|[Tt]hree|[Ff]our|[Ff]ive|[Ss]ix|[Ss]even|[Ee]ight|[Nn]ine|[Tt]en|[Ff]irst|[Ss]econd|[Tt]hird|[Ff]ourth|[Ff]ifth|[Bb]oth|[Aa]ll|[Ss]everal))(?=\s\S)\s/g : /(^|[\s(\u00A0\u2060„])((?:[Kk]ét|[Hh]árom|[Nn]égy|[Öö]t|[Hh]at|[Hh]ét|[Nn]yolc|[Kk]ilenc|[Tt]íz|[Hh]úsz|[Ss]záz|[Ee]zer|[Ee]lső|[Mm]ásodik|[Hh]armadik|[Nn]egyedik|[Öö]tödik|[Hh]atodik|[Hh]etedik|[Nn]yolcadik|[Kk]ilencedik|[Tt]izedik|[Mm]indkét|[Mm]indhárom|[Nn]éhány|[Ee]gyik|[Kk]ettő|[Hh]armincnyolc|[Nn]egyven|[Hh]etven))(?=\s\S)\s/g;
   function textPass(s) {
     if (!/[ \-–·]/.test(s)) return s;
     // ezres tagolás
@@ -333,12 +335,13 @@ export const GUARD = (() => {
     // függvénynév + argumentum
     s = s.replace(/\b(tg|ctg|sin|cos|tan|ln|log|exp) /g, '$1' + NB);
     // rövidítések
-    s = s.replace(/(^|[\s(\u00A0])(pl\.|kb\.|ill\.|ún\.|max\.|min\.|ld\.|vö\.|cca\.|átl\.|ill|ún|kb) (?=\S)/g, '$1$2' + NB);
+    s = s.replace(/(\S) ([–—]) /g, '$1' + NB + '$2 ');   /* gondolatjel */
+    s = s.replace(/(^|[\s(\u00A0])(pl\.|kb\.|ill\.|ún\.|max\.|min\.|ld\.|vö\.|cca\.|átl\.|ill|ún|kb|e\.g\.|i\.e\.|approx\.|cf\.|No\.|Fig\.) (?=\S)/g, '$1$2' + NB);
     // szám + mértékegység / szó; magában álló szám
     s = s.replace(/(^|[\s(\u00A0\u2060~≈≤≥=<>−+])(\d+(?:[,.]\d+)?\.?%?) (?=\S)/g, '$1$2' + NB);
     s = s.replace(/(^|[\s(\u00A0\u2060~≈≤≥=<>−+])(\d+(?:[,.]\d+)?\.?%?) (?=\S)/g, '$1$2' + NB);
     // névelők, rövid kötőszavak
-    for (let i = 0; i < 2; i++) s = s.replace(/(^|[\s(\u00A0\u2060„])(a|az|A|Az|s|e|egy|Egy|és|És) (?=\S)/g, '$1$2' + NB);
+    for (let i = 0; i < 2; i++) s = s.replace(EN ? /(^|[\s(\u00A0\u2060“‘])(a|an|the|A|An|The|&) (?=\S)/g : /(^|[\s(\u00A0\u2060„])(a|az|A|Az|s|e|egy|Egy|és|És) (?=\S)/g, '$1$2' + NB);
     // betűvel írt számnév + amit számlál
     s = s.replace(NUMW, '$1$2' + NB);
     // utótagos kötőjel (30°-nál, RFA-n, 1173-ban)
@@ -348,13 +351,14 @@ export const GUARD = (() => {
     return s;
   }
   // szövegcsomópont-határon átnyúló kötés: névelő/rövidítés/szám a csomópont végén, operátor a határon
-  const SHORTEND = new RegExp('(^|[\\s(\u00A0\u2060„])(a|az|A|Az|s|e|egy|Egy|és|És|pl\\.|kb\\.|ill\\.|ún\\.|max\\.|min\\.|\\d+(?:[,.]\\d+)?\\.?%?|' + NUMW.source.match(/\(\?:([^)]*)\)/)[1] + ') $');
+  const SHORTEND = new RegExp(EN ? '(^|[\\s(\u00A0\u2060“‘])(a|an|the|A|An|The|e\\.g\\.|i\\.e\\.|approx\\.|\\d+(?:[,.]\\d+)?\\.?%?|' + NUMW.source.match(/\(\?:([^)]*)\)/)[1] + ') $' : '(^|[\\s(\u00A0\u2060„])(a|az|A|Az|s|e|egy|Egy|és|És|pl\\.|kb\\.|ill\\.|ún\\.|max\\.|min\\.|\\d+(?:[,.]\\d+)?\\.?%?|' + NUMW.source.match(/\(\?:([^)]*)\)/)[1] + ') $');
   function crossPass(nodes) {
     for (let i = 0; i < nodes.length - 1; i++) {
       const a = nodes[i], b = nodes[i + 1];
       const av = a.nodeValue, bv = b.nodeValue;
       if (!av || !bv) continue;
       if (av.endsWith(' ') && /^\S/.test(bv) && SHORTEND.test(av)) a.nodeValue = av.slice(0, -1) + NB;
+      if (/^ [–—] /.test(b.nodeValue) && /\S$/.test(a.nodeValue)) b.nodeValue = NB + b.nodeValue.slice(1);   /* gondolatjel a csomóponthatáron */
       const ms = /^ ([=≤≥≈→←×±<>⇒+−/]) /.exec(b.nodeValue);
       if (ms && /\S$/.test(a.nodeValue)) b.nodeValue = NB + ms[1] + NB + b.nodeValue.slice(3);
       const me = / ([=≤≥≈→←×±<>⇒+−/]) $/.exec(a.nodeValue);
@@ -493,8 +497,8 @@ export const GUARD = (() => {
     observe();
     // Hyphenopoly
     const H = window.Hyphenopoly;
-    if (H && H.hyphenators && H.hyphenators.hu) {
-      H.hyphenators.hu.then(fn => { hyph = s => fn(s); const all = $$(HYPH); all.forEach(e => done.delete(e)); run(); window.__fmtHyphReady = true; }).catch(() => {});
+    if (H && H.hyphenators && H.hyphenators[EN ? 'en-gb' : 'hu']) {
+      H.hyphenators[EN ? 'en-gb' : 'hu'].then(fn => { hyph = s => fn(s); const all = $$(HYPH); all.forEach(e => done.delete(e)); run(); window.__fmtHyphReady = true; }).catch(() => {});
     }
   }
   // vászonra szánt szöveg őrzése

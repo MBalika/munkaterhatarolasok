@@ -1,0 +1,155 @@
+f902352	Earth / rockfill cofferdam
+4be9def	Design water depth
+77dc165	Freeboard above the water level
+897940c	Recommendation: at least about 0,9 m, or above the wave height
+483ec9c	Unexpected flood wave
+388ad94	Crest above the river bed
+eb1b1d5	Base width of the cofferdam
+63391cc	Seepage (30 × 12 m cofferdam)
+45d8b3e	Suitability
+958b0d5	underwater concrete plug
+2f5108f	bridge pier
+2d831ba	the cofferdam from here
+d6c65de	continues…
+3b07167	bracing frames (waling + strut)
+41df972	sand/gravel fill
+c167816	tie rod
+4cc0743	steel cell Ø ≈ ${fmt(Bm, 0)} m
+4dc4c18	filled with sand
+63e7df7	OVERTOPPING!
+e194ea6	pump
+57e571f	flood wave +${fmt(d, 1)} m
+48b254f	large – through the body of the dam
+5af2465	Suitable in shallow, slow water
+9228a79	Cheap, built from local material – but it takes up a lot of space, narrows the channel and erodes. Sealed by a clay core or a built-in sheet pile wall.
+a5671d6	Already very wide
+2d389a2	The base width is ≈ ${fmt(r.Bm, 0)} m – it blocks a large part of the river, the flow speeds up and scours the slope.
+2da4683	Not for this depth of water
+c03b984	≈ ${fmt(r.Bm, 0)} m base width: a sheet pile or cellular cofferdam is needed instead.
+bff9d7a	A typical bridge pier cofferdam
+8af597d	Small footprint, the bracing frame is also the template for sheet pile driving. An underwater concrete plug is placed at the bottom of the excavation; its weight holds against uplift.
+ec7dc7c	Deep: many bracing levels, long piles
+48970ef	Above about 9 m of dewatered depth + embedment, the pile length and the number of frames grow quickly – a cellular or double-wall cofferdam should be considered.
+bcf9c06	A self-supporting gravity wall
+e0ccb4e	The weight of the fill between the two sheet pile walls holds it: no struts inside, there can even be a road on top. In return, a lot of steel and fill is needed.
+da91d44	Very wide and heavy
+b6b2dbe	At this depth a cellular cofferdam is often more economical.
+6de4a9b	Oversized
+a9c2750	In shallow water cells of ≥ 8 m diameter are not economical – an earth or single-wall cofferdam is enough.
+2836a17	Economical in deep water, for long structures
+fb15b24	Steel cylinders filled with sand: a gravity wall without internal bracing. The fill creates hoop tension in the piles (“barrel effect”), carried by the interlocks.
+f1fc63f	The water overtops – the excavation floods!
+f1c6fd4	The flood wave (${fmt(dh.v, 1)} m) is higher than the freeboard (${fmt(fb.v, 1)} m). In an emergency the excavation is flooded deliberately, in a controlled way, so that the water pressure is balanced.
+e91abd3	 <b>Warning:</b> the flood wave is already close to the crest.
+01969dc	Starting situation
+7cae05e	High groundwater, permeable sand and gravel, the impermeable layer very deep. The groundwater <strong>must not be lowered</strong> (neighbouring buildings, trees, water regulations – e.g. in Berlin).
+6b61306	1. Enclosure with sheet piles
+34a449d	A watertight sheet pile wall (or diaphragm wall) encloses the excavation – but it does not reach the impermeable layer, so water would still come in from below.
+0fbeb48	2. Wet excavation
+4408996	The water is left inside: the soil is dug out from under water down to the bottom of the future slab. The excavation becomes an “artificial lake”, the groundwater level does not change.
+b0ca708	3. Temporary working platform + anchoring
+7e7aa00	From a floating pontoon (or beforehand, in the dry, from the working platform) tension piles are installed on a dense grid of about 2,5–3,5 m: GEWI bars or micropiles, grouted into the deeper layers.
+d32e466	4. Underwater concreting
+3463d42	Divers clean the anchor heads and suck away the silt. The slab is concreted by the <strong>tremie method</strong>: the end of the pipe stays in the fresh concrete throughout. Typical thickness 1–1,5 m.
+45c2a64	5. Pumping out
+1b3c01f	After hardening the water is pumped out gradually. From below the full water pressure pushes on the slab – it is held down by the <strong>weight of the slab + the tension of the anchors</strong>.
+87573a7	6. Fixing the anchors, base slab
+d050db9	In the dry, the anchor ends are fixed (plate + nut), then the permanent base slab and the structure are built on the underwater slab.
+6d1378c	Stage ${i}
+e97619d	impermeable layer – very deep
+fdfe340	sand, gravel – highly permeable
+340e513	planned excavation
+4236b94	sheet pile wall
+ff9c52d	water would come in from below
+c5a8edd	grab excavation under water
+5ff61b7	“artificial lake”
+ce13e2c	pontoon + drilling rig
+7aa1c86	diver
+a0865e8	tremie pipes – the end of the pipe in the fresh concrete
+0be5172	water pressure from below
+821b49a	pumping out
+d20a444	the anchors pull the slab down
+56c28dd	permanent base slab
+d371e5a	<b>Simplified, illustrative check</b> (on the model of the EC7 UPL verification): G<sub>dst</sub> ≤ 0,9·G<sub>stb</sub> + R<sub>d</sub>, γ<sub>w</sub> = 10 kN/m³. The partial factors have to be taken from the Hungarian National Annex; the shaft friction of the sheet piles and the piles is neglected here.
+5d02ed3	Dewatered depth above the slab
+7880d53	from the groundwater level to the top of the slab
+e015f11	Thickness of the underwater slab
+ec06e5f	Unit weight of concrete
+d1d971f	Tension piles (anchors)
+9c2031b	Anchor grid
+e1fb6f7	typically 2,5–3,5 m
+6d30566	Design tensile resistance of an anchor
+76eaf48	Without anchors, t = 11,5 m
+b884f5f	On the Berlin model (2,7 m grid)
+e849c91	Presets
+1c4baf5	Water pressure under the slab
+17de8a8	Weight of the slab (×0,9)
+06d3d65	Anchor force / m²
+efaa31b	Required force / anchor
+6df93f1	Needed without anchors
+3ad3a6f	Just adequate
+98c4de5	It stays down – adequate
+1e30564	The weight of the slab (${fmt(g, 0)} kPa) and the anchors (${fmt(ra, 0)} kPa) together hold the water pressure of ${fmt(u, 0)} kPa. A tension of ≈ ${fmt(req, 0)} kN is needed per anchor (resistance: ${fmt(R.v, 0)} kN).
+da827e9	Only the weight holds it: this needs ${fmt(t.v, 1)} m of concrete – a huge mass and a lot of excavation.
+ef6a8a3	It floats up!
+8b5abf1	The water pressure (${fmt(u, 0)} kPa) is greater than the sum of the weight and the anchor force (${fmt(g + ra, 0)} kPa). A closer grid or stronger anchors are needed (≈ ${fmt(req, 0)} kN / anchor).
+9833c52	Without anchors a slab at least ≈ ${fmt(t0, 1)} m thick would be needed – with anchors 1–1,5 m is enough.
+d5edabf	weight ${fmt(g, 0)} kPa
+2c4adfa	water pressure ${fmt(u, 0)} kPa
+4ceaa5c	anchors on a ${fmt(a.v, 1)} × ${fmt(a.v, 1)} m grid
+9f2bbfd	FLOATS UP
+e39f665	dry working space
+03accb3	Quiz – special solutions
+4b3f2ca	What is the temperature of the liquid nitrogen used to freeze soil?
+7bc573b	about −30 °C
+70ae9e0	about −78 °C
+81fa5b1	Liquid nitrogen is at −196 °C and evaporates in an open system: fast (about 1–3 weeks) but expensive. Brine (calcium chloride) cooling is at about −25…−40 °C, circulates in a closed loop and is slower (about 4–8 weeks).
+975fd2c	Why is flowing groundwater dangerous in ground freezing?
+812c839	It carries heat: the ice cylinders cannot close, a “window” remains in the wall
+4df336d	Because the brine dissolves in it
+7ac4004	Because flowing water freezes faster and bursts the pipes
+a0ea0ce	It is not dangerous, it only increases the cost of freezing
+e165798	Flowing water keeps bringing heat. With brine, a flow of about 1–2 m/day can already prevent closure; then nitrogen, closer pipe spacing or grouting beforehand helps.
+810c301	What is the essence of the tremie method in underwater concreting?
+77d4987	The end of the concreting pipe stays in the fresh concrete throughout, the concrete rises from below
+938e2a1	The concrete is poured into the excavation from the water surface
+3704b8f	The excavation is pumped out first, then concreted
+8f16474	Precast concrete slabs are lowered into place
+e41589b	So the concrete does not fall through the water, does not segregate, and the cement is not washed out of it. Concreting is continuous, often day and night.
+5dcec73	What holds the underwater base slab down after pumping out?
+7ec26d2	The weight of the slab and the force of the tension piles (anchors)
+1769467	Only the friction of the sheet piles
+89d2217	The weight of the water left in the excavation
+d9bee0b	The vacuum under the slab
+6cdeca2	The full water pressure acts from below. Without anchors, concrete as thick as the dewatered depth would be needed: for 12 m, about 9 m without a safety factor, about 11 m with the uplift factor (0,9). With anchors 1–1,5 m is enough.
+117561a	Which type of cofferdam is a self-supporting gravity structure in which a steel cylinder filled with sand works “like a barrel”?
+81e5d8a	The cellular cofferdam consists of circular cells of straight-web piles filled with sand: the fill creates hoop tension in the piles, carried by the interlocks. There is no bracing inside.
+5f707e6	How were the platform tunnels under the Danube bank at the Fővám tér station of the M4 metro built?
+1892c1f	By a mining (NATM) method, under the protection of ground freezing
+6503350	In a sheet pile cofferdam, with an underwater concrete plug
+1e8285b	With a soldier pile wall and groundwater lowering
+507c0d2	With soil nailing
+ac5ddff	The station box was built from the surface; the platform tunnels reaching under the Danube bank were built by a mining method, under the protection of ground freezing.
+aa66afe	What does freeboard mean for a cofferdam?
+fa85ce3	How far the crest of the cofferdam is above the design water level
+709565a	The distance between the cofferdam and the excavation
+f350373	The embedment depth of the sheet pile wall
+e4c8d4b	The lifting height of the pump
+4c86899	It is recommended to be at least about 0,9 m, or above the expected wave height – otherwise an unexpected flood wave overtops and floods the excavation.
+8332858	<b>Simplified, illustrative calculation</b> – Rankine earth pressure (K<sub>a</sub>, K<sub>p</sub>), dry homogeneous granular soil, without surface load or groundwater; the passive earth pressure is reduced by 1/η. Cantilever wall: Blum’s method, d = 1,2·d₀. Supported at one level, free-earth: moment equilibrium about the anchor point. Supported at one level, fixed-earth: Blum’s equivalent beam, with 1,2 times the part below the toe. Several levels: Peck’s apparent pressure 0,65·K<sub>a</sub>·γ·H, the embedment from equilibrium written for the lowest support. The deformation is only qualitative (beam on elastic supports, exaggerated). In detail: Underground structures course.
+065e92c	Structural model
+f2c3a98	a) Free-standing, fixed-earth (cantilever)
+c5037a6	b) Supported at one level, free-earth
+8e1e875	c) Supported at one level, fixed-earth
+dd6d379	d) Supported at several levels
+7bb4377	Anchor / strut level
+ba7f160	Number of support levels
+925b37f	Safety on the passive side
+7519f6d	<span><i style="background:var(--mt-act)"></i>active earth pressure</span><span><i style="background:var(--mt-pas)"></i>passive earth resistance (K<sub>p</sub>/η)</span><span><i style="background:var(--accent)"></i>support</span><span><i style="background:transparent;border:1.5px dashed var(--bad)"></i>deformation (exaggerated)</span><span><i style="background:var(--mt-momc)"></i>bending moment diagram M(z)</span>
+a73e48a	Active coefficient K<sub>a</sub>
+97cefc6	Passive coefficient K<sub>p</sub>
+607c8e1	Embedment depth d
+d15c2ad	Total wall length
+af9f829	Total support force
+c3fb131	Max. moment
+90eddf5	retained soil

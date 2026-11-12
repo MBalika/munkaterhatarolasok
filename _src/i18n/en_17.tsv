@@ -1,0 +1,155 @@
+924dbda	Supported at one level, free-earth
+80bf892	Supported at several levels, free-earth
+2384cd9	The four types: free-standing fixed-earth; supported at one level, free-earth; supported at one level, fixed-earth; supported at several levels, free-earth.
+3e2750b	Where is the force transferred to the soil in a ground anchor?
+c6f021d	Along the fixed (grouted) length, beyond the active slip surface
+5f6a12b	At the anchor head
+88f5caf	Along the whole free length
+e10f945	Uniformly along the whole length of the anchor
+8ff575d	The free length runs in a sheath, no force is transferred; the fixed length extends beyond the active slip surface.
+084d4fe	What are the typical inclination and maximum length of ground anchors?
+99caee0	15–30°, at most 25–30 m
+42ac954	45–60°, at most 10 m
+bdd2efb	0–5°, at most 50 m
+98d038c	90°, the length is not limited
+1e739ed	They are made at an inclination of 15–30° to the horizontal, at most 25–30 m long; the fixed length is 4–9 m.
+a171bf5	Why is the shortest anchor length 8 m?
+20c892c	Because both the free and the grouted length are at least 4 m
+5df50b1	Because that is the length of the drill pipe
+66a6c25	Because grouting is not possible below 8 m
+b1e18df	Because the neighbouring plot is 8 m away
+f1f4ad1	Both the free and the grouted length are at least 4 m, so the shortest anchor length is 8 m.
+a33b451	After how long a hardening period, and to what force, is the anchor prestressed?
+cc17021	After 8–12 days, to 80–90% of the design load
+d6a1bd4	immediately, to 150% of the design force
+22138b8	after 1 day, to 20% of the design force
+9ad4f1f	it is never prestressed
+da043d6	After hardening (8–12 days) the strands are prestressed through the head to 80–90% of the design load, then locked at the anchor head; a test load record is made for every anchor.
+300a226	When is the use of steel tubular struts typically economical?
+1150f65	If anchors cannot be installed, or in a very deep excavation (over 15–20 m) where the movement of neighbouring buildings has to be limited
+efd8105	For every excavation shallower than 3 m
+66609c9	If the excavation is very wide (over 100 m)
+5bf3b70	Only in open water
+3e108bf	If anchors cannot be installed because of the soil or neighbouring underground spaces, or for an excavation deeper than 15–20 m, where a stiff enough wall could not be built with anchors.
+422e0c1	What becomes governing for tubular struts longer than 10–15 m?
+44fdb8b	The axial compressive force from thermal expansion
+9eada7a	The wind
+1470ab0	Corrosion
+af4e834	The deflection from the self-weight of the tube – nothing else
+edff98a	A strut warming up in the sun would expand, but squeezed between the walls it cannot – it has to be designed for the additional force.
+52a0cde	What is the essence of the top-down (Milan) method?
+a30c99b	After the walls and columns, the top slab is built first, and the further levels are excavated under the slab
+9e5fb91	First the whole excavation is dug, then construction proceeds from the bottom up
+2a6d4d4	The slabs are lifted into place by crane
+5a8f603	The excavation is secured by freezing
+aa764f9	The top slab is cast on ground formwork and supports the walls as a diaphragm; the further levels are built under the slab by mining methods.
+1444cd3	Where should the anchor wall of a passive tieback be placed?
+f6476b5	Outside the active sliding wedge of the main wall, so that its passive wedge does not overlap the active wedge of the main wall
+78bcf26	Right behind the main wall, 0,5 m away
+02e3029	In the middle of the excavation
+d52530e	It does not matter, as long as it is deep enough
+c3bb904	It has to be outside the failure plane; if it stands inside the moving soil wedge, it moves together with the soil and gives no resistance.
+7e44384	<b>Illustrative model.</b> The slip surface is a Rankine plane for a soil with φ = 30°, drawn from the toe of the wall at 45° + φ/2; real design (external and internal stability, nail pull-out, shotcrete punching) is more complex. The wall has a batter of 1:10.
+d0ad2ea	Excavation depth
+ee3ac60	Nail length / depth
+1120e42	L = 0,6–1,2 H, depending on the soil.
+23adbd4	Nail grid
+b58cd92	Typically 0,5–1,0 (1,5) m, square pattern.
+71059b1	Lift height
+5d26eba	90–180 cm, depending on the cohesion.
+801ec2e	Nail inclination downwards
+e4ef4ba	Shotcrete thickness
+a173641	◀ Back
+13ce697	Finished wall ⏭
+2791eaa	⟲ From the start
+9188d28	Number of lifts
+76e7452	Nail rows
+56aa00a	Nails / m of wall
+2fa60de	Total nail length
+a60bf7a	m/m
+7261184	Overreach of the top row beyond the slip surface
+1d2e789	Nails
+88fb1e8	slip surface (45° + φ/2)
+1012b1e	excavation: −${fmt(e, 1)} m
+bca713c	soil mass acting together
+aa11e27	≈ gravity wall
+99fed55	<b class="mt-st">Starting state</b>We start by digging the first lift: the soil has to stand on its own in a vertical face for a short time.
+5749fbb	<b class="mt-st">The nailed wall is complete – lifts: ${G.n}</b>The nails “stitch together” the soil: the reinforced block works as a gravity wall. The nails have to reach beyond the slip surface (red dots).
+d2cf8dc	<b class="mt-st">Lift ${lift} – excavation</b>A vertical section of ${fmt(G.hf, 1)} m is dug out (90–180 cm, depending on the cohesion of the soil). The soil face has to stand for this long.
+bc30bce	<b class="mt-st">Lift ${lift} – nails</b>On the grid (${fmt(G.s, 1)} × ${fmt(G.s, 1)} m), the ${fmt(G.L, 1)} m nails are drilled and grouted – or driven, fired with a “gun” – inclined ${fmt(sD.v, 0)}° downwards.
+e20785c	<b class="mt-st">Lift ${lift} – drainage</b>With perched water a surface drain goes behind the shotcrete, or drainage pipes on a 1–3 m grid lead the water through the wall – no water pressure must build up.
+6c4a3ac	<b class="mt-st">Lift ${lift} – mesh</b>A steel mesh of Ø6–8 mm bars at 150 × 150 mm is fixed to the nails (e.g. welded with a piece of flat bar).
+3445104	<b class="mt-st">Lift ${lift} – shotcrete</b>${fmt(sT.v, 0)} cm of shotcrete is applied to the face (typically 8–15 (20) cm). The next lift may only follow after hardening (≥ 72 hours).
+be64b58	does not reach
+2b80c26	A grid sparser than 1,0 m (at most 1,5 m) only in favourable soil.
+ca59f0d	The top row of nails barely reaches beyond the slip surface – longer nails are needed (L/H ↑).
+c53627c	Large lift height: only in cohesive soil that stands well.
+cee0207	OK, within the typical ranges
+fa9f2f2	Lifts: ${G.n}, nail rows: ${G.rows.length}, ${fmt(perM, 1)} nails / metre run.
+6521fc7	Driven / fired nail
+50c08e2	Reinforcing bar, steel tube or steel nails are driven or vibrated into the ground – or fired with a compressed-air “gun”: no drilling, no spoil. Where possible, this is the most common method. The ballistic nail launcher fires a bar about 6 m long and 38–40 mm thick into the slope at ~350–400 km/h.
+74f902f	fast · no drilling
+acba1d8	Drilled and grouted nail
+f7f55fc	A Ø20–28 mm reinforcing bar is placed with centralisers (spacers) in a pre-drilled bore (typically Ø100–150 mm), which is then filled with cement grout from the bottom up. This is the solution in hard, stony clay and softer rock.
+0bf8796	the “standard”
+6878cf7	Self-drilling hollow bar
+abeb3e9	A variant of the drilled and grouted nail: a threaded hollow steel bar with a sacrificial drill bit. During drilling, flushing goes through the bar, and at the end grouting is done through it too – in one pass, without casing, even in collapsible soil.
+839ccab	drills + grouts at once
+368138b	Jetted nail
+dc363b0	The nail is installed with a high-pressure grout jet: the jet loosens the soil and forms the grout body around it.
+8c8996d	high-pressure jet
+6a36c4e	Screwed nail
+ab666e2	A steel shaft with helical plates or a thread, driven in by rotation – without grouting. Rarer in practice.
+78d1fd2	driven in by rotation
+7a9976b	Nail type
+2d052d0	Nail head detail
+ff74c73	Flat bar + mesh (Hungarian practice)
+7ed958f	Bearing plate + nut
+7eeb3bc	shotcrete + mesh
+a754df0	grout body (flushing + grouting through the bar)
+44eaaed	bore Ø100–150 mm filled with cement grout
+ed8f7fe	body formed by a high-pressure grout jet
+ffc5b21	the soil is compacted along the bar
+9538bc9	“gun”
+354bcaf	sacrificial drill bit
+c81dd6f	centraliser (spacer)
+844dd18	flat bar, welded
+cb1c156	bearing plate + nut
+7f09cfb	retained soil →
+08671c8	Cohesive soil
+43545af	stiff–hard clay, silt
+f4c4cc5	Stands in a vertical face for a short time – ideal for nailing.
+48a0b37	Granular soil
+95dd645	moist sand with apparent cohesion
+1c20f4f	Can be used if the lift stands for a few days (the soil has to stand up to 1–2,5 m).
+5c80da0	Weathered rock, slope debris
+0c4d6b2	Can be used.
+08a74cb	Heterogeneous, layered soil
+e37ba2c	Can be used – nailing adapts well to changing soil.
+7fc7d7a	Hard, stony clay, soft rock
+55c72dc	Can be used – but drilled and grouted nails are needed here.
+1a9cf1a	Soft, plastic clay
+f3f3588	Cannot be used: the lift does not stand, and the soil creeps along the nails.
+6bd04f2	Organic soil, peat
+c188afc	Cannot be used.
+e4630bf	Loose and/or saturated granular soil
+70e6899	Cannot be used: the excavated lift collapses and flows out at once.
+ad8fdac	rubble, slag, fly ash
+d41f471	Cannot be used: rubble fill does not stand, and drilling is obstructed too.
+f55fe08	Bouldery soil
+f3cc8a0	large stones, boulders
+07e7ea1	Cannot be used: drilling and driving hit obstructions.
+4ffee78	High, flowing groundwater
+0e09f13	Only with continuous dewatering – the water flow washes out the face.
+cc20655	Correct
+f07d52f	Remaining
+4957d32	⟲ Again
+33adcc4	: can be used
+b62d418	✓ Yes
+e7184aa	: cannot be used
+6cda0e3	✗ No
+f5613bb	Illustrative force distribution (qualitative, not to scale): in the nail the tension is greatest near the slip surface, in the anchor it is constant along the free length.
+843257c	Element
+bb35421	Excavation / loading
+a1ec738	grouted along its whole length, not prestressed
+bec3afa	free length (in a sheath)

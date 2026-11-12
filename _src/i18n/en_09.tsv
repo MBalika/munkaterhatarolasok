@@ -1,0 +1,126 @@
+9780d69	In Hungary the spaced pile wall has spread for tight urban excavations in very hard clay that do not reach the groundwater: the soil arches between the piles, few piles are enough. Sheet piles are hard to drive in hard clay, and the vibration endangers the neighbour.
+4f1093e	Two-level underground car park in groundwater
+e24cc6c	An 8 m deep excavation in sandy gravel, groundwater 2 m below the surface, impermeable clay at 14 m. Old houses stand right on the plot boundary, anchoring is not possible.
+56bb817	Diaphragm wall + supporting slabs (top-down)
+67da9c7	Soldier pile wall + ground anchors
+8845d36	Steel sheet piles, vibrated + anchors
+d239a4f	Spaced pile wall as a cantilever
+cc459ef	A watertight, stiff wall keyed into the impermeable clay is needed (diaphragm wall), with stiff support without anchors (the slabs acting as diaphragms). The soldier pile wall and the spaced pile wall are not watertight, and the vibration of sheet piling and the anchors are ruled out because of the neighbours.
+a87eba8	Foundation of a new bridge pier in 6 m of water, in a sandy-gravelly river bed.
+3e81d85	Single-wall braced sheet pile cofferdam + underwater concrete plug
+33cf131	Earth cofferdam with a clay core
+a090d4b	For a bridge pier the typical solution is a braced sheet pile “box”: the bracing frame is also the template, and the weight of the underwater concrete plug holds against uplift. An earth cofferdam in such a depth of water would be very wide and would narrow the channel.
+d932cd6	Temporary excavation with high groundwater
+9c3ed5b	A 7 m deep temporary excavation on an open plot, high groundwater. The impermeable layer is 18 m deep – well below the toe the wall needs structurally. The wall will have to be removed later.
+33aace1	This is exactly the economical field of the slurry wall: high groundwater, a temporary excavation about 7–8 m deep, the quasi-watertight wall reaches the deep impermeable layer, but the steel beams only go to the depth needed structurally. The other solutions listed are not watertight.
+c8fe2fd	Supporting a cutting beside a road
+67e47f7	A 5 m high, almost vertical cutting in cohesive soil, no groundwater. A cheap, fast solution that can be modified flexibly is needed.
+a48543d	Soil nailing with shotcrete
+ef09341	Single-wall sheet pile cofferdam
+7b6614b	Soil nailing is relatively cheap, made with simple equipment, adapts well and can be modified. It works well in cohesive soil without groundwater; permanent use needs corrosion protection (epoxy, PE sheath).
+17670e7	Metro station in the city centre
+68a12d7	A 25 m deep, 20 m wide excavation, dense surroundings, basements and utilities under the neighbours – anchors cannot be installed.
+a670767	Diaphragm wall + steel tubular struts (at several levels)
+6cec373	Cantilever sheet pile wall
+c093b9c	Tubular struts are economical if anchoring is not possible (ground conditions, neighbouring underground spaces), or if the excavation is deeper than 15–20 m and, because of the neighbouring structures to be protected, a stiff enough wall cannot be built with anchors: the typical support system of metro stations. The diaphragm wall is watertight and stiff. Top-down can also work – what matters is stiff support without anchors.
+c1b9cb6	Tunnel cross passage in saturated sand
+c01f970	A cross passage between two tunnel tubes, 18 m deep, in saturated sand – no wall can be built from the surface.
+ecf49c9	Ground freezing (frozen wall)
+63dfb70	Frozen soil is watertight and load-bearing at the same time – temporarily, in almost any saturated soil, even with pipes drilled from the tunnel. It is expensive and slow, but here the other solutions cannot even be built.
+3bbe612	future pier
+a1462c2	water depth ${fmt(sk.H, 0)} m
+0fc52e8	location of the cross passage
+1a14d84	surface – city, traffic
+a6df07f	road
+61cbd90	neighbour
+68f0383	Congratulations, you are a master excavation support designer!
+c92c5ca	Very good – the wrong ones are worth thinking through again.
+9c3a274	It is worth going through the decision support and the chapters once more.
+f4fe956	<b>Good decision!</b>
+30cae0f	<b>We would not build it this way.</b>
+0fa158d	Next step ▶
+14ca8b2	<b class="dc-sh">Step ${k} / ${N}</b>${T[k - 1] || ''}
+f36933b	Traditional timber
+3dae947	Today’s steel
+ad65696	Open planking (cohesive soil)
+49fc963	Show the load path
+267ad01	⇲ Take apart
+7160030	Elements – tap them on the drawing too
+bccd3b4	Plank
+415fb75	Lines the soil face. Traditionally pine planks, so-called <b>2-inch (48 mm)</b> thick, 5–6 m long; the end is protected from splitting by a steel strap. In stable, cohesive soil <b>open planking</b> is also possible: about every second plank is left out.
+d147f06	Waling
+59feac8	Holds the planks together and passes the earth pressure acting on them to the struts. A timber beam of <b>12–24 cm</b> side length. Horizontal with vertical planking, vertical with horizontal planking.
+b36e672	Strut
+8b57df8	Compression member: wedged between the two opposite walings, it <b>braces</b> the soil faces against each other – the earth pressures of the two sides “cancel out”. Round timber, <b>12–16 cm</b> in diameter; it has to be checked for compression and <b>buckling</b>.
+b9d122b	Wedge
+3683b28	A pair of hardwood wedges between the end of the strut and the waling – used to tighten the strut. They have to be knocked tight before every shift.
+8b5fa03	Dog
+0cae119	A U-shaped steel dog between the strut and the waling: it stops the strut from falling out (compulsory for trenches wider than 1,5 m).
+f2803ce	Steel trench sheet
+6de3d30	Thin-walled (3–6 mm) profiled steel sheet with an effective width of 25–30 cm: <b>Patria</b> and <b>Union</b> trench sheets, or CS corrugated sheets. The joints between the elements are <b>not watertight</b> – they are for shoring, not for keeping out water. They can be driven, vibrated and extracted.
+5d32e44	Steel waling
+f6af0f5	Most often a hot-rolled <b>I or U section</b>; it holds the planks together and passes the load to the struts.
+ba19774	Steel screw strut (trench prop)
+acca59f	An adjustable-length strut: turning the middle tube extends the <b>left- and right-hand threaded spindles</b> at the two ends at the same time, so the strut can be tightened. It can also be an I-beam or a tube.
+e20171a	Strut head
+91aa8c1	The head plate at the end of the screw strut: it presses against the waling, and the compressive force is transferred through it.
+e7021df	<b>Cross-bracing</b>The pressure of the soil face is taken by the <b>plank</b>, collected by the <b>waling</b>, and the <b>strut</b> in compression passes it to the opposite side – where an equal earth pressure resists it. Tap an element!
+e3c9708	soil face
+3b36197	earth pressure →
+4ddf827	↙ towards the opposite face
+b23a795	plank
+17cf47a	trench sheet
+cdff20b	steel screw strut
+dad7079	wedge
+fc509ad	±0,00 ground level
+0ef339c	the opposite side cut away
+98d71fe	⇱ Assemble
+dcbda6a	Intermediate (silty) soil
+1ec5322	d) Pre-driven planking
+50f8e86	m₀ = 0: the soil face does not stand for a moment without support (coarse-grained soil). The steel sheets are driven or vibrated in before excavation.
+fb68937	a) Vertical planking
+34f18e2	H ≤ m₀: the excavation can be dug to full depth, then it is lined with planks, walings and struts.
+545b422	c) Horizontal planking, excavation in steps
+8eb0de5	H ≫ m₀, and m₀ is only a few decimetres: work proceeds in steps of m₀, with horizontal planks and vertical walings replaced generation by generation.
+bf35b2e	b) Stepwise driven planking
+b044f56	H > m₀: work proceeds downwards in steps of depth m₀, and after each step the planks are driven down to the new bottom.
+4102b47	 (silty) soil
+340f341	Unit weight
+bdf7f49	Factor of safety
+97bf02f	Usually 1,5–2, in some cases 2–3.
+3e28cc4	Surface surcharge
+007e5c7	E.g. soil stored at the edge, traffic; in design typically at least 10 kPa.
+8e5872f	Planned trench depth
+1963574	Soil for the shoring obligation
+d11925f	intermediate soil – H > 1,0 m
+97a6cf8	hard clay – H > 2,0 m
+7bc1145	m₀ – depth that stands unsupported
+e27e5aa	Planking method
+e4c1e45	Must it be shored?
+f48813b	Weight of the sliding wedge
+85c7d1a	t/m
+ccb77b6	a) vertical
+07de90d	b) stepwise driven
+98f677f	c) horizontal
+0976513	d) pre-driven
+3fde38d	not compulsory
+df516c2	 <span>It must be shored in any case for occupational safety (H = ${fmt(H, 1)} m > ${fmt(L, 1)} m): the exposed soil face dries out, soaks up water, its condition deteriorates.</span>
+379ccab	 <span>We are below the shoring limit (${fmt(L, 1)} m) – but with dynamic effects (traffic, piling) or near a building it has to be shored even then.</span>
+a0e9a12	green: stands unsupported · red: support needed
+602da51	trench (1–3 m)
+a357997	m₀ as a function of cohesion (the other data fixed)
+ff02b41	<b>Condition: m₀ ≥ H</b> – the excavation can be dug to full depth without support (cohesive soil, above the groundwater).
+3eb41c2	Excavation to full depth – possible because H &lt; m₀: the vertical soil face stands for a short time.
+64577c1	The planks are set vertically against the soil faces: they line the face. In cohesive soil open planking is also possible – about every second plank is left out.
+4235898	The walings holding them together are placed horizontally, at right angles to the planks.
+4b8715a	The walings are braced against each other with struts and wedged – in at least two rows.
+2c2e384	A protected working space: the pipe is placed in the free space below the struts.
+0c3fd11	Removal from the bottom up, keeping pace with the backfill (layers of 15–20 cm): a strut may only come out once compacted soil already supports the face below it. The planks are pulled out last.
+cbc68bc	<b>Condition: H &gt; m₀</b> – m₀ is significant (e.g. ~1 m), but smaller than the planned depth.
+d197a07	Excavation of the first step, to depth m₀.
+e80527f	The first frame is complete: the long planks still reach far above ground level, and a waling and strut are placed on them.
+ae30497	Excavation of the next step (another ~m₀): the ends of the planks now “hang” at the level of the old bottom.
+8e76535	The walings are temporarily supported, the wedges loosened, the planks <b>driven down</b> to the new bottom – then wedged again, and a new row of walings and struts is placed lower down.
+e512f87	Excavation of a further step.
+5c23e70	Again support, driving down, a new row of struts – down to the final depth.
+28384ac	Complete: the planks cover the full depth, and their top ends stand about 20 cm above ground level (against soil falling in).

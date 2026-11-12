@@ -3,3 +3,9 @@ _src/dist/
 .DS_Store
 dev-*.html
 _src/src/js/_dev_*.js
+_src/.en/
+_src/i18n/node_modules/
+_src/i18n/ws.tsv
+_src/i18n/missing.tsv
+_src/i18n/tm_hits.tsv
+_before.html

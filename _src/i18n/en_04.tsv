@@ -1,0 +1,137 @@
+c54b86c	Pile wall anchored in several rows
+0e002e6	Pile wall anchored in several rows along walings
+3ee3753	Anchored pile wall and temporary steelwork
+940e3ed	Anchored pile wall in a deep excavation
+abf6784	Pile wall during exposure
+ea9f973	Treating the gaps between piles during exposure
+15aaa54	Spaced pile wall with open gaps
+5e66c74	Open gaps in stable soil
+92afd16	Pile wall covered with shotcrete
+62aee8d	Surface drain + steel mesh + shotcrete cover
+aeeb1ff	Excavation supported by a pile wall
+feb6864	Pile wall protected by shotcrete in the finished excavation
+c3d7736	Diaphragm wall
+910e029	We discussed the diaphragm wall under deep foundations: panels excavated by grab under slurry support, reinforcement cage, underwater concreting. It is chosen as excavation support when the excavation is <b>deep</b>, the <b>groundwater</b> is high, the movement of neighbouring buildings is critical, and the wall can be <b>part of the permanent structure</b> – in that case the excavation support is also the foundation system. It is supported by anchors, tubular struts or top-down slabs (see <a href="#megtamasztas">support structures</a>).
+79bf70d	Example: MOL Campus, Budapest
+13ee8fb	An excavation of nearly 10 000 m², about 16 m deep, for a four-level underground car park on the bank of the Danube: an 80 cm thick diaphragm wall supported by two rows of anchors which, keyed into the impermeable clay, also keeps out the groundwater.
+a15959d	<span class="depth">−10 m</span><span>video 11</span>
+5989817	Soil nailing
+6fdc224	Working in steps from the top down, nails are drilled, driven or fired into the soil face on a grid, steel mesh is fixed to the nails, and the face is covered with shotcrete. The soil mass “stitched together” by the nails works together like a gravity wall – the soil holds itself up.
+63be4d2	<b>0,9–1,8<small>m</small></b><span>vertical lifts, depending on the cohesion</span>
+f8489d4	<b>0,6–1,2<small>H</small></b><span>nail length as a proportion of the excavation depth</span>
+0ef7228	<b>0,5–1,0<small>m</small></b><span>nail grid, 1,5 m in favourable soil</span>
+b817599	<b>Ø20–28<small>mm</small></b><span>reinforcing bar nail (the most common)</span>
+dd685e1	<b>8–15<small>cm</small></b><span>shotcrete (up to 20 cm), with Ø6–8 mm mesh at 150×150</span>
+afa0fb2	<b>1/8–1/10</b><span>the maximum batter of the wall</span>
+82bfabf	The principle: the soil holds itself up
+9e91492	A nailed wall is not a structure built <i>in front of</i> the soil, but a <i>reinforcement</i> of the soil. The closely spaced, <strong>untensioned</strong> steel nails are put into tension by small ground movements and transfer the force by friction along their whole length. So a <strong>soil mass acting together</strong> like a gravity wall is formed, which with a suitable nail length can support even deeper excavations.
+9ebc5e8	The excavation deepens from the top down, lift by lift: in each lift, excavation → nails → (drainage) → mesh → shotcrete, and the next lift may only follow once the shotcrete has hardened. Among the <a href="#megtamasztas">support structures</a> the method is related to the ground anchor, but differs from it fundamentally (<a href="#szegezes-vs-horgony">5.5</a>).
+78e719e	It is usually built as <strong>temporary</strong> excavation support – for example over the top 2–3 metres above diaphragm walls –, but it is also used for permanent slope stabilisation; then corrosion protection is needed.
+ae83ccf	Nail length and grid
+599fa84	For an excavation of depth H, the required length of the nails varies between 0,6 and 1,2 H, depending on the soil. The grid spacing of the nails is typically 0,5–1,0 (1,5) metres.
+dcafb67	The first nailed wall was built in 1972 in France, near Versailles: when a railway was widened, an <strong>18 m high, 70° cutting in sand</strong> was nailed. The recommendations of the French CLOUTERRE research programme were published in 1991; by the end of the ’80s about 80 000 m² of nailed wall was already being built in France every year.
+eab0e04	Construction lift by lift
+7e325d8	Build the wall step by step! Set the depth, the nail length and the grid – the nail ends reaching beyond the slip surface (red dots) show that the nail really “grips” the stable soil.
+875c416	Building a nailed wall
+dfe031a	Excavation → nails → drainage → mesh → shotcrete, repeated lift by lift
+d04b55d	You have to wait for it to harden
+800a226	The next lift may only be excavated once the shotcrete is at least 72 hours old or has reached a strength of about 10,5 MPa. While the lift is open, the exposed soil face has to stand on its own – that is why the soil must be stable for a short time in a vertical face 1–2,5 m high.
+152cb58	Nails, mesh, shotcrete, water
+e94b8ca	We distinguish four types of nail: <strong>driven, drilled and grouted, jetted and (possibly) screwed</strong> nails. They are most often made of 20–28 mm reinforcing bar, but can also be made of steel tube or steel bars. Most often – where possible – the reinforcing bar nails are driven in with “guns”.
+4d7f6f3	Nail types and nail head
+6ae979b	Choose a type and a head detail – the drawing and the description change
+95aee24	Mesh
+925cb4c	Typically a steel mesh of 6–8 mm bars on a 150 × 150 mm grid, fixed to the nails (e.g. welded with a piece of flat bar). In stable, clayey soil the shotcrete skin can even be omitted – then a geotextile goes under the mesh.
+78ab3d8	Shotcrete
+9934443	The face is covered with 8–15 (20) cm of shotcrete. In the wet process, ready-mixed concrete is pumped and sprayed with air at the nozzle; in the dry process, the water is added at the nozzle (more rebound and dust).
+1a8b0c3	Drainage
+d1e55b4	With perched water, a surface drain (with outlets) is placed behind the shotcrete, or the wall is drilled through on a 1–3 m grid, drainage pipes are placed, and the water is led through the wall – no water can build up and no water pressure can develop.
+3dbffd2	Corrosion protection
+e6d5459	Permanent nails need corrosion protection, e.g. epoxy coating, a polyethylene sheath (corrugated PE tube, with grout around the nail) or cathodic protection. In international practice the PE sheath with adequate grout cover is the most common.
+80f3448	Pull-out test
+99f575a	The resistance is checked by pull-out tests: a hollow jack pulls the nail out of the wall. First on trial nails (suitability test), then by random sampling on the installed nails – e.g. in German practice on at least 3% of the nails, at least 3 per soil type.
+3f85165	Machines
+6322f02	Simple, small machines: an excavator to dig the lifts, a crawler drilling rig or a drilling mast mounted on an excavator, a grout mixer and pump, a shotcrete machine. They can even work from a crane-suspended platform.
+3efa04d	A nail at 350 km/h
+f6e7083	There is a ballistic nail launcher: a compressed-air “cannon” mounted on an excavator fires a steel or glass-fibre bar about 6 m long and 38–40 mm thick into the slope in a single shot, at about 350–400 km/h – with no drilling and no spoil. It is used mainly to stop shallow slope slips quickly.
+87f46c9	Where can it be used?
+180db90	It can be used in practically any kind of soil – with a few important exceptions. Guess card by card before you turn it over!
+183d6d3	Can it be nailed or not?
+c84b307	Can soil nailing be used here? Yes or no – the card shows the answer and the reason
+641a1ed	relatively low cost
+d96930c	simple, small machines – even in tight spaces
+922c3fe	easy to vary and modify (if needed)
+8a0ad07	flexible structure, adapts well to different soils
+a444040	reserve of resistance, vibration-free construction
+3c8df35	the soil has to stand in a vertical face of 1–2,5 m
+7349bee	cannot be used with high, flowing groundwater (only with continuous dewatering)
+11c0a4d	drainage is hard to solve
+0035c33	in towns the dense nail field – often reaching under public land and streets – can run into utilities
+14bc2e6	flexible wall: larger movement than with an anchored wall
+d0008e3	Nail or anchor?
+1a9c428	At first sight they are similar: both are steel elements drilled into the ground and grouted, carrying tension. But they work in fundamentally different ways – see how the force is distributed in them!
+9d9b585	Force distribution in the nail and in the anchor
+c8a3075	Switch between the two elements and increase the load
+ad3b3c6	Soil nail
+a748e7e	Ground anchor
+15bed8e	<b>Tensioning</b>
+4d4e5f8	none – a passive element
+cd54ecb	prestressed (to 80–90% of the design force)
+5566411	<b>Force transfer</b>
+4ebbd87	along its whole length
+0271707	only along the fixed (grouted) length; the free length is in a sheath
+564d276	<b>Layout</b>
+7155b08	dense, on a 0,5–1,0 (1,5) m grid
+7edd2a8	sparse, row by row, on a capping beam or waling
+4e68b7e	<b>Length</b>
+ddb8776	at least 8 m (4 + 4 m), at most 25–30 m
+f27ae14	<b>Resistance</b>
+bad17b0	at least an order of magnitude greater
+e7d35d4	<b>Testing</b>
+b8dc0f2	trial nails + random sampling
+b149165	a test load record for every anchor
+00b474a	<b>Behaviour</b>
+9a12475	a “stitched-together” soil mass, a gravity wall
+c0f85bd	support of the wall on the soil beyond the slip surface
+c137730	Construction stages of soil nailing
+f4a18ec	The construction stages of soil nailing: excavation, nailing, steel mesh + shotcrete, further excavation.
+f834468	A high nailed wall under construction
+10d1c59	A high nailed wall under construction – the rows of nail heads are clearly visible on the shotcrete face.
+d0b64e0	A shotcrete lift and the next excavation below it
+7241bbb	The upper lift already has its mesh and shotcrete, the next lift is being excavated below it.
+74ca3f2	Excavation supported by nailed walls
+4f0f0fe	Excavation supported by nailed walls – the shotcrete shell is continuous at the corners too.
+2d55775	A finished nailed wall
+14f4048	A finished nailed wall covered with shotcrete, with a regular nail grid.
+1ebc424	Instrumented experimental nailed wall
+f5a7489	Instrumented nailed wall loaded from above – the cracks are marked in red (load test).
+4bd1082	Fields of application of nailing
+7e54617	Fields of application: excavation, slope, strengthening an existing retaining wall, cutting, slope beside a pad foundation.
+0b761af	<span class="depth">−12,5 m</span><span>videos 12–15</span>
+63e8a38	Support structures
+3571613	Excavation support walls usually reach below the bottom of the excavation: their embedment provides one support through the passive earth resistance. As cantilevers – without other support – they are stable only for excavations of a few metres (max. 4–6 m). For a deeper excavation they have to be supported at one or more levels, which gives statically indeterminate continuous beams.
+a4c5a50	Prestressed, grouted – a “clear” working space, but it reaches under the neighbouring plot.
+15cf759	Steel tubular strut
+f738bb4	Bracing opposite walls against each other – stays on your own plot, stiff.
+bc9fbe7	Supporting slab
+2613516	Top-down: first the slab, the excavation below it – the slabs provide support as diaphragms.
+a0c4b1e	A tie rod to an anchor wall set further back – no drilling, no grouting.
+c3348d6	Structural models of the walls
+90a1ec1	Structurally, excavation support walls fall into four main types:
+bfd967d	<strong>free-standing, fixed-earth</strong> (cantilever) wall,
+00bdc44	<strong>wall supported at one level, free-earth</strong>,
+78353d1	<strong>wall supported at one level, fixed-earth</strong>,
+2585529	<strong>wall supported at several levels, free-earth</strong>.
+6e653d2	Depending on the embedment depth, either true fixity develops or only a “free-earth” structure: with a small embedment depth the fixing moment is low. The deeper the excavation, the more support at one or more levels is needed – the wall then becomes a <strong>statically indeterminate continuous beam</strong>.
+00859e3	The four structural models of excavation support walls
+12b2994	Structural models of excavation support walls – click to enlarge
+867fd15	Try out in the wall lab how the required embedment, the support force and the moment change with the structural model! Notice: an anchor drastically reduces the embedment depth and the moment compared with the cantilever wall, and a fixed toe gives a longer wall but a smaller span moment.
+79921ce	Wall lab: earth pressure, embedment, moment
+bc50099	Choose the structural model and set the soil and the depth – a simplified, illustrative calculation
+020a4ad	Going further
+dbdcfbb	You will deal with these calculations in more detail in the course <i>Underground structures, deep foundations</i>. The wall lab shows the classical limit equilibrium methods (Blum’s fixed-earth wall, the free-earth wall, the equivalent beam, Peck’s apparent earth pressure) – today’s design works with beams on elastic supports and finite element models.
+b5ab38a	An anchor is a structure that can transfer the <strong>tensile force from the supported structure to the bearing medium</strong> (soil, rock). It is similar to a soil nail, but there are essential differences: it does not take the force along its whole length, it is much larger (in diameter and length), and its resistance is at least an order of magnitude greater.
+bef8006	There are many kinds of ground anchor, but we most often use <strong>prestressed, drilled, grouted ground anchors</strong>. Their advantage is that they reach behind the excavation, so a “clear” construction area remains – there are no struts in the excavation.
+24dc524	Under the neighbouring plot
+9a166db	Anchors usually reach under neighbouring properties – often as far as 15–20 metres. On the one hand this raises <strong>legal problems</strong> (owner’s consent); on the other hand the anchor can run into <strong>existing structures</strong> (basement, utility, foundation). Where an anchor would get in the way later, removable anchors (whose strands can be pulled back) are also used.
+313f2a2	Taking the reactions of retaining structures

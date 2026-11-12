@@ -3,7 +3,7 @@
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { mergeGeometries } from 'three/examples/jsm/utils/BufferGeometryUtils.js';
-import { register, h, $, $$, fmt, clamp, lerp, slider, seg, toggle, select, stat, cssVar, onTheme, shell } from './core.js';
+import { register, h, $, $$, fmt, clamp, lerp, slider, seg, toggle, select, stat, cssVar, onTheme, shell, EN } from './core.js';
 
 /* ------------------------------------------------------------------ alapadatok */
 const LP = 14;   // a gödör hossza a metszetsík mögött (a gödör közepén vágunk)
@@ -85,7 +85,7 @@ function evaluate(S) {
     const n = levels.length, cap = 5 + 5 * n;
     stat = H > cap ? 'bad' : H > cap - 1.5 ? 'warn' : 'ok';
     const need = Math.max(1, Math.ceil((H - 5) / 5));
-    add(stat, `${n} ${sup === 'horgony' ? 'horgonysor' : 'dúcsor (csőtámasz)'}`, `Szemléltető ökölszabály: a fal felső kb. 5 m-e konzolként áll, minden további támaszszint kb. 5 m-rel többet enged. ${stat === 'bad' ? `H = ${fmt(H, 1)} m-hez legalább <b>${need}</b> szint kellene – a fal túlterhelt.` : stat === 'warn' ? 'A határon van – egy további szint biztonságosabb.' : 'A támaszszintek száma elegendőnek tűnik.'}`, '#statika');
+    add(stat, `${n} ${EN ? (sup === 'horgony' ? (n === 1 ? 'anchor row' : 'anchor rows') : (n === 1 ? 'strut row (tubular struts)' : 'strut rows (tubular struts)')) : sup === 'horgony' ? 'horgonysor' : 'dúcsor (csőtámasz)'}`, `Szemléltető ökölszabály: a fal felső kb. 5 m-e konzolként áll, minden további támaszszint kb. 5 m-rel többet enged. ${stat === 'bad' ? `H = ${fmt(H, 1)} m-hez legalább <b>${need}</b> szint kellene – a fal túlterhelt.` : stat === 'warn' ? 'A határon van – egy további szint biztonságosabb.' : 'A támaszszintek száma elegendőnek tűnik.'}`, '#statika');
     if (n < nSel) add('info', 'Kevesebb szint fér el', `${fmt(H, 1)} m mélységben ${nSel} szint nem fér el értelmesen (min. ~1,2 m függőleges távolság) – ${n} szinttel számolunk.`, '#statika');
   } else if (sup === 'topdown') {
     stat = 'ok';
@@ -839,7 +839,7 @@ register('sim3d', (root) => {
     checkBox.append(ul);
     // csempék
     oToe.set('', M.szeg ? null : (M.W.wt && M.gwAbove ? (M.reach ? 'ok' : 'warn') : null), M.szeg ? 'nincs fal' : '−' + fmt(M.toe, 1) + '<small>m</small>');
-    oLev.set(M.szeg ? 'szegek' : M.sup === 'konzolos' ? 'nincs' : `${M.levels.length} ${M.sup === 'topdown' ? 'födém' : 'szint'}`, M.stat === 'bad' ? 'bad' : M.stat === 'warn' ? 'warn' : 'ok');
+    oLev.set(M.szeg ? 'szegek' : M.sup === 'konzolos' ? 'nincs' : `${M.levels.length} ${EN ? (M.sup === 'topdown' ? (M.levels.length === 1 ? 'slab' : 'slabs') : (M.levels.length === 1 ? 'level' : 'levels')) : M.sup === 'topdown' ? 'födém' : 'szint'}`, M.stat === 'bad' ? 'bad' : M.stat === 'warn' ? 'warn' : 'ok');
     if (M.sup === 'horgony') { const L = Math.max(...M.anchors.map((a) => a.L)); oLen.set(`max ${fmt(L, 1)}`, L > 30 ? 'bad' : L > 25 ? 'warn' : null, `max ${fmt(L, 1)}<small>m</small>`); }
     else if (M.sup === 'cso') oLen.set(`${fmt(M.B, 0)}`, M.B > 28 ? 'bad' : M.B > 25 ? 'warn' : null, `${fmt(M.B, 0)}<small>m fesztáv</small>`);
     else if (M.szeg) oLen.set(`${fmt((M.P.gran ? 1 : 0.8) * M.H, 1)}`, null, `${fmt((M.P.gran ? 1 : 0.8) * M.H, 1)}<small>m szeg</small>`);
