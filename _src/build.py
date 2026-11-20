@@ -13,7 +13,7 @@ JS-karakterláncok – a BME-videók adatai is, src/js/data.js) az i18n/en_*.tsv
 épül az en.html. Ha a magyar szöveg változik és nincs hozzá fordítás, az angol build leáll (a hiányzók: i18n/missing.tsv).
 A magyar forrásba az angolhoz szükséges kapcsokat (EN jelző, nyelvváltó, angol tördelési szabályok) az i18n/prep_hu.py teszi bele.
 """
-import os, subprocess, sys, pathlib, re, shutil, glob
+import json, os, subprocess, sys, pathlib, re, shutil, glob
 os.environ['ATTRS'] = 'data-sub,data-title,data-kick,data-tag,data-note,data-caps'   # a widgetek címei, alcímei, a videókártyák feliratai is fordítandók
 
 R = pathlib.Path(__file__).resolve().parent
@@ -141,4 +141,20 @@ if r.returncode: print(r.stderr); sys.exit(1)
 for f in FILES:
     if f.endswith('.js'):
         p = EN / f; t = p.read_text(encoding='utf-8'); t = re.sub(r'\btg(?=[  ][αδφ$\d(]|²)', 'tan', t); t = re.sub(r'\bctg(?=[  ][αδφ$\d(]|²)', 'cot', t); p.write_text(t, encoding='utf-8')
+# az angol oldalon a BME-videók helyett azok eredeti angol változatai (Geotech Project csatorna) – i18n/yt_en.json;
+# amelyiknek nincs angol változata, az marad, „in Hungarian” jelzéssel
+YE = json.loads((I18N / 'yt_en.json').read_text(encoding='utf-8'))
+p = EN / 'js' / 'data.js'; t = p.read_text(encoding='utf-8')
+def _yt(m):
+    hu, d = m.group(1), json.loads(m.group(2)); e = YE['videos'].get(hu)
+    if e: d.update({k: e[k] for k in ('title', 'dur', 'playlist', 'list', 'caps')}); d['ch'] = YE['channel']; hu = e['id']
+    else: d['note'] = 'in Hungarian'
+    return f'  "{hu}": {json.dumps(d, ensure_ascii=False)},'
+t, nyt = re.subn(r'^  "([A-Za-z0-9_-]{11})": (\{.*\}),$', _yt, t, flags=re.M); p.write_text(t, encoding='utf-8')
+SWAP = {**{hu: e['id'] for hu, e in YE['videos'].items()}, **YE['lists']}
+rx = re.compile('|'.join(map(re.escape, SWAP))); nsw = 0
+for p in [*(EN / 'js').glob('*.js'), *(EN / 'chapters').glob('*.html'), *EN.glob('*.html')]:
+    t = p.read_text(encoding='utf-8'); t2, k = rx.subn(lambda m: SWAP[m.group(0)], t)
+    if k: p.write_text(t2, encoding='utf-8'); nsw += k
+print('YouTube-adatsor:', nyt, '· cserélt hivatkozás:', nsw)
 build(EN, 'en-GB', 'en.html')

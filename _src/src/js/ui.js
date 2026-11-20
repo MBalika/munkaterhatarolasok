@@ -146,6 +146,8 @@ function initGallery() {
 
 /* ---------------------------------------------------------------- BME YouTube-kártyák („Nézd meg élőben is!”) */
 const ytImg = (id, f) => `img/yt/${id}/${f}`;
+const ytCh = (y) => y.ch || 'BME Építőmérnöki Kar';   // csatorna (az angol oldalon az angol változatoknál Geotech Project)
+const ytNote = (y) => (y.note ? ` · ${y.note}` : '');
 const ytWatch = (id, t = 0) => `https://www.youtube.com/watch?v=${id}` + (YT[id]?.list ? `&list=${YT[id].list}` : '') + (t ? `&t=${t}s` : '');
 function openYT(id, t = 0) {
   const y = YT[id]; if (!y) return;
@@ -153,7 +155,7 @@ function openYT(id, t = 0) {
   $('#ytTitle', m).textContent = y.title;
   $('#ytFrame', m).src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0` + (t ? `&start=${t}` : '');
   $('#ytOpen', m).href = ytWatch(id, t);
-  $('#ytInfo', m).textContent = `BME Építőmérnöki Kar · ${y.dur}` + (y.playlist ? ` · ${y.playlist} lejátszási lista` : '');
+  $('#ytInfo', m).textContent = `${ytCh(y)} · ${y.dur}` + (y.playlist ? ` · ${y.playlist} lejátszási lista` : '') + ytNote(y);
   m.hidden = false; document.body.style.overflow = 'hidden';
   setTimeout(() => $('#ytClose', m)?.focus(), 200);
 }
@@ -173,7 +175,7 @@ export function ytCard(el, id) {
     h('div', { class: 'ytc-qr' }, h('img', { src: ytImg(id, 'qr.png'), alt: 'QR-kód: ' + url, loading: 'lazy' })),
     board,
     h('div', { class: 'ytc-bar' }, h('span', { class: 'ytc-logo', 'aria-hidden': 'true' }),
-      h('div', {}, h('b', {}, y.title), h('small', {}, 'BME Építőmérnöki Kar · YouTube' + (y.playlist ? ` · ${y.playlist} lejátszási lista` : '') + ` · ${y.dur}`)),
+      h('div', {}, h('b', {}, y.title), h('small', {}, `${ytCh(y)} · YouTube` + (y.playlist ? ` · ${y.playlist} lejátszási lista` : '') + ` · ${y.dur}` + ytNote(y))),
       h('a', { class: 'ytc-link', href: ytWatch(id), target: '_blank', rel: 'noopener' }, h('span', { class: 'u' }, `youtu.be/${id}`), h('span', { class: 'h' }, '▶ kattints a képre, vagy nyisd meg a YouTube-on ↗'))));
 }
 /** Kis kártya: <button data-ytm="ID"></button> (opcionális data-t: kezdés másodpercben, data-note: rövid megjegyzés) */
@@ -182,7 +184,7 @@ export function ytMini(el, id) {
   el.classList.add('ytm'); el.innerHTML = ''; el.type = 'button';
   el.append(h('div', { class: 'th' }, h('img', { src: ytImg(id, 't.jpg'), alt: '', loading: 'lazy' }), h('span', { class: 'ytc-yt' }), h('span', { class: 'd' }, y.dur)),
     h('div', { class: 'strip' }, ...[1, 2, 3, 4].map((k) => h('img', { src: ytImg(id, `p${k}.jpg`), alt: '', loading: 'lazy' }))),
-    h('div', { class: 'm' }, h('small', {}, 'BME Építőmérnöki Kar · YouTube'), h('b', {}, y.tech), el.dataset.note ? h('span', {}, el.dataset.note) : null));
+    h('div', { class: 'm' }, h('small', {}, `${ytCh(y)} · YouTube`), h('b', {}, y.tech), el.dataset.note ? h('span', {}, el.dataset.note) : null));
   const t0 = +el.dataset.t || 0;
   el.addEventListener('click', () => openYT(id, t0));
   el.setAttribute('aria-label', 'YouTube-videó: ' + y.title);

@@ -1,0 +1,401 @@
+{
+ "channel": "Geotech Project",
+ "lists": {
+  "PLiAsGexXzYoJk3IiDC5YBCNSs0_YQFXXA": "PL9ek0nuVwC85wlVXUmqQQF8Xd6Xul7P8_",
+  "PLiAsGexXzYoLJnR9HUPPN85cACUQXJhYj": "PL9ek0nuVwC85PcjPVCAAGIJso2CkeAUzw",
+  "PLiAsGexXzYoLoUK4uIoeIHjowjrmQH1Tc": "PL9ek0nuVwC858cRPzrO8NKwJ1_wevMYEm"
+ },
+ "videos": {
+  "Oe5saZFiPJk": {
+   "id": "vL-ohvoRlts",
+   "title": "Large diameter bored piles",
+   "dur": "5:23",
+   "playlist": "Pile foundations",
+   "list": "PL9ek0nuVwC85wlVXUmqQQF8Xd6Xul7P8_",
+   "caps": [
+    "Drilling under slurry",
+    "Casing",
+    "Reinforcement cage",
+    "Concreting with a tremie pipe"
+   ],
+   "times": [
+    169.4,
+    202.7,
+    219.3,
+    240.5
+   ],
+   "thumbSize": [
+    1280,
+    720
+   ]
+  },
+  "hwP8iZzAq6I": {
+   "id": "Mps1k494kSo",
+   "title": "Full displacement piles (FDP) and Screwsol piles",
+   "dur": "3:30",
+   "playlist": "Pile foundations",
+   "list": "PL9ek0nuVwC85wlVXUmqQQF8Xd6Xul7P8_",
+   "caps": [
+    "Displacement drilling head",
+    "Continuous monitoring",
+    "While drilling",
+    "Motorway site"
+   ],
+   "times": [
+    73.5,
+    98.6,
+    130.5,
+    34.9
+   ],
+   "thumbSize": [
+    1280,
+    720
+   ]
+  },
+  "KDKCobw52qk": {
+   "id": "cE-NBCAFayg",
+   "title": "Precast piles",
+   "dur": "4:32",
+   "playlist": "Pile foundations",
+   "list": "PL9ek0nuVwC85wlVXUmqQQF8Xd6Xul7P8_",
+   "caps": [
+    "Steel tubular piles",
+    "Driving",
+    "RC piles",
+    "Vibrating"
+   ],
+   "times": [
+    30.7,
+    197.1,
+    238.7,
+    252.6
+   ],
+   "thumbSize": [
+    1280,
+    720
+   ]
+  },
+  "D27v2bVmoXc": {
+   "id": "-Cw33wzTdnE",
+   "title": "Helical steel piles",
+   "dur": "3:34",
+   "playlist": "Pile foundations",
+   "list": "PL9ek0nuVwC85wlVXUmqQQF8Xd6Xul7P8_",
+   "caps": [
+    "Installation with excavators",
+    "Head of a ground screw",
+    "Screwing by machine",
+    "Lightweight building"
+   ],
+   "times": [
+    35.6,
+    46.5,
+    111.8,
+    90.1
+   ],
+   "thumbSize": [
+    1280,
+    720
+   ]
+  },
+  "_QsH5x0ndtI": {
+   "id": "sc0PpeHJ29c",
+   "title": "Franki piles",
+   "dur": "3:03",
+   "playlist": "Pile foundations",
+   "list": "PL9ek0nuVwC85wlVXUmqQQF8Xd6Xul7P8_",
+   "caps": [
+    "Franki piling rig",
+    "Hopper on the casing",
+    "Drop hammer cables",
+    "Concrete charge"
+   ],
+   "times": [
+    49.2,
+    95.4,
+    104.6,
+    150.8
+   ],
+   "thumbSize": [
+    1280,
+    720
+   ]
+  },
+  "7M7YPxBn8Xk": {
+   "id": "rSY2i0RR9nk",
+   "title": "Micropiles",
+   "dur": "4:35",
+   "playlist": "Pile foundations",
+   "list": "PL9ek0nuVwC85wlVXUmqQQF8Xd6Xul7P8_",
+   "caps": [
+    "Cased drilling",
+    "Titan hollow bar",
+    "Underpinning by jacking",
+    "Protection against uplift"
+   ],
+   "times": [
+    17.7,
+    106.0,
+    212.0,
+    259.6
+   ],
+   "thumbSize": [
+    1280,
+    720
+   ]
+  },
+  "wqOU4bcUiCk": {
+   "id": "Z94hg0Y4SNY",
+   "title": "CFA piles",
+   "dur": "2:41",
+   "playlist": "Pile foundations",
+   "list": "PL9ek0nuVwC85wlVXUmqQQF8Xd6Xul7P8_",
+   "caps": [
+    "Drilling",
+    "Spoil on the auger",
+    "Cage into fresh concrete",
+    "Lowering the cage"
+   ],
+   "times": [
+    43.1,
+    51.1,
+    119.0,
+    123.3
+   ],
+   "thumbSize": [
+    1280,
+    720
+   ]
+  },
+  "MPjXIhchN-w": {
+   "id": "ef6ZE8deD6M",
+   "title": "Jet grouting",
+   "dur": "4:27",
+   "playlist": "Ground improvement",
+   "list": "PL9ek0nuVwC85PcjPVCAAGIJso2CkeAUzw",
+   "caps": [
+    "Infill site",
+    "Drilling in the pit",
+    "Spoil return",
+    "Exposed jet columns"
+   ],
+   "times": [
+    43.8,
+    111.8,
+    139.0,
+    208.5
+   ],
+   "thumbSize": [
+    1280,
+    720
+   ]
+  },
+  "wh31VB1fY_8": {
+   "id": "85GbWBj3in8",
+   "title": "Soil mixing technologies",
+   "dur": "5:52",
+   "playlist": "Ground improvement",
+   "list": "PL9ek0nuVwC85PcjPVCAAGIJso2CkeAUzw",
+   "caps": [
+    "Mixing along the shore",
+    "Mixing shaft lifted",
+    "Cutter soil mixing wall",
+    "Mass stabilisation"
+   ],
+   "times": [
+    39.2,
+    131.6,
+    184.0,
+    220.2
+   ],
+   "thumbSize": [
+    1280,
+    720
+   ]
+  },
+  "cNkNZV6kgqk": {
+   "id": "2iWMoVIZc_k",
+   "title": "Stone columns",
+   "dur": "2:47",
+   "playlist": "Ground improvement",
+   "list": "PL9ek0nuVwC85PcjPVCAAGIJso2CkeAUzw",
+   "caps": [
+    "Vibro rig",
+    "Filling the hopper",
+    "Stone at the bottom",
+    "Stone column grid"
+   ],
+   "times": [
+    70.1,
+    45.0,
+    120.5,
+    154.1
+   ],
+   "thumbSize": [
+    1280,
+    720
+   ]
+  },
+  "CgKwZBWn_xM": {
+   "id": "bVTljbQcE6U",
+   "title": "Grouting technologies",
+   "dur": "5:53",
+   "playlist": "Ground improvement",
+   "list": "PL9ek0nuVwC85PcjPVCAAGIJso2CkeAUzw",
+   "caps": [
+    "Drilling",
+    "Grout holes",
+    "Grouting in a tunnel",
+    "Permeating grout"
+   ],
+   "times": [
+    59.3,
+    130.1,
+    239.0,
+    311.7
+   ],
+   "thumbSize": [
+    1280,
+    720
+   ]
+  },
+  "Gca4PGhTC5o": {
+   "id": "I1M6afZLrxo",
+   "title": "Vibroflotation",
+   "dur": "2:23",
+   "playlist": "Ground improvement",
+   "list": "PL9ek0nuVwC85PcjPVCAAGIJso2CkeAUzw",
+   "caps": [
+    "Vibroflot in the ground",
+    "Water jetting",
+    "Backfilling",
+    "Compaction on a grid"
+   ],
+   "times": [
+    52.6,
+    68.5,
+    109.2,
+    123.4
+   ],
+   "thumbSize": [
+    1280,
+    720
+   ]
+  },
+  "LtSalNj4ByQ": {
+   "id": "VNDEW8acU_0",
+   "title": "Dynamic compaction and replacement",
+   "dur": "3:22",
+   "playlist": "Ground improvement",
+   "list": "PL9ek0nuVwC85PcjPVCAAGIJso2CkeAUzw",
+   "caps": [
+    "Tamping grid",
+    "Replacement pillar",
+    "Pounder on the crane",
+    "Dropping the weight"
+   ],
+   "times": [
+    62.4,
+    131.6,
+    143.0,
+    170.3
+   ],
+   "thumbSize": [
+    1280,
+    720
+   ]
+  },
+  "6v1tscw5Y7M": {
+   "id": "8F1wx4lukDQ",
+   "title": "Soldier pile, jet-grouting, slurry and DSM walls",
+   "dur": "6:33",
+   "playlist": "Embedded retaining walls",
+   "list": "PL9ek0nuVwC858cRPzrO8NKwJ1_wevMYEm",
+   "caps": [
+    "Soldier pile wall pit",
+    "Jet-grout columns",
+    "Self-hardening slurry wall",
+    "Mixing shafts"
+   ],
+   "times": [
+    43.5,
+    164.9,
+    266.0,
+    286.3
+   ],
+   "thumbSize": [
+    1280,
+    720
+   ]
+  },
+  "4IzRHH2GgEM": {
+   "id": "9ovHy3VMyoY",
+   "title": "Sheet pile walls",
+   "dur": "3:31",
+   "playlist": "Embedded retaining walls",
+   "list": "PL9ek0nuVwC858cRPzrO8NKwJ1_wevMYEm",
+   "caps": [
+    "Vibrator on the pile",
+    "Lifting a pile",
+    "Installation with an excavator",
+    "RC sheet piles"
+   ],
+   "times": [
+    88.3,
+    120.3,
+    141.6,
+    162.9
+   ],
+   "thumbSize": [
+    1280,
+    720
+   ]
+  },
+  "QcPETASq0zI": {
+   "id": "H5Ivfpm-Sfo",
+   "title": "Pile walls",
+   "dur": "4:46",
+   "playlist": "Embedded retaining walls",
+   "list": "PL9ek0nuVwC858cRPzrO8NKwJ1_wevMYEm",
+   "caps": [
+    "Pile wall pit",
+    "Contiguous pile wall",
+    "Pile boring",
+    "Casing drill head"
+   ],
+   "times": [
+    32.2,
+    63.0,
+    134.3,
+    178.1
+   ],
+   "thumbSize": [
+    1280,
+    720
+   ]
+  },
+  "f_41-sJhGK8": {
+   "id": "eOZGv_2Q_Jg",
+   "title": "Diaphragm walls",
+   "dur": "4:59",
+   "playlist": "Embedded retaining walls",
+   "list": "PL9ek0nuVwC858cRPzrO8NKwJ1_wevMYEm",
+   "caps": [
+    "Diaphragm wall site",
+    "Trench grab",
+    "Reinforcement cage",
+    "Concreting"
+   ],
+   "times": [
+    36.0,
+    48.8,
+    232.1,
+    278.0
+   ],
+   "thumbSize": [
+    1280,
+    720
+   ]
+  }
+ }
+}
