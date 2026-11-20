@@ -1,0 +1,46 @@
+/* ===== Szövegdobozok: cím és szöveg középen (2026-11-20, a felhasználó kérése: „a címek és a szövegek mindig középen
+   legyenek az összes ilyen szövegablakban”) =====
+   A h2–h6 dobozcímeket a boxtitle.inc.html (bxt-js) teszi középre; itt a <b>/<span> címek, a díszítőik és a doboz
+   szövege kerül középre. A több soros, sorkizárt bekezdés sorkizárt marad, de az utolsó sora is középen áll.
+   Kép vagy ikon melletti kártyában a szöveg a megmaradó hasáb közepén.
+   Balra zárt marad: felsorolás, táblázat és táblázatszerű sor (falválasztó sorai), a kezelőpanelek (csúszka, választó). */
+
+/* widget fejléce: a cím és az alcím középen, az „INTERAKTÍV” címke a bal szélen */
+.w-head { position: relative; justify-content: center; }
+.w-head > .w-tag { position: absolute; left: 18px; top: 16px; }
+.w-head > .w-title { flex: 1 1 100%; min-width: 0; text-align: center; padding: 0 128px; }
+.w-head > .w-sub { flex: 1 1 100%; text-align: center; }
+.w-head > .w-sub:empty { display: none; }
+@media (max-width: 720px) { .w-head > .w-tag { position: static; margin: 0 auto; } .w-head > .w-title { padding: 0; } }
+
+/* kvíz fejléce: a cím középen, a pontszám a jobb szélen */
+.quiz-head { position: relative; justify-content: center; }
+.quiz-head > b { flex: 1 1 100%; text-align: center; padding: 0 92px; }
+.quiz-head > span { position: absolute; right: 18px; top: 50%; transform: translateY(-50%); margin: 0; }
+@media (max-width: 560px) { .quiz-head > b { padding: 0; } .quiz-head > span { position: static; transform: none; margin: 0 auto; } }
+
+/* kiemelő dobozok: az ikon a cím fölött, a cím és a szöveg középen */
+.callout { grid-template-columns: minmax(0, 1fr); gap: 6px; text-align: center; }
+.callout::before { grid-row: auto; justify-self: center; }
+.callout > b.t, .callout > div > b.t { display: block; text-align: center; }
+
+/* kártyák, tények, kijelzők, értékelések, képlet, információs dobozok */
+.card, .fact, .stat, .stat-l, .stat-v, .verdict, .hero-verdict, .dc-info, .dc-cond, .dc-calc, .dc-limits div, .mt-card, .mt-use span,
+.fal-lead-grid a, .kd-factors div, .sim-task > :not(.sim-task-n), .vmeta, .proscons h5, .q-n, .q-t, .q-exp, .tf-item .s, .tf-item .e { text-align: center; }
+.mt-card, .fal-lead-grid a, .kd-factors div { align-items: center; }
+.formula { justify-content: center; }
+.formula > math, .formula .f { flex: 1 1 100%; text-align: center; }
+.formula .fl { flex: 1 1 100%; text-align: center !important; text-align-last: center; }   /* a jelek rövid magyarázata: középre zárt sorok (sorkizárva lyukas) */
+
+main .card p, main .callout p, main .q-exp, main .verdict, main .verdict p, main .tf-item .s, main .tf-item .e, main .w-foot,
+main .sim-task p, .hero-verdict, main .dc-info, main .mt-card-res { text-align-last: center; }
+main .card .rag, main .callout .rag, main .q-exp.rag, main .verdict.rag, main .verdict .rag, main .tf-item .rag, main .sim-task .rag,
+.hero-verdict.rag, main .dc-info.rag, main .w-foot.rag { text-align: center !important; }
+
+.card ul, .card ol, .card li, .callout ul, .callout li, .proscons ul, .proscons li { text-align: left; text-align-last: auto; }
+
+.sim-task .btn { justify-self: center; }
+.q-opts button { justify-content: center; text-align: center; }
+.tf-btns { justify-content: center; }
+.mt-card-btns { justify-content: center; align-self: stretch; }
+.card .ic { margin-inline: auto; }

@@ -16,6 +16,7 @@ BME Építőmérnöki Kar, Alapozás, 9. előadás. Alap: a „Munkatér határo
   - `src/chapters/NN_*.html` – fejezetek, névsorrendben fűzi össze a build
   - `src/js/` – `core.js` (widget-segédek), `ui.js` (navigáció, videók, kvíz, igaz/hamis), `hero.js`, `ch_*.js` (fejezetek widgetjei és kvízei), `sim3d.js` (3D gödörtervező), `tf.js` (igaz/hamis állítások)
   - `src/style.css`, `src/css/*.css`, `src/fonts.css`
+  - `src/css/zz_boxtext.css` – a szövegdobozok címe és szövege középen (felsorolás, táblázat, kezelőpanel balra zárt); a h2–h6 dobozcímeket a `boxtitle.inc.html` (bxt-js) teszi középre, a build szúrja be mindkét nyelvű oldalba
 
 ## Újraépítés
 ```bash
