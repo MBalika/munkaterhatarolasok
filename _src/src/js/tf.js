@@ -51,7 +51,7 @@ const GLOSS = [
   ['dúc', 'Nyomott elem, amely a szemközti földfalakat egymásnak támasztja (gömbfa, I-tartó, cső, csavaros acéldúc).', '#ducolas'],
   ['m₀ (megtámasztás nélküli mélység)', 'Az a mélység, ameddig a függőleges földfal talajvíz felett ideiglenesen megtámasztás nélkül megáll: m₀ = 4c/(nγ)·tg(45°+φ/2) − p/γ.', '#m0'],
   ['csatornapalló (Pátria, Union)', 'Vékony falú, profilos acél szádlemez árkok beterítésére – nem vízzáró kapcsolatú.', '#ducolas'],
-  ['állított / utánhajtott / vízszintes / előrevert pallózás', 'A pallózás négy módja az m₀ és a H viszonya szerint.', '#pallozas'],
+  ['állított, utánhajtott, vízszintes, előrevert pallózás', 'A pallózás négy módja az m₀ és a H viszonya szerint.', '#pallozas'],
   ['dúcnyomás', 'A dúcolatra ható, egyenletesnek feltételezett helyettesítő vízszintes teher (a befeszített dúcok reakcióereje).', '#ducnyomas'],
   ['táblás dúcolat', 'Előregyártott, merevített acéltáblákból és állítható dúcokból álló, sokszor felhasználható dúcolókeret.', '#tablas'],
   ['ferde dúc', 'Széles gödörben a falat a gödör aljához vagy az alaplemezhez támasztó ferde elem; függőleges egyensúlyát is ellenőrizni kell.', '#ferde-duc'],

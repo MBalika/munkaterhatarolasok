@@ -12,6 +12,7 @@ import './ch_kulonleges.js';
 import './ch_dontes.js';
 import './sim3d.js';
 import './tf.js';
+import './proc.js';
 
 function start() {
   initUI();

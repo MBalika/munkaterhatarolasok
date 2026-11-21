@@ -1,0 +1,89 @@
+/* Technológiai folyamatábrák (proc.js): panorámasor, a lépések oszlopai összefüggő jelenetet adnak */
+:root {
+  --pr-sky1: #9ecaea; --pr-sky2: #e7f1f7; --pr-cloud: #ffffff; --pr-hill: #c3d9c9; --pr-city: #c6d4df; --pr-cityw: #e8eff5; --pr-tree: #8db383; --pr-trunk: #7a6650;
+  --pr-ground: #5e4630; --pr-top: #7b5c3c; --pr-grass: #7da653; --pr-grass2: #5d8a38; --pr-layer: rgba(70, 48, 26, 0.55); --pr-dot: rgba(70, 46, 22, 0.36);
+  --pr-sand: #e7c98f; --pr-sand2: #dbb877; --pr-clay: #b98b60; --pr-clay2: #a67650; --pr-silt: #cdb18a; --pr-gravel: #d3ba8e; --pr-pebble: #eee2c8;
+  --pr-fill: #a9967b; --pr-peat: #6f5b47; --pr-rock: #9d978d; --pr-hard: #95714f;
+  --pr-mach: #f3b632; --pr-mach2: #d99b1b; --pr-mach3: #9a6910;
+  --pr-crane: #e8702d; --pr-crane2: #c5561d; --pr-crane3: #8c3a10;
+  --pr-exc: #f1c33b; --pr-exc2: #d7a31f; --pr-exc3: #8e690e;
+  --pr-pump: #e3e7eb; --pr-pump3: #8a97a2; --pr-truck: #eff2f4; --pr-truck2: #8a97a2;
+  --pr-drum1: #ffffff; --pr-drum2: #d6dde3; --pr-drum3: #98a5b0; --pr-acc2: #2b7cd2; --pr-lamp: #ffcf4f;
+  --pr-dark: #2a3036; --pr-dark2: #4a535b; --pr-steel1: #f3f6f8; --pr-steel2: #a8b4be; --pr-steel3: #5c6a76; --pr-rope: #343b42;
+  --pr-glass1: #dcf0fb; --pr-glass2: #7ea6c1; --pr-opr: #36414b;
+  --pr-conc1: #c5c2bb; --pr-conc2: #dad7d0; --pr-fresh1: #9c9992; --pr-fresh2: #b6b3ac; --pr-agg1: #85817a; --pr-agg2: #ebe8e1;
+  --pr-rebar: #b3502a; --pr-rebar2: #c96b3d; --pr-spacer: #ece9e2;
+  --pr-slurry1: rgba(138, 133, 96, 0.8); --pr-slurry2: rgba(116, 110, 76, 0.92); --pr-slurryd: rgba(55, 52, 28, 0.35);
+  --pr-grout1: #f0ede6; --pr-grout2: #d8d4c9; --pr-stone: #dcd7cd; --pr-stone2: #8d877b; --pr-mix2: rgba(110, 100, 86, 0.35);
+  --pr-water: #2a8fd2; --pr-wall: rgba(40, 26, 14, 0.6);
+  --pr-hose: #23292e; --pr-hose2: #9ba7b1;
+  --pr-acc: #e1432a; --pr-push: #d62a2a; --pr-halo: #ffffff;
+  --pr-labbg: rgba(255, 255, 255, 0.95); --pr-labedge: rgba(20, 30, 40, 0.2); --pr-labline: #1c2731; --pr-labtx: #16212c;
+  --pr-skin: #e5b28c; --pr-vest: #ff8a1d; --pr-refl: #eef2f4; --pr-trous: #2e3d4f; --pr-boot: #3a2c22; --pr-helmet: #fbfbf6; --pr-helmet2: #b6b6ad;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --pr-sky1: #0f1c2a; --pr-sky2: #263c51; --pr-cloud: #3d5367; --pr-hill: #1d2f3e; --pr-city: #22364a; --pr-cityw: rgba(240, 200, 110, 0.45); --pr-tree: #2d4a3a; --pr-trunk: #3c3328;
+    --pr-ground: #2a1f15; --pr-top: #4a3725; --pr-grass: #3f5f2c; --pr-grass2: #557a3a; --pr-layer: rgba(0, 0, 0, 0.5); --pr-dot: rgba(0, 0, 0, 0.38);
+    --pr-sand: #8f7b55; --pr-sand2: #85704a; --pr-clay: #75583d; --pr-clay2: #684c34; --pr-silt: #806c55; --pr-gravel: #85735a; --pr-pebble: #a8977a;
+    --pr-fill: #6a5d4b; --pr-peat: #43372c; --pr-rock: #66625b; --pr-hard: #614a35;
+    --pr-mach: #dba432; --pr-mach2: #b9851c; --pr-mach3: #6e4c0d; --pr-crane: #d0652b; --pr-crane2: #a8491b; --pr-crane3: #5f280b;
+    --pr-exc: #d6ab37; --pr-exc2: #b58b1c; --pr-exc3: #5f470a;
+    --pr-pump: #a9b2ba; --pr-pump3: #5c6974; --pr-truck: #b9c1c8; --pr-truck2: #5c6974; --pr-drum1: #c7ced4; --pr-drum2: #97a2ab; --pr-drum3: #5f6c77;
+    --pr-dark: #15191d; --pr-dark2: #2c343b; --pr-steel1: #d5dde3; --pr-steel2: #8794a0; --pr-steel3: #46525c; --pr-rope: #b9c4cc;
+    --pr-glass1: #4c6c84; --pr-glass2: #22384a; --pr-opr: #101519;
+    --pr-conc1: #8d8a84; --pr-conc2: #a4a19a; --pr-fresh1: #6c6a64; --pr-fresh2: #817e77; --pr-agg1: #4f4c47; --pr-agg2: #b3b0a9;
+    --pr-rebar: #d06a3a; --pr-rebar2: #e0814f; --pr-spacer: #b3b0a9;
+    --pr-slurry1: rgba(110, 106, 76, 0.85); --pr-slurry2: rgba(90, 86, 58, 0.95);
+    --pr-grout1: #b9b5ab; --pr-grout2: #9c988e; --pr-stone: #a49f96; --pr-stone2: #5d584f;
+    --pr-water: #59bdf0; --pr-wall: rgba(0, 0, 0, 0.6); --pr-hose: #0e1114; --pr-hose2: #5c6974;
+    --pr-acc: #ff6a4a; --pr-push: #ff5a52; --pr-halo: #0d151d;
+    --pr-labbg: rgba(16, 24, 33, 0.94); --pr-labedge: rgba(255, 255, 255, 0.2); --pr-labline: #d8e2ea; --pr-labtx: #e8eef3;
+    --pr-skin: #c99a78; --pr-vest: #f07f1c; --pr-refl: #c9d1d6; --pr-trous: #1c2733; --pr-helmet: #e3e3dc; --pr-helmet2: #8f8f87;
+  }
+}
+:root[data-theme="dark"] {
+  --pr-sky1: #0f1c2a; --pr-sky2: #263c51; --pr-cloud: #3d5367; --pr-hill: #1d2f3e; --pr-city: #22364a; --pr-cityw: rgba(240, 200, 110, 0.45); --pr-tree: #2d4a3a; --pr-trunk: #3c3328;
+  --pr-ground: #2a1f15; --pr-top: #4a3725; --pr-grass: #3f5f2c; --pr-grass2: #557a3a; --pr-layer: rgba(0, 0, 0, 0.5); --pr-dot: rgba(0, 0, 0, 0.38);
+  --pr-sand: #8f7b55; --pr-sand2: #85704a; --pr-clay: #75583d; --pr-clay2: #684c34; --pr-silt: #806c55; --pr-gravel: #85735a; --pr-pebble: #a8977a;
+  --pr-fill: #6a5d4b; --pr-peat: #43372c; --pr-rock: #66625b; --pr-hard: #614a35;
+  --pr-mach: #dba432; --pr-mach2: #b9851c; --pr-mach3: #6e4c0d; --pr-crane: #d0652b; --pr-crane2: #a8491b; --pr-crane3: #5f280b;
+  --pr-exc: #d6ab37; --pr-exc2: #b58b1c; --pr-exc3: #5f470a;
+  --pr-pump: #a9b2ba; --pr-pump3: #5c6974; --pr-truck: #b9c1c8; --pr-truck2: #5c6974; --pr-drum1: #c7ced4; --pr-drum2: #97a2ab; --pr-drum3: #5f6c77;
+  --pr-dark: #15191d; --pr-dark2: #2c343b; --pr-steel1: #d5dde3; --pr-steel2: #8794a0; --pr-steel3: #46525c; --pr-rope: #b9c4cc;
+  --pr-glass1: #4c6c84; --pr-glass2: #22384a; --pr-opr: #101519;
+  --pr-conc1: #8d8a84; --pr-conc2: #a4a19a; --pr-fresh1: #6c6a64; --pr-fresh2: #817e77; --pr-agg1: #4f4c47; --pr-agg2: #b3b0a9;
+  --pr-rebar: #d06a3a; --pr-rebar2: #e0814f; --pr-spacer: #b3b0a9;
+  --pr-slurry1: rgba(110, 106, 76, 0.85); --pr-slurry2: rgba(90, 86, 58, 0.95);
+  --pr-grout1: #b9b5ab; --pr-grout2: #9c988e; --pr-stone: #a49f96; --pr-stone2: #5d584f;
+  --pr-water: #59bdf0; --pr-wall: rgba(0, 0, 0, 0.6); --pr-hose: #0e1114; --pr-hose2: #5c6974;
+  --pr-acc: #ff6a4a; --pr-push: #ff5a52; --pr-halo: #0d151d;
+  --pr-labbg: rgba(16, 24, 33, 0.94); --pr-labedge: rgba(255, 255, 255, 0.2); --pr-labline: #d8e2ea; --pr-labtx: #e8eef3;
+  --pr-skin: #c99a78; --pr-vest: #f07f1c; --pr-refl: #c9d1d6; --pr-trous: #1c2733; --pr-helmet: #e3e3dc; --pr-helmet2: #8f8f87;
+}
+.pr-strip { display: grid; gap: 0; margin: 18px 0 24px; border: 1px solid var(--line); border-radius: var(--r); overflow: hidden; background: var(--surface); box-shadow: var(--shadow); }
+.pr-col { margin: 0; min-width: 0; display: flex; flex-direction: column; }
+.pr-col + .pr-col { border-left: 1.5px solid var(--surface); }
+.pr-svg { width: 100%; height: auto; display: block; }
+.pr-svg .pr-tx { font: 600 10.5px/1 var(--f-body); fill: var(--pr-labtx); }
+.pr-svg .pr-num { font: 800 14px/1 var(--f-display); fill: #fff; }
+.pr-col figcaption { flex: 1; padding: 10px 12px 14px; border-top: 1px solid var(--line); font-size: 13.5px; line-height: 1.45; color: var(--ink2); }
+.pr-col + .pr-col figcaption { box-shadow: inset 1px 0 0 var(--line); }
+.pr-col figcaption b { display: flex; align-items: center; justify-content: center; gap: 7px; margin-bottom: 5px; font: 800 17px/1.15 var(--f-display); letter-spacing: 0.02em; text-transform: uppercase; color: var(--ink); text-align: center; }
+.pr-col figcaption b i { flex: none; width: 22px; height: 22px; border-radius: 50%; background: var(--grp); color: #fff; display: grid; place-items: center; font: 800 12.5px/1 var(--f-display); font-style: normal; }
+.pr-col figcaption span { display: block; text-align: left; hyphens: manual; }
+@media (max-width: 980px) {
+  .pr-strip { grid-template-columns: none !important; grid-auto-flow: column; grid-auto-columns: max-content; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: thin; }
+  .pr-col { width: calc(var(--w) * 0.92px); scroll-snap-align: start; }
+}
+:root { --pr-bore: #e4e9ed; --pr-cont: #3f7fbf; --pr-cont3: #2b5b8c; --pr-mix1: #b9b2a2; --pr-mix3: #cfc9bb; --pr-wallh: #f1ece2; --pr-wallh2: #a99f8e; --pr-roof: #b4573a; --pr-roof2: #7f3a24; --pr-timber: #c99357; --pr-timber2: #9a6a38; --pr-oldwall: #d9d2c4; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --pr-bore: #26323d; --pr-cont: #335f8c; --pr-cont3: #1f3b58; --pr-mix1: #7d776b; --pr-mix3: #918a7d; --pr-wallh: #a49c8e; --pr-wallh2: #6c6458; --pr-roof: #8d4630; --pr-roof2: #5a2a1a; --pr-timber: #a67a46; --pr-timber2: #7a5530; --pr-oldwall: #8f887b; } }
+:root[data-theme="dark"] { --pr-bore: #26323d; --pr-cont: #335f8c; --pr-cont3: #1f3b58; --pr-mix1: #7d776b; --pr-mix3: #918a7d; --pr-wallh: #a49c8e; --pr-wallh2: #6c6458; --pr-roof: #8d4630; --pr-roof2: #5a2a1a; --pr-timber: #a67a46; --pr-timber2: #7a5530; --pr-oldwall: #8f887b; }
+.pr-svg .pr-big { font: 800 15px/1 var(--f-display); fill: var(--pr-labtx); paint-order: stroke; stroke: var(--pr-labbg); stroke-width: 3px; }
+:root { --pr-bento: #8a865f; }
+.pr-strip[data-n="6"] .pr-col figcaption b, .pr-strip[data-n="7"] .pr-col figcaption b { font-size: 15.5px; }
+.pr-strip[data-n="6"] .pr-col figcaption, .pr-strip[data-n="7"] .pr-col figcaption { font-size: 13px; padding: 9px 10px 12px; }
+/* munkatér: gödör, szádpalló, jég */
+:root { --pr-pitb: #cddbe6; --pr-sheet: #8695a1; --pr-sheet2: #5f6e7a; --pr-sheet3: #b4c0c9; --pr-ice1: #f2fafe; --pr-ice2: #a9d6ee; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --pr-pitb: #1a2836; --pr-sheet: #6c7a85; --pr-sheet2: #46525c; --pr-sheet3: #8b98a3; --pr-ice1: #c9e3ef; --pr-ice2: #6ea6c4; } }
+:root[data-theme="dark"] { --pr-pitb: #1a2836; --pr-sheet: #6c7a85; --pr-sheet2: #46525c; --pr-sheet3: #8b98a3; --pr-ice1: #c9e3ef; --pr-ice2: #6ea6c4; }

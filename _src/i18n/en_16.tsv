@@ -91,26 +91,8 @@ ac3a189	${fmt(sL.v, 1)} m: assembled by splicing transportable elements (typical
 ce36736	The additional force from temperature is ${fmt((c.dN / c.Nb) * 100, 0)}% of the resistance – a strut longer than 10–15 m has to be designed for it.
 e3dd35a	Close to the limit
 1ada0f3	The strut safely carries the force from earth pressure and from warming as well.
-cbfcac3	A city-centre street: a multi-level structure will be built below the surface (underground car park, metro station, underpass).
-727a755	1. Building the retaining walls
-74c490a	First the retaining structures are built – diaphragm wall or pile wall – from the surface. Traffic only has to be diverted for this time.
-dad2a2d	2. Intermediate foundations and columns
-28413a1	If there are intermediate supports, their foundations (bored piles, barrettes) are made from the top, and the columns are placed: the steel column is lowered into the fresh concrete. In Hungary a temporary steel column is typically made beside the permanent columns.
-9d051e0	3. Top supporting slab
-e2500e5	After about 1–2 m of excavation, the top slab is cast on ground formwork (lean concrete + membrane) – without falsework. As a diaphragm it supports the walls; a muck-out opening is left in it, and the surface can be reinstated.
-2f9ef59	4. Excavation and intermediate slab
-32c1a94	The further levels are excavated under the slab by mining methods, with small machines; the soil leaves through the opening, a transport tunnel or a “pocket”. The intermediate slab is also cast on the ground.
-dd25677	5. Excavation and base slab
-fe05558	After the full excavation and the slabs are complete, the base slab is made; the columns are encased in concrete. No temporary struts or anchors were needed.
 faea7bc	Construction stage
-a2a1bff	Superstructure in parallel (for a building)
-a8e1d2c	guide frame – the steel column is lowered into the fresh concrete
-7da0ebe	top supporting slab (on ground formwork)
 c7887cc	intermediate slab
-af77968	muck-out
-ce7e357	ventilation
-d0b28de	traffic diversion – only while the walls are built
-966ac77	superstructure – built upwards meanwhile
 08eba7c	Placement rule: the active wedge of the main wall and the passive wedge of the anchor wall must not overlap. Here we draw planes at 45° + φ/2 from the toe of the main wall and at 45° − φ/2 from the bottom edge of the anchor wall (a simplification on the safe side). The movement is illustrative, exaggerated.
 a453162	Embedment of the main wall
 36e4c2d	Height of the anchor wall

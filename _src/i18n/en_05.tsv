@@ -96,8 +96,6 @@ e0c3b67	Multi-level tubular strutting in a tight inner-city infill plot, between
 e8da1f5	A large excavation braced with tubular struts in several directions.
 7fe8827	Supporting slab – the Milan (“top-down”) method
 24a27de	First the retaining walls (diaphragm wall, pile wall) are built. If there are intermediate supports or columns, their foundations (piles) are made from the top and the columns are placed. Then the top slab is cast on the ground as formwork; acting as a <strong>diaphragm</strong>, it supports the retaining walls. The further levels are built by mining methods – through a muck-out opening left in the slabs, a transport tunnel built further away, or a “pocket” built beside the structure.
-668ac1e	The five stages of the Milan method
-eaae091	Step through the stages – or switch on the superstructure, which is built upwards at the same time
 7e86ca5	Technical difficulties
 6400a61	The supports of the slab (columns) have to be made in advance, <strong>out of sight</strong> – the accuracy is an order of magnitude lower than in conventional construction.
 90f1467	The soil has to be excavated under the supporting slab, <strong>in a confined space</strong>.

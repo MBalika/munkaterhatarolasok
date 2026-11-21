@@ -35,3 +35,22 @@
   #falak .w-viz { overflow-x: auto; -webkit-overflow-scrolling: touch; }
   #falak .w-viz > svg.fig { min-width: 540px; }
 }
+/* a négy falcsoport (befogott támszerkezetek) */
+.fal-fams { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px 10px; margin: 14px 0 6px; }
+.fal-fams .fam { grid-column: span var(--span); min-width: 0; }
+.fal-fams .fam h4 { margin: 0 0 7px; padding-bottom: 5px; border-bottom: 2px solid var(--grp); text-align: center; font-family: var(--f-display); font-size: 15px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink2); }
+.fal-fams .fam-links { display: grid; grid-template-columns: repeat(var(--span), minmax(0, 1fr)); gap: 8px; }
+.fal-fams a { display: flex; flex-direction: column; gap: 2px; padding: 10px 12px; border-radius: 12px; border: 1px solid var(--line); background: var(--surface); text-decoration: none; color: var(--ink); box-shadow: var(--shadow); }
+.fal-fams a:hover { background: var(--surface3); }
+.fal-fams a b { font-family: var(--f-display); font-size: 18px; font-weight: 750; line-height: 1.1; }
+.fal-fams a span { font-size: 12px; color: var(--muted); font-family: var(--f-mono); }
+@media (max-width: 760px) {
+  .fal-fams { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .fal-fams .fam { grid-column: span min(var(--span), 2); }
+  .fal-fams .fam-links { grid-template-columns: repeat(min(var(--span), 2), minmax(0, 1fr)); }
+}
+.fam-h { display: flex; align-items: center; justify-content: center; gap: 10px; margin: 34px 0 -6px; font-family: var(--f-display); text-transform: uppercase; letter-spacing: 0.06em; color: var(--grp); }
+.fam-h::before, .fam-h::after { content: ""; flex: 1; height: 2px; background: linear-gradient(90deg, transparent, var(--grp)); opacity: 0.5; }
+.fam-h::after { background: linear-gradient(90deg, var(--grp), transparent); }
+.fam-h span { font: 700 12px/1 var(--f-mono); padding: 3px 7px; border-radius: 999px; background: var(--grp); color: #fff; letter-spacing: 0.02em; }
+.fam-h b { font-size: 19px; font-weight: 800; }

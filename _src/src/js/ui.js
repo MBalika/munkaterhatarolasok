@@ -33,7 +33,7 @@ function initNav() {
   const sheetList = $('#navsheetList');
   for (const c of chs) {
     if (c.id === 'bevezeto') continue;
-    if (topnav && ['alapok', 'ducolas', 'falak', 'szegezes', 'megtamasztas', 'kulonleges', 'tervezo', 'videotar', 'teszt'].includes(c.id))
+    if (topnav && ['alapok', 'ducolas', 'falak', 'megtamasztas', 'szegezes', 'kulonleges', 'tervezo', 'videotar', 'teszt'].includes(c.id))
       topnav.append(h('a', { href: '#' + c.id, 'data-ch': c.id }, c.id === 'tervezo' ? '3D' : c.id === 'teszt' ? 'Teszt' : c.t.replace('Munkaárok dúcolása', 'Dúcolás').replace('Határoló falak', 'Falak')));
     sheetList?.append(h('a', { href: '#' + c.id }, h('span', { class: 'num' }, '−' + fmt(c.d, 1) + ' m'), c.t));
   }

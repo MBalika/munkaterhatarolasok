@@ -18,7 +18,7 @@ export const VIDEOS = [
 export const VGROUPS = [
   { grp: 1, t: 'Dúcolások', ids: ['01', '02', '03'] },
   { grp: 2, t: 'Munkatérhatároló falak', ids: ['09'] },
-  { grp: 3, t: 'Szegezés és megtámasztás', ids: ['11', '12', '13', '14', '15'] },
+  { grp: 3, t: 'Megtámasztás és szegezés', ids: ['12', '15', '13', '14', '11'] },
   { grp: 4, t: 'Különleges megoldások', ids: ['16', '17', '18'] },
   { grp: 0, t: 'Összefoglalás', ids: ['19'] },
 ];
@@ -46,8 +46,8 @@ export const CHAPTERS = [
   { id: 'ducolas', t: 'Munkaárok dúcolása', d: 3.5, grp: 1 },
   { id: 'szeles', t: 'Széles gödör', d: 5.5, grp: 1 },
   { id: 'falak', t: 'Határoló falak', d: 7.5, grp: 2 },
-  { id: 'szegezes', t: 'Talajszegezés', d: 10, grp: 3 },
-  { id: 'megtamasztas', t: 'Megtámasztás', d: 12.5, grp: 3 },
+  { id: 'megtamasztas', t: 'Megtámasztás', d: 10, grp: 3 },
+  { id: 'szegezes', t: 'Talajszegezés', d: 12.5, grp: 3 },
   { id: 'kulonleges', t: 'Különleges', d: 15, grp: 4 },
   { id: 'tervezo', t: '3D gödörtervező', d: 17.5, grp: 0 },
   { id: 'dontes', t: 'Melyiket válasszam?', d: 19.5, grp: 0 },

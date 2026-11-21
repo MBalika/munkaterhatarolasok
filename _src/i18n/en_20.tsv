@@ -135,7 +135,6 @@ c23fdd1	m₀ (unsupported depth)
 f5e8247	The depth to which a vertical soil face above the groundwater temporarily stands without support: m₀ = 4c/(nγ)·tan(45°+φ/2) − p/γ.
 2652e7d	trench sheet (Patria, Union)
 f71a67c	Thin-walled profiled steel sheet for lining trenches – its joints are not watertight.
-612bdcf	vertical / stepwise driven / horizontal / pre-driven planking
 4b76ef3	The four planking methods, by the relationship between m₀ and H.
 b4f3db0	strut pressure
 8a353f2	The equivalent horizontal load acting on the shoring, assumed uniform (the reaction of the preloaded struts).
@@ -189,3 +188,4 @@ dc23316	A calcium chloride solution, cooled by a refrigeration plant to about �
 38cb47f	${v.d} · music: ${v.g}
 8d9dc14	Animated video · ${v.n}
 f256822	Flawless! You can go on to the next level.
+36022c4	vertical, stepwise driven, horizontal, pre-driven planking

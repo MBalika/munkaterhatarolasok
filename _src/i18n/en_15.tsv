@@ -41,35 +41,7 @@ fb15b24	Steel cylinders filled with sand: a gravity wall without internal bracin
 f1fc63f	The water overtops – the excavation floods!
 f1c6fd4	The flood wave (${fmt(dh.v, 1)} m) is higher than the freeboard (${fmt(fb.v, 1)} m). In an emergency the excavation is flooded deliberately, in a controlled way, so that the water pressure is balanced.
 e91abd3	 <b>Warning:</b> the flood wave is already close to the crest.
-01969dc	Starting situation
-7cae05e	High groundwater, permeable sand and gravel, the impermeable layer very deep. The groundwater <strong>must not be lowered</strong> (neighbouring buildings, trees, water regulations – e.g. in Berlin).
-6b61306	1. Enclosure with sheet piles
-34a449d	A watertight sheet pile wall (or diaphragm wall) encloses the excavation – but it does not reach the impermeable layer, so water would still come in from below.
-0fbeb48	2. Wet excavation
-4408996	The water is left inside: the soil is dug out from under water down to the bottom of the future slab. The excavation becomes an “artificial lake”, the groundwater level does not change.
-b0ca708	3. Temporary working platform + anchoring
-7e7aa00	From a floating pontoon (or beforehand, in the dry, from the working platform) tension piles are installed on a dense grid of about 2,5–3,5 m: GEWI bars or micropiles, grouted into the deeper layers.
-d32e466	4. Underwater concreting
-3463d42	Divers clean the anchor heads and suck away the silt. The slab is concreted by the <strong>tremie method</strong>: the end of the pipe stays in the fresh concrete throughout. Typical thickness 1–1,5 m.
-45c2a64	5. Pumping out
-1b3c01f	After hardening the water is pumped out gradually. From below the full water pressure pushes on the slab – it is held down by the <strong>weight of the slab + the tension of the anchors</strong>.
-87573a7	6. Fixing the anchors, base slab
-d050db9	In the dry, the anchor ends are fixed (plate + nut), then the permanent base slab and the structure are built on the underwater slab.
-6d1378c	Stage ${i}
-e97619d	impermeable layer – very deep
-fdfe340	sand, gravel – highly permeable
-340e513	planned excavation
 4236b94	sheet pile wall
-ff9c52d	water would come in from below
-c5a8edd	grab excavation under water
-5ff61b7	“artificial lake”
-ce13e2c	pontoon + drilling rig
-7aa1c86	diver
-a0865e8	tremie pipes – the end of the pipe in the fresh concrete
-0be5172	water pressure from below
-821b49a	pumping out
-d20a444	the anchors pull the slab down
-56c28dd	permanent base slab
 d371e5a	<b>Simplified, illustrative check</b> (on the model of the EC7 UPL verification): G<sub>dst</sub> ≤ 0,9·G<sub>stb</sub> + R<sub>d</sub>, γ<sub>w</sub> = 10 kN/m³. The partial factors have to be taken from the Hungarian National Annex; the shaft friction of the sheet piles and the piles is neglected here.
 5d02ed3	Dewatered depth above the slab
 7880d53	from the groundwater level to the top of the slab
