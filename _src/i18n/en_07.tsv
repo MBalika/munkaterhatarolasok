@@ -70,7 +70,7 @@ d89f8c6	Only for a short time, with checks
 5ecddaa	In cohesive soil a steeper slope can stand for a short time, but drying, soaking and perched water weaken it – a stability analysis is needed.
 ed05b22	It fits
 8f91b24	The slope takes up a strip ${fmt(a, 1)} m wide on each side${padka ? ', 1,5 m-es padkával' : ''}. Remember: the excavated soil has to be stockpiled outside the failure plane, then compacted back in layers.
-1e16244	, with a 1,5 m berm
+1e16244	, with a 1.5 m berm
 2396659	Quiz – basics
 45e913f	What is the difference between a foundation trench and a trench?
 3c56083	A foundation trench is made for a strip footing, a trench for a whole project (e.g. a utility)
