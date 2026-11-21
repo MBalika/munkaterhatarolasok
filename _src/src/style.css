@@ -666,3 +666,6 @@ main .rag, footer .rag, .hero-lead.rag { text-align: left !important; }
 @media (max-width: 440px) { .series { grid-template-columns: minmax(0, 1fr); } }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .series a.next b { color: #a8650a; } }
 :root[data-theme="dark"] .series a.next b { color: #a8650a; }
+/* fejléc: az app teljes neve keskeny kijelzőn is (két sorba törhet, nem vágjuk le) */
+@media (max-width: 600px) { .brand { flex: 1 1 auto; min-width: 0; } .brand b { display: block; white-space: normal; line-height: 1.02; } }
+@media (max-width: 420px) { .brand b { font-size: 15px; } }
