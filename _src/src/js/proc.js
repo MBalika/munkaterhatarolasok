@@ -1732,7 +1732,7 @@ PROC.colop = {
       spin(g, x, r.headBot + 32, 22);
       tag(g, 40, 220, 'átfúrás', { anchor: 'middle', to: [x - CH + 2, 220] });
     } },
-    { w: 236, t: 'Vasalás', d: 'A frissen betonozott szekunder cölöpbe vasalókosarat süllyesztenek – ezek a vasalt cölöpök viszik a nyomatékot.', draw(g, M) {
+    { w: 236, t: 'Vasalás', d: 'A frissen betonozott szekunder cölöpbe vasalási armatúrát süllyesztenek – ezek a vasalt cölöpök viszik a nyomatékot.', draw(g, M) {
       CPr.slice(0, 4).forEach((x) => cpile(g, x, 'P'));
       cpile(g, 48, 'S');
       cpile(g, 96, 'S', { fresh: true, cage: false });
@@ -2206,7 +2206,7 @@ PROC.resfal = {
       crane(g, M, 60, gr.top - 4, { reach: 110, tipY: 18 });
       tag(g, 140, 246, EN ? 'slurry' : 'zagy', { to: [92, 246] });
     } },
-    { w: 240, t: 'Vasalás, betonozás', d: 'Beemelik a vasalókosarat (hossztól függően 1–3 db), majd két kontraktorcsővel alulról betonoznak.', draw(g, M) {
+    { w: 240, t: 'Vasalás, betonozás', d: 'Beemelik a vasalási armatúrát (hossztól függően 1–3 db), majd két kontraktorcsővel alulról betonoznak.', draw(g, M) {
       rfBase(g, M, 1);
       rfPanel(g, M, 'P1', 'slurry');
       concrete(g, 22, 250, 76, 68);

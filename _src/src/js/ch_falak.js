@@ -113,7 +113,7 @@ register('falPlan', (root) => {
         if (!prim) { C(g, x, yc, D / 2 - 7, '', { style: 'fill:none;stroke:var(--bad);stroke-width:1.4;stroke-dasharray:3 2' }); }
       }
       if (typ === 'colE') for (let i = 0; i < n - 1; i++) leaks.push(40 + i * sp + sp / 2);
-      if (typ === 'colM') { T(g, 40, yc + 46, 'világos: primer (vasalatlan) · sötét, piros kosárral: szekunder (vasalt)', 't-sm'); }
+      if (typ === 'colM') { T(g, 40, yc + 46, 'világos: primer (vasalatlan) · sötét, piros armatúrával: szekunder (vasalt)', 't-sm'); }
       else T(g, 40, yc + 52, typ === 'colH' ? 'hézag 20–60 cm (≤ D) · lőttbeton a cölöpközökben' : 'tengelytáv = D', 't-sm');
     } else if (typ === 'res') {
       R(g, 0, yc - 32, W, 64, 'f-conc', { style: 'stroke:var(--concrete2);stroke-width:1' });
