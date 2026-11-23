@@ -17,6 +17,9 @@ def _bxt(h):  # dobozcímek középre (formázás skill) – boxtitle.inc.html a
     import pathlib as _p
     s = (_p.Path(__file__).resolve().parent / 'boxtitle.inc.html').read_text(encoding='utf-8')
     return h if 'id="bxt-js"' in h else h.replace('</head>', s + '</head>', 1)
+VA = '<script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments);};</script><script defer src="/_vercel/insights/script.js"></script>\n'
+def _va(h):  # Vercel Web Analytics (látogatottság-mérés) – a buildnek kell beszúrnia, különben újraépítéskor elveszik
+    return h if '/_vercel/insights/script.js' in h else h.replace('</head>', VA + '</head>', 1)
 import json, os, subprocess, sys, pathlib, re, shutil, glob
 os.environ['ATTRS'] = 'data-sub,data-title,data-kick,data-tag,data-note,data-caps'   # a widgetek címei, alcímei, a videókártyák feliratai is fordítandók
 
@@ -109,7 +112,7 @@ def build(src, lang, outname):
     if lang != 'hu':
         for x, y in POST: assert html.count(x) == 1, x; html = html.replace(x, y)
         for s in EN_SITES: html = re.sub(rf'https://{s}\.vercel\.app/?(#[\w-]+)?(?=["\'`])', lambda m, s=s: f'https://{s}.vercel.app/en' + (m.group(1) or ''), html)
-    (R.parent / outname).write_text(_bxt(html), encoding='utf-8')
+    (R.parent / outname).write_text(_va(_bxt(html)), encoding='utf-8')
     print(outname, len(html) // 1024, 'KB')
 
 
