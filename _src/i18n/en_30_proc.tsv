@@ -15,11 +15,9 @@ a8f7052	The four steps of building a reinforced self-hardening slurry wall
 ebf1e6b	The five steps of building a jet grout wall
 39eb458	The five steps of building a soldier pile wall
 21d3b9f	<span>1/4</span><b>Walls with spaced reinforcement</b>
-8cc6c51	In the <b>walls with spaced reinforcement</b> vertical steel beams standing at intervals carry the load, and the panel between them is bridged by some kind of infill: these are the soldier pile wall, the jet grout wall, the reinforced self-hardening slurry wall and the reinforced deep mixed wall. In the other three groups the <b>whole structure of the wall</b> carries the load: the <b>sheet pile wall</b> consists of interlocking sheets, the <b>pile wall</b> of a row of spaced, contiguous or secant piles (in a spaced pile wall the soil arches between the piles), and the <b>diaphragm wall</b> of panels concreted under slurry.
 8b07005	<a href="#szadfal"><span>4.5</span><b>Steel sheet pile wall</b></a><a href="#szadanyag"><span>4.6</span><b>Timber, concrete, plastic sheet piles</b></a>
 371e83b	Sheet pile walls
 c7e1751	<a href="#berlini"><span>4.1</span><b>Soldier pile wall</b></a><a href="#jetfal"><span>4.2</span><b>Jet grout wall</b></a><a href="#zagyfal"><span>4.3</span><b>Reinforced slurry wall</b></a><a href="#dsmfal"><span>4.4</span><b>Deep mixed wall</b></a>
-1a94a2d	If the excavation is deeper and wider than can comfortably be braced with struts – or a street or neighbouring building stands right beside it –, the soil face is held by a wall structure installed in the ground <em>before</em> the excavation. These walls reach below the bottom of the excavation, are embedded there, and, keeping pace with the excavation, are supported as needed by struts, anchors or slabs. These <b>embedded retaining walls</b> fall into four groups: walls with spaced reinforcement, sheet pile walls, pile walls and diaphragm walls – and the chapter follows the same order.
 08c863f	The five phases of the Milan (top-down) method
 07846f9	The five steps of propping with steel pipe struts
 7644e21	The four steps of a passive tie-back
@@ -118,46 +116,32 @@ dd67c2c	A reinforced concrete capping beam ties the pile heads together; keeping
 71f9b2a	Capping beam, excavation
 1876586	A reinforcement cage is lowered into the freshly concreted secondary pile – these reinforced piles carry the bending moment.
 33b7ebf	overlap cut
-edef0d9	1–3 days later the secondary pile is drilled between the primaries: the auger “cuts” 10–12 cm into the neighbouring primary piles.
 b7673f4	Secondary pile
-8b184f9	First every second, unreinforced primary pile is made, with deliberately weaker concrete (by CFA or cased boring).
 7b8d812	Primary piles
-4e063f6	guide wall
-b85fce2	The positions of the piles are marked out by a reinforced concrete guide wall: it guides the boring and ensures the exact position of the pile heads.
-06e23c1	Guide wall
 ed9a953	backfill
 03ce39c	After the final structure is complete, the excavation is backfilled and the sheet piles are extracted with a vibrator – they can be reused.
 1f58a4c	Backfilling, extraction
 4efeba0	pipe strut
-4327ccb	Protected by the watertight wall the soil is excavated; steel pipe struts (or anchors) bearing on the waling hold the top and the middle of the wall.
 bd0845e	Excavation, support
 e7767a4	pair of sheet piles
-99d58c4	The counter-rotating eccentric weights of the vibrator “fluidise” the granular soil along the sheet. The sheets are driven in stages, a few metres at a time.
 e98ab25	Driving by vibration
 bdd840f	The sheets – mostly paired in the factory – are set in a guide frame so that the wall is straight and vertical.
 6f191d7	Guide frame, pitching
-6cc60b9	After hardening the soil is excavated, and the wall is supported by a waling and anchors or struts.
 31238f9	First the primary and then the secondary panels cutting into them are made – so the wall is continuous and watertight.
 4d6846b	Steel I/H sections are set into the fresh mix; the next primary panel can already be made.
 b6a2a0a	Steel beam
-834e3f8	At the bottom the wheels reverse, and on the way up they mix the panel with cement slurry into homogeneous soil-cement.
 9e28c3b	Upwards: mixing
 5290cc9	cutter wheels
 548dcbe	The two pairs of counter-rotating wheels of the cutter head break up the soil on the way down while slurry is added.
 adedfd8	Downwards: cutting
-7618897	Excavation can start after 2–4 weeks. The hardened slurry passes the earth pressure to the steel sections by arching; the exposed face is protected with plastic sheeting.
 720788d	hardening slurry
 26b3886	No concrete goes into the trench: the slurry, containing cement, hardens by itself (single-phase method). Meanwhile the next panel is made.
 e7684a3	steel section
-3678d42	Steel I/H sections are set into the liquid slurry every 1–2 m and fixed to the guide wall.
 28913f5	Steel sections
-ad81507	The panel is excavated with a grab between guide walls; as it is dug, the trench is filled and supported by cement–bentonite slurry.
 c591c7c	Grabbing under slurry
-1c34edd	After hardening the soil is excavated; the wall is supported by a waling and anchors. No lagging is needed, the steel is surrounded by solid soil-cement.
 d856a39	Secondary columns are placed between the primary columns; the overlap closes the wall, making it quasi-watertight.
 219b626	Intermediate columns
 dd4f559	A steel I/H section is lowered into the still fluid column – into its axis, which the drill rod has passed through.
-d191c0a	Rotated and slowly withdrawn, a jet of cement slurry at ~400 bar cuts and mixes the soil: a soil-cement column of 60–120 cm forms, the surplus rising as spoil.
 f8c3473	Jetting
 1c75238	The small drilling rig sinks a hole of about 10–15 cm down to the bottom of the planned column.
 d2ea338	At the edge the slab and the basement wall are completed; the raking strut can be removed only after that, once the basement structure is finished.
@@ -204,24 +188,18 @@ f1a7806	Excavation may go only about 0,5 m below the level of the anchor row –
 b75be19	The planks are removed from the bottom up, keeping pace with the backfill compacted in layers; finally the beams are extracted – they can be reused.
 f5e8b28	Excavation and lagging proceed step by step, keeping pace with each other, down to the final excavation bottom.
 6f5d901	Down to the bottom
-f86c47b	When the wall would no longer stand as a cantilever, the beams are tied together with a steel waling and supported by anchors or struts.
 d69c5f9	timber plank
-da86914	The soil is excavated lift by lift, and horizontal timber planks are slid between the beams and wedged. The exposed soil face may be at most 0,5–1 m high.
 13dd818	Excavation, lagging
 8e51aff	steel beam
-0ea40ef	The I/H beams are placed every 1–3 m – today rather quietly, in bored holes. Below the future excavation bottom the hole is filled with lean concrete: that is where the embedment works.
 7299e3b	Beams in bored holes
 d66b2c3	After the secondary panel is reinforced and concreted, the panels form a continuous wall.
 cf63438	Reinforcement, concreting
 b3959ca	Between two finished primary panels the secondary panel is bitten out.
 14aed6d	Secondary panel
-d4e8a2e	The reinforcement cage is lifted in (1–3 pieces depending on the length), then concreting from the bottom through two tremie pipes.
 2a0a2c2	After the middle bite the primary panel stands open over its full length – under slurry.
 42b41be	The middle of the panel
-47f5b2d	The two ends of the primary panel are bitten out; the space of the excavated soil is immediately filled with slurry.
 921c1b3	Primary bites
 256d178	guide wall
-eddf58f	A pair of reinforced concrete beams is built on both sides of the trench: it marks out and guides the trench.
 753be75	Guide wall
 a55c2c5	water pressure
 217d657	tension pile
@@ -230,7 +208,6 @@ a55c2c5	water pressure
 eeebd45	diaphragm wall
 6c004c8	passive wedge
 39eff75	Reinforcement
-09066d2	returning spoil
 1c5b655	finished column
 f8d3e82	Drilling
 6e30f68	casing

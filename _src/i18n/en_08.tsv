@@ -3,7 +3,6 @@ eed1506	Typically economical up to 12–15 m.
 30fc47b	Loose, soft material can flow or run out between the planks.
 75d0130	For a narrow trench it is more expensive than shoring.
 39cdd46	Soldiers set in bores are needed instead of driving (noise control).
-72d43e9	Temporary structure.
 50879d4	Flexible wall: right beside a building the movement can be larger.
 5d0f021	Labour-intensive.
 84939ef	A wall on the soldier pile principle with steel members, but quasi-watertight, and no lagging or bore filling is needed.
@@ -15,47 +14,36 @@ e19d6e5	For a deeper excavation it is rarely economical.
 c802b5d	Vibration-free.
 39c1c1a	Typically temporary.
 43dd72b	Not economical for a narrow trench.
-ef753d6	A lot of spoil is produced, the diameter depends on the soil.
-4bf9a9e	Typically for excavations at most 7–10 m deep.
-34a3152	For temporary excavation support.
 7205f53	With high groundwater it is quasi-watertight: it combines the advantages of the soldier pile wall and the diaphragm wall.
 4408543	Without groundwater the advantage of watertightness is not used.
 a46c198	Economical if the impermeable layer is much deeper than the toe the wall needs structurally (the steel is only needed down to there).
 6f537b5	Not recommended beside a settlement-sensitive structure or a large surface load.
 81bb447	Soil unfavourable for trench stability.
 d7e26ac	Reinforced deep mixed wall (CSM, colmix, trenchmix)
-e9ea0f6	Excavation support and seepage cut-off wall.
 8b69460	Rubble fill hinders mixing.
 2f07c57	Hard to mix in hard, stony soil.
 a231ccd	In organic, soft soil the setting is uncertain.
-cf29ad0	Vibration-free, little spoil.
 57d45b8	A large rig and a mixing plant are needed.
 c16a20c	Interlocks: a watertight wall which, keyed into the impermeable layer, keeps out the groundwater.
 b7a7c5d	Fast, can be built in tight spaces.
 b48f9cd	The vibration of driving reaches as far as 20–30 m – with a strict limit only pressing-in is possible.
-aaf53f6	Near a neighbouring building the vibration has to be checked.
 0d87287	In rubble fill the pile gets stuck – pre-drilling is needed.
-32782da	In hard, stony clay and rock bands pre-drilling is needed.
 25fe195	In soft soil it can even be pressed in.
 d3f8fff	For a temporary wall it can be extracted and reused.
-0dca184	A permanent wall needs corrosion protection.
 d78059d	At great depth: long piles, several strut/anchor levels.
 3bd4e26	Spaced pile wall
 044cdc5	Not watertight – not suitable for excavation below the groundwater.
 d3e5e4c	Soft soil does not arch between the piles.
-6050717	Only seasonal perched water can be handled (surface drain, drainage pipes).
 cb08b29	Ideal in hard clay and soft rock: few piles are enough.
 5ad03fa	Granular soil runs out through the gaps – a contiguous wall is needed.
 c8d04b0	Built on a tight urban plot, vibration-free (CFA).
 0092da4	Can also be a permanent wall (e.g. road cutting).
 3dd6205	Contiguous pile wall
-068e9a7	Not watertight.
 7b18cc3	If the soil is not stable on its own, but no watertightness is needed.
 272bdeb	Water can seep through the gaps between the piles.
 63c8adb	Vibration-free, stiff wall.
 e964f6e	Secant pile wall
 87542c6	Watertight wall: every second (secondary) pile is reinforced.
-12f970d	Compared with a diaphragm wall, economical only in special cases.
 2e8ce6e	Vibration-free, stiff.
 189c736	At depth the overlap can run out because of the inclination of the piles.
 2a08d06	Watertight; keyed into the impermeable layer, it keeps out the groundwater.

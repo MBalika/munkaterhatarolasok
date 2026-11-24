@@ -27,12 +27,10 @@ fdfa0a9	The simplest, but needs a lot of space
 a06bb01	Shoring a wide excavation
 e6ff01a	Buckling, raking struts
 1cca150	Soldier pile wall
-db48376	I-beams + planks, for a dry excavation
 31afcee	Steel in jet columns, quasi-watertight
 bee6a3d	Reinforced slurry wall
 f6f0972	Self-hardening slurry + steel beams
 247dae4	Deep mixed wall
-a766b9b	Soil-cement mixed in place + steel
 e866ae1	Steel sheet pile wall
 e05b4ff	Interlocked, watertight, extractable
 e2dcf8e	Timber, RC, plastic sheet piles
@@ -131,5 +129,4 @@ c74caad	In coarse-grained soil m₀ = 0: only pre-driven (steel) planking is pos
 d13023a	Not watertight: dewatering is needed.
 79daaa8	Temporary only.
 74b39d7	Soldier pile (Siemens) wall
-f34ae35	Not watertight: water seeps through between the planks – only above the groundwater (or with groundwater lowering).
 65f395b	One of the most economical temporary supports for dry, not too deep excavations.

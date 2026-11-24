@@ -7,17 +7,12 @@ e5a3a1b	Without groundwater, for example, a soldier pile wall or a spaced pile w
 3bddc4a	The two pairs of counter-rotating cutter wheels break up the soil on the way down, while slurry is added.
 80918a6	P1 – up: mixing + cement
 ccd3483	At the bottom the wheels reverse; on the way up they mix the soil into a homogeneous mass with cement grout.
-c553de7	Steel into the fresh panel
-5188d79	Steel I/H beams are set into the still fresh soil-cement (with a vibrator if needed).
 2dd848b	P2, P3 primary panels
 4583bb0	The primary panels are made with a gap of one panel between them.
 a783c96	S1, S2 secondary panels
 fa0b0ce	The secondary panels cut into the neighbouring primaries (“fresh into fresh”) – so the wall is continuous.
-ef7565a	Excavation after hardening; the beams are supported along a waling by struts or anchors; the face is trimmed and protected with shotcrete if needed.
-a34aa90	Colmix (multi-auger, column-type)
 bec9823	Setting out the wall line, a guide trench for the displaced mix.
 0678993	Group 1 – down
-1cc17ac	Several (e.g. three) adjacent augers drill down, binder is added through the hollow stem.
 5406b8b	Group 1 – up
 5661ac6	The soil is mixed on the way up: intersecting columns are formed.
 59baa84	Steel into the fresh columns
@@ -36,10 +31,8 @@ fb8abea	The machine moves along the wall line, the chain mixes the soil vertical
 2c540f3	Steel continuously
 3f675c9	Behind the machine, the steel sections go into the fresh mix.
 aef3d31	The wall is complete
-0fca3db	A soil-cement wall of uniform thickness, without gaps or panel joints.
 ca9c02b	Hardening
 26f5b34	The mix hardens (strength depending on the soil and the cement content).
-c9bf117	Support by waling + strut/anchor.
 16b69b4	guide trench
 ba365bf	↓ cutting + slurry
 da29906	↑ mixing + cement
@@ -50,7 +43,6 @@ b274d7d	→ moving sideways
 0fcab5e	e.g. 14,5 m deep panel ≈ 47 minutes (rig log)
 9afb2e9	depth: depends on the rig and the soil
 07fc4e3	excavation bottom
-e8f9660	soil-cement + steel
 3228458	preparation: setting out, guide trench, mixing plant
 5909cd8	AS 500 (straight web)
 cdafc8a	The number in the section name ≈ W / 100 (cm³/m). The design here is only an elastic bending check: W<sub>req</sub> = M / f<sub>y</sub> – in reality the factors of EN 1993-5 (e.g. the reduction for interlock shear in U piles), local buckling and deformation also count. Illustrative.
@@ -117,10 +109,6 @@ c6032c0	No longer used today – down to 2–6 m, only as a permanent structure.
 3377a3f	First guide piles were driven, and the tongue-and-groove planks were driven between them.
 e171063	Durable only if permanently under water – it rots in the zone of fluctuating water level.
 bcad2ff	Reinforced concrete sheet piles
-a2b5cbf	For permanent sheeting: harbours, open water, bank protection.
-261bb49	Its drawback is the great weight – it also has to be designed for transport (4–8 m).
-8205a52	Prestressing reduces the weight.
-c068e57	Driving is difficult: it is assisted by water jetting; the joints are grouted afterwards.
 25f6fbd	Plastic (PVC) sheet piles
 490c9ab	Not yet widespread in Hungary – permanent bank walls, harbours, canal banks.
 91d4971	30 cm wide “pressed” corrugated sheet (e.g. Geoflex), only about 9 kg/m².

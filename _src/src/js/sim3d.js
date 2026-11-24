@@ -129,16 +129,16 @@ function evaluate(S) {
       add(P.soft ? 'warn' : 'ok', P.soft ? 'Berlini dúcolat puha talajban' : 'Berlini dúcolat', P.soft ? 'Puha talajban a pallózás beépítéséig a földfal nem áll meg, a talaj kifolyhat a pallók mögül.' : 'Száraz, nem túl mély gödrök egyik leggazdaságosabb ideiglenes megtámasztása; zajvédelmi okból ma inkább furatba helyezik a tartókat.', '#berlini');
     }
     if (wall === 'szad') {
-      if (S.prof === 'A') add('warn', 'Szádfal kemény agyagban', 'Kemény, köves agyagban a pallók nehezen hajthatók le – előfúrás kell.', '#szadfal');
-      add('warn', 'Rezgés a szomszédban', `A verés, vibrálás rezgése 20–30 m-re is elhathat – a ${fmt(dist, 1)} m-re lévő épületre vizsgálni kell (csendesebb: sajtolás).`, '#szadfal');
+      if (S.prof === 'A') add('warn', 'Szádfal kemény agyagban', 'A szádpallók tömör, kemény talajon is áthatolnak, de köves rétegben, kőpadban előfúrás kellhet.', '#szadfal');
+      add('warn', 'Zaj és rezgés a szomszédban', `A szádfalazás hátránya a zaj- és rezgéskeltés: a verés, vibrálás rezgése 20–30 m-re is elhathat – a ${fmt(dist, 1)} m-re lévő épületre vizsgálni kell (csendesebb: sajtolás).`, '#szadfal');
     }
     if (wall === 'zagy') {
-      const zs = H > 10 ? 'bad' : H > 7 ? 'warn' : 'ok';
-      add(zs, 'Zagyfal mélysége', `Az erősített önszilárduló zagyfal jellemzően legfeljebb 7–10 m mély, ideiglenes munkatérhez optimális.${dist < H ? ' Süllyedésre érzékeny szerkezet közelében kerülendő.' : ''}`, '#zagyfal');
+      const zs = H > 10 ? 'bad' : H > 8 ? 'warn' : 'ok';
+      add(zs, 'Zagyfal mélysége', `Az erősített önszilárduló zagyfalat általában legfeljebb 7–8 m mély, ideiglenes munkatereknél használják, ahol a fal elbontása szükséges.${dist < H ? ' Süllyedésre érzékeny szerkezet közelében kerülendő.' : ''}`, '#zagyfal');
       if (P.soft) add('warn', 'Résállékonyság', 'A zagyfal kedvező résállékonyságú talajt igényel – puha talajban a rés beomolhat.', '#zagyfal');
     }
-    if (wall === 'jet') add(H > 10 ? 'warn' : 'ok', 'Jet-grouting fal', `Jellemzően 1–2 szintes mélygarázsokhoz, utólagos hozzáépítésekhez; az oszlopátmérő talajfüggő (60–120 cm).${H > 10 ? ' Ekkora mélységhez inkább résfal.' : ''}`, '#jetfal');
-    if (wall === 'res') add('ok', 'Résfal', 'Nagy mélységig (akár 40 m felett) vízzáró, merev fal; egyben végleges pincefal is lehet.', '#resfal');
+    if (wall === 'jet') add(H > 10 ? 'warn' : 'ok', 'Jet-grouting fal', `Jellemzően 1–2 szintes mélygarázsokhoz, utólagos hozzáépítésekhez; az oszlopátmérő talajfüggő (szimpla jet 50–100 cm, dupla jet kb. 120 cm).${H > 10 ? ' Ekkora mélységhez inkább résfal.' : ''}`, '#jetfal');
+    if (wall === 'res') add('ok', 'Résfal', 'Általában 10–30 m (akár 100–120 m) mélységig vízzáró, merev fal; egyben végleges pincefal is lehet.', '#resfal');
     if (wall === 'metszo') add('info', 'Összemetsző cölöpfal', 'Vízzáró, de csak minden második cölöp vasalt; a résfallal szemben csak speciális esetben gazdaságos.', '#colopfal');
     if (tooLong) add('bad', 'Túl hosszú fal', `A szükséges ${fmt(toe, 1)} m-es falhossz meghaladja a technológia szokásos határát (~${W.max} m).`, W.link);
   }
@@ -351,7 +351,7 @@ register('sim3d', (root) => {
   const oNb = stat(ui.out, { label: 'Szomszéd mozgása' });
   const checkBox = h('div', { class: 'sim-check' });
   const legend = h('div', { class: 'sim-legend' }, h('div', { class: 'legend' },
-    ...[['Acél (szádfal, tartó)', COL.sheet], ['Vasbeton', COL.conc], ['Jet / talajcement', COL.jet], ['Zagy', COL.slurry], ['Pallózás', COL.timber],
+    ...[['Acél (szádfal, tartó)', COL.sheet], ['Vasbeton', COL.conc], ['Jet / talajbeton', COL.jet], ['Zagy', COL.slurry], ['Pallózás', COL.timber],
       ['Heveder', COL.waler], ['Horgony befogott szakasza', COL.grout], ['Csőtámasz', COL.strut], ['Talajvíz', COL.water]].map(([t, c]) => h('span', {}, h('i', { style: { background: hex(c) } }), t)),
     h('span', {}, h('i', { style: { background: 'transparent', borderTop: '2px dashed #d0533e', borderRadius: 0, height: 0 } }), 'aktív csúszólap')));
   root.append(checkBox, legend);

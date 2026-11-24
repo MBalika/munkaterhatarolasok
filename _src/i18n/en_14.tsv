@@ -1,7 +1,6 @@
 f88233b	The most common, especially for temporary excavation support.
 5b8dce6	Easy to drive and extract, the best watertightness.
 a957bff	Flat, half-wave (U, Z) or full-wave sections; in Hungary Larssen and Hoesch.
-41f1ede	For permanent use, separate corrosion protection requirements.
 a32345b	Mass: a pile 6 m long and 30 cm wide, <b>illustrative calculation</b> – PVC: 9 kg/m²; steel: AU 14, 104 kg/m²; timber: 10 cm thick pine, ~600 kg/m³; reinforced concrete: 25 cm thick, ~2500 kg/m³.
 801a34a	 sheet piles
 b1bba4f	Section (plan, sketch)
@@ -51,12 +50,9 @@ f0642eb	It just holds
 64ca9b8	The overlap holds down to the toe
 4350b9d	There is still ${fmt(aL, 1)} cm of overlap at the toe. An inclination of “1 cm/m” already means a deviation of 10 cm at 10 m depth – that is why the guide wall and accurate drilling are critical.
 abe7b6d	Quiz – excavation support walls
-5f79da3	At what spacing are the steel I-beams of a soldier pile wall usually placed?
 05b259e	every 0,5–1 m
-d509cf4	every 1–3 m, usually 2 m
 8b6e40e	every 4–6 m
 27c8978	always exactly 3 m apart
-528ae15	1–3 m apart, usually 2 m; a closer spacing can be justified by a higher load.
 844d1ac	Why are the soldiers of a soldier pile wall now usually set in bores (rather than driven)?
 37dedeb	Because this makes the wall watertight
 097e15e	For noise reasons – and so layers that are hard to drive through are not a problem either
@@ -105,7 +101,6 @@ d5054e7	The unreinforced (primary) piles, then the reinforced ones between them,
 3ee18a7	The capping beam first
 0683c21	First the unreinforced piles, then between them – cutting about 10–12 cm into them – the reinforced piles that can also take moment. Only every second one is reinforced.
 091ce11	Which wall is NOT suitable as a watertight support for an excavation below the groundwater?
-e4af0a5	Water seeps through between the planks of a soldier pile wall – it can only be used above the groundwater or with dewatering.
 ed82346	<b>Illustrative model.</b> The radius of the ice cylinders grows roughly as √t; the rates are matched to the typical ranges (brine 4–8 weeks, LN₂ 1–3 weeks, faster in sand, slower in clay). Design needs a thermal calculation and on-site temperature measurement.
 b39dc4e	Coolant
 5602056	Brine ≈ −30 °C

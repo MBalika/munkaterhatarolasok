@@ -1097,7 +1097,7 @@ function bBeams(g, M, n, lev, o = {}) {
 PROC.berlini = {
   H: 360, GY: 130, layers: [{ k: 'fill', y: 130, lab: 'feltöltés' }, { k: 'sand', y: 156, lab: 'homokos kavics' }, { k: 'clay', y: 262, lab: EN ? 'clay' : 'agyag' }],
   steps: [
-    { w: 264, t: 'Tartók furatba', d: 'Az I/H-tartókat 1–3 m-enként – ma inkább csendesen, furatba – helyezik el. A furatot a leendő gödörfenék alatt sovány betonnal töltik ki: ott dolgozik a befogás.', draw(g, M) {
+    { w: 264, t: 'Tartók furatba', d: 'Az acél I/H- vagy összekapcsolt U-tartókat sűrűn, 1,5–2,5 m-enként juttatják le: veréssel, vibrálással vagy – ma inkább csendesen – furatba helyezve és kibetonozva. A leendő gödörfenék alatt ott dolgozik a befogás.', draw(g, M) {
       bBeams(g, M, 2, M.GY);
       const x = 150, r = rig(g, M, x, { top: 14, headY: 70 });
       auger(g, x, r.headBot, 300, 10, { soilFrom: M.GY, soilTo: 296, soil: 'sand', pat: 'pr-p-sand' });
@@ -1106,7 +1106,7 @@ PROC.berlini = {
       tag(g, 34, 92, 'acéltartó', { anchor: 'middle', to: [34, 124] });
       tag(g, 70, 300, 'sovány beton', { anchor: 'middle', to: [88, 290] });
     } },
-    { w: 252, t: 'Kiemelés, pallózás', d: 'Fogásonként kiemelik a földet, és a tartók közé vízszintes fapallókat csúsztatnak, kiékelve. A szabadon álló földfal legfeljebb 0,5–1 m lehet.', draw(g, M) {
+    { w: 252, t: 'Kiemelés, pallózás', d: 'Fogásonként kiemelik a földet, és a tartók közé párhuzamosan fa- vagy betonpallókat helyeznek; a fapallókat hevedergerendák és ékek feszítik a tartók közé. A szabadon álló földfal legfeljebb 0,5–1 m lehet.', draw(g, M) {
       const lev = 182;
       level(g, 0, 252, lev, { top: M.GY });
       bBeams(g, M, 4, lev);
@@ -1116,7 +1116,7 @@ PROC.berlini = {
       tag(g, 62, 146, 'fapalló', { anchor: 'middle', to: [62, 160] });
       tag(g, 182, lev - 10, '≤ 0,5 m', { anchor: 'middle', fs: 9.5 });
     } },
-    { w: 252, t: EN ? 'Waling, anchors' : 'Heveder, horgony', d: 'Ha a fal konzolként már nem állna meg, a tartókat acél hevederrel fogják össze, és horgonyokkal vagy dúcokkal támasztják meg.', draw(g, M) {
+    { w: 252, t: EN ? 'Waling, anchors' : 'Mellgerenda, horgony', d: 'Ha a fal konzolként már nem állna meg, a tartókat mellgerendával fogják össze, és horgonyokkal vagy dúcokkal támasztják meg.', draw(g, M) {
       const lev = 222, wy = 196;
       level(g, 0, 252, lev, { top: M.GY });
       bBeams(g, M, 4, lev);
@@ -1125,7 +1125,7 @@ PROC.berlini = {
       waleF(g, 0, 252, wy, { h: 11 });
       BX.forEach((x) => aheadF(g, x, wy));
       worker(g, 120, { GY: lev, pose: 'signal' });
-      tag(g, 182, wy - 24, 'heveder + horgonyfej', { anchor: 'middle', to: [208, wy - 6] });
+      tag(g, 182, wy - 24, 'mellgerenda + horgonyfej', { anchor: 'middle', to: [208, wy - 6] });
     } },
     { w: 252, t: 'Gödörfenékig', d: 'A kiemelés és a pallózás lépésről lépésre, egymással lépést tartva halad a végleges gödörfenékig.', draw(g, M) {
       const lev = 252, wy = 196;
@@ -1479,7 +1479,7 @@ PROC.jet = {
       holeWall(g, x, M.GY, 300, 4);
       tag(g, 34, 330, 'kész oszlop', { anchor: 'middle', to: [34, 300] });
     } },
-    { w: 252, t: 'Jetelés', d: 'Forgatva, lassan húzva ~400 bar nyomású cementzagy-sugár vágja és keveri a talajt: 60–120 cm-es talajcement oszlop készül, a felesleg iszapként jön fel.', draw(g, M) {
+    { w: 252, t: 'Jetelés', d: 'Forgatva, 25–35 cm/perc sebességgel húzva a 350–400 bar nyomású cementhabarcs-sugár felaprózza és kötőanyaggal keveri a talajt: 50–120 cm-es talajbeton oszlop készül, a felesleg visszafolyó cementhabarcsként jön fel.', draw(g, M) {
       jcol(g, 34, M.GY, 300, { beam: true });
       const x = 86, y = 228;
       column(g, x, y + 6, 300, JH, 'jet');
@@ -1489,7 +1489,7 @@ PROC.jet = {
       spin(g, x, y - 26, 16);
       arrowV(g, x + 26, 274, 242, { w: 2.4, s: 7 });
       spoil(g, M, x - 40, 30, 7, 'silt');
-      tag(g, 112, 168, 'visszafolyó iszap', { anchor: 'start', to: [x + 4, 176] });
+      tag(g, 112, 168, 'visszafolyó habarcs', { anchor: 'start', to: [x + 4, 176] });
     } },
     { w: 236, t: 'Acéltag', d: 'A még folyós oszlopba – a fúrószárral átjárt tengelyébe – acél I/H-szelvényt engednek.', draw(g, M) {
       jcol(g, 34, M.GY, 300, { beam: true });
@@ -1512,7 +1512,7 @@ PROC.jet = {
       tag(g, 60, 330, EN ? 'secondary' : 'szekunder', { anchor: 'middle', to: [60, 300] });
       tag(g, 190, 330, EN ? 'primary' : 'primer', { anchor: 'middle', to: [190, 300] });
     } },
-    { w: 252, t: 'Kiemelés, megtámasztás', d: 'Szilárdulás után kiemelnek; a falat hevederrel és horgonyokkal támasztják meg. Pallózás nem kell, az acélt szilárd talajcement veszi körül.', draw(g, M) {
+    { w: 252, t: 'Kiemelés, megtámasztás', d: 'Szilárdulás után kiemelnek; a falat mellgerendával és horgonyokkal támasztják meg. Pallózás nem kell, az acélt szilárd talajbeton veszi körül.', draw(g, M) {
       const lev = 244;
       level(g, 0, 252, lev, { top: M.GY, shade: false });
       [...JS, 216].forEach((x) => jcol(g, x, M.GY, 300));
@@ -1537,14 +1537,14 @@ function zPanel(g, M, [a, b], kind, bot = 300) {
 PROC.zagyfal = {
   H: 360, GY: 130, gw: 196, layers: [{ k: 'fill', y: 130, lab: 'feltöltés' }, { k: 'sand', y: 152, lab: EN ? 'sand' : 'homok' }, { k: 'clay2', y: 268, lab: EN ? 'clay' : 'agyag' }],
   steps: [
-    { w: 250, t: 'Markolás zagy alatt', d: 'A panelt résvezető gerendák között markolóval emelik ki; a rést a kiemeléssel együtt cement–bentonit zagy tölti ki és támasztja meg.', draw(g, M) {
+    { w: 250, t: 'Markolás zagy alatt', d: 'A rést résvezető gerendák között réselőgéppel (markolóval) – kisebb mélységnél hidraulikus kotróval – emelik ki; a kiemeléssel együtt önszilárduló zagy (bentonitzagy + cement) tölti ki és támasztja meg.', draw(g, M) {
       zGuide(g, M, 140);
       zPanel(g, M, ZP1, 'slurry');
       const gr = grab(g, 70, 286, 18, 0.4);
       crane(g, M, 70, gr.top - 4, { reach: 108, tipY: 14 });
       tag(g, 196, 250, EN ? 'cement–bentonite slurry' : 'cement–bentonit zagy', { anchor: 'middle', to: [112, 250] });
     } },
-    { w: 250, t: 'Acélszelvények', d: 'A folyékony zagyba 1–2 m-enként acél I/H-szelvényeket állítanak, és a résvezetőn rögzítik.', draw(g, M) {
+    { w: 250, t: 'Acélszelvények', d: 'A folyékony zagyba sűrűn, 1–2 m-enként acél I/H-gerendákat állítanak, és a résvezetőn rögzítik: ezek adják a nyomatéki teherbírást.', draw(g, M) {
       zGuide(g, M, 140);
       zPanel(g, M, ZP1, 'slurry');
       [40, 70].forEach((x) => hbeamF(g, x, M.GY - 8, 292, { w: 8 }));
@@ -1565,7 +1565,7 @@ PROC.zagyfal = {
       crane(g, M, 166, gr.top - 4, { reach: 64, tipY: 14 });
       tag(g, 70, 330, 'szilárduló zagy', { anchor: 'middle', to: [70, 300] });
     } },
-    { w: 250, t: 'Kiemelés', d: 'A kiemelés 2–4 hét múlva kezdődhet. A szilárd zagy boltozatként adja át a földnyomást az acélszelvényeknek; a szabad felületet fólia védi.', draw(g, M) {
+    { w: 250, t: 'Kiemelés', d: 'A kiemelés 2–4 hét múlva kezdődhet. A szilárd zagy boltozatként adja át a földnyomást az acélgerendáknak; a szabad felületet fólia védi. Ideiglenes fal: később elbontható.', draw(g, M) {
       const lev = 238;
       zPanel(g, M, ZP1, 'hard'); zPanel(g, M, ZP2, 'hard'); zPanel(g, M, [214, 260], 'hard');
       level(g, 0, 250, lev, { top: M.GY, shade: false });
@@ -1574,7 +1574,7 @@ PROC.zagyfal = {
       waleF(g, 0, 250, 176, { h: 11 });
       [40, 100, 160, 220].forEach((x) => pipeEndF(g, x, 176));
       excavator(g, at(M, lev), 96, lev + 2, { tool: 'dig', reach: 48, lift: 22 });
-      tag(g, 70, 152, 'heveder + dúc', { anchor: 'middle', to: [100, 170] });
+      tag(g, 70, 152, 'mellgerenda + dúc', { anchor: 'middle', to: [100, 170] });
     } },
   ],
 };
@@ -1600,7 +1600,7 @@ PROC.dsm = {
       silo(g, M, 222, { h: 76, band: 'acc2' });
       tag(g, 128, 286, 'marókerekek', { anchor: 'middle', to: [x + 14, bot - 10] });
     } },
-    { w: 252, t: 'Felfelé: keverés', d: 'A talpon a kerekek visszafordulnak, és felfelé menet cementzaggyal homogén talajcementté keverik a panelt.', draw(g, M) {
+    { w: 252, t: 'Felfelé: keverés', d: 'A talpon a kerekek visszafordulnak, és felfelé menet homogén talajbetonná keverik a táblát – csak kötőanyagot visznek be, a helyi talajt keverik át.', draw(g, M) {
       const x = 46, bot = 206;
       R(g, 14, M.GY - 2, 70, 10, F('bore'));
       cPanel(g, M, CP1, { top: M.GY + 2, bot: bot - 40, op: 0.55 });
@@ -1609,7 +1609,7 @@ PROC.dsm = {
       csm(g, x, bot, { top: r.headBot });
       arrowV(g, x - 34, 214, 166, { w: 2.4, s: 7 });
       silo(g, M, 222, { h: 76, band: 'acc2' });
-      tag(g, 128, 320, EN ? 'soil-cement' : 'talajcement', { anchor: 'middle', to: [52, 300] });
+      tag(g, 128, 320, EN ? 'soil-cement' : 'talajbeton', { anchor: 'middle', to: [52, 300] });
     } },
     { w: 236, t: 'Acélgerenda', d: 'A friss keverékbe acél I/H-szelvényeket állítanak; a következő primer panel már készülhet.', draw(g, M) {
       cPanel(g, M, CP1);
@@ -1629,7 +1629,7 @@ PROC.dsm = {
       csm(g, x, bot, { top: r.headBot, w: 60, spin: true });
       big(g, 46, 316, 'P'); big(g, 150, 316, 'P'); big(g, 98, 330, 'S');
     } },
-    { w: 252, t: 'Kiemelés', d: 'Szilárdulás után kiemelnek, a falat hevederrel és horgonyokkal vagy dúcokkal támasztják meg.', draw(g, M) {
+    { w: 252, t: 'Kiemelés', d: 'Szilárdulás után kiemelnek, a falat mellgerendával és horgonyokkal vagy dúcokkal támasztják meg.', draw(g, M) {
       const lev = 240;
       [CP1, CP2, [176, 252]].forEach((p) => cPanel(g, M, p));
       [CS1, [170, 234]].forEach((p) => cPanel(g, M, p));
@@ -1656,14 +1656,14 @@ PROC.szad = {
       worker(g, SZ(5) + 30, { GY: M.GY, pose: 'guide' });
       tag(g, 44, 136, 'vezetőkeret', { anchor: 'middle', to: [64, 118] });
     } },
-    { w: 250, t: 'Lehajtás vibrálással', d: 'A vibrátor ellentétesen forgó excentertömegei „elfolyósítják” a szemcsés talajt a palló mentén. A pallókat lépcsősen, néhány méterenként hajtják le.', draw(g, M) {
+    { w: 250, t: 'Lehajtás vibrálással', d: 'A vibrátor ellentétesen forgó excentertömegei „elfolyósítják” a szemcsés talajt a palló mentén. A táblákat lépcsősen, egyesével vagy 2–4 elemet összefogva hajtják le.', draw(g, M) {
       guideF(g, 0, 250, 116, { gy: M.GY });
       [0, 1, 2, 3, 4, 5].forEach((i) => sheetF(g, SZ(i), [140, 140, 140, 96, 70, 58][i], [300, 300, 300, 256, 230, 218][i]));
       excavator(g, M, SZ(4) + 13, 70, { tool: 'vibro', reach: 72, lift: 34 });
       arrowV(g, SZ(4) - 10, 150, 196, { w: 2.4, s: 7 });
       tag(g, 46, 330, 'szádpalló-pár', { anchor: 'middle', to: [SZ(1) + 13, 300] });
     } },
-    { w: 252, t: 'Kiemelés, megtámasztás', d: 'A vízzáró fal védelmében kiemelnek; a hevederre támaszkodó acél csőtámaszok (vagy horgonyok) a fal tetejét és közepét fogják meg.', draw(g, M) {
+    { w: 252, t: 'Kiemelés, megtámasztás', d: 'A vízzáró fal védelmében kiemelnek; a mellgerendára támaszkodó acél csőtámaszok (vagy horgonyok) a fal tetejét és közepét fogják meg.', draw(g, M) {
       const lev = 256;
       for (let i = 0; i < 10; i++) sheetF(g, SZ(i), M.GY - 10, 306);
       level(g, 0, 252, lev, { top: M.GY, shade: false });
@@ -1702,15 +1702,15 @@ function cGuide(g, M, x1 = 250) {
 PROC.colop = {
   H: 360, GY: 130, layers: [{ k: 'fill', y: 130, lab: 'feltöltés' }, { k: 'sand', y: 150, lab: EN ? 'sand' : 'homok' }, { k: 'clay', y: 250, lab: EN ? 'clay' : 'agyag' }],
   steps: [
-    { w: 236, t: 'Vezetősablon', d: 'A cölöpök helyét vasbeton vezetősablon jelöli ki: ez vezeti a fúrást, és biztosítja a cölöpfejek pontos helyét.', draw(g, M) {
+    { w: 236, t: 'Vezetőgerenda', d: 'Felül beton vezetőgerenda készül: kijelöli a cölöpök helyét, vezeti a fúrást, és biztosítja a cölöpfejek pontos helyét.', draw(g, M) {
       cGuide(g, M, 150);
       R(g, 150, M.GY - 2, 86, 16, F('bore'));
       CPr.slice(0, 3).forEach((x) => { Ln(g, x - CH, M.GY - 3, x - CH, M.GY + 13, SK('conc2', 1.2)); Ln(g, x + CH, M.GY - 3, x + CH, M.GY + 13, SK('conc2', 1.2)); });
       CSe.slice(0, 3).forEach((x) => { Ln(g, x - CH, M.GY - 3, x - CH, M.GY + 13, SK('conc2', 0.8, 'stroke-dasharray:3 2')); Ln(g, x + CH, M.GY - 3, x + CH, M.GY + 13, SK('conc2', 0.8, 'stroke-dasharray:3 2')); });
       excavator(g, M, 176, M.GY + 12, { tool: 'dig', reach: 30, lift: 34 });
-      tag(g, 74, 186, 'vezetősablon', { anchor: 'middle', to: [74, M.GY + 8] });
+      tag(g, 74, 186, 'vezetőgerenda', { anchor: 'middle', to: [74, M.GY + 8] });
     } },
-    { w: 252, t: 'Primer cölöpök', d: 'Először minden második, vasalatlan, szándékosan gyengébb betonú primer cölöp készül (CFA- vagy béléscsöves fúrással).', draw(g, M) {
+    { w: 252, t: 'Primer cölöpök', d: 'Először minden második cölöp készül el, vasalás nélkül, szándékosan gyengébb betonnal (CFA- vagy béléscsöves fúrással).', draw(g, M) {
       [24, 72].forEach((x) => cpile(g, x, 'P'));
       cGuide(g, M, 252);
       const x = 120, tip = 236;
@@ -1721,7 +1721,7 @@ PROC.colop = {
       arrowV(g, x - 30, 214, 176, { w: 2.4, s: 7 });
       tag(g, 72, 330, 'primer (vasalatlan)', { anchor: 'middle', to: [72, 304] });
     } },
-    { w: 252, t: 'Szekunder cölöp', d: '1–3 nap múlva a primerek közé fúrják a szekunder cölöpöt: a fúró 10–12 cm-t „belevág” a szomszédos primerekbe.', draw(g, M) {
+    { w: 252, t: 'Szekunder cölöp', d: 'Néhány órával később a primerek közé fúrják a szekunder cölöpöt: a fúró 10–12 cm-t „belevág” a szomszédos primerekbe.', draw(g, M) {
       CPr.slice(0, 4).forEach((x) => cpile(g, x, 'P'));
       cGuide(g, M, 252);
       const x = 96, tip = 300;
@@ -2184,14 +2184,14 @@ function rfPanel(g, M, k, kind, o = {}) {
 PROC.resfal = {
   H: 360, GY: 178, gw: 216, layers: [{ k: 'fill', y: 178, lab: 'feltöltés' }, { k: 'sand', y: 200, lab: EN ? 'sand' : 'homok' }, { k: 'clay2', y: 272, lab: EN ? 'clay' : 'agyag' }],
   steps: [
-    { w: 240, t: 'Résvezető gerenda', d: 'A rés két oldalán vasbeton gerendapár készül: ez jelöli ki és vezeti a rést.', draw(g, M) {
+    { w: 240, t: 'Résvezető gerenda', d: 'A rés két oldalán 1,0–1,5 m magas, 20–25 cm széles vasbeton gerendapár készül: vezeti a réskanalat, megtámasztja a felső laza talajt, és ez a kitűzési alapbázis.', draw(g, M) {
       R(g, 14, M.GY - 3, 110, 14, 'fill:url(#pr-concg)' + `;stroke:${v('conc2')};stroke-width:.7`);
       R(g, 124, M.GY, 70, 12, F('bore'));
       spoil(g, M, 196, 30, 8, 'fill');
       excavator(g, M, 150, M.GY + 6, { reach: 56, lift: 46 });
       tag(g, 68, M.GY - 30, 'résvezető gerenda', { anchor: 'middle', to: [68, M.GY - 2] });
     } },
-    { w: 240, t: 'Primer harapások', d: 'A primer tábla két szélét kiharapják; a kiemelt föld helyét azonnal zagy tölti ki.', draw(g, M) {
+    { w: 240, t: 'Primer harapások', d: 'Szakaszos réselésnél minden második (primer) tábla készül először: két szélét kiharapják, a kiemelt föld helyét folyamatosan bentonitos résiszap tölti ki.', draw(g, M) {
       rfBase(g, M, 1);
       slurry(g, 22, M.GY + 11, 30, 318 - M.GY - 11); slurry(g, 68, M.GY + 11, 30, 318 - M.GY - 11);
       [22, 52, 68, 98].forEach((xx) => Ln(g, xx, M.GY + 11, xx, 318, SK('wall', 1)));
@@ -2206,7 +2206,7 @@ PROC.resfal = {
       crane(g, M, 60, gr.top - 4, { reach: 110, tipY: 18 });
       tag(g, 140, 246, EN ? 'slurry' : 'zagy', { to: [92, 246] });
     } },
-    { w: 240, t: 'Vasalás, betonozás', d: 'Beemelik a vasalási armatúrát (hossztól függően 1–3 db), majd két kontraktorcsővel alulról betonoznak.', draw(g, M) {
+    { w: 240, t: 'Vasalás, betonozás', d: 'A tábla végére szakaszoló palló, a résbe a vasalási armatúra (hossztól függően 1–3 db) kerül, majd két betonozócsővel alulról betonoznak.', draw(g, M) {
       rfBase(g, M, 1);
       rfPanel(g, M, 'P1', 'slurry');
       concrete(g, 22, 250, 76, 68);

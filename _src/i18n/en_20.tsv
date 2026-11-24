@@ -12,7 +12,6 @@ dbdaa0c	X-ray – transparent soil
 e1c082b	Water in the excavation
 421a120	Neighbour movement
 68f6e7a	Steel (sheet pile, soldier)
-0769ea8	Jet / soil-cement
 16d9133	Slurry
 6b2e4c6	Lagging
 dbfab38	Fixed length of the anchor
@@ -77,7 +76,6 @@ c271984	In a wide excavation the raking struts can also bear on the inner part o
 7e4aeea	The soldier pile wall is watertight, so it is an economical solution even with high groundwater.
 68b25bb	A solution for dry excavations without groundwater: water seeps through between the planks.
 b33a9f1	The steel soldiers of a soldier pile wall are typically placed 4–6 m apart.
-3ef1e97	Every 1–3 m, usually 2 m apart; a closer spacing can be justified by higher loads.
 1c4e547	In a jet grout wall the size of the steel member can be increased at will, in proportion to the diameter of the jet column.
 4db1db6	The fresh jetted soil is a dense fluid: only the vertical line passed through by the drill rod and its 15–20 cm surroundings will accept the steel member.
 b21bc4a	If the spacing of the jet columns is 10–20 cm smaller than their diameter, the wall can be quasi-watertight.
@@ -87,11 +85,9 @@ f46e7c0	No concrete replaces the slurry: the cement-bearing slurry itself harden
 6d6a635	The 28-day compressive strength of self-hardening slurry is typically 0,5–1,4 MPa.
 728860a	The load is carried by steel sections placed every 1–2 m; by arching, the slurry transfers the earth and water pressure to them.
 dfbd478	Thanks to the interlocks of steel sheet piles a watertight wall can be made, and for a temporary wall the piles can be extracted.
-b5a191f	A sheet pile wall can be temporary or permanent; for permanent use there are separate corrosion protection requirements.
 7be2648	The vibrations from driving sheet piles reach only 2–3 m, so they need not be considered in built-up areas.
 e2a38fb	The vibrations can reach as far as 20–30 m – it has to be checked whether they could damage the surrounding buildings.
 fb5bb32	Reinforced concrete sheet piles are used mainly for temporary excavations, because they are easy to extract.
-3c28fb8	They are used for permanent sheeting, mainly in harbours, open water and bank protection. They are heavy, and hard to drive too (water jetting helps).
 bf7d45e	In Hungary the plastic sheet pile wall is the most widespread type of sheet pile wall.
 d4a1902	It is not yet widespread in Hungary; steel sheet piles (Larssen and Hoesch types) are used most often.
 5dd8ee5	In a secant pile wall every pile is reinforced, and the reinforced piles are made first.
@@ -143,11 +139,7 @@ f994b17	raking strut
 c551167	In a wide excavation, an inclined member supporting the wall on the bottom of the excavation or on the base slab; its vertical equilibrium also has to be checked.
 1bf6b20	A soil support left beside the wall, which holds the wall by its passive resistance until the raking struts are installed.
 aeae722	soldier pile (Siemens) wall
-9cd9a99	Steel I-beams installed in the ground at intervals, with lagging placed between them keeping pace with the excavation.
-c07b9f7	A soil column mixed in place by a high-pressure cement grout jet (60–120 cm); the element of a jet grout wall.
 44a2a6d	self-hardening slurry
-5921900	A bentonite-cement slurry that supports the trench, then hardens itself (0,5–1,4 MPa).
-94c2b05	Deep mixing methods: cutter-wheel panels, chain mixer (continuous trench), or intersecting columns.
 8dfe565	sheet pile
 3f1885a	An element driven, vibrated or pressed into the ground, connected to the next by interlocks (mainly steel: Larssen, Hoesch).
 eb855ff	interlock

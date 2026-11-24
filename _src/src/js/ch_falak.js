@@ -36,15 +36,15 @@ const S = (p) => { const g = svg('g', {}, p); return g; };
 
 /* ================================================================== 1. Felülnézet-váltó */
 const PLAN = {
-  berlini: { t: 'Berlini dúcolat', el: 'acél I/H-tartók', fill: 'fapallók (vb. pallók)', wat: ['bad', 'nem vízzáró'], cap: 'Acél I-tartók 1–3 m-enként (ált. 2 m); közöttük a kiemeléssel lépést tartva vízszintes pallók, az övlemezekhez kiékelve. Teherút: palló → tartó → támasz vagy befogás.' },
-  jet: { t: 'Jet-grouting fal', el: 'acéltag (I/H, cső)', fill: 'metsző jet-oszlopok', wat: ['ok', 'kvázi vízzáró'], cap: 'Egymást metsző jet-oszlopok (Ø 60–120 cm, osztás: D − 10–20 cm); acéltag csak a fúrás tengelyének 15–20 cm-es környezetébe fér. Pallózás és utólagos furatkitöltés nem kell.' },
-  zagy: { t: 'Erősített önszilárduló zagyfal', el: 'acél I/H-gerendák', fill: 'szilárdult zagy', wat: ['ok', 'kvázi vízzáró'], cap: 'Résfalszerűen, zagy alatt markolt rés; a beton helyett maga a cementtartalmú zagy szilárdul meg. A zagy boltozódva adja át a föld- és víznyomást a gerendáknak.' },
-  dsm: { t: 'Erősített mélykevert fal', el: 'acél I/H-szelvények', fill: 'talajcement panelek', wat: ['ok', 'vízszivárgás-gátló'], cap: 'Nedves mélykeveréssel (pl. CSM: 2,4–2,8 m × 0,55–1,2 m-es panelek) helyben kevert talajcement; a friss keverékbe acél I/H-szelvényeket állítanak.' },
-  szad: { t: 'Acél szádfal', el: 'acélpallók', fill: '– (folytonos fal)', wat: ['ok', 'vízzáró (a zárakon csekély szivárgás)'], cap: 'Hornyos zárakkal egymásba fűzött U (Larssen) vagy Z (Hoesch) acélpallók folytonos fala. Ideiglenes falként teljesen visszahúzható és újra felhasználható.' },
-  colH: { t: 'Hézagos cölöpfal', el: 'vb. cölöpök (CFA)', fill: 'boltozódó talaj', wat: ['bad', 'nem vízzáró'], cap: 'Cölöpök 20–60 cm-es (legfeljebb D) hézaggal; a talaj átboltozódik közöttük, a felületet kipergés ellen háló + lőttbeton védi. Hazánkban ez terjedt el leginkább.' },
-  colE: { t: 'Érintkező cölöpfal', el: 'vb. cölöpök', fill: '– (tengelytáv = D)', wat: ['warn', 'nem vízzáró'], cap: 'Ha a talaj önmagában nem állékony (szemcsés talaj), de vízzárás nem kell, vagy statikailag sűrű kiosztás szükséges.' },
-  colM: { t: 'Összemetsző cölöpfal', el: 'vasalt szekunder', fill: 'vasalatlan primer', wat: ['ok', 'vízzáró'], cap: 'Először a vasalatlan primer cölöpök, majd közéjük kb. 10–12 cm átfúrással a vasalt szekunder cölöpök. Csak minden második vasalt.' },
-  res: { t: 'Résfal', el: 'vb. panelek', fill: '– (folytonos fal)', wat: ['ok', 'vízzáró'], cap: 'Zagy alatt markolt, vasalt és betonozott panelek: merev, vízzáró fal, gyakran a végleges szerkezet része.' },
+  berlini: { t: 'Berlini dúcolat', el: 'acél I/H-tartók', fill: 'fa- vagy betonpallók, lőttbeton', wat: ['bad', 'nem vízzáró'], cap: 'Sűrűn, 1,5–2,5 m-enként acél I, H vagy összekapcsolt U szelvények; közöttük a kiemeléssel lépést tartva fa- vagy betonpallók – a fapallókat hevedergerendák és ékek feszítik a tartók közé –, vagy acélhálóval erősített lőttbeton. Teherút: palló → tartó → támasz vagy befogás.' },
+  jet: { t: 'Jet-grouting fal', el: 'acéltag (I/H, cső)', fill: 'metsző jet-oszlopok', wat: ['ok', 'kvázi vízzáró'], cap: 'Egymást metsző jet-oszlopok (Ø 50–120 cm, osztás: D − 10–20 cm); a kis méretű I/H vagy csőszelvény csak a fúrás tengelyének 15–20 cm-es környezetébe fér. Pallózás és utólagos furatkitöltés nem kell.' },
+  zagy: { t: 'Erősített önszilárduló zagyfal', el: 'acél I/H-gerendák', fill: 'szilárdult zagy', wat: ['ok', 'kvázi vízzáró'], cap: 'Résfalszerűen, zagy alatt markolt rés; a beton helyett maga az önszilárduló zagy (bentonitzagy + cement) szilárdul meg. A zagy boltozódva adja át a föld- és víznyomást a sűrűn beépített I/H gerendáknak.' },
+  dsm: { t: 'Erősített mélykevert fal', el: 'acél I/H-szelvények', fill: 'talajbeton táblák', wat: ['ok', 'szivárgásgátló'], cap: 'Nedves mélykeveréssel (pl. CSM: kb. 50–60 cm széles, 10–15 m mély táblák) helyben kevert talajbeton; a friss keverékbe sűrűn acél I/H-gerendákat építenek be.' },
+  szad: { t: 'Acél szádfal', el: 'acélpallók', fill: '– (folytonos fal)', wat: ['ok', 'vízzáró – teljes vízzárás érhető el'], cap: 'Hornyos zárakkal egymásba fűzött U (Larssen) vagy Z (Hoesch) acélpallók folytonos fala. Ideiglenes falként teljesen visszahúzható és újra felhasználható.' },
+  colH: { t: 'Hézagos cölöpfal', el: 'vb. cölöpök (CFA)', fill: 'boltozódó talaj', wat: ['bad', 'nem vízzáró'], cap: 'Cölöpök 20–60 cm-es (legfeljebb D) hézaggal; a talaj átboltozódik közöttük, a cölöpközökbe felületszivárgó és betonacél hálóval erősített lőttbeton kerül. Hazánkban ez terjedt el leginkább.' },
+  colE: { t: 'Érintkező cölöpfal', el: 'vb. cölöpök', fill: '– (tengelytáv = D)', wat: ['warn', 'nem vízzáró'], cap: 'A cölöpök közvetlenül egymás mellé kerülnek, nincsenek hézagok – mégsem vízzáró. Ha a talaj önmagában nem állékony (szemcsés talaj), de vízzárás nem kell, vagy statikailag sűrű kiosztás szükséges.' },
+  colM: { t: 'Összemetsző cölöpfal', el: 'vasalt szekunder', fill: 'vasalatlan primer', wat: ['ok', 'vízzáró'], cap: 'Felül beton vezetőgerenda; először minden második cölöp készül, vasalás nélkül, majd néhány órával később közéjük kb. 10–12 cm átfúrással a vasalt cölöpök. Csak minden második vasalt.' },
+  res: { t: 'Résfal', el: 'vb. panelek', fill: '– (folytonos fal)', wat: ['ok', 'vízzáró'], cap: 'Bentonitos résiszap alatt markológéppel vagy réshasítóval (hydrofraise) kiemelt, vasalt és betonozott táblák: merev, vízzáró fal, gyakran a végleges szerkezet része.' },
 };
 register('falPlan', (root) => {
   const { ctrls, viz, out } = shell(root);
@@ -72,12 +72,12 @@ register('falPlan', (root) => {
         leaks.push((xs[i] + xs[i + 1]) / 2);
       }
       xs.forEach((x) => hbeam(g, x, yc + 2, 24, 24));
-      T(g, 240, yc + 34, 'heveder nélkül: palló + ék', 't-sm', { 'text-anchor': 'middle' });
+      T(g, 240, yc + 34, 'fapalló + ék a tartók között', 't-sm', { 'text-anchor': 'middle' });
     } else if (typ === 'jet') {
       const D = 72, sp = 60;
       for (let i = 0; i < 10; i++) C(g, 50 + i * sp, yc, D / 2, 'f-grout', { style: 'stroke:var(--concrete2);stroke-width:1.2', opacity: 0.96 });
       for (let i = 0; i < 10; i++) { C(g, 50 + i * sp, yc, 8, '', { style: 'fill:none;stroke:var(--muted);stroke-dasharray:2 2' }); if (i % 2 === 0) hbeam(g, 50 + i * sp, yc, 11, 11); }
-      T(g, 50, yc + 56, 'Ø 60–120 cm', 't-sm');
+      T(g, 50, yc + 56, 'Ø 50–120 cm', 't-sm');
     } else if (typ === 'zagy') {
       R(g, 0, yc - 24, W, 48, 'f-grout', { style: 'stroke:var(--concrete2);stroke-width:1' });
       const xs = [80, 200, 320, 440, 560];
@@ -146,13 +146,13 @@ const CRIT = [
 ];
 const WALLS = [
   { k: 'berlini', t: 'Berlini dúcolat', a: '#berlini', viz: [0, 'nem vízzáró'], rez: [2, 'furatba helyezve csendes, verve zajos'], mely: [2, 'jellemzően 12–15 m, horgonysorokkal több'], ujra: [3, 'a tartók kihúzhatók, újra felhasználhatók'], vegl: [0, 'ideiglenes'], gep: [0, 'nagy élőmunka-igény (pallózás kézzel)'], hely: [2, 'fúrógép / vibrátor + kis kotró'] },
-  { k: 'jet', t: 'Jet-grouting fal', a: '#jetfal', viz: [2, 'kvázi vízzáró'], rez: [3, 'rezgésmentes'], mely: [2, 'gépfüggő, kb. 15–30 m'], ujra: [0, 'a talajban marad'], vegl: [1, 'jellemzően ideiglenes, ritkán végleges'], gep: [2, 'gépi, de sok iszap keletkezik'], hely: [3, 'kis gép, akár épület mellett'] },
-  { k: 'zagy', t: 'Erősített zagyfal', a: '#zagyfal', viz: [2, 'kvázi vízzáró (k ≈ 10⁻⁹ m/s)'], rez: [3, 'rezgésmentes'], mely: [1, 'jellemzően legfeljebb 7–10 m'], ujra: [0, 'a talajban marad'], vegl: [0, 'ideiglenes'], gep: [2, 'gépi markolás'], hely: [1, 'keverőtelep, munkasáv kell'] },
-  { k: 'dsm', t: 'Erősített mélykevert fal', a: '#dsmfal', viz: [2, 'vízszivárgás-gátló (k ≈ 10⁻⁸ m/s)'], rez: [3, 'rezgésmentes, csendes'], mely: [3, 'CSM: szokásosan < 20 m, akár 50 m felett'], ujra: [0, 'a talajban marad'], vegl: [1, 'jellemzően ideiglenes'], gep: [3, 'teljesen gépesített, digitális naplózás'], hely: [1, 'nagy gép + keverőtelep'] },
-  { k: 'szad', t: 'Acél szádfal', a: '#szadfal', viz: [3, 'vízzáró (tömítéssel még jobb)'], rez: [1, 'verés, vibrálás: zaj, rezgés (20–30 m-ig); a sajtolás csendes'], mely: [2, 'pallóhossz kb. 6–30 m'], ujra: [3, 'teljesen visszahúzható'], vegl: [2, 'ideiglenes és végleges (korrózióvédelemmel)'], gep: [3, 'gyors, gépi'], hely: [2, 'szűk helyen is, gyors'] },
+  { k: 'jet', t: 'Jet-grouting fal', a: '#jetfal', viz: [2, 'kvázi vízzáró'], rez: [3, 'rezgésmentes'], mely: [2, 'gépfüggő, kb. 15–30 m'], ujra: [0, 'a talajban marad'], vegl: [1, 'jellemzően ideiglenes, ritkán végleges'], gep: [2, 'gépi, de sok visszafolyó cementhabarcs keletkezik'], hely: [3, 'kis gép, akár épület mellett'] },
+  { k: 'zagy', t: 'Erősített zagyfal', a: '#zagyfal', viz: [2, 'kvázi vízzáró (k ≈ 10⁻⁹ m/s)'], rez: [3, 'rezgésmentes'], mely: [1, 'általában legfeljebb 7–8 m'], ujra: [0, 'a talajban marad'], vegl: [0, 'ideiglenes, elbontható'], gep: [2, 'gépi markolás'], hely: [1, 'keverőtelep, munkasáv kell'] },
+  { k: 'dsm', t: 'Erősített mélykevert fal', a: '#dsmfal', viz: [2, 'szivárgásgátló (k ≈ 10⁻⁸ m/s)'], rez: [3, 'rezgésmentes, csendes'], mely: [2, 'CSM-táblák 10–15 m; oszlopszerű keverés max. 50 m'], ujra: [0, 'a talajban marad'], vegl: [1, 'ideiglenes, elbontható'], gep: [3, 'teljesen gépesített, digitális naplózás'], hely: [1, 'nagy gép + keverőtelep'] },
+  { k: 'szad', t: 'Acél szádfal', a: '#szadfal', viz: [3, 'teljes vízzáróság érhető el'], rez: [1, 'verés, vibrálás: zaj, rezgés (20–30 m-ig); a sajtolás csendes'], mely: [2, 'pallóhossz kb. 6–30 m'], ujra: [3, 'teljesen visszahúzható'], vegl: [2, 'ideiglenes és végleges (korrózióvédelemmel)'], gep: [3, 'gyors, gépi'], hely: [2, 'szűk helyen is, gyors'] },
   { k: 'colH', t: 'Hézagos cölöpfal', a: '#colopfal', viz: [0, 'nem vízzáró'], rez: [3, 'fúrt: közel rezgésmentes'], mely: [2, 'horgonyokkal, dúcokkal kb. 20 m-ig'], ujra: [0, 'nem'], vegl: [3, 'ideiglenes vagy végleges'], gep: [2, 'gépi, felületvédelem kell'], hely: [2, 'fúrógép'] },
   { k: 'colM', t: 'Összemetsző cölöpfal', a: '#colopfal', viz: [2, 'vízzáró lehet – ha megmarad az átfedés'], rez: [3, 'fúrt: közel rezgésmentes'], mely: [2, 'kb. 25 m-ig (a függőlegesség korlátoz)'], ujra: [0, 'nem'], vegl: [3, 'ideiglenes vagy végleges'], gep: [2, 'gépi, pontos fúrás kell'], hely: [2, 'fúrógép'] },
-  { k: 'res', t: 'Résfal', a: '#resfal', viz: [3, 'vízzáró'], rez: [3, 'rezgésmentes'], mely: [3, 'több tíz méter'], ujra: [0, 'nem – végleges szerkezet'], vegl: [3, 'gyakran az épület fala'], gep: [2, 'gépi'], hely: [1, 'nagy gép, zagytelep'] },
+  { k: 'res', t: 'Résfal', a: '#resfal', viz: [3, 'vízzáró'], rez: [3, 'rezgésmentes'], mely: [3, 'általában 10–30 m, akár 100–120 m'], ujra: [0, 'nem – végleges szerkezet'], vegl: [3, 'gyakran az épület fala'], gep: [2, 'gépi'], hely: [1, 'nagy gép, zagytelep'] },
 ];
 const NEEDS = [
   { k: 'gw', t: 'A talajvíz a gödör feneke fölött van', c: 'viz', min: 2, why: 'nem zárja ki a talajvizet' },
@@ -201,7 +201,7 @@ register('berliniBuild', (root) => {
   const { ctrls, viz, out } = shell(root, { foot: 'Szabályok: a pallózás legkésőbb 1,25 m mélységben kezdődjön, utána a szabadon álló földfal magassága szemcsés talajban ≤ 0,5 m, merev kötött talajban ≤ 1,0 m (DIN 4124). A pallóvastagság tájékoztató. A támasz akkor kerül be, amikor a kiemelés 0,5–0,8 m-rel a támaszszint alá ért.' });
   const zS = slider(ctrls, { label: 'Kiemelési mélység', sym: 'z', min: 0, max: 7.5, step: 0.05, value: 2.6, unit: 'm', d: 2 });
   const play = h('button', { class: 'btn btn-line btn-sm', type: 'button' }, '▶ Kiemelés lejátszása'); ctrls.append(play);
-  const sS = slider(ctrls, { label: 'Tartótávolság', sym: 's', min: 1, max: 3, step: 0.25, value: 2, unit: 'm', d: 2, hint: '1–3 m, általában 2 m.' });
+  const sS = slider(ctrls, { label: 'Tartótávolság', sym: 's', min: 1.5, max: 2.5, step: 0.25, value: 2, unit: 'm', d: 2, hint: 'Sűrűn, 1,5–2,5 m-enként.' });
   const soil = seg(ctrls, { label: 'Talaj', options: [{ v: 's', t: 'szemcsés (≤ 0,5 m)' }, { v: 'k', t: 'kötött (≤ 1,0 m)' }], value: 's' });
   const sup = seg(ctrls, { label: 'Megtámasztás', options: [{ v: 'k', t: 'konzol' }, { v: 'd', t: 'dúc' }, { v: 'h', t: 'horgony' }], value: 'h' });
   const late = toggle(ctrls, { label: 'Hiba: a pallózás lemarad', value: false });
@@ -260,7 +260,7 @@ register('berliniBuild', (root) => {
       R(fig, 0, Y(A) - 1, 640, 2, 'f-steel');
       if (sup.v === 'd') all.forEach((x) => { C(fig, x, Y(A), 9, 'f-steelc', { style: 'stroke:var(--ink);stroke-width:1' }); C(fig, x, Y(A), 5, 'f-surface'); });
       else for (let i = 0; i < all.length - 1; i++) { const x = (all[i] + all[i + 1]) / 2; R(fig, x - 9, Y(A) - 9, 18, 18, 'f-acc', { style: 'stroke:var(--ink);stroke-width:1' }); C(fig, x, Y(A), 4, 'f-ink'); }
-      T(fig, 632, Y(A) - 12, sup.v === 'd' ? 'heveder + dúc' : 'heveder + horgonyfej', 't-sm halo', { 'text-anchor': 'end' });
+      T(fig, 632, Y(A) - 12, sup.v === 'd' ? 'mellgerenda + dúc' : 'mellgerenda + horgonyfej', 't-sm halo', { 'text-anchor': 'end' });
     } else if (sup.v !== 'k') {
       L(fig, 0, Y(A), 640, Y(A), 'stroke:var(--muted);stroke-width:1;stroke-dasharray:3 3');
       T(fig, 632, Y(A) - 6, 'tervezett támaszszint', 't-sm halo', { 'text-anchor': 'end' });
@@ -302,7 +302,7 @@ register('berliniBuild', (root) => {
 
 /* ================================================================== 4. A hézagos falak családja */
 const FAM = {
-  berlin: { t: 'Berlini fal', el: 'acél I-tartók', fill: 'fa / vb. palló' },
+  berlin: { t: 'Berlini fal', el: 'acél I/H-tartók', fill: 'fa / vb. palló, lőttbeton' },
   lutec: { t: 'Lutéciai fal', el: 'fúrt cölöpök', fill: 'íves vb. mező' },
   paris: { t: 'Párizsi fal', el: 'előregyártott vb.', fill: 'helyszíni vb.' },
   moszk: { t: 'Moszkvai fal', el: 'barettek', fill: 'helyszíni vb.' },
@@ -332,7 +332,7 @@ register('hezagosFam', (root) => {
     }
     svg('line', { x1: xs[1], y1: H - 34, x2: xs[2], y2: H - 34, style: 'stroke:var(--muted)' }, fig);
     T(fig, (xs[1] + xs[2]) / 2, H - 40, 'L – elemtávolság', 't-sm', { 'text-anchor': 'middle' });
-    const o = FAM[v]; s1.set(o.el); s2.set(o.fill); s3.set(v === 'berlin' ? '1–3 m (ált. 2 m)' : 'méretezés szerint');
+    const o = FAM[v]; s1.set(o.el); s2.set(o.fill); s3.set(v === 'berlin' ? '1,5–2,5 m' : 'méretezés szerint');
   };
   s.on(draw); draw();
 });
@@ -345,8 +345,8 @@ const STEEL = [
 ];
 register('jetPlan', (root) => {
   const { ctrls, viz, out } = shell(root, { foot: 'A falvastagság a két oszlop metszésvonalán (a „torokban”) a legkisebb: t = 2·√(R² − (s/2)²). Az acéltag befoglaló körének átmérőjét vetjük össze a fúrás tengelyének 15–20 cm-es környezetével. Szemléltető ábra.' });
-  const pre = seg(ctrls, { label: 'Talaj (előbeállítás)', options: [{ v: 'a', t: 'agyag' }, { v: 'h', t: 'homok' }, { v: 'k', t: 'kavics' }], value: 'h' });
-  const dS = slider(ctrls, { label: 'Oszlopátmérő', sym: 'D', min: 60, max: 120, step: 5, value: 90, unit: 'cm', d: 0, hint: 'Talajkörnyezettől függően 60–120 cm.' });
+  const pre = seg(ctrls, { label: 'Előbeállítás', options: [{ v: 'a', t: 'szimpla, agyag' }, { v: 'h', t: 'szimpla, homok' }, { v: 'k', t: 'dupla jet' }], value: 'h' });
+  const dS = slider(ctrls, { label: 'Oszlopátmérő', sym: 'D', min: 50, max: 120, step: 5, value: 90, unit: 'cm', d: 0, hint: 'Szimpla jet 50–100 cm (agyagban 50–70, homokban 80–100 cm), dupla jet kb. 120 cm.' });
   const sS = slider(ctrls, { label: 'Osztástávolság', sym: 's', min: 40, max: 135, step: 5, value: 75, unit: 'cm', d: 0, hint: 'Vízzáráshoz: s = D − (10–20 cm).' });
   const stl = select(ctrls, { label: 'Acéltag', options: STEEL.map((x) => ({ v: x.v, t: x.t })), value: 'hea100' });
   const every = seg(ctrls, { label: 'Acél kiosztás', options: [{ v: 1, t: 'minden oszlopba' }, { v: 2, t: 'minden másodikba' }], value: 1 });
@@ -399,7 +399,7 @@ register('jetPlan', (root) => {
     st.s.set(fit === 'ok' ? 'igen' : fit === 'warn' ? 'határeset' : 'nem fér be', fit);
     if (a <= 0) vd.set('bad', 'Hézagos oszlopsor – nem vízzáró', 'Az oszlopok nem metszik egymást: a víz és a talaj a hézagokon át befolyik a gödörbe.');
     else if (a < 10) vd.set('warn', 'Kevés az átfedés', 'Az átmérő talajfüggő és a fúrás sosem pontosan függőleges – ekkora átfedés mélyebben elfogyhat. Az osztás D − 10–20 cm legyen.');
-    else if (a > 25) vd.set('warn', 'Vízzáró, de pazarló', 'A túl sűrű osztás sok oszlopot, sok iszapot és költséget jelent.');
+    else if (a > 25) vd.set('warn', 'Vízzáró, de pazarló', 'A túl sűrű osztás sok oszlopot, sok visszafolyó cementhabarcsot és költséget jelent.');
     else vd.set(fit === 'bad' ? 'warn' : 'ok', fit === 'bad' ? 'Vízzáró fal – de az acéltag nem fér be' : 'Kvázi vízzáró fal', fit === 'bad' ? `A ${sd.t} befoglaló köre ${fmt(db / 10, 1)} cm: nagyobb a tengely 15–20 cm-es környezeténél. A még folyékony, sűrű jetelt talajba csak korlátos méretű acél süllyeszthető – kisebb szelvény vagy cső kell.` : `Átfedés ${a} cm. Az acéltagokat szilárd talajbeton veszi körül: nem kell utólagos furatkitöltés, összemetsző oszlopoknál pallózás sem.`);
   };
   [dS, sS, stl, every].forEach((c) => c.on(draw)); draw();
@@ -445,7 +445,7 @@ register('zagyArch', (root) => {
     T(fig, 8, Hh - 8, 'MUNKATÉR', 't-sm');
     st.p.set(p); st.N.set(N); st.s.set(sig); st.e.set(eta * 100, eta > 1 ? 'bad' : eta > 0.8 ? 'warn' : 'ok');
     if (eta > 1) vd.set('bad', 'Az ív nem bírja', `σ = ${fmt(sig, 2)} MPa > f/1,5 = ${fmt(f / 1.5, 2)} MPa. A feszültség a gerendatávolság <i>négyzetével</i> nő: sűrűbb gerendakiosztás vagy vastagabb fal kell – ezért jellemző az 1–2 m.`);
-    else if (eta > 0.8) vd.set('warn', 'Határeset', 'A mélységgel a föld- és víznyomás nő – ezért jellemzően legfeljebb 7–10 m mély munkagödröknél gazdaságos.');
+    else if (eta > 0.8) vd.set('warn', 'Határeset', 'A mélységgel a föld- és víznyomás nő – ezért általában legfeljebb 7–8 m mély munkatereknél használják.');
     else vd.set('ok', 'Az ív átadja a terhet', 'A gyenge (0,5–1,4 MPa), de vízzáró zagy boltozódva adja át a föld- és víznyomást a gerendáknak; a gerendák viszik a terhet a támaszokra.');
   };
   [LS, tS, zS, fc].forEach((c) => c.on(draw)); draw();
@@ -482,17 +482,17 @@ const DSM = {
       ['Vezetőárok', 'Kb. 0,5 m mély árok a falvonalban – ide gyűlik a felesleges zagy.'],
       ['P1 – le: marás + zagy', 'A két pár, ellentétesen forgó marókerék lefelé haladva aprítja a talajt, közben zagyot adagolnak.'],
       ['P1 – fel: keverés + cement', 'A talpon a kerekek visszafordulnak; felfelé cementzaggyal homogénre keverik a talajt.'],
-      ['Acél a friss panelbe', 'A még friss talajcementbe acél I/H-gerendákat állítanak (szükség esetén vibrátorral).'],
+      ['Acél a friss táblába', 'A még friss talajbetonba sűrűn acél I/H-gerendákat állítanak (szükség esetén vibrátorral): ezek adják a nyomatéki teherbírást.'],
       ['P2, P3 primer panelek', 'A primer paneleket egy-egy panelnyi hézaggal készítik.'],
       ['S1, S2 szekunder panelek', 'A szekunder panelek a szomszédos primerekbe belemarnak („friss a frissbe”) – így folytonos a fal.'],
-      ['Kiemelés', 'Szilárdulás után kiemelés; a gerendákat heveder mentén dúc vagy horgony támasztja; a felületet lenyesik, szükség esetén lőttbetonnal védik.'],
+      ['Kiemelés', 'Szilárdulás után kiemelés; a gerendákat mellgerenda mentén dúc vagy horgony támasztja; a felületet lenyesik, szükség esetén lőttbetonnal védik.'],
     ],
   },
   colmix: {
-    t: 'Colmix (többcsigás, oszlopszerű)',
+    t: 'Colmix (többspirálos, oszlopszerű)',
     steps: [
       ['Vezetőárok', 'A falvonal kitűzése, vezetőárok a kiszoruló keveréknek.'],
-      ['1. csoport – le', 'Több (pl. három) egymás melletti csiga fúr le, a csőszáron át kötőanyagot adagolnak.'],
+      ['1. csoport – le', 'Több (pl. három) egymás melletti spirál fúr le, a fúrószáron át folyékony kötőanyag-szuszpenziót adagolnak.'],
       ['1. csoport – fel', 'Felfelé menet keverik a talajt: egymásba metsző oszlopok jönnek létre.'],
       ['Acél a friss oszlopokba', 'Acél I/H-szelvények a friss keverékbe (a méretezés szerinti kiosztásban).'],
       ['További primer csoportok', 'A primer csoportok hézaggal követik egymást.'],
@@ -507,9 +507,9 @@ const DSM = {
       ['A vágókar lemerül', 'A láncos vágókar („óriás láncfűrész”) a teljes falmélységig lemerül.'],
       ['Haladás oldalirányban', 'A gép a falvonal mentén halad, a lánc függőlegesen keveri a talajt a kötőanyaggal – folyamatos árok.'],
       ['Acél folyamatosan', 'A gép mögött a friss keverékbe kerülnek az acélszelvények.'],
-      ['A fal elkészül', 'Hézag és panelcsatlakozás nélküli, egyenletes vastagságú talajcement fal.'],
+      ['A fal elkészül', 'Hézag és panelcsatlakozás nélküli, egyenletes vastagságú talajbeton fal.'],
       ['Szilárdulás', 'A keverék megszilárdul (talajtól és cementadagolástól függő szilárdság).'],
-      ['Kiemelés', 'Megtámasztás heveder + dúc/horgony segítségével.'],
+      ['Kiemelés', 'Megtámasztás mellgerenda + dúc/horgony segítségével.'],
     ],
   },
 };
@@ -626,9 +626,9 @@ register('dsmSeq', (root) => {
         R(fig, 330, yG, W - 330, 7 * kz, 'f-bg2');
         R(fig, 330, yG + 2 * kz - 5, 22, 10, 'f-steel2');
         L(fig, 352, yG + 2 * kz, 470, yG + 2 * kz, 'stroke:var(--accent);stroke-width:5;stroke-linecap:round');
-        T(fig, 360, yG + 2 * kz - 10, 'heveder + dúc', 't-sm halo');
+        T(fig, 360, yG + 2 * kz - 10, 'mellgerenda + dúc', 't-sm halo');
         T(fig, 340, yG + 7 * kz + 18, 'gödörfenék', 't-sm');
-        T(fig, 296, yG + 14, 'talajcement + acél', 't-sm halo', { 'text-anchor': 'end' });
+        T(fig, 296, yG + 14, 'talajbeton + acél', 't-sm halo', { 'text-anchor': 'end' });
       } else T(fig, W / 2, yG + 60, 'előkészítés: kitűzés, vezetőárok, keverőtelep', 't-sm', { 'text-anchor': 'middle' });
     }
   };
@@ -825,9 +825,9 @@ register('szadVibe', (root) => {
 /* ================================================================== 11. Szádfal anyagok */
 const MAT = {
   fa: { t: 'Fa szádfal', kg: 110, col: 'f-timber', txt: ['Ma már nem használatos – 2–6 m mélységig, csak végleges állapotban.', 'Visszahúzása körülményes, a fa roncsolódik.', 'Először vezércölöpöket vertek, közéjük hajtották a horony-eresztékes pallókat.', 'Csak állandóan víz alatt tartós – a változó vízszintű zónában rothad.'] },
-  vb: { t: 'Vasbeton szádfal', kg: 1100, col: 'f-conc', txt: ['Végleges szádoláshoz: kikötők, élővizek, partvédelem.', 'Hátránya a nagy súly – szállításra is méretezni kell (4–8 m).', 'Előfeszítéssel csökkentik a súlyt.', 'Lehajtása nehéz: vízöblítéssel segítik; a hézagokat utólag kiinjektálják.'] },
+  vb: { t: 'Vasbeton szádfal', kg: 1100, col: 'f-conc', txt: ['Tartós felhasználásra, élővizek mellett, partfalként: kikötők, partvédelem.', 'Hátránya a nagy súly – szállításra is méretezni kell (4–8 m) –, rosszul zár, és nehezen verhető be.', 'Gyakran előfeszített – ez a súlyt is csökkenti.', 'Diesel verővel hajtják le, vízöblítéssel segítve; a hézagokat utólag kiinjektálják.'] },
   pvc: { t: 'Műanyag (PVC) szádfal', kg: 16, col: 'f-grout', txt: ['Hazánkban még nem terjedt el – végleges partfalak, kikötők, csatornapartok.', '30 cm széles „nyomott” hullámlemez (pl. Geoflex), csak kb. 9 kg/m².', 'Vibrátoros, vízsugaras lehajtás; nagyon puha talajban kotrógéppel benyomják.', 'Zár: belső és külső szelvény; fejlezárás műanyag, acél vagy fa elemmel.'] },
-  acel: { t: 'Acél szádfal', kg: 187, col: 'f-steel', txt: ['A leggyakoribb, különösen ideiglenes munkagödör-határoláshoz.', 'Könnyen verhető, visszahúzható, vízzáró képessége a legjobb.', 'Egyenes, félhullám (U, Z) vagy teljes hullám szelvények; hazánkban Larssen és Hoesch.', 'Végleges alkalmazásnál külön korrózióvédelmi előírások.'] },
+  acel: { t: 'Acél szádfal', kg: 187, col: 'f-steel', txt: ['A leggyakoribb, különösen ideiglenes munkagödör-határoláshoz.', 'Könnyen verhető, visszahúzható, vízzáró képessége a legjobb.', 'Egyenes, félhullám (U, Z) vagy teljes hullám szelvények; hazánkban Larssen és Hoesch.', 'Tartós felhasználásnál korrózióvédelem: vastagabb keresztmetszet és tűzihorganyzás.'] },
 };
 register('szadAnyag', (root) => {
   const { ctrls, viz } = shell(root, { out: false, foot: 'Tömeg: egy 6 m hosszú, 30 cm széles palló, <b>szemléltető számítás</b> – PVC: 9 kg/m²; acél: AU 14, 104 kg/m²; fa: 10 cm vastag fenyő, ~600 kg/m³; vasbeton: 25 cm vastag, ~2500 kg/m³.' });
@@ -974,7 +974,7 @@ register('colopVert', (root) => {
 
 /* ================================================================== kvíz */
 defineQuiz('falak', 'Kvíz – munkatérhatároló falak', [
-  { q: 'Milyen távolságban helyezik el általában a berlini dúcolat acél I-tartóit?', a: ['0,5–1 m-enként', '1–3 m-enként, általában 2 m-re', '4–6 m-enként', 'mindig pontosan 3 m-re'], c: 1, e: '1–3 m-re, általában 2 m-re; sűrűbb kiosztást nagyobb terhelés indokolhat.' },
+  { q: 'Milyen távolságban helyezik el általában a berlini dúcolat acéltartóit?', a: ['0,5–1 m-enként', 'Sűrűn, 1,5–2,5 m-enként', '4–6 m-enként', 'mindig pontosan 3 m-re'], c: 1, e: 'Sűrűn, 1,5–2,5 m-enként acél I, H vagy összekapcsolt U szelvényeket juttatnak le: veréssel, vibrálással vagy fúrt lyukba helyezve és kibetonozva.' },
   { q: 'Miért helyezik ma inkább furatba (mint verik) a berlini dúcolat tartóit?', a: ['Mert így vízzáró lesz a fal', 'Zajvédelmi okból – és így a veréssel nehezen átjárható rétegek sem okoznak gondot', 'Mert a furatban nem kell befogni', 'Mert így nem kell pallózni'], c: 1, e: 'Zajvédelem, és a nehezen átverhető rétegek elkerülése. A furatot – különösen a kiemelési szint alatt – megfelelően ki kell tölteni.' },
   { q: 'Mekkora osztástávolság biztosítja a jet-grouting fal vízzárását?', a: ['Az átmérőnél 10–20 cm-rel nagyobb', 'Az átmérővel azonos', 'Az átmérőnél 10–20 cm-rel kisebb', 'Az átmérő fele'], c: 2, e: 'Az átmérőnél 10–20 cm-rel kisebb osztás adja az átfedést – így kvázi vízzáró fal készíthető.' },
   { q: 'Miért korlátos a jet-grouting falba helyezhető acéltag mérete?', a: ['Mert a jetelt talaj szilárdulásáig igen sűrű folyadék – csak a fúrás tengelyének kb. 15–20 cm-es környezete fogadja be', 'Mert a jet-oszlop átmérője legfeljebb 30 cm', 'Mert az acél korrodál a cementben', 'Mert a szabvány tiltja a nagy szelvényeket'], c: 0, e: 'A fúrószárral átjárt függély és annak 15–20 cm-es környezete alkalmas az acéltag befogadására – függetlenül az oszlop méretétől.' },
@@ -983,5 +983,7 @@ defineQuiz('falak', 'Kvíz – munkatérhatároló falak', [
   { q: 'Hol van a zár egy U (Larssen) szádpallóból készült falban?', a: ['A külső övlemezeken', 'A fal középsíkjában, a semleges tengelyen', 'A gerinc közepén, a fal felületén', 'Nincs zár, hegesztik'], c: 1, e: 'U-pallóknál a zár a semleges tengelyen van (ezért kell a dupla pallók sajtolása), Z-pallóknál a külső övlemezeken.' },
   { q: 'Mekkora a hézagos cölöpfal cölöpközének jellemző mérete?', a: ['5–10 cm', '20–60 cm, de legfeljebb a cölöpátmérő', '1–2 m', 'pontosan a cölöpátmérő kétszerese'], c: 1, e: 'A vállalható hézag a talaj állékonyságától, átboltozódási képességétől függ: jellemzően 20–60 cm, legfeljebb D.' },
   { q: 'Összemetsző cölöpfalnál melyik cölöpök készülnek először?', a: ['A vasalt cölöpök', 'A nem vasalt (primer) cölöpök, majd közéjük kb. 10–12 cm átfúrással a vasaltak', 'Mindegy, tetszőleges sorrendben', 'Először a fejgerenda'], c: 1, e: 'Először a vasalatlan cölöpök, majd közéjük – kb. 10–12 cm-t átfúrva – a vasalt, nyomaték felvételére is alkalmas cölöpök. Csak minden második vasalt.' },
-  { q: 'Melyik fal NEM alkalmas talajvíz alatti munkagödör vízzáró határolására?', a: ['Összemetsző cölöpfal', 'Acél szádfal', 'Berlini dúcolat', 'Erősített mélykevert fal'], c: 2, e: 'A berlini dúcolat pallói között átszivárog a víz – csak talajvíz felett vagy víztelenítéssel használható.' },
+  { q: 'Melyik fal NEM alkalmas talajvíz alatti munkagödör vízzáró határolására?', a: ['Összemetsző cölöpfal', 'Acél szádfal', 'Berlini dúcolat', 'Erősített mélykevert fal'], c: 2, e: 'A berlini dúcolat pallói között átszivárog a víz – csak ideiglenes munkatérhatárolásként, talajvíz felett alkalmazható.' },
+  { q: 'Mi a résfalazásnál a résvezető gerenda feladata?', a: ['Vezeti a réskanalat, megtámasztja a felső laza talajt, és ez a kitűzési alapbázis', 'Ez viszi a kész épület terheit', 'Ebben keverik a bentonitos résiszapot', 'A betonozócsövet tartja a betonozás alatt'], c: 0, e: 'A rés két oldalán készülő, 1,0–1,5 m magas, 20–25 cm széles vasbeton gerendapár vezeti a réskanalat, megtámasztja a felső laza talajt, és ez a kitűzési alapbázis.' },
+  { q: 'Mekkora a szimpla jettel készülő jet-oszlopok járatos átmérője?', a: ['10–20 cm', '50–100 cm – agyagban 50–70, homokban 80–100 cm', '180–200 cm', '3–5 m'], c: 1, e: 'Szimpla jettel 50–100 cm (agyagban 50–70, homokban 80–100 cm), dupla jettel kb. 120 cm; a kétoldali fúvókás jet-panel 180–200 cm.' },
 ]);

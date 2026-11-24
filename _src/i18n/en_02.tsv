@@ -68,18 +68,11 @@ f63bee2	In wider excavations, <b>larger-diameter steel tubular struts</b> are mo
 183d89c	Retaining walls for excavations
 20b55c4	Which one we choose is decided by the same criteria as for any excavation support: the available area, the soil, the <b>groundwater</b>, how long the excavation stays open, how built-up the surroundings are (noise, vibration, movements), the size of the project and the available equipment.
 a429ae5	Four walls – one principle
-6c81162	The soldier pile wall, the jet grout wall, the reinforced slurry wall and the reinforced deep mixed wall work in the same way structurally: <b>steel I/H beams</b> carry the load to the supports and into the embedment. The only difference is the infill of the panels – timber lagging, jet columns, hardened slurry or soil-cement mixed in place. The infill decides whether the wall is <b>watertight</b>.
 312bb46	Plan view: nine walls at a glance
 cf9b393	Choose a type of wall – and switch on the groundwater: where does it seep through?
 bd3309c	Wall selector
 cfa8e31	Rank the walls by one criterion, and tick what your excavation is like. (An indicative, illustrative assessment.)
 1261c1a	Siemens (soldier pile) shoring
-56895c2	One of the <b>most economical temporary</b> vertical supports for the sides of dry, not too deep trenches and excavations without groundwater. It is used where the excavation is already too deep and too wide for cross-strutting – <b>deeper than 6 m and wider than 3–4 m</b> –, but not yet so deep that a stiff, watertight wall is needed.
-7823355	<b>Steel soldiers.</b> Rolled steel “I” (H) sections are placed <b>1–3 m</b> apart, usually <b>2 m</b> – depending on the soil, by driving, or set in a bore filled with lean concrete. A closer spacing can be justified by a higher load.
-5d8f49f	<b>Bore and embedment.</b> For noise reasons the soldiers are now more often set in bores – so layers that are hard to drive through are not a problem either. The bore can be unsupported or fluid-supported; after the soldier is placed, the <b>bore must always be filled</b>, especially below excavation level, because that is where the embedment works.
-78fdc5c	<b>Lagging keeping pace with the excavation.</b> Horizontal planks are slid between the larger soldier sections and wedged against the flanges; less often the planks are vertical. A waling is not always needed: thicker planks (beams) are wedged directly against the flanges.
-da50e5b	<b>Structural behaviour.</b> The soldiers work as vertical cantilevers, or as continuous beams propped by struts or ground anchors.
-4605324	<b>1–3<small>m</small></b><span>soldier spacing, usually 2 m</span>
 8bd7368	<b>1,25<small>m</small></b><span>lagging must start at this depth at the latest (DIN 4124)</span>
 9ac1e1d	<b>0,5 / 1,0<small>m</small></b><span>at most this much soil face may stand without lagging in granular / stiff cohesive soil</span>
 ded44f9	<b>4–6<small>m</small></b><span>stable up to this as a cantilever, without support</span>
@@ -90,7 +83,6 @@ ea8774c	Deepen the excavation and watch the lagging follow the excavation. What 
 e04db77	easily adapts to the shape of the excavation and to utility crossings
 1a2ce83	set in bores, it is quiet and low-vibration
 f254bdd	Disadvantages
-4fd7cf4	not watertight – only above the groundwater or with dewatering
 ed2cb25	labour-intensive, so it is increasingly giving way to fully mechanised walls
 18d3b7d	flexible wall: settlement can occur behind it – beside a sensitive neighbour only with conditions
 8a3f631	timber lagging left in the ground rots
@@ -113,22 +105,14 @@ b797323	Large excavation supported by a soldier pile wall, with struts
 c8edf6a	Walls with gaps working on the same principle: Berlin, Lutetian, Paris, Moscow
 5d7f6af	The soldier pile wall and walls with gaps in reality
 28e51e1	Jet grout wall
-d6ab0b3	A structure that <b>works in the same way</b> as the soldier pile wall, in which the steel members are placed <b>in columns treated with jet grout</b>. In Hungary it is typically made with single or double (cement grout, or cement grout + air) jet technology, with small I/H or tube section reinforcement, in spaced, tangent or secant form, often combined with reinforced concrete piles.
-98e6f78	Jet columns are made <b>60–120 cm</b> in diameter – depending on the soil (smaller in clay, larger in gravel).
 c617cc3	Because the jetted soil is a very dense fluid until it sets, the size of the steel member that can be inserted is <b>limited</b> – whatever the size of the column: only the vertical line passed through by the drill rod and its immediate <b>15–20 cm</b> surroundings will accept it.
 4d1d2fa	A spacing <b>10–20 cm smaller than the diameter</b> ensures watertightness: the wall can also be made <b>quasi-watertight</b> – a great advantage over the soldier pile wall.
-9fb19a8	The steel members are surrounded by solid “soil-cement”: no subsequent filling of the bore is needed, and with secant columns <b>no lagging</b> either.
+9fb19a8	The steel members are surrounded by solid “soil concrete”: no subsequent filling of the bore is needed, and with secant columns <b>no lagging</b> either.
 a418a16	Without steel reinforcement it is also built as a gravity wall – this is not counted among embedded retaining walls.
-12ae665	<b>60–120<small>cm</small></b><span>column diameter, depending on the soil</span>
 d7d7dda	<b>D − 10–20<small>cm</small></b><span>spacing for watertightness</span>
-a24789e	<b>≈ 400<small>bar</small></b><span>pressure of the cement grout jet at the nozzle</span>
-b3ab12b	<b>2–5×</b><span>the spoil reaching the surface can be this many times the treated volume</span>
 1c2e093	Jet column wall in plan
 83ad876	Set the diameter and the spacing: when does the wall close, and does the steel member fit?
-480e27e	400 bar and 200 m/s
-c4eef23	The cement grout jet leaving the nozzle can reach 200 m/s – a pressure of 400 bar roughly corresponds to the water pressure of the ocean at a depth of 4 km. So a bore of about 10 cm becomes a soil-cement column nearly 1 m in diameter. The method was born in Japan in the 1960s–70s.
 2ac785f	What to watch out for?
-a9b1bcf	The diameter and strength depend on the soil, so they have to be verified with <b>trial columns</b>. If the path of the returning spoil is blocked, the excess pressure can lift the ground and the neighbouring building. Where is it used? For excavations above, or slightly below, the groundwater, where a pile or diaphragm wall does not fit: 1–2-level underground car parks, later extensions.
 05181a7	Excavation between buildings supported by jet columns
 9399932	Excavation between buildings supported by a jet column wall – the columns are clearly visible
 12d68d3	Exposed jet grout wall with steel members

@@ -19,7 +19,6 @@ c45dd59	<b>Possible: ${okN.join(', ')}</b>The final decision comes from the soil
 aff4a10	Rules: lagging must start at a depth of 1,25 m at the latest, after which the height of the unsupported soil face is ≤ 0,5 m in granular soil and ≤ 1,0 m in stiff cohesive soil (DIN 4124). The plank thickness is indicative. The support is installed when the excavation has reached 0,5–0,8 m below the support level.
 be22a89	▶ Play the excavation
 88cd759	Soldier spacing
-0542bfd	1–3 m, usually 2 m.
 ab245c3	granular (≤ 0,5 m)
 7cc6454	cohesive (≤ 1,0 m)
 9e3059b	Mistake: the lagging falls behind
@@ -29,8 +28,6 @@ ce40347	Excavation
 8ab887e	Soldiers / 10 m of wall
 eb924b6	Plank thickness (indicative)
 d173943	soil not yet excavated (X-ray)
-85b0835	waling + strut
-0d286be	waling + anchor head
 d6758d2	planned support level
 52e909f	final excavation bottom
 46d29f7	embedment: lean concrete in the bore
@@ -46,8 +43,6 @@ d6758d2	planned support level
 c87fdaf	Anchoring gives a “clear”, strut-free working space.
 a6be505	The struts get in the way in the excavation, but they do not reach under the neighbouring plot.
 1f2e39f	Berlin wall
-ea01067	steel I-beams
-7cb7342	timber / RC plank
 72391e7	Lutetian wall
 795e58c	bored piles
 09612db	arched RC panel
@@ -60,15 +55,12 @@ b0937cb	Vertical element
 3c4a3e7	Infill
 b8a3562	Element spacing
 a4ac6ef	L – element spacing
-32f18b2	1–3 m (usually 2 m)
 cf922a9	as designed
 eb40f6e	tube Ø114,3
 761ca85	tube Ø168,3
 e84dcee	tube Ø219,1
 ddd9821	The wall thickness is smallest along the line where two columns intersect (at the “throat”): t = 2·√(R² − (s/2)²). The diameter of the circle enclosing the steel member is compared with the 15–20 cm zone around the drilling axis. Illustrative drawing.
-3844d2a	Soil (preset)
 813bda9	Column diameter
-3297e8c	60–120 cm, depending on the soil.
 750cc1f	Spacing
 36e1efc	For watertightness: s = D − (10–20 cm).
 fd46d13	Steel member
@@ -89,11 +81,10 @@ f29cb01	green dashed: 15–20 cm zone near the axis
 de116f1	Too little overlap
 e438dcb	The diameter depends on the soil and drilling is never exactly vertical – an overlap this small can run out at depth. The spacing should be D − 10–20 cm.
 65fc427	Watertight, but wasteful
-cbde7aa	Too close a spacing means many columns, a lot of spoil and cost.
 faa9df4	A watertight wall – but the steel member does not fit
 132e164	Quasi-watertight wall
 adb215b	The enclosing circle of the ${sd.t} is ${fmt(db / 10, 1)} cm: larger than the 15–20 cm zone around the axis. Only steel of limited size can be sunk into the still fluid, dense jetted soil – a smaller section or a tube is needed.
-2ea0356	Overlap ${a} cm. The steel members are surrounded by solid soil-cement: no subsequent bore filling is needed, and with secant columns no lagging either.
+2ea0356	Overlap ${a} cm. The steel members are surrounded by solid soil concrete: no subsequent bore filling is needed, and with secant columns no lagging either.
 3ed181f	<b>Illustrative model:</b> a parabolic compression arch between the flanges of two steel beams, arch thickness = wall thickness / 2, rise = wall thickness / 2; σ = p·L² / (2·t²). Load: earth pressure at rest (K = 0,5) + water pressure, groundwater at −2 m. Safety factor 1,5. Not suitable for design.
 3309bc0	Beam spacing
 a2f6214	Typically 1–2 m.
@@ -105,7 +96,6 @@ fb07c35	Earth + water pressure p
 4f24ef2	SOIL SIDE – p = ${fmt(p, 0)} kPa at a depth of ${fmt(z, 1)} m
 90aedb0	The arch cannot take it
 9ce09da	σ = ${fmt(sig, 2)} MPa > f/1,5 = ${fmt(f / 1.5, 2)} MPa. The stress grows with the <i>square</i> of the beam spacing: closer beams or a thicker wall are needed – that is why 1–2 m is typical.
-97cad37	The earth and water pressure grow with depth – that is why it is typically economical for excavations at most 7–10 m deep.
 431b97d	The arch transfers the load
 e370f84	The weak (0,5–1,4 MPa) but watertight slurry transfers the earth and water pressure to the beams by arching; the beams carry the load to the supports.
 e46c379	Area affected by high groundwater

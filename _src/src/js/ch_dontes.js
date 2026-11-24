@@ -36,14 +36,14 @@ const OPTS = [
   } },
   { t: 'Berlini (Siemens) dúcolat', href: '#berlini', kind: 'fal', f: (p) => {
     const r = [];
-    if (p.gw === 'high') return { x: 'Nem vízzáró: a pallók között átszivárog a víz – csak talajvíz felett (vagy vízszint-süllyesztéssel).', r };
+    if (p.gw === 'high') return { x: 'Nem vízzáró: a pallók között átszivárog a víz – csak talajvíz felett alkalmazható.', r };
+    if (p.life === 'veg') return { x: 'Csak ideiglenes munkatérhatárolásra való.', r };
     r.push([20, 'Száraz, nem túl mély munkagödrök egyik leggazdaságosabb ideiglenes megtámasztása.']);
     if (p.gw === 'slight') r.push([-30, 'A víz a kiemelési sík fölé ér: talajvízszint-süllyesztés kellene.']);
     if (p.H > 15) r.push([-25, 'Jellemzően 12–15 m-ig gazdaságos.']);
     if (p.soil === 'puha' || p.soil === 'feltoltes') r.push([-20, 'Laza, puha anyag a pallók között kifolyhat, kipereghet.']);
     if (p.B <= 3) r.push([-10, 'Keskeny árokhoz drágább, mint a dúcolat.']);
     if (p.vib) r.push([-3, 'Verés helyett furatba helyezett tartók kellenek (zajvédelem).']);
-    if (p.life === 'veg') r.push([-25, 'Ideiglenes szerkezet.']);
     if (p.dist < 4) r.push([-10, 'Hajlékony fal: közvetlenül épület mellett nagyobb lehet a mozgás.']);
     r.push([-5, 'Nagy élőmunka-igény.']);
     return { r };
@@ -58,13 +58,14 @@ const OPTS = [
     if (p.vib) r.push([8, 'Rezgésmentes.']);
     if (p.life === 'veg') r.push([-10, 'Jellemzően ideiglenes.']);
     if (p.B <= 3) r.push([-20, 'Keskeny árokhoz nem gazdaságos.']);
-    r.push([-5, 'Sok iszap keletkezik, az átmérő talajfüggő.']);
+    r.push([-5, 'Sok visszafolyó cementhabarcs keletkezik, az átmérő talajfüggő.']);
     return { r };
   } },
   { t: 'Erősített önszilárduló zagyfal', href: '#zagyfal', kind: 'fal', f: (p) => {
     const r = [];
-    if (p.H > 10) return { x: 'Jellemzően legfeljebb 7–10 m mély munkaterekhez.', r };
-    if (p.life === 'veg') return { x: 'Ideiglenes munkatérhatárolásra való.', r };
+    if (p.H > 10) return { x: 'Általában legfeljebb 7–8 m mély munkaterekhez.', r };
+    if (p.H > 8) r.push([-15, 'Általában legfeljebb 7–8 m mély munkaterekhez használják.']);
+    if (p.life === 'veg') return { x: 'Ideiglenes, elbontható munkatérhatárolásra való.', r };
     if (p.gw === 'high') r.push([25, 'Magas talajvíz mellett kvázi vízzáró: a berlini dúcolat és a résfal előnyeit egyesíti.']);
     if (p.gw === 'none') r.push([-15, 'Talajvíz nélkül a vízzárás előnye kihasználatlan.']);
     if (p.gw === 'high' && p.imp) r.push([10, 'Gazdaságos, ha a vízzáró réteg jóval mélyebben van, mint a fal statikailag szükséges talpa (az acél csak addig kell).']);
@@ -75,12 +76,12 @@ const OPTS = [
   } },
   { t: 'Erősített mélykeveréses fal (CSM, colmix, trenchmix)', href: '#dsmfal', kind: 'fal', f: (p) => {
     const r = [];
-    if (p.life === 'veg') r.push([-15, 'Jellemzően ideiglenes.']);
-    if (p.gw !== 'none') r.push([15, 'Munkatérhatároló és vízszivárgás-gátló fal.']);
+    if (p.life === 'veg') r.push([-15, 'Ideiglenes, elbontható fal.']);
+    if (p.gw !== 'none') r.push([15, 'Ideiglenes munkatérhatároló és szivárgásgátló fal.']);
     if (p.soil === 'feltoltes') r.push([-25, 'Törmelékes feltöltés akadályozza a keverést.']);
     if (p.soil === 'kemeny') r.push([-20, 'Kemény, köves talajban nehezen keverhető.']);
     if (p.soil === 'puha') r.push([-5, 'Szerves, puha talajban a kötés bizonytalan.']);
-    if (p.vib) r.push([8, 'Rezgésmentes, kevés kitermelt föld.']);
+    if (p.vib) r.push([8, 'Csendes és vibrációmentes, minimális hulladék.']);
     if (p.dist < 3) r.push([-5, 'Nagy gép és keverőtelep kell.']);
     if (p.B <= 3) r.push([-25, 'Keskeny árokhoz nem gazdaságos.']);
     return { r };
@@ -90,11 +91,11 @@ const OPTS = [
     if (p.gw !== 'none') r.push([25, 'Hornyos zárak: vízzáró fal, a vízzáró rétegbe kötve kizárja a talajvizet.']);
     else r.push([5, 'Gyors, szűk helyen is építhető.']);
     if (p.vib && p.dist < 25) r.push([-35, 'A lehajtás rezgése 20–30 m-re is elhat – szigorú korlátnál csak besajtolás jöhet szóba.']);
-    else if (p.dist < 10) r.push([-10, 'Szomszéd épület közelében a rezgést vizsgálni kell.']);
+    else if (p.dist < 10) r.push([-10, 'Hátránya a zaj- és rezgéskeltés: szomszéd épület közelében vizsgálni kell.']);
     if (p.soil === 'feltoltes') r.push([-25, 'Törmelékes feltöltésben a palló elakad – előfúrás kell.']);
-    if (p.soil === 'kemeny') r.push([-20, 'Kemény, köves agyagban, kőpadban előfúrás kell.']);
+    if (p.soil === 'kemeny') r.push([-10, 'Tömör, kemény talajon is áthatol, de köves rétegben, kőpadban előfúrás kellhet.']);
     if (p.soil === 'puha') r.push([5, 'Puha talajban akár sajtolva is lehajtható.']);
-    if (p.life === 'ide') r.push([10, 'Ideiglenes falnál visszahúzható, újra felhasználható.']); else r.push([-5, 'Végleges falnál korrózióvédelem kell.']);
+    if (p.life === 'ide') r.push([10, 'Ideiglenes falnál visszahúzható, újra felhasználható.']); else r.push([-5, 'Tartós falnál korrózióvédelem kell: vastagabb keresztmetszet, tűzihorganyzás.']);
     if (p.H > 15) r.push([-10, 'Nagy mélységnél hosszú pallók, több dúc-/horgonyszint.']);
     return { r };
   } },
@@ -102,7 +103,7 @@ const OPTS = [
     const r = [];
     if (p.gw === 'high') return { x: 'Nem vízzáró – talajvíz alatti kiemeléshez nem jó.', r };
     if (p.soil === 'puha') return { x: 'Puha talaj nem boltozódik át a cölöpök között.', r };
-    if (p.gw === 'slight') r.push([-25, 'Csak szezonális rétegvíz kezelhető (felületszivárgó, dréncsövek).']);
+    if (p.gw === 'slight') r.push([-25, 'Talajvíz felett vagy csak szezonális rétegvizekkel érintett kiemeléshez való (felületszivárgó, dréncsövek).']);
     if (p.soil === 'kemeny') r.push([30, 'Kemény agyagban, puha kőzetben ideális: kevés cölöp is elég.']);
     if (p.soil === 'szemcses') r.push([-25, 'Szemcsés talaj kipereg a hézagokon – érintkező fal kell.']);
     if (p.dist < 6) r.push([12, 'Szűk városi telken, rezgésmentesen (CFA) készül.']);
@@ -112,7 +113,7 @@ const OPTS = [
   } },
   { t: 'Érintkező cölöpfal', href: '#colopfal', kind: 'fal', f: (p) => {
     const r = [];
-    if (p.gw === 'high') return { x: 'Nem vízzáró.', r };
+    if (p.gw === 'high') return { x: 'Nem vízzáró: a cölöpök közvetlenül egymás mellett állnak, de nem zárnak.', r };
     if (p.soil === 'szemcses') r.push([18, 'Ha a talaj önmagában nem állékony, de vízzárás nem kell.']);
     if (p.gw === 'slight') r.push([-20, 'A cölöpök közti réseken átszivároghat a víz.']);
     if (p.dist < 6) r.push([10, 'Rezgésmentes, merev fal.']);
@@ -122,7 +123,7 @@ const OPTS = [
   { t: 'Összemetsző cölöpfal', href: '#colopfal', kind: 'fal', f: (p) => {
     const r = [];
     if (p.gw !== 'none') r.push([20, 'Vízzáró fal: minden második (szekunder) cölöp vasalt.']);
-    r.push([-12, 'A résfallal szemben csak speciális esetben gazdaságos.']);
+    r.push([-12, 'A résfalas megoldással szemben csak speciális esetekben gazdaságos, így ritkán készül.']);
     if (p.dist < 6) r.push([10, 'Rezgésmentes, merev.']);
     if (p.H > 18) r.push([-10, 'Mélyen a cölöpök ferdesége miatt elfogyhat az átfedés.']);
     if (p.B <= 3) r.push([-25, 'Keskeny árokhoz nem gazdaságos.']);

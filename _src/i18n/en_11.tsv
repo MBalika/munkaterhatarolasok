@@ -58,37 +58,25 @@ f475a8a	To a thrust block built on the bottom of the excavation
 02322be	SOIL SIDE
 d0d1a2d	WORKING SPACE (excavation)
 6a1af0c	steel I/H soldiers
-2924ea4	timber planks (RC planks)
 d3d751b	not watertight
-8d75661	Steel I-beams every 1–3 m (usually 2 m); between them, keeping pace with the excavation, horizontal planks wedged against the flanges. Load path: plank → soldier → support or embedment.
 9d81f0c	steel member (I/H, tube)
 4858549	secant jet columns
 d146cbd	quasi-watertight
-67dc639	Intersecting jet columns (Ø 60–120 cm, spacing: D − 10–20 cm); a steel member fits only within 15–20 cm of the drilling axis. No lagging and no subsequent bore filling is needed.
 8da6702	steel I/H beams
 4dbc7c9	hardened slurry
-77fdcfb	A trench excavated by grab under slurry, like a diaphragm wall; instead of concrete, the cement-bearing slurry itself hardens. By arching, the slurry transfers the earth and water pressure to the beams.
 f9c2248	Reinforced deep mixed wall
 f0d6c09	steel I/H sections
-3215dcc	soil-cement panels
-75a9f2c	seepage cut-off
-c60e9c3	Soil-cement mixed in place by wet deep mixing (e.g. CSM: panels 2,4–2,8 m × 0,55–1,2 m); steel I/H sections are set into the fresh mix.
 d4f62f2	steel sheet piles
 2c98179	– (continuous wall)
-470f70a	watertight (slight seepage at the interlocks)
 c5995ee	A continuous wall of U (Larssen) or Z (Hoesch) steel piles threaded together by interlocks. As a temporary wall it can be fully extracted and reused.
 d52e58f	RC piles (CFA)
 5b3b1db	arching soil
-d39e1e4	Piles with gaps of 20–60 cm (at most D); the soil arches between them, and the face is protected from running by mesh + shotcrete. This is the most widespread in Hungary.
 7cd5de9	RC piles
 c35f392	– (centre spacing = D)
-4a5d05d	If the soil is not stable on its own (granular soil) but no watertightness is needed, or a close spacing is needed structurally.
 aa3ada6	reinforced secondary
 9af3915	unreinforced primary
 24032a4	watertight
-dadf701	First the unreinforced primary piles, then between them, cutting about 10–12 cm into them, the reinforced secondary piles. Only every second one is reinforced.
 e00ca1d	RC panels
-4877c43	Panels excavated by grab under slurry, reinforced and concreted: a stiff, watertight wall, often part of the permanent structure.
 b1b65fe	Type of wall
 1e1df6e	Reinforced self-hardening
 990597c	Reinforced
@@ -97,8 +85,6 @@ ec561e7	Plan view of a wall section about 8 m long. At the top the retained soil
 96e4fb7	Load-bearing element
 53002e8	Panel / infill
 ee06d9e	Watertightness
-85d7300	no waling: plank + wedge
-c92b573	Ø 60–120 cm
 4c871fb	arching between the beams
 9f78da0	interlocks (●: factory-crimped, ○: threaded on site)
 b078280	light: primary (unreinforced) · dark, with red cage: secondary (reinforced)
@@ -122,19 +108,13 @@ eb222bf	drilling rig / vibrator + small excavator
 2ba0459	rig-dependent, about 15–30 m
 9db7db0	stays in the ground
 c9874e5	typically temporary, rarely permanent
-6ce001b	mechanised, but a lot of spoil is produced
 3976382	small rig, even beside a building
 6cb0d0e	quasi-watertight (k ≈ 10⁻⁹ m/s)
-5e5d02c	typically at most 7–10 m
 09da88f	mechanised grab excavation
 0cd9930	needs a mixing plant and a working strip
-7bc311d	seepage cut-off (k ≈ 10⁻⁸ m/s)
 379ef98	vibration-free, quiet
-362c6c3	CSM: usually < 20 m, even over 50 m
-e93b4ff	typically temporary
 6a01012	fully mechanised, digital logging
 730fcdb	large rig + mixing plant
-3ccfc22	watertight (even better with sealing)
 7362076	driving, vibrating: noise, vibration (up to 20–30 m); pressing-in is quiet
 06fbaf6	pile length about 6–30 m
 888dc99	fully extractable
@@ -149,6 +129,5 @@ a26bd5e	bored: almost vibration-free
 dcde511	can be watertight – if the overlap is maintained
 3d083cd	up to about 25 m (verticality is the limit)
 7f0b458	mechanised, accurate drilling needed
-3ac0898	several tens of metres
 1da7c79	no – a permanent structure
 a0a80d4	often the wall of the building

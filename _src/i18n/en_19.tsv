@@ -85,15 +85,10 @@ c011eea	Soldier pile wall in soft soil
 187a3de	In soft soil the face does not stand until the lagging is installed, and the soil can flow out from behind the planks.
 ba2a693	One of the most economical temporary supports for dry, not too deep excavations; for noise reasons the soldiers are now more often set in bores.
 d413780	Sheet piles in hard clay
-ecf97a3	In hard, stony clay the piles are hard to drive – pre-drilling is needed.
-5ffcc3f	The vibration of driving and vibrating can reach as far as 20–30 m – it has to be checked for the building ${fmt(dist, 1)} m away (quieter: pressing-in).
 907c364	Slurry wall depth
-e96851a	The reinforced self-hardening slurry wall is typically optimal for temporary excavations at most 7–10 m deep.${dist < H ? ' Süllyedésre érzékeny szerkezet közelében kerülendő.' : ''}
 d7eadfe	 To be avoided near settlement-sensitive structures.
 02aced9	The slurry wall needs soil with favourable trench stability – in soft soil the trench can collapse.
-1a99edd	Typically for 1–2-level underground car parks and later extensions; the column diameter depends on the soil (60–120 cm).${H > 10 ? ' Ekkora mélységhez inkább résfal.' : ''}
 e83e4be	 For this depth a diaphragm wall is better.
-98d6dbd	A watertight, stiff wall to great depth (even over 40 m); it can also be the permanent basement wall.
 b2c8660	Watertight, but only every second pile is reinforced; compared with a diaphragm wall, economical only in special cases.
 c856312	Wall too long
 6c6a8de	The required wall length of ${fmt(toe, 1)} m exceeds the usual limit of the technology (~${W.max} m).
