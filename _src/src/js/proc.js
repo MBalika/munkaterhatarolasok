@@ -1609,7 +1609,7 @@ PROC.dsm = {
       csm(g, x, bot, { top: r.headBot });
       arrowV(g, x - 34, 214, 166, { w: 2.4, s: 7 });
       silo(g, M, 222, { h: 76, band: 'acc2' });
-      tag(g, 128, 320, EN ? 'soil-cement' : 'talajbeton', { anchor: 'middle', to: [52, 300] });
+      tag(g, 128, 320, EN ? 'soil concrete' : 'talajbeton', { anchor: 'middle', to: [52, 300] });
     } },
     { w: 236, t: 'Acélgerenda', d: 'A friss keverékbe acél I/H-szelvényeket állítanak; a következő primer panel már készülhet.', draw(g, M) {
       cPanel(g, M, CP1);
