@@ -318,7 +318,7 @@ const CASES = [
   { t: 'Egyszintes pince a belvárosban', d: '4 m mély munkagödör nagyon kemény agyagban, talajvíz mélyen. Szűk telek, a szomszéd ház 5 m-re áll.',
     sk: { kind: 'godor', H: 4, gw: null, nb: 'hz', soil: 'kemeny' },
     o: ['Hézagos cölöpfal (CFA)', 'Acél szádfal vibrálva', 'Fagyasztott fal', 'Rézsűs kiemelés'], c: 0,
-    e: 'Hazánkban a hézagos cölöpfal terjedt el nagyon kemény agyagban, talajvizet el nem érő, szűk városi munkatereknél: a talaj átboltozódik a cölöpök között, kevés cölöp elég. A szádfal kemény agyagban nehezen hajtható le, és a rezgés a szomszédot veszélyezteti.' },
+    e: 'Hazánkban a hézagos cölöpfal terjedt el nagyon kemény agyagban, talajvizet el nem érő, szűk városi munkatereknél: a talaj átboltozódik a cölöpök között, kevés cölöp elég. A szádfal a kemény agyagon is áthatol, de a lehajtás zaja és rezgése a közeli szomszédot veszélyezteti.' },
   { t: 'Kétszintes mélygarázs talajvízben', d: '8 m mély gödör homokos kavicsban, a talajvíz 2 m-rel a felszín alatt, 14 m-en vízzáró agyag. Közvetlenül a telekhatáron régi házak állnak, horgonyozni nem lehet.',
     sk: { kind: 'godor', H: 8, gw: 2, nb: 'hz', imp: 14 },
     o: ['Résfal + támaszfödém (top-down)', 'Berlini dúcolat + talajhorgonyok', 'Acél szádfal vibrálva + horgonyok', 'Hézagos cölöpfal konzolosan'], c: 0,

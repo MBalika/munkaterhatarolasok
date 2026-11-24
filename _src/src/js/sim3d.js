@@ -20,7 +20,7 @@ const PROFILES = {
 const WALLS = {
   szad: { t: 'Acél szádfal', wt: true, max: 22, tw: 0.45, link: '#szadfal' },
   berlini: { t: 'Berlini dúcolat', wt: false, max: 20, tw: 0.35, link: '#berlini' },
-  hezagos: { t: 'Hézagos cölöpfal', wt: false, max: 25, tw: 0.8, link: '#colopfal' },
+  hezagos: { t: 'Hézagos cölöpfal', wt: false, max: 24, tw: 0.8, link: '#colopfal' },
   metszo: { t: 'Összemetsző cölöpfal', wt: true, max: 25, tw: 0.9, link: '#colopfal' },
   res: { t: 'Résfal', wt: true, max: 40, tw: 0.8, link: '#resfal' },
   jet: { t: 'Jet-grouting fal', wt: true, max: 20, tw: 1.1, link: '#jetfal' },

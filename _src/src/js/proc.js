@@ -1732,7 +1732,7 @@ PROC.colop = {
       spin(g, x, r.headBot + 32, 22);
       tag(g, 40, 220, 'átfúrás', { anchor: 'middle', to: [x - CH + 2, 220] });
     } },
-    { w: 236, t: 'Vasalás', d: 'A frissen betonozott szekunder cölöpbe vasalási armatúrát süllyesztenek – ezek a vasalt cölöpök viszik a nyomatékot.', draw(g, M) {
+    { w: 236, t: 'Vasalás', d: 'A frissen betonozott szekunder cölöpbe belenyomják a vasalási armatúrát – ezek a vasalt cölöpök viszik a nyomatékot.', draw(g, M) {
       CPr.slice(0, 4).forEach((x) => cpile(g, x, 'P'));
       cpile(g, 48, 'S');
       cpile(g, 96, 'S', { fresh: true, cage: false });

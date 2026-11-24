@@ -65,7 +65,7 @@ register('godortipus', (root) => {
 /* ---------------------------------------------------------------- szempontok (chipek) */
 const FAKTOR = [
   ['Rendelkezésre álló terület', 'Van-e hely rézsűre, deponálásra, horgonyokra? Szűk városi telken csak függőleges, megtámasztott fal jöhet szóba – a horgony pedig gyakran a szomszéd telek alá nyúlna.'],
-  ['Talaj', 'Kötött talajban a fal rövid ideig magától is megáll (m₀), szemcsés talajban nem. Kemény, köves rétegben a szádpalló nem hajtható le, puha agyagban a szegezés nem alkalmazható.'],
+  ['Talaj', 'Kötött talajban a fal rövid ideig magától is megáll (m₀), szemcsés talajban nem. A szádpalló tömör, kemény talajon is áthatol, de köves rétegben, kőpadban előfúrás kell; puha agyagban a szegezés nem alkalmazható.'],
   ['Talajvíz', 'Talajvíz alá érő gödörnél vízzáró fal kell (szádfal, résfal, összemetsző cölöpfal, jet- vagy zagyfal) a vízzáró rétegbe kötve – vagy víztelenítés. A berlini dúcolat és a hézagos cölöpfal nem vízzáró.'],
   ['Nyitvatartás ideje', 'Rövid ideig nyitott gödörhöz ideiglenes, visszanyerhető szerkezet (szádfal, táblás dúcolat) kell; hosszú ideig nyitva tartott vagy végleges falnál korrózió, tartósság is számít.'],
   ['Környezet beépítettsége', 'Szomszéd épület mellett a fal mozgása, a verés-vibrálás rezgése (20–30 m-re is elhat) és a zaj korlátoz: ilyenkor fúrt, merev falak és merev megtámasztás (csőtámasz, födém) a nyerő.'],

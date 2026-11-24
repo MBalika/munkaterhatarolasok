@@ -114,7 +114,7 @@ f424c4d	retaining wall
 d3ba642	utility
 44d7cb3	Available area
 1761c04	Is there room for a slope, stockpiling, anchors? On a tight urban plot only a vertical, supported wall is possible – and an anchor would often reach under the neighbouring plot.
-abe049d	In cohesive soil the face stands on its own for a short time (m₀), in granular soil it does not. In a hard, stony layer sheet piles cannot be driven, and in soft clay soil nailing cannot be used.
+fde15c4	In cohesive soil the face stands on its own for a short time (m₀), in granular soil it does not. Sheet piles can penetrate even dense, hard soil, but in a stony layer or rock band pre-drilling is needed; in soft clay soil nailing cannot be used.
 924f7bf	An excavation reaching below the groundwater needs a watertight wall (sheet pile wall, diaphragm wall, secant pile wall, jet grout or slurry wall) keyed into the impermeable layer – or dewatering. The soldier pile wall and the spaced pile wall are not watertight.
 44a1efb	Duration of the excavation
 102031f	An excavation open for a short time needs a temporary, recoverable structure (sheet piles, trench boxes); for an excavation open for a long time or a permanent wall, corrosion and durability also matter.

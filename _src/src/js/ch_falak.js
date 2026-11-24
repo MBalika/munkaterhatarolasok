@@ -150,7 +150,7 @@ const WALLS = [
   { k: 'zagy', t: 'Erősített zagyfal', a: '#zagyfal', viz: [2, 'kvázi vízzáró (k ≈ 10⁻⁹ m/s)'], rez: [3, 'rezgésmentes'], mely: [1, 'általában legfeljebb 7–8 m'], ujra: [0, 'a talajban marad'], vegl: [0, 'ideiglenes, elbontható'], gep: [2, 'gépi markolás'], hely: [1, 'keverőtelep, munkasáv kell'] },
   { k: 'dsm', t: 'Erősített mélykevert fal', a: '#dsmfal', viz: [2, 'szivárgásgátló (k ≈ 10⁻⁸ m/s)'], rez: [3, 'rezgésmentes, csendes'], mely: [2, 'CSM-táblák 10–15 m; oszlopszerű keverés max. 50 m'], ujra: [0, 'a talajban marad'], vegl: [1, 'ideiglenes, elbontható'], gep: [3, 'teljesen gépesített, digitális naplózás'], hely: [1, 'nagy gép + keverőtelep'] },
   { k: 'szad', t: 'Acél szádfal', a: '#szadfal', viz: [3, 'teljes vízzáróság érhető el'], rez: [1, 'verés, vibrálás: zaj, rezgés (20–30 m-ig); a sajtolás csendes'], mely: [2, 'pallóhossz kb. 6–30 m'], ujra: [3, 'teljesen visszahúzható'], vegl: [2, 'ideiglenes és végleges (korrózióvédelemmel)'], gep: [3, 'gyors, gépi'], hely: [2, 'szűk helyen is, gyors'] },
-  { k: 'colH', t: 'Hézagos cölöpfal', a: '#colopfal', viz: [0, 'nem vízzáró'], rez: [3, 'fúrt: közel rezgésmentes'], mely: [2, 'horgonyokkal, dúcokkal kb. 20 m-ig'], ujra: [0, 'nem'], vegl: [3, 'ideiglenes vagy végleges'], gep: [2, 'gépi, felületvédelem kell'], hely: [2, 'fúrógép'] },
+  { k: 'colH', t: 'Hézagos cölöpfal', a: '#colopfal', viz: [0, 'nem vízzáró'], rez: [3, 'fúrt: közel rezgésmentes'], mely: [2, 'CFA-cölöppel legfeljebb 20–24 m'], ujra: [0, 'nem'], vegl: [3, 'ideiglenes vagy végleges'], gep: [2, 'gépi, felületvédelem kell'], hely: [2, 'fúrógép'] },
   { k: 'colM', t: 'Összemetsző cölöpfal', a: '#colopfal', viz: [2, 'vízzáró lehet – ha megmarad az átfedés'], rez: [3, 'fúrt: közel rezgésmentes'], mely: [2, 'kb. 25 m-ig (a függőlegesség korlátoz)'], ujra: [0, 'nem'], vegl: [3, 'ideiglenes vagy végleges'], gep: [2, 'gépi, pontos fúrás kell'], hely: [2, 'fúrógép'] },
   { k: 'res', t: 'Résfal', a: '#resfal', viz: [3, 'vízzáró'], rez: [3, 'rezgésmentes'], mely: [3, 'általában 10–30 m, akár 100–120 m'], ujra: [0, 'nem – végleges szerkezet'], vegl: [3, 'gyakran az épület fala'], gep: [2, 'gépi'], hely: [1, 'nagy gép, zagytelep'] },
 ];
@@ -778,7 +778,7 @@ register('szadVibe', (root) => {
     clear(fig);
     const m = meth.v, x = xS.v, lim = LIM[bld.v];
     // rács
-    for (const v of [0.1, 1, 10, 100]) { L(fig, l, sy(v), r, sy(v), 'stroke:var(--line);stroke-width:1'); T(fig, l - 6, sy(v) + 4, String(v).replace('.', ','), 't-sm', { 'text-anchor': 'end' }); }
+    for (const v of [0.1, 1, 10, 100]) { L(fig, l, sy(v), r, sy(v), 'stroke:var(--line);stroke-width:1'); T(fig, l - 6, sy(v) + 4, fmt(v, v < 1 ? 1 : 0), 't-sm', { 'text-anchor': 'end' }); }
     for (const v of [2, 5, 10, 20, 50, 100]) { L(fig, sx(v), t, sx(v), b, 'stroke:var(--line);stroke-width:1'); T(fig, sx(v), b + 16, v + ' m', 't-sm', { 'text-anchor': 'middle' }); }
     T(fig, l, 12, 'rezgéssebesség v (mm/s)', 't-sm');
     // 20–30 m
