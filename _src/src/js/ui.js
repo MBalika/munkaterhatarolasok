@@ -324,7 +324,26 @@ function initReveal() {
 }
 
 export function initUI() {
-  initTheme(); initLang(); initNav(); initVideos(); initGallery(); initYT(); initTabs(); initQuiz(); initTF(); initReveal();
+  initTheme(); initLang(); initNav(); initVideos(); initGallery(); initYT(); initTabs(); initQuiz(); initTF(); initReveal(); initHashSettle();
+}
+
+// #horgonnyal (pl. a társ-tananyagokból) érkezve a lusta widgetek és képek a cél fölött még megnövelik az oldal
+// magasságát: ~4 s-ig a célhoz igazítunk, amíg a látogató maga nem görget
+function initHashSettle() {
+  const id = decodeURIComponent(location.hash.slice(1)); const el = id && document.getElementById(id); if (!el) return;
+  try { if (sessionStorage.getItem('alap-pos')) return; } catch (e) { }
+  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+  const hh = () => { const tb = $('.topbar'); return tb ? tb.offsetHeight : 0; };
+  const t0 = performance.now(); let done = false;
+  const stop = () => { done = true; ['wheel', 'touchstart', 'keydown', 'mousedown'].forEach((ev) => removeEventListener(ev, stop)); };
+  ['wheel', 'touchstart', 'keydown', 'mousedown'].forEach((ev) => addEventListener(ev, stop, { passive: true }));
+  const tick = () => {
+    if (done) return;
+    const y = Math.max(0, el.getBoundingClientRect().top + scrollY - hh() - 10);
+    if (Math.abs(scrollY - y) > 1.5) scrollTo({ top: y, behavior: 'instant' });
+    if (performance.now() - t0 < 4000) requestAnimationFrame(tick); else stop();
+  };
+  requestAnimationFrame(tick);
 }
 
 // nyelvváltó: a választás megmarad (alap-lang), a másik nyelvű oldal ugyanott nyílik meg (alap-pos)
