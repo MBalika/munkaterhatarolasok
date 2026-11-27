@@ -24,8 +24,12 @@ export function stage(fig, o) {
   const fk = cw > 0 ? Math.round(Math.max(1, Math.min(o.fmax ?? 1.7, (9.5 * W) / (11.5 * cw))) * 20) / 20 : 1;
   fig.dataset.fk = fk;
   const M = { H, GY: o.GY, layers: o.layers, gw: o.gw, hz: o.hz, plain: o.plain };
+  /* a háttér (ég, talajrétegek) csak akkor rajzolódik újra, ha változott – az animált jelenetek képkockánként hívják */
+  const key = JSON.stringify([W, H, o.GY, o.layers, o.gw, o.hz, o.plain, o.ox]);
+  let bg = fig._bg;
+  if (bg && fig._bgKey === key && bg.parentNode === fig) { while (fig.lastChild && fig.lastChild !== bg) fig.lastChild.remove(); }
+  else { clear(fig); bg = g_(fig); K.backdrop(bg, M, o.ox ?? 0, W); fig._bg = bg; fig._bgKey = key; }
   const g = g_(fig);
-  K.backdrop(g, M, o.ox ?? 0, W);
   const ov = g_(fig), top = g_(fig);
   const S = { fig, g, ov, top, M, W, H, fk };
   /** lekerekített hátlapú felirat, o.to: vezetővonal */
@@ -134,3 +138,38 @@ export function building(g, x, GY, wm, floors, k, o = {}) {
   R(b, x - 0.25 * k, GY - hh - 0.3 * k, w + 0.5 * k, 0.32 * k, F('wallh2'));
   return b;
 }
+
+const opg = (g, o) => g_(g, o.op != null && o.op < 1 ? { style: `opacity:${Math.max(0, o.op).toFixed(2)}` } : {});
+/** Fa elem (palló, gerenda): o.end – bütü (keresztmetszet, átlós jellel), különben erezett oldalnézet; o.op: átlátszóság */
+export function timber(g, x, y, w, hh, o = {}) {
+  const t = opg(g, o);
+  R(t, x, y, w, hh, F(o.col ?? 'timber') + `;stroke:${v('timber2')};stroke-width:.8`, o.rx ? { rx: o.rx } : {});
+  if (o.end) P(t, `M${x} ${y} l${w} ${hh} M${x + w} ${y} l${-w} ${hh}`, SK('timber2', 0.7, 'opacity:.75'));
+  else if (w > hh) { for (const k of [0.3, 0.68]) Ln(t, x + 2, y + hh * k, x + w - 2, y + hh * k, SK('timber2', 0.6, 'opacity:.55')); }
+  else if (hh > 14) { for (const k of [0.34, 0.7]) Ln(t, x + w * k, y + 2, x + w * k, y + hh - 2, SK('timber2', 0.6, 'opacity:.55')); }
+  return t;
+}
+/** Gömbfa dúc vízszintesen, a végein keményfa ékpárral (o.loose: meglazított ék pirossal) */
+export function logH(g, x1, x2, y, r = 5, o = {}) {
+  const p = opg(g, o);
+  R(p, x1 + 4, y - r, x2 - x1 - 8, 2 * r, F('timber') + `;stroke:${v('timber2')};stroke-width:.8`, { rx: r * 0.45 });
+  Ln(p, x1 + 8, y - r * 0.4, x2 - 8, y - r * 0.4, SK('halo', 1.1, 'opacity:.28'));
+  Ln(p, x1 + 8, y + r * 0.45, x2 - 8, y + r * 0.45, SK('timber2', 0.7, 'opacity:.6'));
+  if (o.wedge !== false) for (const [x, d] of [[x1, 1], [x2, -1]]) P(p, `M${x} ${y - r - 2.5} l${d * 5} 2 v${2 * r + 1} l${-d * 5} 2Z`, F(o.loose ? 'mark' : 'timber2') + `;stroke:${v('dark2')};stroke-width:.5`);
+  return p;
+}
+/** Csavarorsós (állítható) acéldúc: két menetes orsó, középen a forgatható cső, a végeken fejlemez */
+export function prop(g, x1, x2, y, r = 4, o = {}) {
+  const p = opg(g, o), L = x2 - x1, m = (x1 + x2) / 2;
+  R(p, x1 + 2, y - r * 0.55, L - 4, r * 1.1, F('steel1') + `;stroke:${v('steel3')};stroke-width:.6`);
+  let d = '';
+  for (let x = x1 + 5; x < x1 + L * 0.24; x += 3) d += `M${x} ${y - r * 0.55} l1.4 ${r * 1.1} `;
+  for (let x = x2 - L * 0.24 + 1; x < x2 - 4; x += 3) d += `M${x} ${y - r * 0.55} l1.4 ${r * 1.1} `;
+  P(p, d, SK('steel3', 0.6));
+  R(p, x1 + L * 0.24, y - r, L * 0.52, 2 * r, 'fill:url(#pr-cylh)' + `;stroke:${v('steel3')};stroke-width:.8`, { rx: 1.5 });
+  R(p, m - r * 0.8, y - r * 1.3, r * 1.6, r * 2.6, F('acc') + `;stroke:${v('dark2')};stroke-width:.6`, { rx: 1.2 });
+  for (const x of [x1, x2 - 2.8]) R(p, x, y - r * 1.8, 2.8, r * 3.6, F('steel3'));
+  return p;
+}
+/** Zöld / piros mélységjelző sáv (pl. m₀: a szabadon megálló mélység) */
+export function depthBar(g, x, y0, y1, c = 'ok') { Ln(g, x, y0, x, y1, SK(c, 4.5, 'stroke-linecap:round')); }

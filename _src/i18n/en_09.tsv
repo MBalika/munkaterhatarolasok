@@ -107,7 +107,6 @@ ccb77b6	a) vertical
 df516c2	 <span>It must be shored in any case for occupational safety (H = ${fmt(H, 1)} m > ${fmt(L, 1)} m): the exposed soil face dries out, soaks up water, its condition deteriorates.</span>
 379ccab	 <span>We are below the shoring limit (${fmt(L, 1)} m) – but with dynamic effects (traffic, piling) or near a building it has to be shored even then.</span>
 a0e9a12	green: stands unsupported · red: support needed
-602da51	trench (1–3 m)
 a357997	m₀ as a function of cohesion (the other data fixed)
 ff02b41	<b>Condition: m₀ ≥ H</b> – the excavation can be dug to full depth without support (cohesive soil, above the groundwater).
 3eb41c2	Excavation to full depth – possible because H &lt; m₀: the vertical soil face stands for a short time.
