@@ -33,7 +33,7 @@
 #falak .steptext b { display: block; }
 @media (max-width: 600px) {
   #falak .w-viz { overflow-x: auto; -webkit-overflow-scrolling: touch; }
-  #falak .w-viz > svg.fig { min-width: 540px; }
+  #falak .w-viz > svg.fig:not(.pr-scene) { min-width: 540px; }
 }
 /* a négy falcsoport (befogott támszerkezetek) */
 .fal-fams { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px 10px; margin: 14px 0 6px; }

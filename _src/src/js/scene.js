@@ -18,7 +18,7 @@ export function stage(fig, o) {
   K.defs(); clear(fig);
   const W = o.W, H = o.H;
   fig.setAttribute('viewBox', `0 0 ${W} ${H}`);
-  fig.classList.add('pr-svg');
+  fig.classList.add('pr-svg', 'pr-scene');
   K.CUR.W = W;
   const cw = fig.getBoundingClientRect().width;
   const fk = cw > 0 ? Math.round(Math.max(1, Math.min(o.fmax ?? 1.7, (9.5 * W) / (11.5 * cw))) * 20) / 20 : 1;
