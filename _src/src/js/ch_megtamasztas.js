@@ -1,6 +1,7 @@
 // 06 – Megtámasztó szerkezetek: fal-labor, horgony (részek, tervező, próbaterhelés), csőtámasz, top-down, passzív hátrahorgonyzás
 import { register, shell, slider, seg, toggle, stat, verdict, svg, figure, clear, fmt, clamp, rad, loop, h } from './core.js';
 import { defineQuiz } from './ui.js';
+import { decor } from './scene.js';
 
 const txt = (p, x, y, t, cls = 't-lab', anchor = 'start', extra = {}) => svg('text', { x, y, class: cls, 'text-anchor': anchor, text: t, ...extra }, p);
 const scrollBox = (p) => { const d = h('div', { class: 'mt-scroll' }); p.append(d); return d; }; // mobilon vízszintesen görgethető ábra
@@ -179,6 +180,7 @@ register('fallabor', (root) => {
     const xw = 330;
     // talaj
     svg('rect', { x: 0, y: 0, width: W, height: y0, class: 'f-sky' }, g);
+    decor(g, { sky: [0, 560, y0] });
     svg('rect', { x: xw, y: y0, width: 560 - xw, height: HH - y0, class: 'f-soilA' }, g);
     svg('rect', { x: 40, y: Y(H), width: xw - 40, height: HH - Y(H), class: 'f-soilA' }, g);
     svg('rect', { x: xw, y: y0, width: 560 - xw, height: HH - y0, fill: 'url(#pat-sand)' }, g);
@@ -253,6 +255,7 @@ register('fallabor', (root) => {
     } else if (type === 'egy-szabad') { title = 'Szabadon támaszkodó talp'; msg = 'Rövidebb fal, de nagyobb mezőnyomaték: a talp kissé elmozdulhat, a fal „két támaszú tartóként” dolgozik (horgony + passzív földellenállás).'; }
     else if (type === 'egy-befogott') { title = 'Befogott talp'; msg = `Hosszabb fal, de kisebb mezőnyomaték: a talp befogása negatív nyomatékot ébreszt. A nulla nyomatékú pont kb. ${fmt(r.x, 2)} m-rel a gödör alja alatt van.`; }
     else { title = 'Határozatlan, többtámaszú tartó'; msg = 'Mély gödörnél több szinten kell megtámasztani: a támaszerők itt a Peck-féle látszólagos földnyomásból, hatásterület alapján adódnak – a valódi eloszlás az építési fázisoktól is függ.'; }
+    decor(g, { men: [[190, Y(H), sc, 1]] });
     vd.set(st, title, msg);
   }
   [sType, sH, sPhi, sG, sA, sN, sE].forEach((s) => s.on(draw));
@@ -375,6 +378,7 @@ register('horgonytervezo', (root) => {
     const sc = Math.min(34, (W - xw - 30) / Math.max(R + 2, 14), (HH - y0 - 20) / Math.max(H + 2.6, zEnd + 1.5));
     const X = (x) => xw + x * sc, Y = (z) => y0 + z * sc;
     svg('rect', { x: 0, y: 0, width: W, height: y0, class: 'f-sky' }, g);
+    decor(g, { sky: [0, W, y0] });
     svg('rect', { x: xw, y: y0, width: W - xw, height: HH - y0, class: 'f-soilA' }, g);
     svg('rect', { x: xw, y: y0, width: W - xw, height: HH - y0, fill: 'url(#pat-sand)' }, g);
     svg('rect', { x: 0, y: y0, width: xw, height: Y(H) - y0, class: 'mt-air' }, g);
@@ -431,6 +435,7 @@ register('horgonytervezo', (root) => {
     if (sAl.v < 15 || sAl.v > 30) { st = st === 'bad' ? st : 'warn'; msgs.push('A horgonyok a vízszintessel jellemzően 15–30°-os szöget zárnak be.'); }
     if (hit) { st = 'bad'; msgs.push('A horgony beleütközik a szomszéd pincéjébe! Meredekebb horgony, mélyebb horgonysor – vagy csőtámasz kell.'); }
     if (over > 0) msgs.push(`A horgony ${fmt(over, 1)} m-rel a szomszéd telek alá nyúlik – jogi kérdés (tulajdonosi hozzájárulás), és meglévő műtárgyakba ütközhet.`);
+    decor(g, { men: [[62, Y(H), sc, 1]] });
     vd.set(st, st === 'ok' ? (over > 0 ? 'Geometriailag rendben' : 'Rendben') : st === 'warn' ? 'Figyelem' : 'Így nem jó', msgs.length ? '<ul class="mt-ul">' + msgs.map((m) => `<li>${m}</li>`).join('') + '</ul>' : 'A befogott szakasz a csúszólapon túl kezdődik, és a horgony a saját telken marad.');
   }
   [sH, sA, sAl, sPhi, sLb, sP, tB].forEach((s) => s.on(draw));
@@ -560,6 +565,7 @@ register('csotamasz', (root) => {
     // ------- felső rész: keresztmetszet a gödrön át
     const y0 = 40, xl = 60, xr = W - 60, ys = 120;
     svg('rect', { x: 0, y: 0, width: W, height: y0, class: 'f-sky' }, g);
+    decor(g, { sky: [0, W, y0] });
     // nap
     const sunx = tDay.v ? xl + ((hour - 6) / 14) * (xr - xl) : W - 90;
     const suny = tDay.v ? 30 - Math.sin(((hour - 6) / 14) * Math.PI) * 14 + 6 : 22;
@@ -654,6 +660,7 @@ register('passziv', (root) => {
     const e = ex * H;
     const mv = ex * (state === 'ok' ? 6 : state === 'warn' ? 12 : 22); // px – torzított elmozdulás
     svg('rect', { x: 0, y: 0, width: W, height: y0, class: 'f-sky' }, g);
+    decor(g, { sky: [0, W, y0] });
     svg('rect', { x: xw, y: y0, width: W - xw, height: HH - y0, class: 'f-soilA' }, g);
     svg('rect', { x: xw, y: y0, width: W - xw, height: HH - y0, fill: 'url(#pat-sand)' }, g);
     svg('rect', { x: 0, y: Y(e), width: xw, height: HH - Y(e), class: 'f-soilA' }, g);
@@ -687,6 +694,7 @@ register('passziv', (root) => {
     if (ex > 0.95) txt(g, X(0) - mv - 12, y0 + 20, '← néhány cm', 't-sm t-bad halo', 'end');
     oMin.set(Lmin); oRat.set(L / H);
     oSt.set(0, state, state === 'ok' ? 'rendben' : state === 'warn' ? 'átfedés' : 'éken belül');
+    decor(g, e > 2 ? { men: [[70, Y(e), sc, 1]] } : {});
     vd.set(state, state === 'ok' ? 'A horgonyfal jó helyen van' : state === 'warn' ? 'Az ékek átfedik egymást – csökkent ellenállás' : 'A horgonyfal az aktív éken belül van – nincs ellenállás',
       state === 'ok' ? 'A két csúszólap legfeljebb a terepen találkozik: a horgonyfal előtt a teljes passzív ék kialakulhat. Feszítés nélkül a fal néhány cm-t mozdul, mire a rúd megfeszül.'
         : state === 'warn' ? `A passzív ék belelóg a fő fal mozgó földékébe. Told hátrébb a horgonyfalat legalább ${fmt(Lmin, 1)} m-re – vagy mélyebb, rövidebb horgonyfal kell.`

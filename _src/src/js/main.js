@@ -3,6 +3,7 @@ import { bootWidgets, bootAll, GUARD } from './core.js';
 import { LAYOUT } from './layout.js';
 import { initUI } from './ui.js';
 import { initHero } from './hero.js';
+import { skinDefs } from './scene.js';
 import './ch_alapok.js';
 import './ch_ducolas.js';
 import './ch_falak.js';
@@ -15,6 +16,7 @@ import './tf.js';
 import './proc.js';
 
 function start() {
+  try { skinDefs(); } catch (e) { console.error('Anyagminták hiba', e); }
   initUI();
   initHero();
   if (/[?&]all\b/.test(location.search)) bootAll(); else bootWidgets();

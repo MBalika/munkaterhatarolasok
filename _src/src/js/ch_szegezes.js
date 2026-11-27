@@ -1,6 +1,7 @@
 // 05 – Talajszegezés: widgetek és kvíz
 import { register, shell, slider, seg, toggle, stat, verdict, svg, figure, clear, fmt, clamp, rad, loop, h } from './core.js';
 import { defineQuiz } from './ui.js';
+import { decor } from './scene.js';
 
 /* ---------------------------------------------------------------- közös rajzsegédek */
 function arr(parent, x1, y1, x2, y2, cls = 'mt-ar-ink', w = 2, hd = 8) {
@@ -74,6 +75,7 @@ register('szegfal', (root) => {
     const e = step === 0 ? 0 : step >= G.total ? G.H : Math.min(G.H, (kLift + 1) * G.hf); // kiemelési szint
     // ég
     svg('rect', { x: 0, y: 0, width: W, height: y0, class: 'f-sky' }, g);
+    decor(g, { sky: [0, W, y0] });
     // talaj (megtartott oldal + a gödör alatti talaj)
     const zb = G.H + 1.6;
     const soil = `M ${X(0)} ${y0} L ${W} ${y0} L ${W} ${Y(zb)} L 0 ${Y(zb)} L 0 ${Y(e)} L ${X(e)} ${Y(e)} Z`;
@@ -218,6 +220,7 @@ register('szegfal', (root) => {
     if (G.s > 1.0) warns.push('1,0 m-nél ritkább (legfeljebb 1,5 m-es) raszter csak kedvező talajban.');
     if (topOver < 1) warns.push('A felső szegsor alig nyúlik túl a csúszólapon – hosszabb szeg kell (L/H ↑).');
     if (G.hf > 1.5) warns.push('Nagy fogásmagasság: csak jól álló, kötött talajban.');
+    if (e > 0) decor(g, step < G.total && sub === 0 ? { exc: [X(e) - 26, Y(e), sc, 44, 'sand', true] } : { men: [[X(e) - 60, Y(e), sc, 1]] });
     vd.set(warns.length ? 'warn' : 'ok', warns.length ? 'Figyelem' : 'Rendben, a jellemző tartományokon belül', warns.length ? '<ul class="mt-ul">' + warns.map((w) => `<li>${w}</li>`).join('') + '</ul>' : `${G.n} fogás, ${G.rows.length} szegsor, ${fmt(perM, 1)} szeg / folyóméter.`);
   }
   const go = (d) => { step += d; draw(); };

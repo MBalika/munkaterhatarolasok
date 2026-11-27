@@ -173,3 +173,49 @@ export function prop(g, x1, x2, y, r = 4, o = {}) {
 }
 /** Zöld / piros mélységjelző sáv (pl. m₀: a szabadon megálló mélység) */
 export function depthBar(g, x, y0, y1, c = 'ok') { Ln(g, x, y0, x, y1, SK(c, 4.5, 'stroke-linecap:round')); }
+
+/**
+ * Az oldal régi, osztályokkal színezett rajzai (f-soilA, f-conc, f-sky …: beágyazott ábrák és a még nem jelenetként rajzolt widgetek)
+ * is a folyamatsorok anyagmintáit kapják: összetett minták (alapszín + textúra), amelyekre a proc.css hivatkozik.
+ */
+export function skinDefs() {
+  K.defs();
+  const d = document.querySelector('#pr-defs defs');
+  if (!d || document.getElementById('pr-s-sand')) return;
+  const mk = (id, col, tex) => {
+    const t = document.getElementById(tex), w = +(t?.getAttribute('width') || 24), hh = +(t?.getAttribute('height') || 24);
+    const p = el('pattern', { id, width: w, height: hh, patternUnits: 'userSpaceOnUse' }, d);
+    el('rect', { width: w, height: hh, style: `fill:${v(col)}` }, p);
+    el('rect', { width: w, height: hh, style: `fill:url(#${tex})` }, p);
+  };
+  mk('pr-s-sand', 'sand', 'pr-p-sand'); mk('pr-s-clay', 'clay', 'pr-p-clay'); mk('pr-s-silt', 'silt', 'pr-p-silt'); mk('pr-s-gravel', 'gravel', 'pr-p-gravel');
+  mk('pr-s-clay2', 'clay2', 'pr-p-clay'); mk('pr-s-fill', 'fill', 'pr-p-fill'); mk('pr-s-conc', 'conc1', 'pr-p-conc'); mk('pr-s-conc2', 'conc2', 'pr-p-conc');
+  mk('pr-s-mix', 'mix1', 'pr-p-mix'); mk('pr-s-wood', 'timber', 'pr-p-wood');
+  // a régi, pöttyös talajminták kiürítése (a rájuk rajzolt fedőrétegek így nem duplázzák a textúrát)
+  for (const id of ['pat-sand', 'pat-clay', 'pat-soil', 'pat-gravel']) { const o = document.getElementById(id); if (o) o.replaceChildren(); }
+}
+/** Ég, távoli város és fák sávja egy régi rajz „ég” téglalapja helyére: (x0…x1) szélességben, a terepszint GY */
+export function skyBand(parent, x0, x1, GY, before = null) {
+  K.defs();
+  const g = el('g', {}); parent.insertBefore(g, before);
+  const cp = 'skc' + Math.random().toString(36).slice(2, 8);
+  const c = el('clipPath', { id: cp }, g); el('rect', { x: x0, y: 0, width: x1 - x0, height: GY + 1 }, c);
+  const b = el('g', { 'clip-path': `url(#${cp})` }, g);
+  K.backdrop(b, { H: GY, GY, layers: [] }, x0, x1 - x0);
+  return g;
+}
+
+/**
+ * A régi (osztályokkal rajzolt) metszetek díszítése: o.sky = [x0, x1, GY] – ég a távoli várossal (a rajz 1. eleme, az ég-téglalap mögé-fölé);
+ * o.men = [[x, GY, S, face?, hands?]] – léptékhelyes munkások; o.exc = [kanálX, fenékY, S, reach?, talaj?, tükrözve?] – kotró a gödörfenéken.
+ */
+export function decor(g, o = {}) {
+  K.defs(); (g.ownerSVGElement || g).classList.add('pr-svg');
+  if (o.sky) skyBand(g, o.sky[0], o.sky[1], o.sky[2], g.children[o.after ?? 1] || null);
+  if (o.exc) {
+    const [tx, fy, S, reach, soil, flip] = o.exc;
+    let mg = K.scl(g, (0.88 * S) / MS, tx, fy); if (flip) mg = K.mir(mg, tx);
+    K.excavator(mg, { GY: fy, H: fy, layers: [] }, tx, fy - 12, { tool: 'dig', reach: reach ?? 46, soil: soil ?? 'sand' });
+  }
+  for (const m of o.men || []) K.man(g, { x: m[0], GY: m[1], S: m[2], face: m[3] ?? 1, hands: m[4] });
+}

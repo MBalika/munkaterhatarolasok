@@ -97,3 +97,11 @@
 .pr-svg .pr-b { font-weight: 800; }
 .pr-svg .pr-m { font-family: var(--f-mono); letter-spacing: -0.02em; }
 .fig.pr-svg { border-radius: 10px; overflow: hidden; }
+
+/* a régi, osztályokkal színezett rajzok (beágyazott ábrák, még nem jelenetként rajzolt widgetek) is az elemtár anyagmintáit kapják */
+svg .f-soilA { fill: url(#pr-s-sand); } svg .f-soilB { fill: url(#pr-s-clay); } svg .f-soilC { fill: url(#pr-s-silt); } svg .f-soilD { fill: url(#pr-s-gravel); } svg .f-soilE { fill: url(#pr-s-clay2); }
+svg .f-sky { fill: url(#pr-sky); } svg .f-bg2 { fill: url(#pr-pitg); }
+svg .f-conc { fill: url(#pr-s-conc); } svg .f-conc2 { fill: url(#pr-s-conc2); } svg .f-shot { fill: url(#pr-s-mix); } svg .f-grout { fill: var(--pr-grout1); }
+svg .f-timber { fill: url(#pr-s-wood); } svg .f-timber2 { fill: var(--pr-timber2); }
+svg .f-steel { fill: var(--pr-steel2); } svg .f-steel2 { fill: var(--pr-steel3); }
+svg .f-bld { fill: var(--pr-wallh); } svg .f-bld2 { fill: var(--pr-wallh2); }
