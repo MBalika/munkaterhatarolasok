@@ -42,16 +42,19 @@ export const YT_GROUPS = [
 // Fejezetek a szintléchez (mélység m-ben)
 export const CHAPTERS = [
   { id: 'bevezeto', t: 'Bevezető', d: 0, grp: 0 },
-  { id: 'alapok', t: 'Alapok', d: 1.5, grp: 0 },
-  { id: 'ducolas', t: 'Munkaárok dúcolása', d: 3.5, grp: 1 },
-  { id: 'szeles', t: 'Széles gödör', d: 5.5, grp: 1 },
-  { id: 'falak', t: 'Határoló falak', d: 7.5, grp: 2 },
-  { id: 'megtamasztas', t: 'Megtámasztás', d: 10, grp: 3 },
-  { id: 'szegezes', t: 'Talajszegezés', d: 12.5, grp: 3 },
-  { id: 'kulonleges', t: 'Különleges', d: 15, grp: 4 },
-  { id: 'tervezo', t: '3D gödörtervező', d: 17.5, grp: 0 },
-  { id: 'dontes', t: 'Melyiket válasszam?', d: 19.5, grp: 0 },
-  { id: 'videotar', t: 'Videótár', d: 21.5, grp: 0 },
-  { id: 'teszt', t: 'Önellenőrzés', d: 23.5, grp: 0 },
+  { id: 'alapok', n: '01', t: 'Alapok', nav: 'Alapok', d: 1.5, grp: 0, ng: 0 },
+  { id: 'ducolas', n: '02', t: 'Munkaárok dúcolása', nav: 'Munkaárok', d: 3.5, grp: 1, ng: 1 },
+  { id: 'szeles', n: '03', t: 'Széles gödör', nav: 'Széles gödör', d: 5.5, grp: 1, ng: 1 },
+  { id: 'falak', n: '04', t: 'Határoló falak', nav: 'Határoló falak', d: 7.5, grp: 2, ng: 2 },
+  { id: 'megtamasztas', n: '05', t: 'Megtámasztás', nav: 'Támaszok, horgonyok', d: 10, grp: 3, ng: 3 },
+  { id: 'szegezes', n: '06', t: 'Talajszegezés', nav: 'Talajszegezés', d: 12.5, grp: 3, ng: 3 },
+  { id: 'kulonleges', n: '07', t: 'Különleges', nav: 'Fagy, gát, víz', d: 15, grp: 4, ng: 4 },
+  { id: 'tervezo', n: '08', t: '3D gödörtervező', nav: '3D tervező', d: 17.5, grp: 0, ng: 5 },
+  { id: 'dontes', n: '09', t: 'Melyiket válasszam?', nav: 'Döntés', d: 19.5, grp: 0, ng: 5 },
+  { id: 'videotar', n: '10', t: 'Videótár', nav: 'Videótár', d: 21.5, grp: 0, ng: 5 },
+  { id: 'teszt', n: '11', t: 'Önellenőrzés', nav: 'Teszt', d: 23.5, grp: 0, ng: 5 },
 ];
+// a fejlécsáv és a fejezetlista csoportjai (ng): felirat + színcsoport
+const EN_ = (document.documentElement.lang || '').toLowerCase().startsWith('en');
+export const NAVGROUPS = [['Bevezetés', 'grp0'], ['Dúcolás', 'grp1'], [EN_ ? 'Wall systems' : 'Falszerkezetek', 'grp2'], ['Megtámasztás, erősítés', 'grp3'], ['Különleges megoldások', 'grp4'], ['Gyakorlás, ismétlés', 'grp5']];
 export const MAXDEPTH = 25;

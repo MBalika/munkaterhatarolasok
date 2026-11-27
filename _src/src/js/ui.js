@@ -1,6 +1,6 @@
 // Oldalkeret: téma, navigáció, szintléc, videók, galéria, YouTube, fülek, kvíz, igaz/hamis
 import { $, $$, h, fmt, clamp, fireTheme, EN } from './core.js';
-import { VIDEOS, VGROUPS, YT, YT_GROUPS, CHAPTERS, MAXDEPTH } from './data.js';
+import { VIDEOS, VGROUPS, YT, YT_GROUPS, CHAPTERS, NAVGROUPS, MAXDEPTH } from './data.js';
 
 /* ---------------------------------------------------------------- téma */
 function initTheme() {
@@ -31,11 +31,20 @@ function initNav() {
   // felső menü
   const topnav = $('#topnav');
   const sheetList = $('#navsheetList');
+  // fejezetsáv: csoportfelirat (színcsoport) + alatta a fejezetek (sorszám + rövid név); a kész és az aktuális fejezet jelölve
+  let g = null, row = null, srow = null;
   for (const c of chs) {
     if (c.id === 'bevezeto') continue;
-    if (topnav && ['alapok', 'ducolas', 'falak', 'megtamasztas', 'szegezes', 'kulonleges', 'tervezo', 'videotar', 'teszt'].includes(c.id))
-      topnav.append(h('a', { href: '#' + c.id, 'data-ch': c.id }, c.id === 'tervezo' ? '3D' : c.id === 'teszt' ? 'Teszt' : c.t.replace('Munkaárok dúcolása', 'Dúcolás').replace('Határoló falak', 'Falak')));
-    sheetList?.append(h('a', { href: '#' + c.id }, h('span', { class: 'num' }, '−' + fmt(c.d, 1) + ' m'), c.t));
+    if (c.ng !== g) {
+      g = c.ng;
+      const [cap, cls] = NAVGROUPS[g], same = chs.filter((x) => x.ng === g), span = same.length > 1 ? `${same[0].n}–${same[same.length - 1].n}` : c.n;
+      row = h('div', { class: 'tn-row' });
+      topnav?.append(h('div', { class: 'tn-g ' + cls, role: 'group', 'aria-label': cap }, h('span', { class: 'tn-cap' }, cap), row));
+      srow = h('div', { class: 'np-row' });
+      sheetList?.append(h('div', { class: 'np-g ' + cls }, h('div', { class: 'np-cap' }, h('b', {}, cap), h('i', {}, span)), srow));
+    }
+    row.append(h('a', { href: '#' + c.id, 'data-ch': c.id, title: `${c.n} · ${c.t}` }, h('i', {}, c.n), h('span', {}, c.nav)));
+    srow.append(h('a', { href: '#' + c.id, 'data-ch': c.id }, h('em', {}, c.n), h('span', {}, h('b', {}, c.t), h('i', {}, '−' + fmt(c.d, 1) + ' m'))));
   }
   const sheet = $('#navsheet');
   $('#menuBtn')?.addEventListener('click', () => { sheet.hidden = false; });
@@ -68,7 +77,7 @@ function initNav() {
     if (ro) ro.textContent = d < 0.05 || scrollY < 20 ? '±0,0' : '−' + fmt(d, 1);
     if (cur !== a.id) {
       cur = a.id;
-      $$('[data-ch]').forEach((el) => el.classList.toggle('on', el.dataset.ch === cur));
+      $$('[data-ch]').forEach((el) => { const k = chs.findIndex((c) => c.id === el.dataset.ch); el.classList.toggle('on', el.dataset.ch === cur); el.classList.toggle('done', k >= 0 && k < i); });
       if (rail) rail.style.setProperty('--grp', `var(--g${a.grp || 1})`);
     }
   };
