@@ -105,3 +105,6 @@ svg .f-conc { fill: url(#pr-s-conc); } svg .f-conc2 { fill: url(#pr-s-conc2); } 
 svg .f-timber { fill: url(#pr-s-wood); } svg .f-timber2 { fill: var(--pr-timber2); }
 svg .f-steel { fill: var(--pr-steel2); } svg .f-steel2 { fill: var(--pr-steel3); }
 svg .f-bld { fill: var(--pr-wallh); } svg .f-bld2 { fill: var(--pr-wallh2); }
+
+/* jelenetben maradt régi feliratosztályok: keskeny kijelzőn a jelenet feliratnagyításával (--fk) együtt nőnek */
+svg.pr-scene .t-sm { font-size: calc(10.5px * var(--fk, 1)); } svg.pr-scene .t-lab, svg.pr-scene .t-num { font-size: calc(12px * var(--fk, 1)); } svg.pr-scene .t-big { font-size: calc(16px * min(var(--fk, 1), 1.35)); }

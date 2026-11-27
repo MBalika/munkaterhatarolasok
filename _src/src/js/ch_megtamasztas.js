@@ -1,7 +1,7 @@
 // 06 – Megtámasztó szerkezetek: fal-labor, horgony (részek, tervező, próbaterhelés), csőtámasz, top-down, passzív hátrahorgonyzás
-import { register, shell, slider, seg, toggle, stat, verdict, svg, figure, clear, fmt, clamp, rad, loop, h } from './core.js';
+import { register, shell, slider, seg, toggle, stat, verdict, svg, figure, clear, fmt, clamp, rad, loop, h, EN } from './core.js';
 import { defineQuiz } from './ui.js';
-import { decor } from './scene.js';
+import { K, stage, autoRedraw, building } from './scene.js';
 
 const txt = (p, x, y, t, cls = 't-lab', anchor = 'start', extra = {}) => svg('text', { x, y, class: cls, 'text-anchor': anchor, text: t, ...extra }, p);
 const scrollBox = (p) => { const d = h('div', { class: 'mt-scroll' }); p.append(d); return d; }; // mobilon vízszintesen görgethető ábra
@@ -154,7 +154,6 @@ register('fallabor', (root) => {
   const sE = slider(ctrls, { label: 'Biztonság a passzív oldalon', sym: 'η', min: 1, max: 2, step: 0.1, value: 1.5, hint: 'K<sub>p,d</sub> = K<sub>p</sub> / η' });
   const W = 760, HH = 470;
   const fig = figure(scrollBox(viz), W, HH);
-  const g = svg('g', {}, fig);
   const leg = h('div', { class: 'legend', html: '<span><i style="background:var(--mt-act)"></i>aktív földnyomás</span><span><i style="background:var(--mt-pas)"></i>passzív földellenállás (K<sub>p</sub>/η)</span><span><i style="background:var(--accent)"></i>megtámasztás</span><span><i style="background:transparent;border:1.5px dashed var(--bad)"></i>alakváltozás (torzítva)</span><span><i style="background:var(--mt-momc)"></i>nyomatéki ábra M(z)</span>' });
   viz.append(leg);
   const sKa = stat(out, { label: 'Aktív tényező K<sub>a</sub>', d: 3 });
@@ -173,73 +172,71 @@ register('fallabor', (root) => {
     if (sA.v > sH.v - 1) sA.set(Math.max(0.5, sH.v - 1), false);
     const H = sH.v;
     const r = wallCalc({ type, phi: sPhi.v, gam: sG.v, H, eta: sE.v, a: sA.v, nL: sN.v });
-    clear(g);
     const Lt = r.Ltot;
-    const y0 = 56, sc = (HH - y0 - 30) / Math.max(Lt, 6);
+    const y0 = 74, sc = (HH - y0 - 30) / Math.max(Lt, 6);
     const Y = (z) => y0 + z * sc;
-    const xw = 330;
-    // talaj
-    svg('rect', { x: 0, y: 0, width: W, height: y0, class: 'f-sky' }, g);
-    decor(g, { sky: [0, 560, y0] });
-    svg('rect', { x: xw, y: y0, width: 560 - xw, height: HH - y0, class: 'f-soilA' }, g);
-    svg('rect', { x: 40, y: Y(H), width: xw - 40, height: HH - Y(H), class: 'f-soilA' }, g);
-    svg('rect', { x: xw, y: y0, width: 560 - xw, height: HH - y0, fill: 'url(#pat-sand)' }, g);
-    svg('rect', { x: 40, y: Y(H), width: xw - 40, height: HH - Y(H), fill: 'url(#pat-sand)' }, g);
-    txt(g, 552, y0 + 18, 'megtámasztott talaj', 't-sm halo', 'end');
-    txt(g, 50, Y(H) - 8, 'munkagödör', 't-sm halo');
+    const xw = 330, t2 = 6.5;
+    const St = stage(fig, { W, H: HH, GY: y0, layers: [{ k: 'sand', y: y0 }] });
+    const g = St.g, ov = St.ov;
+    K.pit(g, St.M, -4, xw - t2, Y(H));
+    St.tag(552, y0 + 20, 'megtámasztott talaj', { anchor: 'end', fs: 10 });
+    St.tag(46, Y(H) + 18, 'munkagödör', { fs: 10 });
     // nyomásábrák
     const ps = 150 / Math.max(r.Ka * sG.v * Lt, r.Kpd * sG.v * (r.Lcalc - H), type === 'tobb' ? r.peck : 0, 1);
     // aktív (jobb oldalon, a fal felé mutat)
     const act = [];
-    for (let i = 0; i <= 60; i++) { const z = (i / 60) * r.Lcalc; const pa = type === 'tobb' && z <= H ? r.peck : r.Ka * sG.v * z; act.push([xw + 6 + pa * ps, Y(z)]); }
-    svg('path', { d: P([[xw + 6, y0], ...act, [xw + 6, Y(r.Lcalc)]]) + ' Z', class: 'mt-act' }, g);
-    for (let z = 0.5; z < r.Lcalc; z += Math.max(0.8, r.Lcalc / 9)) { const pa = type === 'tobb' && z <= H ? r.peck : r.Ka * sG.v * z; if (pa * ps > 10) arr(g, xw + 6 + pa * ps, Y(z), xw + 8, Y(z), 'mt-ar-act', 1.4, 6); }
+    for (let i = 0; i <= 60; i++) { const z = (i / 60) * r.Lcalc; const pa = type === 'tobb' && z <= H ? r.peck : r.Ka * sG.v * z; act.push([xw + t2 + pa * ps, Y(z)]); }
+    svg('path', { d: P([[xw + t2, y0], ...act, [xw + t2, Y(r.Lcalc)]]) + ' Z', class: 'mt-act' }, ov);
+    for (let z = 0.5; z < r.Lcalc; z += Math.max(0.8, r.Lcalc / 9)) { const pa = type === 'tobb' && z <= H ? r.peck : r.Ka * sG.v * z; if (pa * ps > 10) arr(ov, xw + t2 + pa * ps, Y(z), xw + t2 + 2, Y(z), 'mt-ar-act', 1.4, 6); }
     // passzív (bal oldalon a gödör alatt)
     const pas = [];
-    for (let i = 0; i <= 40; i++) { const z = H + (i / 40) * (r.Lcalc - H); pas.push([xw - 6 - r.Kpd * sG.v * (z - H) * ps, Y(z)]); }
-    svg('path', { d: P([[xw - 6, Y(H)], ...pas, [xw - 6, Y(r.Lcalc)]]) + ' Z', class: 'mt-pas' }, g);
-    // fal
-    svg('rect', { x: xw - 5, y: y0 - 6, width: 10, height: Y(Lt) - y0 + 6, class: 'mt-wall' }, g);
-    if (r.d > r.d0 + 0.01) svg('rect', { x: xw - 5, y: Y(r.Lcalc), width: 10, height: Y(Lt) - Y(r.Lcalc), class: 'mt-wall-ext' }, g);
-    // helyettesítő erők (C)
-    r.forces.filter((f) => f.kind === 'C').forEach((f) => { arr(g, xw + 60, Y(f.z), xw + 8, Y(f.z), 'mt-ar-ink', 2, 8); txt(g, xw + 64, Y(f.z) + 4, 'C (Blum)', 't-sm halo'); });
-    // megtámasztások
+    for (let i = 0; i <= 40; i++) { const z = H + (i / 40) * (r.Lcalc - H); pas.push([xw - t2 - r.Kpd * sG.v * (z - H) * ps, Y(z)]); }
+    svg('path', { d: P([[xw - t2, Y(H)], ...pas, [xw - t2, Y(r.Lcalc)]]) + ' Z', class: 'mt-pas' }, ov);
+    // megtámasztások a fal mögött / előtt
     r.T.forEach((t, i) => {
       const yy = Y(t.z);
       if (type === 'tobb') {
-        svg('rect', { x: 60, y: yy - 4, width: xw - 65, height: 8, rx: 4, class: 'mt-strut' }, g);
-        txt(g, xw - 14, yy - 9, `T${i + 1} = ${fmt(t.T, 0)} kN/m`, 't-num halo', 'end');
+        K.pipeH(g, -8, xw - t2 - 8, yy, { r: 4.6 });
+        St.txt(xw - 26, yy - 10, `T${i + 1} = ${fmt(t.T, 0)} kN/m`, { anchor: 'end', b: true, mono: true });
       } else {
-        const L = 150, al = rad(20);
-        svg('line', { x1: xw + 5, y1: yy, x2: xw + 5 + L * Math.cos(al), y2: yy + L * Math.sin(al), class: 'mt-tendon', 'stroke-width': 2.5 }, g);
-        svg('line', { x1: xw + 5 + L * 0.55 * Math.cos(al), y1: yy + L * 0.55 * Math.sin(al), x2: xw + 5 + L * Math.cos(al), y2: yy + L * Math.sin(al), class: 'mt-grout', 'stroke-width': 9, 'stroke-linecap': 'round' }, g);
-        svg('rect', { x: xw - 9, y: yy - 6, width: 8, height: 12, class: 'f-acc' }, g);
-        arr(g, xw - 50, yy, xw - 8, yy, 'mt-ar-acc', 2.5, 9);
-        txt(g, xw - 54, yy - 8, `T = ${fmt(t.T, 0)} kN/m`, 't-num halo', 'end');
+        K.anchorA(K.scl(g, 1.7, xw - t2 - 8, yy), K.axis(xw - t2 - 8, yy, 20, 1), 0, 72, 56);
+        arr(ov, xw - 78, yy, xw - 34, yy, 'mt-ar-acc', 2.5, 9);
+        St.txt(xw - 82, yy - 8, `T = ${fmt(t.T, 0)} kN/m`, { anchor: 'end', b: true, mono: true });
       }
     });
+    // fal (vasbeton), a Blum-féle 20 % többlet világosabb
+    K.wallS(g, xw, y0 - 8, Y(Lt), { t: 2 * t2 });
+    if (r.d > r.d0 + 0.01) { K.R(g, xw - t2, Y(r.Lcalc), 2 * t2, Y(Lt) - Y(r.Lcalc), K.F('halo', 0.42)); K.Ln(g, xw - t2 - 5, Y(r.Lcalc), xw + t2 + 5, Y(r.Lcalc), K.SK('labline', 1, 'stroke-dasharray:3 2')); }
+    r.T.forEach((t) => {
+      const yy = Y(t.z);
+      K.waleS(g, xw - t2, yy, -1);
+      if (type !== 'tobb') K.aheadS(K.scl(g, 1.5, xw - t2 - 8, yy), K.axis(xw - t2 - 8, yy, 20, 1));
+    });
+    // helyettesítő erők (C)
+    r.forces.filter((f) => f.kind === 'C').forEach((f) => { arr(ov, xw + 66, Y(f.z), xw + t2 + 2, Y(f.z), 'mt-ar-ink', 2, 8); St.txt(xw + 70, Y(f.z) + 4, 'C (Blum)', { fs: 10.5, b: true }); });
     // alakváltozás
     const load = (z) => (type === 'tobb' && z <= H ? r.peck : r.Ka * sG.v * z);
     const wd = deflect(Lt, H, load, r.supports);
     const wmax = Math.max(...wd.map((p) => Math.abs(p[1])), 1e-9);
     const ws = 46 / wmax;
-    svg('path', { d: P(wd.map(([z, w]) => [xw - w * ws, Y(z)])), class: 'mt-defl', fill: 'none' }, g);
-    // gödörfenék, terep
-    svg('line', { x1: 40, y1: Y(H), x2: xw - 5, y2: Y(H), class: 's-soil', 'stroke-width': 2 }, g);
-    svg('line', { x1: xw, y1: y0, x2: 560, y2: y0, class: 's-soil', 'stroke-width': 2 }, g);
+    svg('path', { d: P(wd.map(([z, w]) => [xw - w * ws, Y(z)])), class: 'mt-defl', fill: 'none' }, ov);
     // méretek
-    const dimv = (x, z1, z2, t) => { svg('line', { x1: x, y1: Y(z1), x2: x, y2: Y(z2), class: 's-muted', 'stroke-width': 1 }, g); for (const z of [z1, z2]) svg('line', { x1: x - 4, y1: Y(z), x2: x + 4, y2: Y(z), class: 's-muted' }, g); txt(g, x + 6, (Y(z1) + Y(z2)) / 2 + 4, t, 't-num halo'); };
-    dimv(14, 0, H, `H = ${fmt(H, 1)} m`);
-    dimv(14, H, Lt, `d = ${fmt(r.d, 1)} m`);
-    // nyomatéki ábra jobbra
-    const mx0 = 650, mw = 90;
+    St.dimV(16, Y(0), Y(H), `H = ${fmt(H, 1)} m`);
+    St.dimV(16, Y(H), Y(Lt), `d = ${fmt(r.d, 1)} m`);
+    // munkás a gödör alján (lépték)
+    K.man(g, { x: 150, GY: Y(H), S: sc, face: 1 });
+    // nyomatéki ábra jobbra, külön táblán
+    const mx0 = 668, mw = 82;
+    K.R(g, 572, 10, 180, HH - 20, K.F('labbg', 0.94) + `;stroke:${K.v('labedge')};stroke-width:1`, { rx: 10 });
     const Mabs = Math.max(...r.I.M.map(Math.abs), 1);
-    svg('line', { x1: mx0, y1: y0, x2: mx0, y2: Y(Lt), class: 's-muted', 'stroke-width': 1 }, g);
+    svg('line', { x1: mx0, y1: y0, x2: mx0, y2: Y(Lt), class: 's-muted', 'stroke-width': 1 }, ov);
+    svg('line', { x1: mx0 - 6, y1: y0, x2: mx0 + 6, y2: y0, class: 's-muted', 'stroke-width': 1 }, ov);
+    svg('line', { x1: mx0 - 6, y1: Y(H), x2: mx0 + 6, y2: Y(H), class: 's-muted', 'stroke-width': 1 }, ov);
     const mp = r.I.z.map((z, i) => [mx0 - (r.I.M[i] / Mabs) * mw * 0.95, Y(z)]);
-    svg('path', { d: P([[mx0, y0], ...mp, [mx0, Y(r.I.z[r.I.z.length - 1])]]) + ' Z', class: 'mt-mom' }, g);
-    txt(g, mx0, y0 - 14, 'M(z)', 't-num', 'middle');
+    svg('path', { d: P([[mx0, y0], ...mp, [mx0, Y(r.I.z[r.I.z.length - 1])]]) + ' Z', class: 'mt-mom' }, ov);
+    St.txt(mx0, 36, 'M(z)', { anchor: 'middle', b: true, mono: true });
     const iM = r.I.M.findIndex((m) => m === r.Mmax);
-    if (iM >= 0) txt(g, mx0 - (r.Mmax / Mabs) * mw - 4, Y(r.I.z[iM]) + 4, `${fmt(Math.abs(r.Mmax), 0)}`, 't-num halo', r.Mmax > 0 ? 'end' : 'start');
+    if (iM >= 0) St.txt(mx0 - (r.Mmax / Mabs) * mw * 0.5, Y(r.I.z[iM]) + 4, `${fmt(Math.abs(r.Mmax), 0)}`, { anchor: 'middle', b: true, mono: true });
     // kijelzők
     sKa.set(r.Ka); sKp.set(r.Kp);
     sD.set(r.d, r.d > 1.5 * H ? 'warn' : null);
@@ -255,11 +252,10 @@ register('fallabor', (root) => {
     } else if (type === 'egy-szabad') { title = 'Szabadon támaszkodó talp'; msg = 'Rövidebb fal, de nagyobb mezőnyomaték: a talp kissé elmozdulhat, a fal „két támaszú tartóként” dolgozik (horgony + passzív földellenállás).'; }
     else if (type === 'egy-befogott') { title = 'Befogott talp'; msg = `Hosszabb fal, de kisebb mezőnyomaték: a talp befogása negatív nyomatékot ébreszt. A nulla nyomatékú pont kb. ${fmt(r.x, 2)} m-rel a gödör alja alatt van.`; }
     else { title = 'Határozatlan, többtámaszú tartó'; msg = 'Mély gödörnél több szinten kell megtámasztani: a támaszerők itt a Peck-féle látszólagos földnyomásból, hatásterület alapján adódnak – a valódi eloszlás az építési fázisoktól is függ.'; }
-    decor(g, { men: [[190, Y(H), sc, 1]] });
     vd.set(st, title, msg);
   }
   [sType, sH, sPhi, sG, sA, sN, sE].forEach((s) => s.on(draw));
-  draw();
+  draw(); autoRedraw(fig, draw);
 });
 
 /* ================================================================ 2. A talajhorgony részei */
@@ -276,70 +272,87 @@ register('horgonyreszek', (root) => {
   const { ctrls, viz } = shell(root, { out: false });
   const sP = seg(ctrls, { label: 'Részek', vert: true, options: Object.entries(PARTS).map(([v, o]) => ({ v, t: o.t })), value: 'fej' });
   const info = h('div', { class: 'verdict' });
-  const W = 760, HH = 330;
+  const W = 760, HH = 344;
   const fig = figure(scrollBox(viz), W, HH);
   viz.append(info);
-  const g = svg('g', {}, fig);
   let tt = 0;
   function draw() {
-    clear(g);
     const sel = sP.v;
-    const on = (k) => (sel === k ? ' mt-sel' : '');
-    const grp = (k) => { const e = svg('g', { class: 'mt-part' + on(k), tabindex: 0, role: 'button', 'aria-label': PARTS[k].t }, g); e.addEventListener('click', () => sP.set(k)); e.addEventListener('keydown', (ev) => { if (ev.key === 'Enter') sP.set(k); }); return e; };
-    // talaj
-    svg('rect', { x: 100, y: 20, width: W - 100, height: HH - 40, class: 'f-soilB' }, g);
-    svg('rect', { x: 100, y: 20, width: W - 100, height: HH - 40, fill: 'url(#pat-soil)' }, g);
-    svg('rect', { x: 0, y: 20, width: 100, height: HH - 40, class: 'f-sky', opacity: 0.6 }, g);
-    txt(g, 50, HH - 30, 'munkagödör', 't-sm', 'middle');
-    // fal + heveder
-    const gw = grp('heveder');
-    svg('rect', { x: 84, y: 20, width: 18, height: HH - 40, class: 'f-conc' }, gw);
-    svg('rect', { x: 84, y: 20, width: 18, height: HH - 40, fill: 'url(#pat-conc)' }, gw);
-    svg('rect', { x: 64, y: 100, width: 20, height: 34, class: 'f-steel2' }, gw);
-    // geometria
-    const ax = 102, ay = 117, ang = rad(17), Lf = 300, Lb = 270;
-    const pt = (u) => [ax + Math.cos(ang) * u, ay + Math.sin(ang) * u];
-    const [bx, by] = pt(Lf), [ex, ey] = pt(Lf + Lb);
+    const St = stage(fig, { W, H: HH, GY: -3, layers: [{ k: 'clay', y: -3 }], plain: true });
+    const g = St.g, { F, SK, R: Rc, P: Pp, C: Cc, Ln, v, pts } = K;
+    const grp = (k) => {
+      const e = K.g_(g, { class: 'mt-part' + (sel === k ? ' mt-sel' : '') });
+      e.setAttribute('tabindex', 0); e.setAttribute('role', 'button'); e.setAttribute('aria-label', PARTS[k].t);
+      e.addEventListener('click', () => sP.set(k)); e.addEventListener('keydown', (ev) => { if (ev.key === 'Enter') sP.set(k); });
+      return e;
+    };
+    // munkagödör a fal előtt
+    K.pit(g, St.M, -4, 84, HH + 6);
+    // geometria: a horgony tengelye a heveder külső síkjától
+    const ax = 54, ay = 122, ang = 17, Lw = 52 / Math.cos(rad(ang)), Lf = 330, Lb = 300;
+    const A = K.axis(ax, ay, ang, 1);
     // csúszólap
     const gc = grp('csuszo');
-    svg('line', { x1: 120, y1: HH - 20, x2: 330, y2: 20, class: 'mt-slip', 'stroke-width': 2.2, 'stroke-dasharray': '9 6' }, gc);
-    txt(gc, 318, 40, 'aktív csúszólap', 't-sm t-bad halo', 'end');
-    // befogott szakasz
+    Ln(gc, 122, HH, 336, 0, SK('push', 2.2, 'stroke-dasharray:9 6'));
+    Pp(gc, `M104 ${HH} L122 ${HH} L336 0 L104 0Z`, F('push', 0.07));
+    // furat a szabad szakaszon (cementhabarccsal kitöltve) + befogott, injektált habarcstest
     const gb = grp('befogott');
-    const bulb = [];
-    for (let i = 0; i <= 24; i++) { const u = Lf + (i / 24) * Lb; const r = 15 + Math.sin(i * 1.7) * 3; const [x, y] = pt(u); bulb.push([x - Math.sin(ang) * r, y + Math.cos(ang) * r]); }
-    for (let i = 24; i >= 0; i--) { const u = Lf + (i / 24) * Lb; const r = 15 + Math.cos(i * 1.3) * 3; const [x, y] = pt(u); bulb.push([x + Math.sin(ang) * r, y - Math.cos(ang) * r]); }
-    svg('path', { d: P(bulb) + ' Z', class: 'f-grout' }, gb);
-    svg('path', { d: P(bulb) + ' Z', fill: 'url(#pat-conc)' }, gb);
-    for (let i = 0; i < 7; i++) {
-      const [x, y] = pt(Lf + 25 + i * 36);
-      for (const sgn of [-1, 1]) { const nx = -Math.sin(ang) * 24 * sgn, ny = Math.cos(ang) * 24 * sgn; arr(gb, x + nx, y + ny, x + nx - Math.cos(ang) * 16, y + ny - Math.sin(ang) * 16, 'mt-ar-shear', 1.4, 5); }
-    }
-    txt(gb, (bx + ex) / 2, (by + ey) / 2 + 40, 'befogott szakasz 4–9 m', 't-lab halo', 'middle');
-    // szabad szakasz
+    const up = [], dn = [];
+    for (let i = 0; i <= 26; i++) { const u = Lf + (i / 26) * Lb, e = i === 0 || i === 26 ? 0.55 : 1; up.push(A(u, -(15 + Math.sin(i * 1.7) * 3.4) * e)); dn.unshift(A(u, (15 + Math.cos(i * 1.3) * 3.4) * e)); }
+    Pp(gb, `M${pts(...up, ...dn)}Z`, F('grout2') + `;stroke:${v('concedge')};stroke-width:1.2;stroke-linejoin:round`);
+    Pp(gb, `M${pts(...up, ...dn)}Z`, 'fill:url(#pr-p-conc)');
+    for (let i = 0; i < 7; i++) for (const sg of [-1, 1]) { const [x1, y1] = A(Lf + 30 + i * 38, sg * 26), [x2, y2] = A(Lf + 12 + i * 38, sg * 26); arr(gb, x1, y1, x2, y2, 'mt-ar-shear', 1.5, 5.5); }
+    // szabad szakasz: furat + védőcső
     const gs = grp('szabad');
-    svg('line', { x1: ax, y1: ay, x2: bx, y2: by, class: 'mt-sheath', 'stroke-width': 12 }, gs);
-    txt(gs, (ax + bx) / 2, (ay + by) / 2 - 16, 'szabad szakasz ≥ 4 m', 't-lab halo', 'middle');
-    // pászmák
+    Pp(gs, `M${pts(A(Lw, -10), A(Lf + 4, -10), A(Lf + 4, 10), A(Lw, 10))}Z`, F('grout1', 0.8) + `;stroke:${v('concedge')};stroke-width:.8`);
+    Pp(gs, `M${pts(A(Lw - 20, -6), A(Lf, -6), A(Lf, 6), A(Lw - 20, 6))}Z`, F('dark2') + `;stroke:${v('dark')};stroke-width:.8`);
+    Pp(gs, `M${pts(A(Lw - 18, -3.6), A(Lf - 2, -3.6))}`, SK('halo', 1.3, 'opacity:.3'));
+    // pászmák (a védőcsőben együtt futnak, a befogott szakaszon a távtartók szétnyitják őket) – a fejen túlnyúlnak
     const gp = grp('paszma');
-    for (const off of [-3, 0, 3]) svg('line', { x1: ax - 30, y1: ay + off, x2: ex - 6, y2: ey + off, class: 'mt-strand', 'stroke-width': 1.6 }, gp);
-    for (let i = 1; i < 6; i++) { const [x, y] = pt(Lf + i * 45); svg('circle', { cx: x, cy: y, r: 6, class: 'mt-spacer' }, gp); }
-    // mandzsettás cső
+    for (const o of [-1, 0, 1]) {
+      const q = [A(-56, o * 6.5), A(-16, o * 6.5), A(Lw - 22, o * 3), A(Lf, o * 3)];
+      for (let i = 0; i < 6; i++) { q.push(A(Lf + 22 + i * 50, o * 8.5)); q.push(A(Lf + 47 + i * 50, o * 2.2)); }
+      q.pop(); q.push(A(Lf + Lb - 8, o * 1.5));
+      Pp(gp, `M${pts(...q)}`, SK('steel3', 3.2, 'stroke-linejoin:round;stroke-linecap:round'));
+      Pp(gp, `M${pts(...q)}`, SK('steel1', 1.5, 'stroke-linejoin:round;stroke-linecap:round;stroke-dasharray:3.4 1.6'));
+    }
+    for (let i = 0; i < 6; i++) { const [x, y] = A(Lf + 22 + i * 50, 0); Cc(gp, x, y, 4.6, F('spacer') + `;stroke:${v('dark2')};stroke-width:.8`); }
+    // mandzsettás injektálócső a pászmák alatt
     const gm = grp('mandzsetta');
-    svg('line', { x1: ax - 10, y1: ay + 8, x2: ex - 4, y2: ey + 8, class: 'mt-tam', 'stroke-width': 3 }, gm);
-    for (let i = 0; i < 6; i++) { const [x, y] = pt(Lf + 15 + i * 45); svg('rect', { x: x - 4, y: y + 5, width: 8, height: 6, rx: 2, class: 'f-acc' }, gm); if (sel === 'mandzsetta') { const ph = (tt + i * 0.17) % 1; svg('circle', { cx: x, cy: y + 8 + ph * 16, r: 2.4, class: 'f-grout', opacity: 1 - ph }, gm); } }
-    // fej
+    Pp(gm, `M${pts(A(Lw - 26, 12.5), A(Lf, 12.5), A(Lf + Lb - 10, 11))}`, SK('hose', 3.4, 'stroke-linecap:round;stroke-linejoin:round'));
+    for (let i = 0; i < 6; i++) {
+      const [x, y] = A(Lf + 16 + i * 48, 11.8);
+      Pp(gm, `M${pts(A(Lf + 10 + i * 48, 9.4), A(Lf + 22 + i * 48, 9.4), A(Lf + 22 + i * 48, 14.2), A(Lf + 10 + i * 48, 14.2))}Z`, F('acc') + `;stroke:${v('dark2')};stroke-width:.6`);
+      if (sel === 'mandzsetta') { const ph = (tt + i * 0.17) % 1; Cc(gm, x, y + 4 + ph * 15, 2.6, F('grout1', 1 - ph) + `;stroke:${v('concedge')};stroke-width:.5;stroke-opacity:${(1 - ph).toFixed(2)}`); }
+    }
+    // fal (vasbeton) és heveder: két U-szelvény, közte megy át a horgony
+    const gw = grp('heveder');
+    K.wallS(gw, 94, -6, HH + 6, { t: 20 });
+    Pp(gw, `M${pts(A(Lw - 30, -7.5), A(Lw + 2, -7.5), A(Lw + 2, 7.5), A(Lw - 30, 7.5))}Z`, F('dark2'));
+    for (const [y, d] of [[ay - 36, 1], [ay + 12, -1]]) {
+      Rc(gw, 56, y, 28, 24, 'fill:url(#pr-cylh)' + `;stroke:${v('steel3')};stroke-width:1`);
+      Pp(gw, d > 0 ? `M56 ${y} h28 v4 h-22 v16 h22 v4 h-28Z` : `M56 ${y} h28 v4 h-22 v16 h22 v4 h-28Z`, F('steel2') + `;stroke:${v('steel3')};stroke-width:.9`);
+    }
+    for (const y of [ay - 46, ay + 40]) { Rc(gw, 76, y, 8, 5, F('steel3')); Rc(gw, 70, y + 0.8, 6, 3.4, F('dark2')); }
+    // horgonyfej: iránybeállító (ék alakú) alátét, teherelosztó lemez, ékes horgonytárcsa a kúpos ékekkel
     const gf = grp('fej');
-    svg('path', { d: `M 60 98 L 70 92 L 70 142 L 60 136 Z`, class: 'f-steel2' }, gf);
-    svg('rect', { x: 40, y: 104, width: 20, height: 26, rx: 3, class: 'f-steel' }, gf);
-    for (const yy of [109, 117, 125]) svg('path', { d: `M 40 ${yy - 3} L 30 ${yy} L 40 ${yy + 3} Z`, class: 'f-acc' }, gf);
-    txt(gf, 44, 90, 'horgonyfej', 't-lab halo', 'middle');
-    // erő
-    arr(g, 150, 60, 104, 60, 'mt-ar-acc', 2.5, 9); txt(g, 156, 64, 'földnyomás → fal → horgony', 't-sm halo');
+    Pp(gf, `M56 ${ay - 26} L56 ${ay + 26} L${pts(A(-9, 23), A(-9, -23))}Z`, F('steel3') + `;stroke:${v('dark')};stroke-width:.8`);
+    Pp(gf, `M${pts(A(-9, -25), A(-15, -25), A(-15, 25), A(-9, 25))}Z`, F('steel2') + `;stroke:${v('dark')};stroke-width:.8`);
+    Pp(gf, `M${pts(A(-15, -15), A(-34, -15), A(-34, 15), A(-15, 15))}Z`, 'fill:url(#pr-cylh)' + `;stroke:${v('dark')};stroke-width:.9`);
+    for (const o of [-1, 0, 1]) Pp(gf, `M${pts(A(-30, o * 6.5 - 3.4), A(-41, o * 6.5 - 2), A(-41, o * 6.5 + 2), A(-30, o * 6.5 + 3.4))}Z`, F('acc') + `;stroke:${v('dark2')};stroke-width:.6`);
+    // erő: a földnyomást a fal a hevederen át adja a horgonyra
+    arr(St.ov, 168, 46, 108, 46, 'mt-ar-acc', 2.6, 9);
+    St.txt(174, 50, 'földnyomás → fal → horgony', { fs: 11, b: true });
+    // feliratok
+    St.tag(6, HH - 12, 'munkagödör', { fs: 10 });
+    St.tag(...A(-34, -34), EN ? 'anchor head' : 'horgonyfej', { fs: 10.5, anchor: 'middle' });
+    St.txt(308, 20, 'aktív csúszólap', { anchor: 'end', c: 'push', b: true });
+    { const [x, y] = A((Lw + Lf) / 2, -22); St.txt(x, y, 'szabad szakasz ≥ 4 m', { anchor: 'middle', b: true }); }
+    { const [x, y] = A(Lf + Lb / 2, 50); St.txt(x, y, 'befogott szakasz 4–9 m', { anchor: 'middle', b: true }); }
     const p = PARTS[sel];
     info.innerHTML = `<b>${p.t}</b><p class="small" style="margin:6px 0 0">${p.d}</p>`;
   }
-  sP.on(draw); draw();
+  sP.on(draw); draw(); autoRedraw(fig, draw);
   loop(fig, (t) => { tt = t; if (sP.v === 'mandzsetta') draw(); });
 });
 
@@ -353,9 +366,8 @@ register('horgonytervezo', (root) => {
   const sLb = slider(ctrls, { label: 'Befogott szakasz', sym: 'L<sub>b</sub>', min: 3, max: 12, step: 0.5, value: 7, unit: 'm', hint: 'Jellemzően 4–9 m.' });
   const sP = slider(ctrls, { label: 'Telekhatár a faltól', min: 0, max: 20, step: 0.5, value: 4, unit: 'm' });
   const tB = toggle(ctrls, { label: 'Szomszéd épület pincével (−3,5 m)', value: true });
-  const W = 760, HH = 420;
+  const W = 760, HH = 430;
   const fig = figure(scrollBox(viz), W, HH);
-  const g = svg('g', {}, fig);
   const sLf = stat(out, { label: 'Szükséges szabad szakasz', unit: 'm', d: 1 });
   const sL = stat(out, { label: 'Teljes horgonyhossz', unit: 'm', d: 1 });
   const sR = stat(out, { label: 'Vízszintes kinyúlás', unit: 'm', d: 1 });
@@ -373,54 +385,48 @@ register('horgonytervezo', (root) => {
     const L = LfReq + Lb;
     const R = L * Math.cos(al), zEnd = a + L * Math.sin(al);
     const over = R - sP.v;
-    clear(g);
-    const xw = 150, y0 = 70;
+    const xw = 150, y0 = 88;
     const sc = Math.min(34, (W - xw - 30) / Math.max(R + 2, 14), (HH - y0 - 20) / Math.max(H + 2.6, zEnd + 1.5));
     const X = (x) => xw + x * sc, Y = (z) => y0 + z * sc;
-    svg('rect', { x: 0, y: 0, width: W, height: y0, class: 'f-sky' }, g);
-    decor(g, { sky: [0, W, y0] });
-    svg('rect', { x: xw, y: y0, width: W - xw, height: HH - y0, class: 'f-soilA' }, g);
-    svg('rect', { x: xw, y: y0, width: W - xw, height: HH - y0, fill: 'url(#pat-sand)' }, g);
-    svg('rect', { x: 0, y: y0, width: xw, height: Y(H) - y0, class: 'mt-air' }, g);
-    svg('rect', { x: 0, y: Y(H), width: xw, height: HH - Y(H), class: 'f-soilA' }, g);
+    const St = stage(fig, { W, H: HH, GY: y0, layers: [{ k: 'fill', y: y0 }, { k: 'sand', y: y0 + Math.round(0.8 * sc) }] });
+    const g = St.g, ov = St.ov;
+    K.pit(g, St.M, -4, xw - 10, Y(H));
     // telekhatár + szomszéd
     const xp = X(sP.v);
     svg('rect', { x: xp, y: y0, width: W - xp, height: HH - y0, class: 'mt-neigh' }, g);
-    svg('line', { x1: xp, y1: 20, x2: xp, y2: HH, class: 's-warn', 'stroke-width': 2, 'stroke-dasharray': '8 5' }, g);
-    txt(g, xp - 6, HH - 12, 'telekhatár', 't-sm halo', 'end');
-    txt(g, xp + 6, HH - 12, 'szomszéd telek →', 't-lab halo');
     let hit = false;
     if (tB.v) {
       const bx0 = xp + 0.8 * sc, bx1 = Math.min(W - 6, xp + 14 * sc);
-      svg('rect', { x: bx0, y: y0 - 50, width: bx1 - bx0, height: 50, class: 'f-bld' }, g);
-      for (let i = 0; i < 6; i++) svg('rect', { x: bx0 + 10 + i * ((bx1 - bx0 - 20) / 6), y: y0 - 40, width: 8, height: 12, class: 'f-bld2' }, g);
-      svg('rect', { x: bx0, y: y0, width: bx1 - bx0, height: 3.5 * sc, class: 'f-bld2' }, g);
-      txt(g, (bx0 + bx1) / 2, y0 + 1.9 * sc, 'pince', 't-sm halo', 'middle');
+      if (bx1 - bx0 > 2 * sc) building(g, bx0, y0, (bx1 - bx0) / sc, 3, sc, { base: 3.5 });
+      St.tag((bx0 + bx1) / 2, y0 + 1.9 * sc, 'pince', { fs: 10, anchor: 'middle' });
       // ütközés vizsgálat
       for (let u = 0; u <= L; u += 0.1) { const x = u * Math.cos(al), z = a + u * Math.sin(al); if (X(x) >= bx0 && X(x) <= bx1 && z <= 3.5 + 0.3) { hit = true; break; } }
     }
+    svg('line', { x1: xp, y1: 14, x2: xp, y2: HH, class: 's-warn', 'stroke-width': 2, 'stroke-dasharray': '8 5' }, ov);
+    St.tag(xp - 6, HH - 10, 'telekhatár', { fs: 10, anchor: 'end' });
+    St.tag(xp + 6, HH - 10, 'szomszéd telek →', { fs: 10.5 });
     // csúszólap
-    svg('line', { x1: xw, y1: Y(H), x2: X(H / Math.tan(th)), y2: y0, class: 'mt-slip', 'stroke-width': 2, 'stroke-dasharray': '8 6' }, g);
-    txt(g, X(H / Math.tan(th)) + 4, y0 + 14, `csúszólap (${fmt(45 + phi / 2, 0)}°)`, 't-sm t-bad halo');
-    // fal
-    svg('rect', { x: xw - 9, y: y0 - 6, width: 9, height: Y(H + 2.5) - y0 + 6, class: 'mt-wall' }, g);
-    txt(g, xw - 14, Y(H) - 8, 'gödör', 't-sm halo', 'end');
-    // horgony
-    const P0 = [X(0), Y(a)], Pf = [X(LfReq * Math.cos(al)), Y(a + LfReq * Math.sin(al))], Pe = [X(R), Y(zEnd)];
-    svg('line', { x1: P0[0], y1: P0[1], x2: Pf[0], y2: Pf[1], class: 'mt-sheath', 'stroke-width': 7 }, g);
-    svg('line', { x1: Pf[0], y1: Pf[1], x2: Pe[0], y2: Pe[1], class: 'mt-grout', 'stroke-width': 14, 'stroke-linecap': 'round' }, g);
-    svg('line', { x1: P0[0] - 10, y1: P0[1], x2: Pe[0], y2: Pe[1], class: 'mt-strand', 'stroke-width': 2 }, g);
-    svg('rect', { x: xw - 16, y: Y(a) - 7, width: 8, height: 14, class: 'f-acc' }, g);
+    svg('line', { x1: xw, y1: Y(H), x2: X(H / Math.tan(th)), y2: y0, class: 'mt-slip', 'stroke-width': 2, 'stroke-dasharray': '8 6' }, ov);
+    St.txt(X(H / Math.tan(th)) + 6, y0 + 16, `csúszólap (${fmt(45 + phi / 2, 0)}°)`, { c: 'push', b: true, fs: 10.5 });
+    // horgony: védőcsöves szabad szakasz + injektált befogott szakasz (a jelenet léptékében nagyítva)
+    const f = clamp(sc / 13, 1.25, 2.3), hx = xw - 18, tA = K.axis(hx, Y(a) - (18 * Math.tan(al)), sAl.v, 1), k0 = 18 / Math.cos(al);
+    K.anchorA(K.scl(g, f, hx, Y(a) - 18 * Math.tan(al)), tA, 0, (LfReq * sc + k0) / f, (Lb * sc) / f);
+    // fal, heveder, horgonyfej
+    K.wallS(g, xw - 5, y0 - 7, Y(H + 2.5), { t: 10 });
+    K.waleS(g, xw - 10, Y(a) - 10 * Math.tan(al), -1);
+    K.aheadS(K.scl(g, Math.min(1.6, f), hx, Y(a) - 18 * Math.tan(al)), tA);
+    St.tag(8, Y(H) + 18, 'gödör', { fs: 10 });
     // csúszólap-metszés és ráhagyás
+    const P0 = [X(0), Y(a)], Pf = [X(LfReq * Math.cos(al)), Y(a + LfReq * Math.sin(al))], Pe = [X(R), Y(zEnd)];
     const Ps = [X(uS * Math.cos(al)), Y(a + uS * Math.sin(al))];
-    svg('circle', { cx: Ps[0], cy: Ps[1], r: 4, class: 'f-bad' }, g);
-    txt(g, (Ps[0] + Pf[0]) / 2, (Ps[1] + Pf[1]) / 2 - 10, `+${fmt(LfReq - uS, 1)} m`, 't-num t-bad halo', 'middle');
-    txt(g, (P0[0] + Pf[0]) / 2, (P0[1] + Pf[1]) / 2 + 20, `L_f = ${fmt(LfReq, 1)} m`, 't-num halo', 'middle');
-    txt(g, (Pf[0] + Pe[0]) / 2, (Pf[1] + Pe[1]) / 2 + 24, `L_b = ${fmt(Lb, 1)} m`, 't-num halo', 'middle');
-    if (hit) svg('circle', { cx: Pe[0], cy: Pe[1], r: 18, class: 'mt-hitc' }, g);
-    // H méret
-    svg('line', { x1: 30, y1: y0, x2: 30, y2: Y(H), class: 's-muted' }, g);
-    txt(g, 36, (y0 + Y(H)) / 2, `H = ${fmt(H, 1)} m`, 't-num halo');
+    svg('circle', { cx: Ps[0], cy: Ps[1], r: 4, class: 'f-bad' }, ov);
+    St.txt((Ps[0] + Pf[0]) / 2, (Ps[1] + Pf[1]) / 2 - 10, `+${fmt(LfReq - uS, 1)} m`, { anchor: 'middle', c: 'push', b: true, mono: true });
+    St.txt((P0[0] + Pf[0]) / 2, (P0[1] + Pf[1]) / 2 + 22, ['L', { sub: 'f' }, `= ${fmt(LfReq, 1)} m`], { anchor: 'middle', b: true });
+    St.txt((Pf[0] + Pe[0]) / 2, (Pf[1] + Pe[1]) / 2 + 28, ['L', { sub: 'b' }, `= ${fmt(Lb, 1)} m`], { anchor: 'middle', b: true });
+    if (hit) svg('circle', { cx: Pe[0], cy: Pe[1], r: 18, class: 'mt-hitc' }, ov);
+    // H méret, munkás a gödörben
+    St.dimV(26, y0, Y(H), `H = ${fmt(H, 1)} m`);
+    K.man(g, { x: 92, GY: Y(H), S: sc, face: 1 });
     // kijelzők
     sLf.set(LfReq, LfReq === 4 ? null : null);
     sL.set(L, L > 30 ? 'bad' : L > 25 ? 'warn' : 'ok');
@@ -435,11 +441,10 @@ register('horgonytervezo', (root) => {
     if (sAl.v < 15 || sAl.v > 30) { st = st === 'bad' ? st : 'warn'; msgs.push('A horgonyok a vízszintessel jellemzően 15–30°-os szöget zárnak be.'); }
     if (hit) { st = 'bad'; msgs.push('A horgony beleütközik a szomszéd pincéjébe! Meredekebb horgony, mélyebb horgonysor – vagy csőtámasz kell.'); }
     if (over > 0) msgs.push(`A horgony ${fmt(over, 1)} m-rel a szomszéd telek alá nyúlik – jogi kérdés (tulajdonosi hozzájárulás), és meglévő műtárgyakba ütközhet.`);
-    decor(g, { men: [[62, Y(H), sc, 1]] });
     vd.set(st, st === 'ok' ? (over > 0 ? 'Geometriailag rendben' : 'Rendben') : st === 'warn' ? 'Figyelem' : 'Így nem jó', msgs.length ? '<ul class="mt-ul">' + msgs.map((m) => `<li>${m}</li>`).join('') + '</ul>' : 'A befogott szakasz a csúszólapon túl kezdődik, és a horgony a saját telken marad.');
   }
   [sH, sA, sAl, sPhi, sLb, sP, tB].forEach((s) => s.on(draw));
-  draw();
+  draw(); autoRedraw(fig, draw);
 });
 
 /* ================================================================ 4. Próbaterhelés és lekötés */
@@ -539,9 +544,8 @@ register('csotamasz', (root) => {
   const sT = slider(ctrls, { label: 'Felmelegedés', sym: 'ΔT', min: 0, max: 40, step: 1, value: 20, unit: '°C' });
   const sB = slider(ctrls, { label: 'Gátoltság', sym: 'b', min: 0.3, max: 0.7, step: 0.05, value: 0.5, d: 2 });
   const tDay = toggle(ctrls, { label: 'Napi hőmérséklet-ciklus (animáció)', value: false });
-  const W = 760, HH = 430;
+  const W = 760, HH = 440;
   const fig = figure(scrollBox(viz), W, HH);
-  const g = svg('g', {}, fig);
   const oNcr = stat(out, { label: 'Euler-féle kritikus erő', unit: 'kN', d: 0 });
   const oNb = stat(out, { label: 'Kihajlási ellenállás N<sub>b,Rd</sub>', unit: 'kN', d: 0 });
   const oDT = stat(out, { label: 'Hőmérsékleti többleterő', unit: 'kN', d: 0 });
@@ -558,40 +562,44 @@ register('csotamasz', (root) => {
     return { A, I, Npl, Ncr, lb, chi, Nb: chi * Npl, dN };
   };
   function draw() {
-    clear(g);
     const dT = tDay.v ? sT.v * (0.5 - 0.5 * Math.cos(((hour - 7) / 24) * 2 * Math.PI)) : sT.v; // 7 óra körül minimum, 19 óra körül maximum
     const c = calc(sL.v, dT);
     const NEd = sN.v + c.dN, u = NEd / c.Nb;
     // ------- felső rész: keresztmetszet a gödrön át
-    const y0 = 40, xl = 60, xr = W - 60, ys = 120;
-    svg('rect', { x: 0, y: 0, width: W, height: y0, class: 'f-sky' }, g);
-    decor(g, { sky: [0, W, y0] });
+    const y0 = 50, xl = 60, xr = W - 60, ys = 122, yb = 236;
+    const St = stage(fig, { W, H: HH, GY: y0, layers: [{ k: 'fill', y: y0 }, { k: 'sand', y: y0 + 14 }] });
+    const g = St.g;
     // nap
-    const sunx = tDay.v ? xl + ((hour - 6) / 14) * (xr - xl) : W - 90;
-    const suny = tDay.v ? 30 - Math.sin(((hour - 6) / 14) * Math.PI) * 14 + 6 : 22;
-    if (!tDay.v || (hour > 6 && hour < 20)) { svg('circle', { cx: sunx, cy: suny, r: 11, class: 'mt-sun' }, g); }
-    svg('rect', { x: 0, y: y0, width: xl, height: 190, class: 'f-soilA' }, g);
-    svg('rect', { x: xr, y: y0, width: W - xr, height: 190, class: 'f-soilA' }, g);
-    svg('rect', { x: xl, y: y0, width: 14, height: 190, class: 'f-conc' }, g);
-    svg('rect', { x: xr - 14, y: y0, width: 14, height: 190, class: 'f-conc' }, g);
-    svg('rect', { x: xl + 14, y: ys - 14, width: 12, height: 28, class: 'f-steel2' }, g);
-    svg('rect', { x: xr - 26, y: ys - 14, width: 12, height: 28, class: 'f-steel2' }, g);
+    const sunx = tDay.v ? xl + ((hour - 6) / 14) * (xr - xl) : W - 96;
+    const suny = tDay.v ? 34 - Math.sin(((hour - 6) / 14) * Math.PI) * 16 + 6 : 24;
+    if (!tDay.v || (hour > 6 && hour < 20)) { svg('circle', { cx: sunx, cy: suny, r: 17, class: 'mt-sun', opacity: 0.22 }, g); svg('circle', { cx: sunx, cy: suny, r: 10.5, class: 'mt-sun' }, g); }
+    K.pit(g, St.M, xl + 14, xr - 14, yb);
+    K.wallS(g, xl + 7, y0 - 7, yb + 26, { t: 14 }); K.wallS(g, xr - 7, y0 - 7, yb + 26, { t: 14 });
+    const sc = (xr - xl - 52) / sL.v;                         // a metszet vízszintes léptéke (px/m)
+    K.waleS(g, xl + 14, ys, 1, { w: 12, h: clamp(0.5 * sc, 22, 44) }); K.waleS(g, xr - 14, ys, -1, { w: 12, h: clamp(0.5 * sc, 22, 44) });
     const x1 = xl + 26, x2 = xr - 26;
     const bow = clamp((u - 0.6) / 0.4, 0, 1.4) * 22 * (u > 1 ? 1.6 : 1);
     const pts = []; for (let i = 0; i <= 40; i++) { const f = i / 40; pts.push([x1 + (x2 - x1) * f, ys - Math.sin(Math.PI * f) * bow]); }
-    const thick = clamp(sD.v / 50, 8, 26);
+    const thick = clamp((sD.v / 1000) * sc, 7, 36);
+    if (sL.v > 26) { const xm = (x1 + x2) / 2; K.R(g, xm - 5, ys + thick / 2, 10, yb - ys - thick / 2 + 22, 'fill:url(#pr-cyl)' + `;stroke:${K.v('steel3')};stroke-width:.8`); K.R(g, xm - 13, ys + thick / 2, 26, 5, K.F('steel3')); St.tag(xm + 14, ys + 84, 'közbenső alátámasztás (cölöpön)', { fs: 10 }); }
+    svg('path', { d: P(pts), class: 'mt-strut-edge', 'stroke-width': thick + 1.6, fill: 'none', 'stroke-linecap': 'butt' }, g);
     svg('path', { d: P(pts), class: u > 1 ? 'mt-strut-bad' : 'mt-strut-l', 'stroke-width': thick, fill: 'none', 'stroke-linecap': 'butt' }, g);
-    svg('path', { d: P(pts), class: 'mt-strut-hl', 'stroke-width': thick * 0.25, fill: 'none', transform: `translate(0 ${-thick * 0.22})` }, g);
-    // illesztések 12 m-enként
+    svg('path', { d: P(pts), class: 'mt-strut-hl', 'stroke-width': thick * 0.22, fill: 'none', transform: `translate(0 ${-thick * 0.24})` }, g);
+    svg('path', { d: P(pts), class: 'mt-strut-sh', 'stroke-width': thick * 0.2, fill: 'none', transform: `translate(0 ${thick * 0.36})` }, g);
+    // homloklemezek és karimás illesztések 12 m-enként
+    for (const x of [x1, x2 - 3.4]) K.R(g, x, ys - thick / 2 - 4, 3.4, thick + 8, K.F('steel3'));
     const nSeg = Math.ceil(sL.v / 12);
-    for (let i = 1; i < nSeg; i++) { const f = i / nSeg; const x = x1 + (x2 - x1) * f; svg('rect', { x: x - 3, y: ys - Math.sin(Math.PI * f) * bow - thick / 2 - 4, width: 6, height: thick + 8, class: 'f-steel2' }, g); }
-    if (sL.v > 26) { const xm = (x1 + x2) / 2; svg('rect', { x: xm - 5, y: ys + thick / 2, width: 10, height: 105, class: 'f-steel2' }, g); txt(g, xm + 10, ys + 90, 'közbenső alátámasztás (cölöpön)', 't-sm halo'); }
-    arr(g, x1 - 18, ys, x1 + 4, ys, 'mt-ar-acc', 3, 9); arr(g, x2 + 18, ys, x2 - 4, ys, 'mt-ar-acc', 3, 9);
-    txt(g, (x1 + x2) / 2, ys + 40, `L = ${fmt(sL.v, 1)} m · Ø${fmt(sD.v, 0)}×${fmt(sTk.v, 1)} mm · S${sS.v}`, 't-num halo', 'middle');
-    txt(g, (x1 + x2) / 2, ys + 58, `${nSeg} db ${sL.v / nSeg <= 12 ? '≤12' : fmt(sL.v / nSeg, 1)} m-es csőelem, karimás toldással`, 't-sm halo', 'middle');
-    if (tDay.v) txt(g, 20, y0 + 220, `${String(Math.floor(hour)).padStart(2, '0')}:${String(Math.floor((hour % 1) * 60)).padStart(2, '0')} · ΔT = ${fmt(dT, 1)} °C · N = ${fmt(NEd, 0)} kN`, 't-num halo');
+    for (let i = 1; i < nSeg; i++) { const f = i / nSeg; const x = x1 + (x2 - x1) * f, yy = ys - Math.sin(Math.PI * f) * bow; K.R(g, x - 3, yy - thick / 2 - 4.5, 6, thick + 9, K.F('steel3')); K.Ln(g, x, yy - thick / 2 - 4.5, x, yy + thick / 2 + 4.5, K.SK('dark', 0.8)); }
+    arr(St.ov, x1 - 30, ys, x1 - 8, ys, 'mt-ar-acc', 3, 9); arr(St.ov, x2 + 30, ys, x2 + 8, ys, 'mt-ar-acc', 3, 9);
+    // lépték: munkás a gödörfenéken
+    if (sc < 78) K.man(g, { x: x1 + (x2 - x1) * 0.2, GY: yb, S: Math.min(sc, 62), face: 1 });
+    St.txt((x1 + x2) / 2, ys + thick / 2 + 26, `L = ${fmt(sL.v, 1)} m · Ø${fmt(sD.v, 0)}×${fmt(sTk.v, 1)} mm · S${sS.v}`, { anchor: 'middle', b: true, mono: true });
+    St.txt((x1 + x2) / 2, ys + thick / 2 + 44, `${nSeg} db ${sL.v / nSeg <= 12 ? '≤12' : fmt(sL.v / nSeg, 1)} m-es csőelem, karimás toldással`, { anchor: 'middle', fs: 10.5 });
+    if (tDay.v) St.tag(xl + 34, yb - 12, `${String(Math.floor(hour)).padStart(2, '0')}:${String(Math.floor((hour % 1) * 60)).padStart(2, '0')} · ΔT = ${fmt(dT, 1)} °C · N = ${fmt(NEd, 0)} kN`, { fs: 10.5 });
+    // a diagram táblája
+    K.R(g, -2, yb + 24, W + 4, HH - yb - 22, K.F('labbg') + `;stroke:${K.v('labedge')};stroke-width:1`);
     // ------- alsó rész: N_b,Rd(L) görbe
-    const px0 = 80, py0 = HH - 34, pw = W - 120, ph = 150;
+    const px0 = 80, py0 = HH - 34, pw = W - 120, ph = 132;
     const Nmax = Math.max(calc(4, 0).Npl, NEd) * 1.05;
     const X = (L) => px0 + ((L - 4) / 36) * pw, Y = (N) => py0 - (N / Nmax) * ph;
     svg('line', { x1: px0, y1: py0, x2: px0 + pw, y2: py0, class: 'axis' }, g);
@@ -609,9 +617,9 @@ register('csotamasz', (root) => {
     svg('path', { d: P(curve), class: 'mt-curve', fill: 'none' }, g);
     svg('line', { x1: px0, y1: Y(NEd), x2: px0 + pw, y2: Y(NEd), class: u > 1 ? 's-bad' : 's-ok', 'stroke-width': 1.6, 'stroke-dasharray': '7 5' }, g);
     svg('line', { x1: px0, y1: Y(sN.v), x2: px0 + pw, y2: Y(sN.v), class: 's-muted', 'stroke-width': 1, 'stroke-dasharray': '2 4' }, g);
-    txt(g, px0 + pw - 4, Y(NEd) - 5, `N_Ed + ΔN_T = ${fmt(NEd, 0)} kN`, 't-num halo', 'end');
+    St.txt(px0 + pw - 4, Y(NEd) - 5, ['N', { sub: 'Ed' }, '+ ΔN', { sub: 'T' }, `= ${fmt(NEd, 0)} kN`], { anchor: 'end', b: true, fs: 10.5 });
     svg('circle', { cx: X(sL.v), cy: Y(c.Nb), r: 6, class: u > 1 ? 'f-bad' : 'f-acc' }, g);
-    txt(g, X(sL.v) + 9, Y(c.Nb) - 8, 'N_b,Rd', 't-sm halo');
+    St.txt(X(sL.v) + 9, Y(c.Nb) - 8, ['N', { sub: 'b,Rd' }], { fs: 10.5, b: true });
     oNcr.set(c.Ncr); oNb.set(c.Nb); oDT.set(c.dN);
     oU.set(u * 100, u > 1 ? 'bad' : u > 0.85 ? 'warn' : 'ok');
     const m = [];
@@ -622,7 +630,7 @@ register('csotamasz', (root) => {
     vd.set(u > 1 ? 'bad' : u > 0.85 ? 'warn' : 'ok', u > 1 ? 'Kihajlás!' : u > 0.85 ? 'Közel a határhoz' : 'Megfelel', m.length ? '<ul class="mt-ul">' + m.map((x) => `<li>${x}</li>`).join('') + '</ul>' : 'A dúc a földnyomásból és a felmelegedésből adódó erőt is biztonsággal viseli.');
   }
   [sL, sD, sTk, sS, sN, sT, sB, tDay].forEach((s) => s.on(draw));
-  draw();
+  draw(); autoRedraw(fig, draw);
   loop(fig, (t, dt) => { if (!tDay.v) return; hour = (hour + dt * 1.6) % 24; draw(); });
 });
 
@@ -637,16 +645,14 @@ register('passziv', (root) => {
   const sT = slider(ctrls, { label: 'A horgonyrúd mélysége', min: 0.8, max: 1.0, step: 0.05, value: 0.9, unit: 'm', d: 2, hint: 'Jellemzően 0,8–1,0 m-re a felszín alatt, keskeny árokban.' });
   const bGo = h('button', { type: 'button', class: 'btn btn-line btn-sm' }, '▶ Kiemelés');
   ctrls.append(bGo);
-  const W = 760, HH = 360;
+  const W = 760, HH = 380;
   const fig = figure(scrollBox(viz), W, HH);
-  const g = svg('g', {}, fig);
   const oMin = stat(out, { label: 'Szükséges távolság L<sub>min</sub>', unit: 'm', d: 1 });
   const oRat = stat(out, { label: 'L / H', d: 2 });
   const oSt = stat(out, { label: 'Állapot' });
   const vd = verdict(out); vd.el.style.gridColumn = '1 / -1';
   let ex = 1, anim = false, t0 = 0;
   function draw() {
-    clear(g);
     const H = sH.v, d = sDd.v, phi = sPhi.v, ha = sHa.v, L = sL.v;
     const ca = 1 / Math.tan(rad(45 + phi / 2)), cp = 1 / Math.tan(rad(45 - phi / 2));
     const xa = (H + d) * ca;        // az aktív sík felszíni pontja a faltól
@@ -654,47 +660,48 @@ register('passziv', (root) => {
     const Lmin = xa + ha * cp;
     const inside = L < (H + d - ha) * ca; // a horgonyfal alja az aktív éken belül
     const state = inside ? 'bad' : L < Lmin ? 'warn' : 'ok';
-    const xw = 170, y0 = 80;
+    const xw = 170, y0 = 100;
     const sc = Math.min(30, (W - xw - 30) / Math.max(L + 3, Lmin + 2, 8), (HH - y0 - 20) / (H + d + 1));
     const X = (x) => xw + x * sc, Y = (z) => y0 + z * sc;
     const e = ex * H;
     const mv = ex * (state === 'ok' ? 6 : state === 'warn' ? 12 : 22); // px – torzított elmozdulás
-    svg('rect', { x: 0, y: 0, width: W, height: y0, class: 'f-sky' }, g);
-    decor(g, { sky: [0, W, y0] });
-    svg('rect', { x: xw, y: y0, width: W - xw, height: HH - y0, class: 'f-soilA' }, g);
-    svg('rect', { x: xw, y: y0, width: W - xw, height: HH - y0, fill: 'url(#pat-sand)' }, g);
-    svg('rect', { x: 0, y: Y(e), width: xw, height: HH - Y(e), class: 'f-soilA' }, g);
-    svg('rect', { x: 0, y: y0, width: xw, height: Y(e) - y0, class: 'mt-cavity', opacity: 0.35 }, g);
+    const St = stage(fig, { W, H: HH, GY: y0, layers: [{ k: 'sand', y: y0 }] });
+    const g = St.g, ov = St.ov;
+    if (e > 0.02) K.pit(g, St.M, -4, X(0) - 3 - mv * 0.5, Y(e));
+    // a horgonyrúd keskeny árka (visszatöltve)
+    svg('rect', { x: X(0), y: y0, width: X(L) - X(0), height: sT.v * sc + 5, class: 'mt-trench' }, g);
     // ékek
-    svg('path', { d: P([[X(0), Y(H + d)], [X(xa), y0], [X(0), y0]]) + ' Z', class: 'mt-wedge-a' }, g);
-    svg('path', { d: P([[X(L), Y(ha)], [X(xpS), y0], [X(L), y0]]) + ' Z', class: 'mt-wedge-p' }, g);
-    svg('line', { x1: X(0), y1: Y(H + d), x2: X(xa), y2: y0, class: 'mt-slip', 'stroke-width': 2, 'stroke-dasharray': '8 6' }, g);
-    svg('line', { x1: X(L), y1: Y(ha), x2: X(xpS), y2: y0, class: 's-steel', 'stroke-width': 2, 'stroke-dasharray': '8 6' }, g);
-    txt(g, X(xa * 0.35), Y((H + d) * 0.45), 'aktív ék', 't-lab t-bad halo', 'middle');
-    txt(g, X(L) + 8, Y(ha) + 4, '← passzív ék', 't-lab t-steel halo');
-    // fő fal (elmozdulással)
-    const wallTop = [X(0) - mv * 0.9, y0 - 8], wallBot = [X(0) - mv * 0.2, Y(H + d)];
-    svg('path', { d: P([[wallTop[0] - 6, wallTop[1]], [wallTop[0], wallTop[1]], [wallBot[0], wallBot[1]], [wallBot[0] - 6, wallBot[1]]]) + ' Z', class: 'f-steel2' }, g);
-    // horgonyfal
-    svg('rect', { x: X(L) - 3 - mv * 0.15, y: y0 - 6, width: 6, height: ha * sc + 6, class: 'f-steel2' }, g);
-    // rúd
-    const tension = ex * (state === 'bad' ? 0.3 : 1);
-    svg('line', { x1: wallTop[0], y1: Y(sT.v), x2: X(L) - mv * 0.15, y2: Y(sT.v), class: 'mt-rod', 'stroke-width': 4, style: `stroke: color-mix(in srgb, var(--bad) ${Math.round(tension * 100)}%, var(--steelm2))` }, g);
-    svg('rect', { x: (wallTop[0] + X(L)) / 2 - 10, y: Y(sT.v) - 5, width: 20, height: 10, rx: 3, class: 'f-ink' }, g);
-    txt(g, (wallTop[0] + X(L)) / 2, Y(sT.v) - 10, 'feszítőzár', 't-sm halo', 'middle');
-    // árok
-    svg('rect', { x: X(0), y: y0, width: X(L) - X(0), height: sT.v * sc + 4, class: 'mt-trench' }, g);
+    svg('path', { d: P([[X(0), Y(H + d)], [X(xa), y0], [X(0), y0]]) + ' Z', class: 'mt-wedge-a' }, ov);
+    svg('path', { d: P([[X(L), Y(ha)], [X(xpS), y0], [X(L), y0]]) + ' Z', class: 'mt-wedge-p' }, ov);
+    svg('line', { x1: X(0), y1: Y(H + d), x2: X(xa), y2: y0, class: 'mt-slip', 'stroke-width': 2, 'stroke-dasharray': '8 6' }, ov);
+    svg('line', { x1: X(L), y1: Y(ha), x2: X(xpS), y2: y0, class: 's-steel', 'stroke-width': 2, 'stroke-dasharray': '8 6' }, ov);
+    St.txt(X(xa * 0.35), Y((H + d) * 0.45), 'aktív ék', { anchor: 'middle', c: 'push', b: true });
+    St.txt(X(L) + 10, Y(ha) + 4, '← passzív ék', { b: true });
+    // horgonyrúd (a húzással pirosodik) és feszítőzár
+    const xTop = X(0) - mv * 0.9, tension = ex * (state === 'bad' ? 0.3 : 1), yr = Y(sT.v);
+    svg('line', { x1: xTop - 6, y1: yr, x2: X(L) - mv * 0.15 + 6, y2: yr, class: 'mt-rod', 'stroke-width': 4, style: `stroke: color-mix(in srgb, var(--bad) ${Math.round(tension * 100)}%, var(--steelm2))` }, g);
+    const xm = (xTop + X(L)) / 2;
+    K.R(g, xm - 12, yr - 5, 24, 10, 'fill:url(#pr-cylh)' + `;stroke:${K.v('dark')};stroke-width:.8`, { rx: 3 });
+    K.Ln(g, xm - 4, yr - 5, xm - 4, yr + 5, K.SK('dark', 0.7)); K.Ln(g, xm + 4, yr - 5, xm + 4, yr + 5, K.SK('dark', 0.7));
+    St.tag(xm, yr + 22, 'feszítőzár', { fs: 10, anchor: 'middle' });
+    // fő fal: acél szádfal, kissé a gödör felé dől; a rúd fejlemezzel fogja
+    const rot = K.g_(g, { transform: `rotate(${((Math.atan2(mv * 0.7, Y(H + d) - y0 + 8) * 180) / Math.PI).toFixed(2)} ${X(0)} ${Y(H + d)}) translate(${(-mv * 0.2).toFixed(1)} 0)` });
+    K.sheetS(rot, X(0) - 2, y0 - 8, Y(H + d));
+    K.R(g, xTop - 10, yr - 9, 4, 18, K.F('steel3')); K.R(g, xTop - 15, yr - 4, 5, 8, K.F('dark2'), { rx: 1 });
+    // horgonyfal (rövid szádfal vagy vasbeton tömb) a rúd végén
+    K.sheetS(g, X(L) - 2 - mv * 0.15, y0 + 3, Y(ha));
+    K.R(g, X(L) + 4 - mv * 0.15, yr - 9, 4, 18, K.F('steel3')); K.R(g, X(L) + 8 - mv * 0.15, yr - 4, 5, 8, K.F('dark2'), { rx: 1 });
     // méretek
-    svg('line', { x1: X(0), y1: y0 - 30, x2: X(L), y2: y0 - 30, class: 's-muted' }, g);
-    txt(g, (X(0) + X(L)) / 2, y0 - 36, `L = ${fmt(L, 2)} m`, 't-num halo', 'middle');
-    svg('line', { x1: X(0), y1: y0 - 52, x2: X(Lmin), y2: y0 - 52, class: 's-ok', 'stroke-dasharray': '4 3' }, g);
-    txt(g, X(Lmin) + 4, y0 - 48, `L_min = ${fmt(Lmin, 1)} m`, 't-sm t-ok halo');
-    svg('line', { x1: 30, y1: y0, x2: 30, y2: Y(H), class: 's-muted' }, g);
-    txt(g, 36, (y0 + Y(H)) / 2, `H = ${fmt(H, 1)} m`, 't-num halo');
-    if (ex > 0.95) txt(g, X(0) - mv - 12, y0 + 20, '← néhány cm', 't-sm t-bad halo', 'end');
+    svg('line', { x1: X(0), y1: y0 - 34, x2: X(L), y2: y0 - 34, class: 's-muted' }, ov);
+    for (const x of [X(0), X(L)]) svg('line', { x1: x, y1: y0 - 39, x2: x, y2: y0 - 29, class: 's-muted' }, ov);
+    St.txt((X(0) + X(L)) / 2, y0 - 40, `L = ${fmt(L, 2)} m`, { anchor: 'middle', b: true, mono: true });
+    svg('line', { x1: X(0), y1: y0 - 62, x2: X(Lmin), y2: y0 - 62, class: 's-ok', 'stroke-dasharray': '4 3' }, ov);
+    St.txt(X(Lmin) + 6, y0 - 58, ['L', { sub: 'min' }, `= ${fmt(Lmin, 1)} m`], { c: 'ok', b: true, fs: 10.5 });
+    if (e > 1) St.dimV(26, y0, Y(e), `H = ${fmt(H, 1)} m`);
+    if (ex > 0.95) St.txt(X(0) - mv - 14, y0 + 22, '← néhány cm', { anchor: 'end', c: 'push', b: true, fs: 10.5 });
+    if (e > 2) K.man(g, { x: 96, GY: Y(e), S: sc, face: 1 });
     oMin.set(Lmin); oRat.set(L / H);
     oSt.set(0, state, state === 'ok' ? 'rendben' : state === 'warn' ? 'átfedés' : 'éken belül');
-    decor(g, e > 2 ? { men: [[70, Y(e), sc, 1]] } : {});
     vd.set(state, state === 'ok' ? 'A horgonyfal jó helyen van' : state === 'warn' ? 'Az ékek átfedik egymást – csökkent ellenállás' : 'A horgonyfal az aktív éken belül van – nincs ellenállás',
       state === 'ok' ? 'A két csúszólap legfeljebb a terepen találkozik: a horgonyfal előtt a teljes passzív ék kialakulhat. Feszítés nélkül a fal néhány cm-t mozdul, mire a rúd megfeszül.'
         : state === 'warn' ? `A passzív ék belelóg a fő fal mozgó földékébe. Told hátrébb a horgonyfalat legalább ${fmt(Lmin, 1)} m-re – vagy mélyebb, rövidebb horgonyfal kell.`
@@ -702,7 +709,7 @@ register('passziv', (root) => {
   }
   [sH, sDd, sPhi, sHa, sL, sT].forEach((s) => s.on(() => { if (!anim) ex = 1; draw(); }));
   bGo.onclick = () => { anim = true; t0 = performance.now(); ex = 0; };
-  draw();
+  draw(); autoRedraw(fig, draw);
   loop(fig, () => { if (!anim) return; ex = clamp((performance.now() - t0) / 3500, 0, 1); if (ex >= 1) anim = false; draw(); });
 });
 

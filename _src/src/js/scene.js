@@ -22,7 +22,7 @@ export function stage(fig, o) {
   K.CUR.W = W;
   const cw = fig.getBoundingClientRect().width;
   const fk = cw > 0 ? Math.round(Math.max(1, Math.min(o.fmax ?? 1.7, (9.5 * W) / (11.5 * cw))) * 20) / 20 : 1;
-  fig.dataset.fk = fk;
+  fig.dataset.fk = fk; fig.style.setProperty('--fk', fk);
   const M = { H, GY: o.GY, layers: o.layers, gw: o.gw, hz: o.hz, plain: o.plain };
   /* a háttér (ég, talajrétegek) csak akkor rajzolódik újra, ha változott – az animált jelenetek képkockánként hívják */
   const key = JSON.stringify([W, H, o.GY, o.layers, o.gw, o.hz, o.plain, o.ox]);
