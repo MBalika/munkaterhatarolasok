@@ -87,3 +87,13 @@
 :root { --pr-pitb: #cddbe6; --pr-sheet: #8695a1; --pr-sheet2: #5f6e7a; --pr-sheet3: #b4c0c9; --pr-ice1: #f2fafe; --pr-ice2: #a9d6ee; }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --pr-pitb: #1a2836; --pr-sheet: #6c7a85; --pr-sheet2: #46525c; --pr-sheet3: #8b98a3; --pr-ice1: #c9e3ef; --pr-ice2: #6ea6c4; } }
 :root[data-theme="dark"] { --pr-pitb: #1a2836; --pr-sheet: #6c7a85; --pr-sheet2: #46525c; --pr-sheet3: #8b98a3; --pr-ice1: #c9e3ef; --pr-ice2: #6ea6c4; }
+
+/* a Mélyalapozások elemtárából átvett elemek színei (ízületes munkás, szerszámok, műszerek) */
+:root { --pr-concedge: #4f565d; --pr-air: #eef8ff; --pr-warn: #d97706; --pr-ok: #15803d; --pr-pdirty: #a8683a; --pr-pclean: #7d9a3f; --pr-pcase: #2a3036; --pr-pflow: #ffffff; --pr-hf: #2f74c0; --pr-hf2: #235a99; --pr-hf3: #173d69; --pr-shirt: #55606b; --pr-skin2: #cf9b76; --pr-glove: #2d3237; --pr-trous2: #233140; --pr-vest2: #d86f12; --pr-hel1: #8d959b; --pr-hel2: #50585e; --pr-hel3: #2c3236; --pr-ts: #f2c230; --pr-ts2: #b88f14; --pr-plvl: #1f6fd1; --pr-tool: #f6f8f9; --pr-tool2: #bfc8cf; --pr-drv: #e46a1f; --pr-drv2: #a9480f; --pr-mark: #e8432c; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --pr-concedge: #c9d0d6; --pr-air: #c9e6f7; --pr-warn: #f59e0b; --pr-ok: #34d399; --pr-pdirty: #c98448; --pr-pclean: #a3c456; --pr-pcase: #0b0e11; --pr-hf: #3a78bd; --pr-hf2: #2a5c96; --pr-hf3: #11293f; --pr-shirt: #3b444d; --pr-skin2: #a87e60; --pr-glove: #15191c; --pr-trous2: #141c25; --pr-vest2: #b85f12; --pr-hel1: #6e767c; --pr-hel2: #3a4146; --pr-hel3: #1f2427; --pr-ts: #c99f22; --pr-ts2: #85670d; --pr-plvl: #2a64ad; --pr-tool: #c2cad1; --pr-tool2: #7d8790; --pr-drv: #b8551a; --pr-drv2: #7a340b; --pr-mark: #ff6a4a; } }
+:root[data-theme="dark"] { --pr-concedge: #c9d0d6; --pr-air: #c9e6f7; --pr-warn: #f59e0b; --pr-ok: #34d399; --pr-pdirty: #c98448; --pr-pclean: #a3c456; --pr-pcase: #0b0e11; --pr-hf: #3a78bd; --pr-hf2: #2a5c96; --pr-hf3: #11293f; --pr-shirt: #3b444d; --pr-skin2: #a87e60; --pr-glove: #15191c; --pr-trous2: #141c25; --pr-vest2: #b85f12; --pr-hel1: #6e767c; --pr-hel2: #3a4146; --pr-hel3: #1f2427; --pr-ts: #c99f22; --pr-ts2: #85670d; --pr-plvl: #2a64ad; --pr-tool: #c2cad1; --pr-tool2: #7d8790; --pr-drv: #b8551a; --pr-drv2: #7a340b; --pr-mark: #ff6a4a; }
+/* widget-jelenetek (scene.js): glóriás szöveg, félkövér, mono */
+.pr-svg .pr-h { paint-order: stroke; stroke: var(--pr-labbg); stroke-width: 3.2px; stroke-linejoin: round; }
+.pr-svg .pr-b { font-weight: 800; }
+.pr-svg .pr-m { font-family: var(--f-mono); letter-spacing: -0.02em; }
+.fig.pr-svg { border-radius: 10px; overflow: hidden; }

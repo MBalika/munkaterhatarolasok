@@ -58,7 +58,6 @@ bb63cc4	Horizontal extent of the slope
 14da3b3	Extra excavation per side
 86a0e1e	m³/m
 92ea70f	Inclination
-9eddccb	wall position
 6c3c565	neighbouring building
 f580e93	It does not fit – a supported wall is needed
 fcd9e8a	The slope (and the unloaded strip) would reach ${fmt(a + strip - d, 1)} m under the neighbouring building. A vertical, supported wall is needed here.
