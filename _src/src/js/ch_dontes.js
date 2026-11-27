@@ -1,5 +1,6 @@
 // 9. fejezet – Melyiket válasszam? Döntéstámogató + „Te vagy a tervező!” esettanulmány-játék
 import { register, shell, slider, seg, toggle, select, h, svg, figure, clear, fmt, clamp } from './core.js';
+import { K, stage, building } from './scene.js';
 
 /* ================================================================== DÖNTÉSTÁMOGATÓ */
 // Minden opció: {id, t (név), href, kind: 'fal'|'tam', eval(p) → {x: kizáró ok | null, r: [[+/-pont, szöveg]]}}
@@ -346,61 +347,71 @@ const CASES = [
 ];
 
 function sketch(s, sk) {
-  const g = svg('g', {}, s);
-  const W = 360, Hh = 200, top = 60, pxm = Math.min(22, 110 / (sk.H + 1), sk.imp ? 132 / (sk.imp + 1) : 99);
-  svg('rect', { x: 0, y: 0, width: W, height: Hh, class: 'f-sky' }, g);
+  const W = 360, Hh = 200, top = 66, pxm = Math.min(22, 104 / (sk.H + 1), sk.imp ? 126 / (sk.imp + 1) : 99);
+  const { F, SK, R: Rc, P: Pp, C: Cc, Ln, v } = K;
   if (sk.kind === 'folyo') {
-    const bed = 150, wl = bed - sk.H * 12;
-    svg('rect', { x: 0, y: bed, width: W, height: Hh - bed, class: 'f-soilD' }, g);
-    svg('rect', { x: 0, y: bed, width: W, height: Hh - bed, fill: 'url(#pat-gravel)' }, g);
-    svg('rect', { x: 0, y: wl, width: W, height: bed - wl, class: 'f-water' }, g);
-    svg('rect', { x: 0, y: wl, width: W, height: bed - wl, fill: 'url(#pat-water)' }, g);
-    svg('rect', { x: 150, y: bed - 34, width: 60, height: 34, class: 'f-conc2', opacity: 0.6, 'stroke-dasharray': '4 3', stroke: 'var(--ink)' }, g);
-    txt2(g, 180, bed - 40, 'leendő pillér', 'middle');
-    txt2(g, 10, wl - 6, `vízmélység ${fmt(sk.H, 0)} m`);
+    // élővíz: a horizont a vízszint, a meder kavics; a leendő pillér szaggatott körvonallal, mellette munkaponton
+    const bed = 156, wl = bed - sk.H * 12;
+    const St = stage(s, { W, H: Hh, GY: bed, hz: wl, layers: [{ k: 'gravel', y: bed }, { k: 'clay', y: bed + 26 }], fmax: 1 });
+    const g = St.g;
+    Rc(g, -2, wl, W + 4, bed - wl, F('halo')); Rc(g, -2, wl, W + 4, bed - wl, F('water', 0.5)); Rc(g, -2, wl + (bed - wl) * 0.45, W + 4, (bed - wl) * 0.55, F('dark', 0.07));
+    Ln(g, -2, wl, W + 2, wl, SK('water', 2));
+    for (let i = 0; i < 8; i++) Pp(g, `M${18 + i * 44} ${wl + 8 + (i % 3) * 8} q4 -2.6 8 0 t8 0`, SK('halo', 1.1, 'opacity:.55') + ';fill:none');
+    Rc(g, 150, wl - 22, 60, bed - wl + 22, F('conc1', 0.35) + `;stroke:${v('labline')};stroke-width:1.4;stroke-dasharray:5 4`);
+    const dk = K.barge(g, 244, 322, wl + 2); K.man(g, { x: 268, GY: dk, S: 12, face: -1 });
+    St.tag(180, wl - 32, 'leendő pillér', { fs: 10, anchor: 'middle' });
+    St.tag(8, wl - 12, `vízmélység ${fmt(sk.H, 0)} m`, { fs: 10 });
     return;
   }
-  const yG = top;
-  svg('rect', { x: 0, y: yG, width: W, height: Hh - yG, class: sk.soil === 'kemeny' ? 'f-soilE' : 'f-soilA' }, g);
-  svg('rect', { x: 0, y: yG, width: W, height: Hh - yG, fill: sk.soil === 'kemeny' ? 'url(#pat-clay)' : 'url(#pat-sand)' }, g);
-  if (sk.imp) { const yi = yG + sk.imp * pxm; if (yi < Hh) { svg('rect', { x: 0, y: yi, width: W, height: Hh - yi, class: 'f-soilB' }, g); svg('rect', { x: 0, y: yi, width: W, height: Hh - yi, fill: 'url(#pat-clay)' }, g); txt2(g, W - 6, Math.min(Hh - 4, yi + 12), 'vízzáró agyag', 'end'); } }
+  const yG = top, yB = yG + sk.H * pxm, yi = sk.imp ? yG + sk.imp * pxm : null;
+  const layers = [{ k: 'fill', y: yG }, { k: sk.soil === 'kemeny' ? 'clay2' : 'sand', y: yG + 5 }];
+  if (yi && yi < Hh - 6) layers.push({ k: 'clay', y: Math.round(yi) });
+  const St = stage(s, { W, H: Hh, GY: yG, layers, fmax: 1 });
+  const g = St.g, ov = St.ov;
+  if (yi && yi < Hh - 6) St.tag(W - 6, Math.min(Hh - 6, yi + 16), 'vízzáró agyag', { fs: 10, anchor: 'end' });
   if (sk.gw !== null && sk.gw !== undefined) {
-    const yw = yG + sk.gw * pxm;
-    const yb = sk.imp ? Math.min(Hh, yG + sk.imp * pxm) : Hh;
-    svg('rect', { x: 0, y: yw, width: W, height: yb - yw, class: 'f-water', opacity: 0.7 }, g);
-    svg('line', { x1: 0, y1: yw, x2: W, y2: yw, class: 's-water', 'stroke-width': 1.5, 'stroke-dasharray': '5 4' }, g);
-    txt2(g, 6, yw - 3, '▽ talajvíz');
+    const yw = yG + sk.gw * pxm, yb = yi ? Math.min(Hh, yi) : Hh;
+    Rc(g, -2, yw, W + 4, yb - yw, F('water', 0.22));
+    Ln(g, -2, yw, W + 2, yw, SK('water', 1.5, 'stroke-dasharray:5 4'));
+    St.txt(8, yw + 13, '▽ talajvíz', { c: 'water', b: true, fs: 10.5 });
   }
   let x0, x1;
   if (sk.kind === 'arok') { x0 = 165; x1 = 195; }
   else if (sk.kind === 'akna') { x0 = 0; x1 = W; }
   else if (sk.kind === 'bevagas') { x0 = 180; x1 = W; }
   else { x0 = 110; x1 = 290; }
-  const yB = yG + sk.H * pxm;
   if (sk.kind === 'akna') {
-    // két alagút + keresztjárat
-    for (const cx of [70, 290]) { svg('circle', { cx, cy: yB, r: 26, fill: 'var(--surface)', class: 's-ink', 'stroke-width': 3, stroke: 'var(--concrete2)' }, g); }
-    svg('rect', { x: 96, y: yB - 12, width: 168, height: 24, fill: 'none', stroke: 'var(--bad)', 'stroke-width': 2, 'stroke-dasharray': '5 4' }, g);
-    txt2(g, 180, yB - 18, 'keresztjárat helye', 'middle');
-    txt2(g, 180, yG - 8, 'felszín – város, közlekedés', 'middle');
+    // két alagútcső (tübbinggyűrű) + a keresztjárat helye
+    for (const cx of [70, 290]) { Cc(g, cx, yB, 27, F('conc1') + `;stroke:${v('concedge')};stroke-width:1`); Cc(g, cx, yB, 27, 'fill:url(#pr-p-conc)'); Cc(g, cx, yB, 21.5, 'fill:url(#pr-pitg)' + `;stroke:${v('concedge')};stroke-width:.8`); Rc(g, cx - 19, yB + 9, 38, 3, F('dark2', 0.7)); }
+    Rc(ov, 97, yB - 12, 166, 24, F('push', 0.1) + `;stroke:${v('push')};stroke-width:2;stroke-dasharray:5 4`);
+    K.carSide(g, 150, yG, 'acc2'); K.man(g, { x: 232, GY: yG, S: 9, face: -1 });
+    St.tag(180, yB - 24, 'keresztjárat helye', { fs: 10, anchor: 'middle' });
+    St.tag(180, yG - 34, 'felszín – város, közlekedés', { fs: 10, anchor: 'middle' });
     return;
   }
   if (sk.kind === 'bevagas') {
-    svg('rect', { x: x0, y: yG, width: x1 - x0, height: sk.H * pxm, class: 'f-sky' }, g);
-    svg('rect', { x: x0, y: yB - 4, width: x1 - x0, height: 4, fill: 'var(--ink)', opacity: 0.6 }, g);
-    txt2(g, 300, yB - 8, 'út', 'middle');
+    // meglévő terep balra, a tervezett bevágás jobbra: lent az út
+    K.pit(g, St.M, x0, W + 6, yB);
+    Rc(g, x0, yB - 3.4, W - x0 + 4, 3.4, F('dark2', 0.85)); Pp(g, `M${x0 + 12} ${yB - 1.7} H${W}`, SK('halo', 0.9, 'stroke-dasharray:9 8;opacity:.7'));
+    K.carSide(g, 302, yB - 3, 'acc2');
+    Ln(ov, x0, yG, x0, yB, SK('push', 2, 'stroke-dasharray:5 4'));
+    St.tag(326, yB - 32, 'út', { fs: 10, anchor: 'middle' });
+    K.man(g, { x: x0 - 26, GY: yG, S: Math.min(pxm, 16), face: 1 });
   } else {
-    svg('rect', { x: x0, y: yG, width: x1 - x0, height: sk.H * pxm, fill: 'var(--surface)' }, g);
-    svg('rect', { x: x0, y: yG, width: x1 - x0, height: sk.H * pxm, fill: 'none', class: 's-ink', 'stroke-width': 1.5, 'stroke-dasharray': '5 4' }, g);
+    // a tervezett gödör / árok körvonala
+    Rc(ov, x0, yG, x1 - x0, sk.H * pxm, F('halo', 0.5) + `;stroke:${v('labline')};stroke-width:1.5;stroke-dasharray:5 4`);
+    if (sk.kind !== 'arok' && pxm >= 5) K.man(g, { x: x1 + 16, GY: yG, S: Math.min(pxm, 16), face: -1 });
   }
-  // szomszéd
-  if (sk.nb === 'hz') { svg('rect', { x: 8, y: 14, width: 80, height: yG - 14, class: 'f-bld' }, g); svg('rect', { x: 8, y: yG, width: 80, height: 18, class: 'f-bld2' }, g); svg('rect', { x: x1 + 6, y: 20, width: 56, height: yG - 20, class: 'f-bld' }, g); txt2(g, 48, 32, 'szomszéd', 'middle'); }
-  if (sk.nb === 'ut') { svg('rect', { x: 205, y: yG - 4, width: 150, height: 4, fill: 'var(--ink)', opacity: 0.7 }, g); svg('rect', { x: 240, y: yG - 16, width: 34, height: 12, rx: 3, fill: 'var(--g2)' }, g); txt2(g, 290, yG - 8, 'forgalom'); }
+  // szomszéd: léptékhelyes épületek pincével / forgalmas út
+  if (sk.nb === 'hz') {
+    const k = Math.max(pxm, 4.6);
+    building(g, x0 - 8 - 13 * k, yG, 13, 4, k, { base: 3 }); building(g, x1 + 8, yG, 10, 3, k, { base: 3 });
+    St.tag(x0 - 8 - 6.5 * k, 16, 'szomszéd', { fs: 10, anchor: 'middle' });
+  }
+  if (sk.nb === 'ut') { Rc(g, 205, yG - 3.4, 157, 3.4, F('dark2', 0.85)); K.carSide(g, 236, yG - 3, 'acc2'); K.carSide(g, 300, yG - 3, 'truck'); St.tag(296, yG - 34, 'forgalom', { fs: 10, anchor: 'middle' }); }
   // mélység
-  svg('line', { x1: (x0 + x1) / 2, y1: yG, x2: (x0 + x1) / 2, y2: yB, class: 's-acc', 'stroke-width': 1.5 }, g);
-  txt2(g, (x0 + x1) / 2 + 5, (yG + yB) / 2 + 4, `${fmt(sk.H, 1)} m`);
+  St.dimV((x0 + x1) / 2, yG, yB, `${fmt(sk.H, 1)} m`, { c: 'acc', fs: 11 });
 }
-function txt2(p, x, y, t, anchor = 'start') { svg('text', { x, y, class: 't-sm halo', 'text-anchor': anchor, text: t, style: 'fill:var(--ink2);font-weight:600' }, p); }
 
 register('casegame', (root) => {
   const { viz } = shell(root, { layout: 'wide', out: false });
